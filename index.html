@@ -241,7 +241,7 @@ function showPreview(res,dest,pace){
   res.legs.forEach((lg,i)=>{let turn;if(i===0)turn='Head '+compass(bearing(lg.a,lg.b));else{const pb=bearing(res.legs[i-1].a,res.legs[i-1].b),cb=bearing(lg.a,lg.b);turn=turnWord(((cb-pb+540)%360)-180);}cum+=lg.len/MI;html+=`<li>${turn} on <b>${lg.name}</b>${lg.nw?'<span class="pill">new</span>':''}<br><span class="d">${(lg.len/MI).toFixed(2)} mi · ${cum.toFixed(2)} total</span></li>`;});
   html+=`<li>🏁 Arrive — <b>${(dest.name||'destination').split(',').slice(0,2).join(',')}</b></li></ol>`;
   $('dirs').innerHTML=html;
-  showScreen('preview');map.fitBounds(routeLayer.getBounds().pad(0.18));
+  showScreen('preview');setTimeout(()=>{try{map.invalidateSize();map.fitBounds(routeLayer.getBounds().pad(0.18));}catch(e){}},160);
 }
 
 // ---------- plan (coverage) ----------
@@ -269,6 +269,7 @@ function buildNavSteps(res){const ns=res.ns;const names=[];for(let i=0;i+1<ns.le
 function nearestRouteIdx(la,lo){const ns=NAV.ns;let bi=0,bd=Infinity;for(let i=0;i<ns.length;i++){const d=havLL(la,lo,N[ns[i]][0],N[ns[i]][1]);if(d<bd){bd=d;bi=i;}}return bi;}
 function startNav(){if(!CUR){return;}if(!navigator.geolocation){alert('Location not available on this device.');return;}
   NAV=buildNavSteps(CUR.res);showScreen('nav');startHeading();
+  setTimeout(()=>{try{map.invalidateSize();if(routeLayer)map.fitBounds(routeLayer.getBounds().pad(0.18));}catch(e){}},160);
   $('nav_inst').textContent=NAV.first;$('nav_dist').textContent='';$('nav_prog').textContent='0.00 / '+(NAV.total/MI).toFixed(2)+' mi';
   let first=true;
   navWatch=navigator.geolocation.watchPosition(function(p){
