@@ -16,7 +16,8 @@
  html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;background:#11131a;color:#eee}
  #app{display:flex;flex-direction:column;height:100%}
  header{padding:calc(8px + env(safe-area-inset-top)) 12px 10px;background:#171a22;border-bottom:1px solid #262a35}
- header h1{margin:0;font-size:15px;font-weight:700}
+ header h1{margin:0;font-size:15px;font-weight:700;display:flex;justify-content:space-between;align-items:baseline}
+ header h1 #hpct{font-size:13px;color:#34d058;font-weight:700}
  header .sub{font-size:11px;color:#8b93a7;margin-top:2px}
  .controls{padding:10px 12px;display:flex;flex-direction:column;gap:8px;background:#141720;border-bottom:1px solid #262a35}
  .row{display:flex;gap:8px}
@@ -29,11 +30,10 @@
  .seg input:checked+span{background:#3b82f6;color:#fff;display:block;border-radius:7px;margin:2px}
  .seg label span{display:block;padding:7px 4px;border-radius:7px}
  .opt{display:flex;align-items:center;gap:7px;font-size:13px;color:#cfd5e2}
- .btnrow{display:flex;gap:8px}
- button#go{flex:2;padding:13px;border:0;border-radius:10px;background:#3b82f6;color:#fff;font-size:16px;font-weight:700}
- button#direct{flex:1;padding:13px;border:0;border-radius:10px;background:#2c3140;color:#fff;font-size:14px;font-weight:700}
- button#direct:active{background:#3a4150}
+ button#go{width:100%;padding:13px;border:0;border-radius:10px;background:#3b82f6;color:#fff;font-size:16px;font-weight:700;font-family:inherit}
  button#go:active{background:#2f6fd6}
+ button#nearnew{width:100%;padding:11px;border:1px solid #2c3140;border-radius:10px;background:#2c3140;color:#fff;font-size:14px;font-weight:700;font-family:inherit}
+ button#nearnew:active{background:#3a4150}
  #status{font-size:12px;color:#9aa3b6;min-height:15px}
  #stats{display:none;gap:6px;padding:8px 12px;background:#141720;border-bottom:1px solid #262a35}
  .stat{flex:1;text-align:center;background:#0e1016;border-radius:9px;padding:8px 4px}
@@ -50,11 +50,14 @@
  .navnote{font-size:10px;color:#8b93a7;padding:0 12px 8px;background:#141720}
  .livebtn{width:calc(100% - 24px);margin:0 12px 10px;padding:12px;border:1px solid #2c3140;border-radius:10px;background:#0e1016;color:#fff;font-size:14px;font-weight:700;font-family:inherit}
  .livebtn.on{background:#214a2a;border-color:#2f6f3f}
+ .me{width:30px;height:30px;position:relative;transform-origin:50% 50%;transition:transform .15s linear}
+ .me .dot{position:absolute;left:9px;top:9px;width:12px;height:12px;border-radius:50%;background:#3b82f6;border:2px solid #fff;box-shadow:0 0 8px rgba(59,130,246,.9)}
+ .me .arr{position:absolute;left:11px;top:0;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:9px solid #3b82f6}
  .tabs{display:flex;border-top:1px solid #262a35}
  .tabs button{flex:1;border-radius:0;background:#171a22;color:#9aa3b6;font-size:13px;font-weight:600;padding:10px;border:0}
  .tabs button.on{background:#0e1016;color:#fff;box-shadow:inset 0 2px 0 #3b82f6}
 </style></head><body><div id="app">
-<header><h1>🟥 Redline Router</h1><div class="sub">Walking routes that cover the most un-walked streets</div></header>
+<header><h1>🟥 Redline Router <span id="hpct"></span></h1><div class="sub">Walking routes that cover the most un-walked streets</div></header>
 <div class="controls">
  <div><label>Destination address</label><input type="text" id="addr" placeholder="e.g. 200 Lafayette St, or Tompkins Square Park" autocomplete="off"></div>
  <div><label>Start from</label>
@@ -68,7 +71,8 @@
    <div><label>Pace (min/mi)</label><input type="number" id="pace" inputmode="decimal" step="0.1" value="22.37"></div>
  </div>
  <label class="opt"><input type="checkbox" id="loop"> Round trip — return to start</label>
- <div class="btnrow"><button id="go">Build route</button><button id="direct">🎯 Most direct</button></div>
+ <button id="go">Build route — most coverage</button>
+ <button id="nearnew">🧭 Route me to the nearest unwalked street</button>
  <div id="status"></div>
 </div>
 <div id="stats">
@@ -80,7 +84,7 @@
 </div>
 <div id="nav"><a id="navG" class="navbtn" target="_blank" rel="noopener">🗺️ Google Maps</a><a id="navA" class="navbtn" target="_blank" rel="noopener">🍎 Apple (direct)</a></div>
 <button id="navL" class="livebtn" style="display:none">🔵 Follow my live location</button>
-<div id="navnote" class="navnote" style="display:none">Google traces the route via up to 9 stops (it straightens long gaps). Apple only walks direct. For the exact path, tap “Follow my live location” and follow the blue line.</div>
+<div id="navnote" class="navnote" style="display:none">Build a route, then follow it in Google Maps (traces it via up to 9 stops) — or tap “Follow my live location” to walk the exact blue line with your GPS dot + heading.</div>
 <div class="tabs"><button id="tabMap" class="on">Map</button><button id="tabDir">Directions</button></div>
 <div id="map"></div>
 <div id="dirs"></div>
@@ -90,19 +94,14 @@ const G={"nodes":[[40.72654,-73.9753],[40.72533,-73.97621],[40.70402,-74.00856],
 // ---------- graph ----------
 const N=G.nodes, E=G.edges, NM=G.names, HOME=G.home;
 const R=6371000, toR=Math.PI/180;
-function hav(a,b){const la1=N[a][0]*toR,la2=b[0]!==undefined&&b[1]!==undefined&&b.length===2?b[0]*toR:N[b][0]*toR;
-  // fallback: treat b as node index
-  return havNN(a,b);}
 function havNN(i,j){const A=N[i],B=N[j];const dla=(B[0]-A[0])*toR,dlo=(B[1]-A[1])*toR,
   m=Math.sin(dla/2)**2+Math.cos(A[0]*toR)*Math.cos(B[0]*toR)*Math.sin(dlo/2)**2;return 2*R*Math.asin(Math.sqrt(m));}
 function havLL(la1,lo1,la2,lo2){const dla=(la2-la1)*toR,dlo=(lo2-lo1)*toR,
   m=Math.sin(dla/2)**2+Math.cos(la1*toR)*Math.cos(la2*toR)*Math.sin(dlo/2)**2;return 2*R*Math.asin(Math.sqrt(m));}
-// adjacency
 const adj=Array.from({length:N.length},()=>[]);
 const elen=new Float64Array(E.length);
 E.forEach((e,i)=>{const L=havNN(e[0],e[1]);elen[i]=L;adj[e[0]].push([e[1],L,i]);adj[e[1]].push([e[0],L,i]);});
 const MI=1609.344;
-// binary heap
 function Heap(){this.a=[];}
 Heap.prototype.push=function(x){const a=this.a;a.push(x);let i=a.length-1;while(i>0){const p=(i-1)>>1;if(a[p][0]<=a[i][0])break;[a[p],a[i]]=[a[i],a[p]];i=p;}};
 Heap.prototype.pop=function(){const a=this.a,top=a[0],last=a.pop();if(a.length){a[0]=last;let i=0;for(;;){let l=2*i+1,r=l+1,s=i;if(l<a.length&&a[l][0]<a[s][0])s=l;if(r<a.length&&a[r][0]<a[s][0])s=r;if(s===i)break;[a[s],a[i]]=[a[i],a[s]];i=s;}}return top;};
@@ -119,9 +118,6 @@ function directRoute(s,t){const r=dijkstraW(s);const p=pathTo(r.prevN,r.prevE,s,
 function perpDist(p,a,b){const k=Math.cos(a[0]*Math.PI/180);const ax=a[1]*k,ay=a[0],bx=b[1]*k,by=b[0],px=p[1]*k,py=p[0];const dx=bx-ax,dy=by-ay,L2=dx*dx+dy*dy;let tt=L2?((px-ax)*dx+(py-ay)*dy)/L2:0;tt=Math.max(0,Math.min(1,tt));const cx=ax+tt*dx,cy=ay+tt*dy;return Math.hypot(px-cx,py-cy);}
 function rdp(pts,eps){if(pts.length<3)return pts.slice();let dmax=0,idx=0;for(let i=1;i<pts.length-1;i++){const d=perpDist(pts[i],pts[0],pts[pts.length-1]);if(d>dmax){dmax=d;idx=i;}}if(dmax>eps){const l=rdp(pts.slice(0,idx+1),eps),r=rdp(pts.slice(idx),eps);return l.slice(0,-1).concat(r);}return [pts[0],pts[pts.length-1]];}
 function waypointsFor(ns){const MAXSTOPS=9,MAXW=MAXSTOPS-2;const poly=ns.map(n=>[N[n][0],N[n][1]]);let eps=0.0003,simp=rdp(poly,eps);while(simp.length>MAXSTOPS&&eps<0.02){eps*=1.5;simp=rdp(poly,eps);}let tps=simp.slice(1,-1);if(tps.length>MAXW){const st=tps.length/MAXW,s=[];for(let i=0;i<MAXW;i++)s.push(tps[Math.floor(i*st)]);tps=s;}return tps;}
-let _watchId=null,_meMarker=null;
-function toggleLive(){const b=document.getElementById('navL');if(_watchId!=null){navigator.geolocation.clearWatch(_watchId);_watchId=null;b.textContent='🔵 Follow my live location';b.classList.remove('on');return;}if(!navigator.geolocation){setStatus('Geolocation not available on this device.');return;}b.textContent='🔵 Following — tap to stop';b.classList.add('on');_watchId=navigator.geolocation.watchPosition(function(p){const ll=[p.coords.latitude,p.coords.longitude];if(!_meMarker){_meMarker=L.circleMarker(ll,{radius:8,color:'#fff',fillColor:'#3b82f6',fillOpacity:1,weight:3}).addTo(map);}else{_meMarker.setLatLng(ll);}map.panTo(ll,{animate:true});},function(e){setStatus('⚠ Location error: '+(e.message||e.code));b.textContent='🔵 Follow my live location';b.classList.remove('on');_watchId=null;},{enableHighAccuracy:true,maximumAge:2000,timeout:20000});}
-
 function nearestNode(la,lo){let best=-1,bd=Infinity;for(let i=0;i<N.length;i++){const dla=(N[i][0]-la),dlo=(N[i][1]-lo)*0.758;const d=dla*dla+dlo*dlo;if(d<bd){bd=d;best=i;}}return best;}
 
 // greedy coverage route from s to t within budget B meters
@@ -153,7 +149,6 @@ function greedy(s,t,B){
 }
 function edgeBetween(a,b){const au=adj[a];for(let k=0;k<au.length;k++)if(au[k][0]===b)return au[k][2];return -1;}
 function finalize(ns){
-  // build leg list, total dist, new miles, time
   const legs=[]; let total=0; const newSet=new Set();
   for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);if(ei<0)continue;const L=elen[ei];total+=L;
     const nm=NM[E[ei][2]]||'(unnamed)';const nw=E[ei][3]===0;if(nw)newSet.add(ei);
@@ -176,6 +171,35 @@ L.circleMarker([N[HOME][0],N[HOME][1]],{radius:6,color:'#fff',fillColor:'#ffd23f
 let routeLayer=null, destMarker=null, startMarker=null;
 let START=HOME; let startLL=[N[HOME][0],N[HOME][1]];
 
+const $=id=>document.getElementById(id);
+function setStatus(t){$('status').textContent=t;}
+function fmtTime(min){const h=Math.floor(min/60),m=Math.round(min%60);return h?`${h}h ${m}m`:`${m} min`;}
+
+// ---------- full-island % redlined (from embedded coverage) ----------
+(function(){let tot=0,cov=0;for(let i=0;i<E.length;i++){tot+=elen[i];if(E[i][3]===1)cov+=elen[i];}const pct=tot>0?100*cov/tot:0;const el=$('hpct');if(el)el.textContent=pct.toFixed(1)+'% redlined';})();
+
+// ---------- live location + heading ----------
+let _watchId=null,_meMarker=null,_meCircle=null,_headingOn=false;
+function meIcon(){return L.divIcon({className:'',html:'<div class="me"><span class="arr"></span><span class="dot"></span></div>',iconSize:[30,30],iconAnchor:[15,15]});}
+function setHeading(h){if(_meMarker){const el=_meMarker.getElement();if(el){const m=el.querySelector('.me');if(m)m.style.transform='rotate('+h+'deg)';}}}
+function startHeading(){if(_headingOn)return;function handle(e){let h=null;if(typeof e.webkitCompassHeading==='number')h=e.webkitCompassHeading;else if(e.alpha!=null)h=(360-e.alpha)%360;if(h!=null)setHeading(h);}
+  if(typeof DeviceOrientationEvent!=='undefined'&&typeof DeviceOrientationEvent.requestPermission==='function'){
+    DeviceOrientationEvent.requestPermission().then(function(p){if(p==='granted'){window.addEventListener('deviceorientation',handle);_headingOn=true;}}).catch(function(){});
+  } else {window.addEventListener('deviceorientationabsolute',handle);window.addEventListener('deviceorientation',handle);_headingOn=true;}}
+function toggleLive(){const b=$('navL');
+  if(_watchId!=null){navigator.geolocation.clearWatch(_watchId);_watchId=null;b.textContent='🔵 Follow my live location';b.classList.remove('on');return;}
+  if(!navigator.geolocation){setStatus('Geolocation not available on this device.');return;}
+  b.textContent='🔵 Locating…';b.classList.add('on');startHeading();let first=true;
+  _watchId=navigator.geolocation.watchPosition(function(p){
+    const ll=[p.coords.latitude,p.coords.longitude],acc=p.coords.accuracy||20;
+    if(!_meMarker){_meMarker=L.marker(ll,{icon:meIcon(),zIndexOffset:1000}).addTo(map);}else{_meMarker.setLatLng(ll);}
+    if(!_meCircle){_meCircle=L.circle(ll,{radius:acc,color:'#3b82f6',weight:1,opacity:0.4,fillOpacity:0.08}).addTo(map);}else{_meCircle.setLatLng(ll);_meCircle.setRadius(acc);}
+    if(typeof p.coords.heading==='number'&&!isNaN(p.coords.heading)&&p.coords.speed>0.3)setHeading(p.coords.heading);
+    if(first){map.setView(ll,Math.max(map.getZoom(),16));first=false;}else{map.panTo(ll,{animate:true});}
+    b.textContent='🔵 Following — ±'+Math.round(acc)+'m (tap to stop)';
+  },function(e){setStatus('⚠ Location error: '+(e.message||e.code)+'. Grant location permission and try again.');b.textContent='🔵 Follow my live location';b.classList.remove('on');_watchId=null;},
+  {enableHighAccuracy:true,maximumAge:1000,timeout:20000});}
+
 // ---------- geocode ----------
 async function geocode(q){
   const url='https://nominatim.openstreetmap.org/search?format=json&limit=1&bounded=1&viewbox=-74.03,40.88,-73.90,40.69&q='+encodeURIComponent(q+', Manhattan, New York');
@@ -183,75 +207,30 @@ async function geocode(q){
   const j=await r.json(); if(!j.length)throw new Error('Address not found in Manhattan');
   return {lat:parseFloat(j[0].lat),lon:parseFloat(j[0].lon),name:j[0].display_name};
 }
-const $=id=>document.getElementById(id);
-function setStatus(t){$('status').textContent=t;}
-function fmtTime(min){const h=Math.floor(min/60),m=Math.round(min%60);return h?`${h}h ${m}m`:`${m} min`;}
 
-async function run(mode){
-  const addr=$('addr').value.trim();if(!addr){setStatus('Enter a destination.');return;}
-  const target=parseFloat($('dist').value)||5, pace=parseFloat($('pace').value)||16.4, loop=$('loop').checked;
-  const startMode=(document.querySelector('input[name=start]:checked')||{}).value||'home';
-  if(startMode==='loc'){setStatus('Getting your location…');
-    try{const pos=await new Promise((rs,rj)=>navigator.geolocation.getCurrentPosition(rs,rj,{enableHighAccuracy:true,timeout:12000,maximumAge:30000}));
-      const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);
-      if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){setStatus('⚠ You appear to be off the Manhattan grid — using home base.');START=HOME;startLL=[N[HOME][0],N[HOME][1]];}
-      else{START=sn;startLL=[pos.coords.latitude,pos.coords.longitude];}
-    }catch(e){setStatus('⚠ Location unavailable — using home base.');START=HOME;startLL=[N[HOME][0],N[HOME][1]];}
-  } else {START=HOME;startLL=[N[HOME][0],N[HOME][1]];}
-  setStatus('Finding address…');
-  let dest;try{dest=await geocode(addr);}catch(e){setStatus('⚠ '+e.message);return;}
-  const dnode=nearestNode(dest.lat,dest.lon);
-  const dm=havLL(dest.lat,dest.lon,N[dnode][0],N[dnode][1]);
-  if(dm>500){setStatus('⚠ Destination looks outside the Manhattan street grid.');return;}
-  setStatus('Building route…');
-  await new Promise(r=>setTimeout(r,30));
-  function buildRoute(B){
-    if(loop){
-      const t1=greedy(START,dnode,Math.max(dijkstra(dnode).dist[START], B*0.5));
-      const used1=t1.totalMi*MI;
-      const t2=greedy(dnode,START,Math.max(0.1, B-used1));
-      return finalize(t1.ns.concat(t2.ns.slice(1)));
-    }
-    return greedy(START,dnode,B);
-  }
-  const pctOf=r=>(r.totalMi>0?r.newMi/r.totalMi:0);
-  let res, extended=false;
-  if(mode==='direct'){
-    res = loop ? finalize(directRoute(START,dnode).ns.concat(directRoute(dnode,START).ns.slice(1))) : directRoute(START,dnode);
-  } else {
-    const MINNEW=1/3;
-    res=buildRoute(target*MI);
-    if(pctOf(res)<MINNEW){
-      const capMi=Math.min(Math.max(target*2, res.totalMi+3), target+6);
-      let att=0;
-      for(let d=target+0.5; d<=capMi+1e-6; d+=0.5){ if(++att>9) break; const r2=buildRoute(d*MI); if(pctOf(r2)>pctOf(res)){res=r2;extended=true;} if(pctOf(res)>=MINNEW) break; }
-    }
-  }
-  const newPct=Math.round(100*pctOf(res));
-  // draw
+// ---------- shared renderer ----------
+function render(res, dest, pace, statusMsg){
   if(routeLayer)map.removeLayer(routeLayer);
   if(destMarker)map.removeLayer(destMarker);
+  if(startMarker)map.removeLayer(startMarker);
   const latlng=res.ns.map(i=>[N[i][0],N[i][1]]);
   routeLayer=L.polyline(latlng,{color:'#4aa3ff',weight:5,opacity:0.95}).addTo(map);
   destMarker=L.circleMarker([dest.lat,dest.lon],{radius:6,color:'#fff',fillColor:'#ff5d5d',fillOpacity:1,weight:2}).addTo(map).bindTooltip('Destination');
-  if(startMarker)map.removeLayer(startMarker);startMarker=L.circleMarker(startLL,{radius:6,color:'#fff',fillColor:'#34d058',fillOpacity:1,weight:2}).addTo(map).bindTooltip('Start');
-  map.fitBounds(routeLayer.getBounds().pad(0.15));
-  // stats
-  const mins=res.totalMi*pace;
+  startMarker=L.circleMarker(startLL,{radius:6,color:'#fff',fillColor:'#34d058',fillOpacity:1,weight:2}).addTo(map).bindTooltip('Start');
+  if(routeLayer.getBounds().isValid())map.fitBounds(routeLayer.getBounds().pad(0.15));
+  const mins=res.totalMi*pace; const newPct=res.totalMi>0?Math.round(100*res.newMi/res.totalMi):0;
   $('stats').style.display='flex';
   $('s_dist').textContent=res.totalMi.toFixed(2);
   $('s_new').textContent=res.newMi.toFixed(2);
   $('s_time').textContent=fmtTime(mins);
   $('s_turns').textContent=Math.max(0,res.legs.length-1);
   const pe=$('s_pct'); if(pe){pe.textContent=newPct+'%'; pe.style.color=newPct>=33?'#34d058':'#e8a33b';}
-  // hand-off links to Apple/Google Maps (walking)
   const sLat=startLL[0].toFixed(5), sLng=startLL[1].toFixed(5), dLat=dest.lat.toFixed(5), dLng=dest.lon.toFixed(5);
   const tps=waypointsFor(res.ns);
   const wstr=tps.map(p=>p[0].toFixed(5)+','+p[1].toFixed(5)).join('|');
-  const gUrl='https://www.google.com/maps/dir/?api=1&travelmode=walking&origin='+sLat+','+sLng+'&destination='+dLat+','+dLng+(wstr?'&waypoints='+encodeURIComponent(wstr):'');
-  const aUrl='https://maps.apple.com/?dirflg=w&saddr='+sLat+','+sLng+'&daddr='+dLat+','+dLng;
-  $('navG').href=gUrl; $('navA').href=aUrl; $('nav').style.display='flex'; $('navnote').style.display='block'; $('navL').style.display='block';
-  // directions
+  $('navG').href='https://www.google.com/maps/dir/?api=1&travelmode=walking&origin='+sLat+','+sLng+'&destination='+dLat+','+dLng+(wstr?'&waypoints='+encodeURIComponent(wstr):'');
+  $('navA').href='https://maps.apple.com/?dirflg=w&saddr='+sLat+','+sLng+'&daddr='+dLat+','+dLng;
+  $('nav').style.display='flex'; $('navnote').style.display='block'; $('navL').style.display='block';
   let html='<ol>';let cum=0;
   res.legs.forEach((lg,i)=>{
     let turn;if(i===0)turn='Head '+compass(bearing(lg.a,lg.b));
@@ -260,19 +239,82 @@ async function run(mode){
     cum+=lg.len/MI;
     html+=`<li>${turn} on <b>${lg.name}</b>${lg.nw?'<span class="pill">new</span>':''}<br><span class="d">${(lg.len/MI).toFixed(2)} mi · ${cum.toFixed(2)} mi total · ~${fmtTime(cum*pace)}</span></li>`;
   });
-  html+=`<li>🏁 Arrive — <b>${dest.name.split(',').slice(0,2).join(',')}</b></li></ol>`;
+  html+=`<li>🏁 Arrive — <b>${(dest.name||'destination').split(',').slice(0,2).join(',')}</b></li></ol>`;
   $('dirs').innerHTML=html;
-  let msg=`Done — ${res.totalMi.toFixed(2)} mi · ${newPct}% new · ~${fmtTime(mins)}.`;
-  if(mode==='direct') msg+=' (most-direct route)';
-  else { if(extended) msg+=` Extended past ${target} mi to keep ≥1/3 new.`; if(newPct<33) msg+=` ⚠ Best achievable — mostly already-walked streets.`; }
-  setStatus(msg);
+  setStatus(statusMsg);
   setTimeout(()=>map.invalidateSize(),100);
-};
-// tabs
+}
+
+// ---------- resolve start (home or GPS) ----------
+async function resolveStart(){
+  const startMode=(document.querySelector('input[name=start]:checked')||{}).value||'home';
+  if(startMode==='loc'){
+    setStatus('Getting your location…');
+    try{const pos=await new Promise((rs,rj)=>navigator.geolocation.getCurrentPosition(rs,rj,{enableHighAccuracy:true,timeout:12000,maximumAge:30000}));
+      const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);
+      if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){START=HOME;startLL=[N[HOME][0],N[HOME][1]];setStatus('⚠ Off the Manhattan grid — using home base.');}
+      else{START=sn;startLL=[pos.coords.latitude,pos.coords.longitude];}
+    }catch(e){START=HOME;startLL=[N[HOME][0],N[HOME][1]];setStatus('⚠ Location unavailable — using home base.');}
+  } else {START=HOME;startLL=[N[HOME][0],N[HOME][1]];}
+}
+
+// ---------- build coverage route to an address ----------
+async function run(){
+  const addr=$('addr').value.trim();if(!addr){setStatus('Enter a destination.');return;}
+  const target=parseFloat($('dist').value)||3.33, pace=parseFloat($('pace').value)||22.37, loop=$('loop').checked;
+  await resolveStart();
+  setStatus('Finding address…');
+  let dest;try{dest=await geocode(addr);}catch(e){setStatus('⚠ '+e.message);return;}
+  const dnode=nearestNode(dest.lat,dest.lon);
+  if(havLL(dest.lat,dest.lon,N[dnode][0],N[dnode][1])>500){setStatus('⚠ Destination looks outside the Manhattan street grid.');return;}
+  setStatus('Building route…'); await new Promise(r=>setTimeout(r,30));
+  function buildRoute(B){
+    if(loop){
+      const t1=greedy(START,dnode,Math.max(dijkstra(dnode).dist[START], B*0.5));
+      const t2=greedy(dnode,START,Math.max(0.1, B-t1.totalMi*MI));
+      return finalize(t1.ns.concat(t2.ns.slice(1)));
+    }
+    return greedy(START,dnode,B);
+  }
+  const pctOf=r=>(r.totalMi>0?r.newMi/r.totalMi:0);
+  const MINNEW=1/3; let res=buildRoute(target*MI), extended=false;
+  if(pctOf(res)<MINNEW){
+    const capMi=Math.min(Math.max(target*2, res.totalMi+3), target+6); let att=0;
+    for(let d=target+0.5; d<=capMi+1e-6; d+=0.5){ if(++att>9) break; const r2=buildRoute(d*MI); if(pctOf(r2)>pctOf(res)){res=r2;extended=true;} if(pctOf(res)>=MINNEW) break; }
+  }
+  const newPct=Math.round(100*pctOf(res)), mins=res.totalMi*pace;
+  let msg=`Done — ${res.totalMi.toFixed(2)} mi · ${newPct}% new · ~${fmtTime(mins)}.`;
+  if(extended) msg+=` Extended past ${target} mi to keep ≥1/3 new.`;
+  if(newPct<33) msg+=` ⚠ Best achievable — mostly already-walked streets.`;
+  render(res, dest, pace, msg);
+}
+
+// ---------- nearest unwalked street from current location ----------
+function nearestNew(){
+  if(!navigator.geolocation){setStatus('Geolocation needed for this.');return;}
+  setStatus('Finding your location…');
+  navigator.geolocation.getCurrentPosition(function(pos){
+    const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);
+    if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){setStatus('⚠ You appear off the Manhattan grid.');return;}
+    START=sn; startLL=[pos.coords.latitude,pos.coords.longitude];
+    setStatus('Finding nearest unwalked street…');
+    const {dist}=dijkstra(sn);
+    let best=-1,bd=Infinity,bt=-1;
+    for(let i=0;i<E.length;i++){if(E[i][3]!==0)continue;const a=E[i][0],b=E[i][1];const da=dist[a],db=dist[b];const dn=Math.min(da,db);if(dn<bd){bd=dn;best=i;bt=da<db?a:b;}}
+    if(best<0){setStatus('No unwalked streets reachable from here.');return;}
+    const pace=parseFloat($('pace').value)||22.37;
+    const res=directRoute(sn,bt);
+    const nm=NM[E[best][2]]||'an unwalked street';
+    const mins=res.totalMi*pace;
+    render(res,{lat:N[bt][0],lon:N[bt][1],name:nm}, pace, `Nearest unwalked: ${nm} — ${res.totalMi.toFixed(2)} mi away · ~${fmtTime(mins)}.`);
+  },function(e){setStatus('⚠ Location needed: '+(e.message||e.code));},{enableHighAccuracy:true,timeout:12000});
+}
+
+// ---------- wiring ----------
 $('tabMap').onclick=()=>{$('tabMap').classList.add('on');$('tabDir').classList.remove('on');$('map').style.display='block';$('dirs').style.display='none';setTimeout(()=>map.invalidateSize(),50);};
 $('tabDir').onclick=()=>{$('tabDir').classList.add('on');$('tabMap').classList.remove('on');$('map').style.display='none';$('dirs').style.display='block';};
-$('go').onclick=()=>run('coverage');
+$('go').onclick=run;
+$('nearnew').onclick=nearestNew;
 $('navL').onclick=toggleLive;
-$('direct').onclick=()=>run('direct');
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
 </script></body></html>
