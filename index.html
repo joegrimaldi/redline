@@ -136,6 +136,7 @@
    <label class="opt"><input type="checkbox" id="loop"> Round trip — return to start</label>
    <button id="go" class="btn primary">Plan route</button>
    <button id="nearnew" class="btn ghost">🧭 Nearest unwalked street</button>
+   <button id="walk" class="btn ghost">🚶 Walkabout — free roam (no destination)</button>
    <div id="status"></div>
  </div>
 </div>
@@ -352,6 +353,22 @@ function startNav(){if(!CUR)return;if(!navigator.geolocation){alert('Location no
     $('nav_prog').textContent=(walked/MI).toFixed(2)+' / '+(NAV.total/MI).toFixed(2)+' mi · ~'+Math.max(0,Math.round(remMi*pace))+' min left';
   },function(e){$('nav_inst').textContent='⚠ Location error';$('nav_dist').textContent=(e.message||e.code)+' — grant permission';},{enableHighAccuracy:true,maximumAge:1000,timeout:20000});}
 function endNav(){if(navWatch!=null){navigator.geolocation.clearWatch(navWatch);navWatch=null;}releaseWake();if(window.speechSynthesis)window.speechSynthesis.cancel();$('map').style.transform='';if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}showRecap();}
+function walkabout(){if(!navigator.geolocation){alert('Location not available on this device.');return;}
+  NAV=null;newSegs=new Set();newMi=0;navStartPct=liveIslandPct();smLL=null;
+  if(routeLayer){map.removeLayer(routeLayer);routeLayer=null;}if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}
+  showScreen('nav');startHeading();acquireWake();headingUp=true;$('rotBtn').classList.add('on');$('rotBtn').textContent='🧭';
+  $('nav_arrow').textContent='🚶';$('nav_inst').textContent='Walkabout — wander freely';$('nav_dist').textContent='new streets light up as you walk';$('nav_new').textContent='';$('nav_prog').textContent='';
+  speak('Walkabout. New streets light up as you walk.');let first=true;
+  navWatch=navigator.geolocation.watchPosition(function(p){
+    let la=p.coords.latitude,lo=p.coords.longitude;const acc=p.coords.accuracy||20;
+    if(smLL&&acc<35){la=0.4*la+0.6*smLL[0];lo=0.4*lo+0.6*smLL[1];}smLL=[la,lo];const ll=[la,lo];
+    if(!meMarker){meMarker=L.marker(ll,{icon:meIcon(),zIndexOffset:1000}).addTo(map);}else meMarker.setLatLng(ll);
+    if(!meCircle){meCircle=L.circle(ll,{radius:acc,color:'#3b82f6',weight:1,opacity:.4,fillOpacity:.08}).addTo(map);}else{meCircle.setLatLng(ll);meCircle.setRadius(acc);}
+    if(typeof p.coords.heading==='number'&&!isNaN(p.coords.heading)&&p.coords.speed>0.3)setHeading(p.coords.heading);
+    if(first){map.setView(ll,17);first=false;}else map.panTo(ll,{animate:true});
+    checkNewCover(la,lo);
+    $('nav_prog').textContent='+'+newMi.toFixed(2)+' new mi · '+newSegs.size+' blocks · island '+liveIslandPct().toFixed(1)+'%';
+  },function(e){$('nav_inst').textContent='⚠ Location error';$('nav_dist').textContent=(e.message||e.code)+' — grant permission';},{enableHighAccuracy:true,maximumAge:1000,timeout:20000});}
 function showRecap(){const now=liveIslandPct(),walked=(NAV&&NAV.cum&&NAV.lastIdx)?0:0;
   $('rc_sub').textContent=newSegs.size>0?'You revealed new territory':'No new streets this time — still counts!';
   const rows=[['New streets cleared',newSegs.size+' blocks',true],['New miles redlined',newMi.toFixed(2)+' mi',true],['Island redlined',navStartPct.toFixed(1)+'% → '+now.toFixed(1)+'%',now>navStartPct],['XP earned','+'+Math.round(newMi*10)+' XP',newMi>0],['Streak',STATS.streak+' days 🔥',true]];
@@ -363,7 +380,7 @@ function showRecap(){const now=liveIslandPct(),walked=(NAV&&NAV.cum&&NAV.lastIdx
 $('updateBtn').onclick=async()=>{$('updateBtn').textContent='…';try{if('serviceWorker'in navigator){const rs=await navigator.serviceWorker.getRegistrations();for(const r of rs)await r.unregister();}if(window.caches){const ks=await caches.keys();for(const k of ks)await caches.delete(k);}}catch(e){}location.replace(location.pathname+'?u='+Date.now());};
 
 // ---------- wiring ----------
-$('go').onclick=run;$('nearnew').onclick=nearestNew;$('pvback').onclick=()=>showScreen('home');$('startnav').onclick=startNav;$('nav_end').onclick=endNav;
+$('go').onclick=run;$('nearnew').onclick=nearestNew;$('walk').onclick=walkabout;$('pvback').onclick=()=>showScreen('home');$('startnav').onclick=startNav;$('nav_end').onclick=endNav;
 $('hoods').addEventListener('click',e=>{const el=e.target.closest('.hood');if(el&&el.dataset.name)neighborhoodRoute(el.dataset.name);});
 $('rc_done').onclick=()=>{$('recap').classList.remove('show');showScreen('home');};
 $('recenter').onclick=()=>{if(NAV)NAV.follow=true;if(meMarker)map.panTo(meMarker.getLatLng(),{animate:true});};
