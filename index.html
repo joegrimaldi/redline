@@ -230,8 +230,8 @@ function showPreview(res,dest,pace){
   destMarker=L.circleMarker([dest.lat,dest.lon],{radius:6,color:'#fff',fillColor:'#ff5d5d',fillOpacity:1,weight:2}).addTo(map);
   startMarker=L.circleMarker(startLL,{radius:6,color:'#fff',fillColor:'#34d058',fillOpacity:1,weight:2}).addTo(map);
   const mins=res.totalMi*pace,newPct=res.totalMi>0?Math.round(100*res.newMi/res.totalMi):0;
-  $('s_dist').textContent=res.totalMi.toFixed(2);$('s_new').textContent=newPct+'%';$('s_time').textContent=fmtTime(mins);$('s_turns').textContent=Math.max(0,res.legs.length-1);
-  const sp=$('s_new');if(sp)sp.style.color=newPct>=33?'#34d058':'#e8a33b';
+  $('s_dist').textContent=res.totalMi.toFixed(2);$('s_pct').textContent=newPct+'%';$('s_time').textContent=fmtTime(mins);$('s_turns').textContent=Math.max(0,res.legs.length-1);
+  $('s_pct').style.color=newPct>=33?'#34d058':'#e8a33b';
   $('pv_title').textContent=(dest.name||'Your route').split(',').slice(0,1)[0];
   const sLat=startLL[0].toFixed(5),sLng=startLL[1].toFixed(5),dLat=dest.lat.toFixed(5),dLng=dest.lon.toFixed(5);
   const wstr=waypointsFor(res.ns).map(p=>p[0].toFixed(5)+','+p[1].toFixed(5)).join('|');
