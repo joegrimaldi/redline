@@ -28,6 +28,8 @@
  .brand{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
  .brand h1{margin:0;font-size:20px;font-weight:800;letter-spacing:.5px}
  .brand .tag{font-size:11px;color:#7c869c}
+ .brand .upd{background:#1a2230;border:1px solid #2a3647;color:#9aa6bd;font-size:12px;font-weight:700;padding:7px 11px;border-radius:10px}
+ .brand .upd:active{filter:brightness(.85)}
  .hero{background:linear-gradient(135deg,#16202e,#0f1622);border:1px solid #243043;border-radius:18px;padding:18px;text-align:center;margin-bottom:12px;box-shadow:0 6px 24px rgba(0,0,0,.35)}
  .hero .big{font-size:52px;font-weight:800;line-height:1;background:linear-gradient(90deg,#34d058,#7ee08a);-webkit-background-clip:text;background-clip:text;color:transparent}
  .hero .cap{font-size:12px;color:#9aa6bd;margin-top:4px;letter-spacing:.5px;text-transform:uppercase}
@@ -82,7 +84,7 @@
 </style></head><body class="s-home"><div id="app">
 
 <div id="home">
- <div class="brand"><h1>🟥 REDLINE</h1><div class="tag">walk every street</div></div>
+ <div class="brand"><h1>🟥 REDLINE</h1><button id="updateBtn" class="upd" title="Check for updates">⟳ Update</button></div>
  <div class="hero">
    <div class="big" id="d_pct">–</div>
    <div class="cap">of Manhattan redlined</div>
@@ -297,5 +299,22 @@ $('startnav').onclick=startNav;
 $('nav_end').onclick=endNav;
 $('recenter').onclick=()=>{NAV&&(NAV.follow=true);if(meMarker)map.panTo(meMarker.getLatLng(),{animate:true});};
 map.on('dragstart',()=>{if(NAV)NAV.follow=false;});
+
+// ---------- app update (manual refresh, no reinstall needed) ----------
+async function checkForUpdate(){
+  const b=$('updateBtn');if(b)b.textContent='⟳ Checking…';
+  if(!('serviceWorker' in navigator)){location.reload();return;}
+  let done=false;const reload=()=>{if(done)return;done=true;location.reload();};
+  try{
+    const reg=await navigator.serviceWorker.getRegistration();
+    if(!reg){reload();return;}
+    navigator.serviceWorker.addEventListener('controllerchange',reload); // new SW took over → refresh
+    await reg.update();
+    // no new worker? still reload to pull the freshest shell (SW is network-first on HTML)
+    setTimeout(reload,2500);
+  }catch(e){reload();}
+}
+if($('updateBtn'))$('updateBtn').onclick=checkForUpdate;
+
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
 </script></body></html>
