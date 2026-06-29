@@ -31,10 +31,10 @@
  .brand .upd{background:#1a2230;border:1px solid #2a3647;color:#9aa6bd;font-size:12px;font-weight:700;padding:7px 11px;border-radius:10px}
  .brand .upd:active{filter:brightness(.85)}
  .hero{background:linear-gradient(135deg,#16202e,#0f1622);border:1px solid #243043;border-radius:18px;padding:18px;text-align:center;margin-bottom:10px;box-shadow:0 6px 24px rgba(0,0,0,.35)}
- .hero .big{font-size:52px;font-weight:800;line-height:1;background:linear-gradient(90deg,#34d058,#7ee08a);-webkit-background-clip:text;background-clip:text;color:transparent}
+ .hero .big{font-size:52px;font-weight:800;line-height:1;background:linear-gradient(90deg,#ff3b3b,#ff8a6b);-webkit-background-clip:text;background-clip:text;color:transparent}
  .hero .cap{font-size:12px;color:#9aa6bd;margin-top:4px;letter-spacing:.5px;text-transform:uppercase}
  .bar{height:10px;background:#1a2230;border-radius:6px;overflow:hidden;margin-top:14px}
- .bar > i{display:block;height:100%;background:linear-gradient(90deg,#34d058,#7ee08a);border-radius:6px;transition:width .6s}
+ .bar > i{display:block;height:100%;background:linear-gradient(90deg,#ff3b3b,#ff8a6b);border-radius:6px;transition:width .6s}
  .lvl{display:flex;align-items:center;gap:12px;background:#11161f;border:1px solid #1f2937;border-radius:14px;padding:12px;margin-bottom:10px}
  .lvl .badge{min-width:54px;height:54px;border-radius:13px;background:linear-gradient(135deg,#3b82f6,#7c3aed);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;flex:0 0 auto}
  .lvl .badge small{font-size:9px;opacity:.8;font-weight:700} .lvl .badge b{font-size:20px;line-height:1}
@@ -61,14 +61,18 @@
  .hoods{display:flex;flex-direction:column;gap:7px;margin-bottom:10px}
  .hood{background:#11161f;border:1px solid #1f2937;border-radius:11px;padding:9px 11px}
  .hood .hr{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:5px}
- .hood .hr .p{color:#9aa6bd;font-weight:800} .hood.done .hr .p{color:#34d058}
+ .hood .hr .p{color:#9aa6bd;font-weight:800} .hood.done .hr .p{color:#ff5b5b}
+ .hood .hr .emo{margin-right:5px} .hood .hr .emo.bw{filter:grayscale(1);opacity:.6} .hood .hr .emo.lk{filter:grayscale(1);opacity:.35}
  .hbar{height:6px;background:#1a2230;border-radius:4px;overflow:hidden}
- .hbar>i{display:block;height:100%;background:linear-gradient(90deg,#3b82f6,#34d058);border-radius:4px}
- .hood.done .hbar>i{background:#34d058}
+ .hbar>i{display:block;height:100%;background:linear-gradient(90deg,#ff7a3b,#ff2e2e);border-radius:4px}
+ .hood.done .hbar>i{background:#ff2e2e}
  #cmap{height:400px;border-radius:16px;overflow:hidden;border:1px solid #1f2937;margin-bottom:12px;background:#0a0e15}
  .lvlpin{width:46px;height:46px;position:relative}
  .lvlpin .ring{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #0b0d12}
- .lvlpin .ring i{width:32px;height:32px;border-radius:50%;background:#11161f;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;font-style:normal}
+ .lvlpin .ring i{width:32px;height:32px;border-radius:50%;background:#11161f;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;color:#fff;font-style:normal}
+ .lvlpin .ring i.bw{filter:grayscale(1)} .lvlpin .ring i.lk{filter:grayscale(1);opacity:.4}
+ .lvlpin .ring i.red99{background:#3a0d0d;box-shadow:0 0 10px rgba(255,46,46,.95) inset,0 0 8px rgba(255,46,46,.7)}
+ .lvlpin .lk2{position:absolute;right:-1px;bottom:15px;font-size:11px;text-shadow:0 1px 2px #000}
  .lvlpin .lbl{position:absolute;top:46px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9px;font-weight:700;color:#cfd5e2;text-shadow:0 1px 3px #000,0 0 4px #000}
  .panel{background:#11161f;border:1px solid #1f2937;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:9px}
  label{font-size:11px;color:#9aa3b6}
@@ -116,6 +120,17 @@
  .rrow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #1c2735;font-size:15px}
  .rrow b{font-weight:800}.rrow .g{color:#34d058}
  .rcard .rdone{width:100%;margin-top:16px;padding:13px;border:0;border-radius:12px;background:#3b82f6;color:#fff;font-size:15px;font-weight:800}
+ #uncov{position:fixed;inset:0;z-index:2100;display:none;flex-direction:column;background:rgba(5,7,11,.94);padding:calc(14px + env(safe-area-inset-top)) 12px calc(14px + env(safe-area-inset-bottom))}
+ #uncov.show{display:flex}
+ .uchead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.uchead b{font-size:18px;font-weight:800}
+ .uctabs{display:flex;border:1px solid #2a3647;border-radius:11px;overflow:hidden;margin-bottom:8px}
+ .uct{flex:1;background:#0a0e15;border:0;color:#cfd5e2;font-size:14px;font-weight:700;padding:10px}.uct.on{background:#27e04a;color:#062a10}
+ .ucsub{font-size:12px;color:#9aa6bd;margin-bottom:8px;text-align:center}
+ .uclist{flex:1;overflow:auto;-webkit-overflow-scrolling:touch}
+ .ucrow{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#11161f;border:1px solid #1f2937;border-radius:11px;padding:11px 13px;margin-bottom:7px}
+ .ucrow span{font-size:14px;font-weight:700;color:#dfe6f1}.ucrow b{font-size:13px;color:#27e04a;white-space:nowrap}.ucrow:active{filter:brightness(1.25)}
+ #umap{flex:1;display:none;border-radius:14px;overflow:hidden;border:1px solid #1f2937;background:#0a0e15}
+ #uncov.mapview #umap{display:block}#uncov.mapview .uclist{display:none}
 </style></head><body class="s-home"><div id="app">
 
 <div id="home">
@@ -144,6 +159,7 @@
    <button id="go" class="btn primary">Plan route</button>
    <button id="nearnew" class="btn ghost">🧭 Nearest unwalked street</button>
    <button id="walk" class="btn ghost">🚶 Walkabout — free roam (no destination)</button>
+   <button id="uncovBtn" class="btn ghost">📋 Uncovered streets — list &amp; map</button>
    <div id="status"></div>
  </div>
 </div>
@@ -164,6 +180,14 @@
 
 <div id="toast"></div>
 <div id="recap"><div class="rcard"><h2 id="rc_title">Walk complete 🎉</h2><div class="rsub" id="rc_sub"></div><div id="rc_body"></div><button id="rc_done" class="rdone">Nice work →</button></div></div>
+
+<div id="uncov">
+ <div class="uchead"><b>📋 Uncovered streets</b><button id="uc_close" class="btn ghost" style="width:auto;padding:6px 13px">✕ Close</button></div>
+ <div class="uctabs"><button id="uc_tlist" class="uct on">List</button><button id="uc_tmap" class="uct">Map</button></div>
+ <div class="ucsub" id="uc_sub"></div>
+ <div class="uclist" id="uc_list"></div>
+ <div id="umap"></div>
+</div>
 
 </div>
 <script>
@@ -215,6 +239,8 @@ let _tt;function toast(t){const el=$('toast');el.textContent=t;el.classList.add(
 
 // ---------- dashboard ----------
 const LEVELS=[[0,'Rookie'],[6,'Wanderer'],[15,'Pathfinder'],[30,'Trailblazer'],[60,'Cartographer'],[90,'Surveyor'],[150,'Redliner'],[250,'City Stalker'],[400,'Street Sovereign'],[525,'Manhattan Master']];
+const HOODEMOJI={'Financial District':'🏦','Battery Park City':'🔋','Seaport / Civic Center':'⚓','Tribeca':'🎬','Chinatown':'🥟','Lower East Side':'🥯','SoHo / Nolita':'🛍️','West Village':'☕','East Village':'🎸','Chelsea':'🖼️','Flatiron / Gramercy':'📐','Murray Hill / Kips Bay':'🏢','Midtown':'🏙️',"Hell's Kitchen":'🍳','Upper East Side':'🎩','Upper West Side':'🎻','Harlem / Morningside':'🎷','Washington Hts / Inwood':'🌉'};
+function emojiFor(nm){return HOODEMOJI[nm]||'📍';}
 function computeHoods(){if(typeof HOODBOX==='undefined')return STATS.hoods||[];const agg={};HOODBOX.forEach(b=>agg[b[0]]=[0,0]);
   for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;for(const b of HOODBOX){if(b[1]<=mla&&mla<=b[3]&&b[2]<=mlo&&mlo<=b[4]){agg[b[0]][1]++;if(E[i][3]===1)agg[b[0]][0]++;break;}}}
   return HOODBOX.map(b=>({name:b[0],done:agg[b[0]][0],tot:agg[b[0]][1],pct:agg[b[0]][1]?Math.round(1000*agg[b[0]][0]/agg[b[0]][1])/10:0})).filter(h=>h.tot>=10);}
@@ -239,21 +265,25 @@ function renderDash(){try{
   const B=[['🥾','25 mi redlined',mi>=25],['🏙️','50 mi',mi>=50],['💯','100 mi',mi>=100],['🚶','25 walks',w>=25],['🏃','50 walks',w>=50],['🎖️','100 walks',w>=100],['📏','10-mi walk',STATS.longestMi>=10],['🔥','3-day streak',STATS.streak>=3],['⚡','7-day streak',STATS.streak>=7],['🏆','Clear a hood',hoodDone>=1],['🗺️','3 hoods 50%+',hood50>=3],['🌆','20% island',STATS.pctRedlined>=20]];
   $('badges').innerHTML=B.map(b=>`<div class="bdg ${b[2]?'on':''}"><span class="ic">${b[2]?b[0]:'🔒'}</span>${b[1]}</div>`).join('');
   // hoods
-  $('hoods').innerHTML=hoods.map(h=>`<div class="hood ${h.pct>=100?'done':''}" data-name="${h.name}"><div class="hr"><span>${h.pct>=100?'✅ ':'▸ '}${h.name}</span><span class="p">${h.pct}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div></div>`).join('');
+  $('hoods').innerHTML=hoods.map(h=>{const ec=h.pct>66.6?'':(h.pct>0?'bw':'lk');return `<div class="hood ${h.pct>=100?'done':''}" data-name="${h.name}"><div class="hr"><span><span class="emo ${ec}">${emojiFor(h.name)}</span>${h.name}</span><span class="p">${h.pct}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div></div>`;}).join('');
 }catch(e){}}
 renderDash();
 let cmap=null;
+function pinHTML(name,pct){const emo=emojiFor(name);
+  // state: locked(0) / b&w(>0..66.6) / color(>66.6) / red bg(>=99)
+  let icls='',lock='';
+  if(pct>=99)icls='red99';else if(pct>66.6)icls='';else if(pct>0)icls='bw';else{icls='lk';lock='<span class="lk2">🔒</span>';}
+  const ring=pct>=99?'#ff2e2e;box-shadow:0 0 13px rgba(255,46,46,.9)':'conic-gradient(#ff2e2e '+pct+'%, #2a3340 '+pct+'% 100%)';
+  return '<div class="lvlpin"><div class="ring" style="background:'+ring+'"><i class="'+icls+'">'+emo+'</i></div>'+lock+'<div class="lbl">'+name.split(' / ')[0]+'</div></div>';}
 function buildConquestMap(){if(typeof HOODBOX==='undefined'||!document.getElementById('cmap'))return;
   const hs=computeHoods(),pct={};hs.forEach(h=>pct[h.name]=h.pct);
-  cmap=L.map('cmap',{zoomControl:false,attributionControl:false,dragging:false,scrollWheelZoom:false,touchZoom:false,doubleClickZoom:false,keyboard:false,boxZoom:false});
+  cmap=L.map('cmap',{zoomControl:true,attributionControl:false,scrollWheelZoom:true,minZoom:11,maxZoom:16});
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:16}).addTo(cmap);
   const cents=HOODBOX.map(b=>({name:b[0],lat:(b[1]+b[3])/2,lon:(b[2]+b[4])/2,pct:pct[b[0]]||0})).sort((a,b)=>a.lat-b.lat);
   L.polyline(cents.map(c=>[c.lat,c.lon]),{color:'#2a3647',weight:3,opacity:.6,dashArray:'3 7'}).addTo(cmap);
   const pts=[];
-  cents.forEach(c=>{pts.push([c.lat,c.lon]);const cleared=c.pct>=100,inner=cleared?'⭐':(c.pct>0?Math.round(c.pct)+'%':'🔒');
-    const ring=cleared?'#34d058;box-shadow:0 0 12px rgba(52,208,88,.85)':'conic-gradient(#34d058 '+c.pct+'%, #2a3340 '+c.pct+'% 100%)';
-    const html='<div class="lvlpin"><div class="ring" style="background:'+ring+'"><i style="'+(cleared?'color:#ffd23f':'')+'">'+inner+'</i></div><div class="lbl">'+c.name.split(' / ')[0]+'</div></div>';
-    L.marker([c.lat,c.lon],{icon:L.divIcon({className:'',html:html,iconSize:[46,60],iconAnchor:[23,23]})}).addTo(cmap).on('click',()=>neighborhoodRoute(c.name));});
+  cents.forEach(c=>{pts.push([c.lat,c.lon]);
+    L.marker([c.lat,c.lon],{icon:L.divIcon({className:'',html:pinHTML(c.name,c.pct),iconSize:[46,60],iconAnchor:[23,23]})}).addTo(cmap).on('click',()=>neighborhoodRoute(c.name));});
   cmap.fitBounds(L.latLngBounds(pts).pad(0.1));
   setTimeout(()=>{try{cmap.invalidateSize();cmap.fitBounds(L.latLngBounds(pts).pad(0.1));}catch(e){}},300);}
 buildConquestMap();
@@ -261,11 +291,13 @@ buildConquestMap();
 // ---------- map (fog of war) ----------
 let map=L.map('map',{preferCanvas:true,zoomControl:false}).setView([N[HOME][0],N[HOME][1]],13);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OSM © CARTO',maxZoom:20}).addTo(map);
-function edgeStyle(c){return c?{color:'#34d058',weight:1.5,opacity:.8,interactive:false}:{color:'#5e2a2a',weight:1,opacity:.4,interactive:false};}
+// redline theme: covered = bright red, uncovered = very visible green
+function edgeStyle(c){return c?{color:'#ff2e2e',weight:1.5,opacity:.78,interactive:false}:{color:'#27e04a',weight:2,opacity:.95,interactive:false};}
+function routeNewSegments(ns){const segs=[];for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);if(ei>=0&&E[ei][3]===0)segs.push([[N[ns[i]][0],N[ns[i]][1]],[N[ns[i+1]][0],N[ns[i+1]][1]]]);}return segs;}
 const edgeLines=new Array(E.length);
 E.forEach((e,i)=>{const a=N[e[0]],b=N[e[1]];edgeLines[i]=L.polyline([[a[0],a[1]],[b[0],b[1]]],edgeStyle(e[3])).addTo(map);});
 L.circleMarker([N[HOME][0],N[HOME][1]],{radius:6,color:'#fff',fillColor:'#ffd23f',fillOpacity:1,weight:2}).addTo(map).bindTooltip('Start (home)');
-let routeLayer=null,destMarker=null,startMarker=null,meMarker=null,meCircle=null;
+let routeLayer=null,routeNewLayer=null,destMarker=null,startMarker=null,meMarker=null,meCircle=null;
 let START=HOME, startLL=[N[HOME][0],N[HOME][1]];
 function showScreen(s){document.body.className='s-'+s;setTimeout(()=>{try{map.invalidateSize()}catch(e){}},80);}
 function liveIslandPct(){let t=0,c=0;for(let i=0;i<E.length;i++){t+=elen[i];if(E[i][3]===1)c+=elen[i];}return 100*c/t;}
@@ -293,8 +325,9 @@ async function resolveStart(){const sm=(document.querySelector('input[name=start
 // ---------- preview ----------
 let CUR=null;
 function showPreview(res,dest,pace){CUR={res,dest,pace};
-  if(routeLayer)map.removeLayer(routeLayer);if(destMarker)map.removeLayer(destMarker);if(startMarker)map.removeLayer(startMarker);
-  routeLayer=L.polyline(res.ns.map(i=>[N[i][0],N[i][1]]),{color:'#4aa3ff',weight:5,opacity:0.95}).addTo(map);
+  if(routeLayer)map.removeLayer(routeLayer);if(routeNewLayer)map.removeLayer(routeNewLayer);if(destMarker)map.removeLayer(destMarker);if(startMarker)map.removeLayer(startMarker);
+  routeNewLayer=L.polyline(routeNewSegments(res.ns),{color:'#27e04a',weight:9,opacity:.6,interactive:false}).addTo(map);
+  routeLayer=L.polyline(res.ns.map(i=>[N[i][0],N[i][1]]),{color:'#ffd60a',weight:5,opacity:0.97,interactive:false}).addTo(map);
   destMarker=L.circleMarker([dest.lat,dest.lon],{radius:6,color:'#fff',fillColor:'#ff5d5d',fillOpacity:1,weight:2}).addTo(map);
   startMarker=L.circleMarker(startLL,{radius:6,color:'#fff',fillColor:'#34d058',fillOpacity:1,weight:2}).addTo(map);
   const mins=res.totalMi*pace,newPct=res.totalMi>0?Math.round(100*res.newMi/res.totalMi):0;
@@ -341,6 +374,25 @@ async function neighborhoodRoute(name){
   setStatus('');showPreview(res,{lat:(box[1]+box[3])/2,lon:(box[2]+box[4])/2,name:'Clear '+name},pace);
 }
 
+// ---------- uncovered streets picker (list + map) ----------
+let umap=null;
+function showUcTab(t){const o=$('uncov');if(t==='map'){o.classList.add('mapview');$('uc_tmap').classList.add('on');$('uc_tlist').classList.remove('on');buildUmap();}else{o.classList.remove('mapview');$('uc_tlist').classList.add('on');$('uc_tmap').classList.remove('on');}}
+function routeToUncov(node,nm){$('uncov').classList.remove('show');const pace=parseFloat($('pace').value)||22.37;const res=directRoute(START,node);showPreview(res,{lat:N[node][0],lon:N[node][1],name:nm||'Uncovered street'},pace);}
+async function openUncov(){setStatus('');$('uc_sub').textContent='Locating…';$('uncov').classList.add('show');showUcTab('list');await resolveStart();
+  const {dist}=dijkstra(START);const byName={};
+  for(let i=0;i<E.length;i++){if(E[i][3]!==0)continue;const a=E[i][0],b=E[i][1],dn=Math.min(dist[a],dist[b]);if(!isFinite(dn))continue;const node=dist[a]<dist[b]?a:b;const nm=NM[E[i][2]]||'(unnamed)';if(!byName[nm]||dn<byName[nm].dn)byName[nm]={dn,node,nm};}
+  const arr=Object.values(byName).sort((x,y)=>x.dn-y.dn).slice(0,80);
+  $('uc_sub').textContent=arr.length+' nearest uncovered streets · tap to plan a route';
+  $('uc_list').innerHTML=arr.map(o=>`<div class="ucrow" data-node="${o.node}" data-name="${o.nm.replace(/"/g,'&quot;')}"><span>${o.nm}</span><b>${(o.dn/MI).toFixed(2)} mi</b></div>`).join('')||'<div class="ucsub">🎉 No uncovered streets reachable — island cleared!</div>';}
+function buildUmap(){if(umap){setTimeout(()=>{try{umap.invalidateSize();umap.setView(startLL,14);}catch(e){}},120);return;}
+  umap=L.map('umap',{preferCanvas:true,zoomControl:true,attributionControl:false}).setView(startLL,14);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:20}).addTo(umap);
+  const segs=[];for(let i=0;i<E.length;i++){if(E[i][3]===0){const a=N[E[i][0]],b=N[E[i][1]];segs.push([[a[0],a[1]],[b[0],b[1]]]);}}
+  L.polyline(segs,{color:'#27e04a',weight:2,opacity:.92,interactive:false}).addTo(umap);
+  L.circleMarker(startLL,{radius:6,color:'#fff',fillColor:'#ffd23f',fillOpacity:1,weight:2}).addTo(umap);
+  umap.on('click',ev=>{const la=ev.latlng.lat,lo=ev.latlng.lng;let best=-1,bd=Infinity,bn=-1;for(let i=0;i<E.length;i++){if(E[i][3]!==0)continue;const a=E[i][0],b=E[i][1],d=segDistM(la,lo,N[a][0],N[a][1],N[b][0],N[b][1]);if(d<bd){bd=d;best=i;bn=havLL(la,lo,N[a][0],N[a][1])<havLL(la,lo,N[b][0],N[b][1])?a:b;}}if(best>=0)routeToUncov(bn,NM[E[best][2]]||'Uncovered street');});
+  setTimeout(()=>{try{umap.invalidateSize();umap.setView(startLL,14);}catch(e){}},150);}
+
 // ---------- guided navigation + juice ----------
 let navWatch=null, NAV=null, newSegs=new Set(), newMi=0, navStartPct=0, _offBuzz=0;
 function buildNavSteps(res){const ns=res.ns;const names=[];for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);names.push(ei>=0?(NM[E[ei][2]]||'street'):'street');}
@@ -353,7 +405,7 @@ function checkNewCover(la,lo){let any=false,lastNm='';for(let i=0;i<E.length;i++
 function startNav(){if(!CUR)return;if(!navigator.geolocation){alert('Location not available on this device.');return;}
   NAV=buildNavSteps(CUR.res);newSegs=new Set();newMi=0;navStartPct=liveIslandPct();_annF=new Set();_annN=new Set();smLL=null;
   showScreen('nav');startHeading();acquireWake();headingUp=true;$('rotBtn').classList.add('on');$('rotBtn').textContent='🧭';
-  if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}walkedLayer=L.polyline([],{color:'#34d058',weight:5,opacity:.85}).addTo(map);
+  if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}walkedLayer=L.polyline([],{color:'#ff2e2e',weight:6,opacity:.95}).addTo(map);
   $('nav_arrow').textContent='↑';$('nav_inst').textContent=NAV.first;$('nav_dist').textContent='';$('nav_new').textContent='';$('nav_prog').textContent='0.00 / '+(NAV.total/MI).toFixed(2)+' mi';
   speak(NAV.first);let first=true;
   navWatch=navigator.geolocation.watchPosition(function(p){
@@ -367,6 +419,7 @@ function startNav(){if(!CUR)return;if(!navigator.geolocation){alert('Location no
     const ni=nearestRouteIdx(la,lo),off=havLL(la,lo,N[NAV.ns[ni]][0],N[NAV.ns[ni]][1]);
     if(walkedLayer)walkedLayer.setLatLngs(NAV.ns.slice(0,ni+1).map(i=>[N[i][0],N[i][1]]));
     if(routeLayer)routeLayer.setLatLngs(NAV.ns.slice(ni).map(i=>[N[i][0],N[i][1]]));
+    if(routeNewLayer)routeNewLayer.setLatLngs(routeNewSegments(NAV.ns.slice(ni)));
     if(off>45){$('navtop').classList.add('off');$('nav_arrow').textContent='↩';$('nav_inst').textContent='Off route — back to the blue line';$('nav_dist').textContent=fmtDist(off)+' off';const n=Date.now();if(n-_offBuzz>6000){buzz([60,60,60]);_offBuzz=n;}}
     else{$('navtop').classList.remove('off');const up=NAV.steps.find(s=>s.idx>ni);const dDest=havLL(la,lo,N[NAV.ns[NAV.ns.length-1]][0],N[NAV.ns[NAV.ns.length-1]][1]);
       if(up){const dT=havLL(la,lo,N[NAV.ns[up.idx]][0],N[NAV.ns[up.idx]][1]);$('nav_arrow').textContent=maneuverGlyph(up.text);$('nav_inst').textContent=up.text;$('nav_dist').textContent='in '+fmtDist(dT);
@@ -377,10 +430,10 @@ function startNav(){if(!CUR)return;if(!navigator.geolocation){alert('Location no
     const walked=NAV.cum[ni]||0,remMi=(NAV.total-walked)/MI,pace=CUR.pace||22.37;
     $('nav_prog').textContent=(walked/MI).toFixed(2)+' / '+(NAV.total/MI).toFixed(2)+' mi · ~'+Math.max(0,Math.round(remMi*pace))+' min left';
   },function(e){$('nav_inst').textContent='⚠ Location error';$('nav_dist').textContent=(e.message||e.code)+' — grant permission';},{enableHighAccuracy:true,maximumAge:1000,timeout:20000});}
-function endNav(){if(navWatch!=null){navigator.geolocation.clearWatch(navWatch);navWatch=null;}releaseWake();if(window.speechSynthesis)window.speechSynthesis.cancel();$('map').style.transform='';if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}showRecap();}
+function endNav(){if(navWatch!=null){navigator.geolocation.clearWatch(navWatch);navWatch=null;}releaseWake();if(window.speechSynthesis)window.speechSynthesis.cancel();$('map').style.transform='';if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}if(routeNewLayer){map.removeLayer(routeNewLayer);routeNewLayer=null;}showRecap();}
 function walkabout(){if(!navigator.geolocation){alert('Location not available on this device.');return;}
   NAV=null;newSegs=new Set();newMi=0;navStartPct=liveIslandPct();smLL=null;
-  if(routeLayer){map.removeLayer(routeLayer);routeLayer=null;}if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}
+  if(routeLayer){map.removeLayer(routeLayer);routeLayer=null;}if(routeNewLayer){map.removeLayer(routeNewLayer);routeNewLayer=null;}if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}
   showScreen('nav');startHeading();acquireWake();headingUp=true;$('rotBtn').classList.add('on');$('rotBtn').textContent='🧭';
   $('nav_arrow').textContent='🚶';$('nav_inst').textContent='Walkabout — wander freely';$('nav_dist').textContent='new streets light up as you walk';$('nav_new').textContent='';$('nav_prog').textContent='';
   speak('Walkabout. New streets light up as you walk.');let first=true;
@@ -406,6 +459,8 @@ $('updateBtn').onclick=async()=>{$('updateBtn').textContent='…';try{if('servic
 
 // ---------- wiring ----------
 $('go').onclick=run;$('nearnew').onclick=nearestNew;$('walk').onclick=walkabout;$('pvback').onclick=()=>showScreen('home');$('startnav').onclick=startNav;$('nav_end').onclick=endNav;
+$('uncovBtn').onclick=openUncov;$('uc_close').onclick=()=>$('uncov').classList.remove('show');$('uc_tlist').onclick=()=>showUcTab('list');$('uc_tmap').onclick=()=>showUcTab('map');
+$('uc_list').addEventListener('click',e=>{const r=e.target.closest('.ucrow');if(r&&r.dataset.node)routeToUncov(parseInt(r.dataset.node),r.dataset.name);});
 $('hoods').addEventListener('click',e=>{const el=e.target.closest('.hood');if(el&&el.dataset.name)neighborhoodRoute(el.dataset.name);});
 $('rc_done').onclick=()=>{$('recap').classList.remove('show');showScreen('home');};
 $('recenter').onclick=()=>{if(NAV)NAV.follow=true;if(meMarker)map.panTo(meMarker.getLatLng(),{animate:true});};
