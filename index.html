@@ -29,7 +29,10 @@
  .seg input:checked+span{background:#3b82f6;color:#fff;display:block;border-radius:7px;margin:2px}
  .seg label span{display:block;padding:7px 4px;border-radius:7px}
  .opt{display:flex;align-items:center;gap:7px;font-size:13px;color:#cfd5e2}
- button#go{padding:13px;border:0;border-radius:10px;background:#3b82f6;color:#fff;font-size:16px;font-weight:700}
+ .btnrow{display:flex;gap:8px}
+ button#go{flex:2;padding:13px;border:0;border-radius:10px;background:#3b82f6;color:#fff;font-size:16px;font-weight:700}
+ button#direct{flex:1;padding:13px;border:0;border-radius:10px;background:#2c3140;color:#fff;font-size:14px;font-weight:700}
+ button#direct:active{background:#3a4150}
  button#go:active{background:#2f6fd6}
  #status{font-size:12px;color:#9aa3b6;min-height:15px}
  #stats{display:none;gap:6px;padding:8px 12px;background:#141720;border-bottom:1px solid #262a35}
@@ -59,11 +62,11 @@
    </div>
  </div>
  <div class="row">
-   <div><label>Target distance (mi)</label><input type="number" id="dist" inputmode="decimal" step="0.1" value="5"></div>
-   <div><label>Pace (min/mi)</label><input type="number" id="pace" inputmode="decimal" step="0.1" value="16.4"></div>
+   <div><label>Target distance (mi)</label><input type="number" id="dist" inputmode="decimal" step="0.1" value="3.33"></div>
+   <div><label>Pace (min/mi)</label><input type="number" id="pace" inputmode="decimal" step="0.1" value="22.37"></div>
  </div>
  <label class="opt"><input type="checkbox" id="loop"> Round trip — return to start</label>
- <button id="go">Build route</button>
+ <div class="btnrow"><button id="go">Build route</button><button id="direct">🎯 Most direct</button></div>
  <div id="status"></div>
 </div>
 <div id="stats">
@@ -106,6 +109,10 @@ function dijkstra(src){const dist=new Float64Array(N.length).fill(Infinity),prev
   while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const v=au[k][0],nd=d+au[k][1];if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=au[k][2];h.push([nd,v]);}}}
   return {dist,prevN,prevE};}
 function pathTo(prevN,prevE,src,dst){const ns=[dst],es=[];let c=dst;while(c!==src){const p=prevN[c];if(p<0)return null;es.push(prevE[c]);ns.push(p);c=p;}ns.reverse();es.reverse();return {ns,es};}
+function dijkstraW(src){const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);
+  while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const v=au[k][0],e=au[k][2];const cost=au[k][1]*(E[e][3]===0?0.8:1);const nd=d+cost;if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}
+  return {dist,prevN,prevE};}
+function directRoute(s,t){const r=dijkstraW(s);const p=pathTo(r.prevN,r.prevE,s,t);return finalize(p?p.ns:[s]);}
 function nearestNode(la,lo){let best=-1,bd=Infinity;for(let i=0;i<N.length;i++){const dla=(N[i][0]-la),dlo=(N[i][1]-lo)*0.758;const d=dla*dla+dlo*dlo;if(d<bd){bd=d;best=i;}}return best;}
 
 // greedy coverage route from s to t within budget B meters
@@ -171,7 +178,7 @@ const $=id=>document.getElementById(id);
 function setStatus(t){$('status').textContent=t;}
 function fmtTime(min){const h=Math.floor(min/60),m=Math.round(min%60);return h?`${h}h ${m}m`:`${m} min`;}
 
-$('go').onclick=async()=>{
+async function run(mode){
   const addr=$('addr').value.trim();if(!addr){setStatus('Enter a destination.');return;}
   const target=parseFloat($('dist').value)||5, pace=parseFloat($('pace').value)||16.4, loop=$('loop').checked;
   const startMode=(document.querySelector('input[name=start]:checked')||{}).value||'home';
@@ -198,18 +205,17 @@ $('go').onclick=async()=>{
     }
     return greedy(START,dnode,B);
   }
-  const MINNEW=1/3;
-  let res=buildRoute(target*MI);
-  let extended=false;
   const pctOf=r=>(r.totalMi>0?r.newMi/r.totalMi:0);
-  if(pctOf(res)<MINNEW){
-    const capMi=Math.min(Math.max(target*2, res.totalMi+3), target+5);
-    let att=0;
-    for(let d=target+0.5; d<=capMi+1e-6; d+=0.5){
-      if(++att>8) break;
-      const r2=buildRoute(d*MI);
-      if(pctOf(r2)>pctOf(res)){res=r2;extended=true;}
-      if(pctOf(res)>=MINNEW) break;
+  let res, extended=false;
+  if(mode==='direct'){
+    res = loop ? finalize(directRoute(START,dnode).ns.concat(directRoute(dnode,START).ns.slice(1))) : directRoute(START,dnode);
+  } else {
+    const MINNEW=1/3;
+    res=buildRoute(target*MI);
+    if(pctOf(res)<MINNEW){
+      const capMi=Math.min(Math.max(target*2, res.totalMi+3), target+5);
+      let att=0;
+      for(let d=target+0.5; d<=capMi+1e-6; d+=0.5){ if(++att>8) break; const r2=buildRoute(d*MI); if(pctOf(r2)>pctOf(res)){res=r2;extended=true;} if(pctOf(res)>=MINNEW) break; }
     }
   }
   const newPct=Math.round(100*pctOf(res));
@@ -249,13 +255,15 @@ $('go').onclick=async()=>{
   html+=`<li>🏁 Arrive — <b>${dest.name.split(',').slice(0,2).join(',')}</b></li></ol>`;
   $('dirs').innerHTML=html;
   let msg=`Done — ${res.totalMi.toFixed(2)} mi · ${newPct}% new · ~${fmtTime(mins)}.`;
-  if(extended) msg+=` Extended past ${target} mi to keep ≥1/3 new.`;
-  if(newPct<33) msg+=` ⚠ Best achievable here is ${newPct}% — this destination routes mostly through already-walked streets.`;
+  if(mode==='direct') msg+=' (most-direct route)';
+  else { if(extended) msg+=` Extended past ${target} mi to keep ≥1/3 new.`; if(newPct<33) msg+=` ⚠ Best achievable — mostly already-walked streets.`; }
   setStatus(msg);
   setTimeout(()=>map.invalidateSize(),100);
 };
 // tabs
 $('tabMap').onclick=()=>{$('tabMap').classList.add('on');$('tabDir').classList.remove('on');$('map').style.display='block';$('dirs').style.display='none';setTimeout(()=>map.invalidateSize(),50);};
 $('tabDir').onclick=()=>{$('tabDir').classList.add('on');$('tabMap').classList.remove('on');$('map').style.display='none';$('dirs').style.display='block';};
+$('go').onclick=()=>run('coverage');
+$('direct').onclick=()=>run('direct');
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
 </script></body></html>
