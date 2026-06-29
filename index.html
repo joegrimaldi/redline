@@ -48,6 +48,8 @@
  .navbtn{flex:1;text-align:center;padding:12px 6px;border-radius:10px;background:#0e1016;border:1px solid #2c3140;color:#fff;font-size:14px;font-weight:600;text-decoration:none}
  .navbtn:active{background:#1b2330}
  .navnote{font-size:10px;color:#8b93a7;padding:0 12px 8px;background:#141720}
+ .livebtn{width:calc(100% - 24px);margin:0 12px 10px;padding:12px;border:1px solid #2c3140;border-radius:10px;background:#0e1016;color:#fff;font-size:14px;font-weight:700;font-family:inherit}
+ .livebtn.on{background:#214a2a;border-color:#2f6f3f}
  .tabs{display:flex;border-top:1px solid #262a35}
  .tabs button{flex:1;border-radius:0;background:#171a22;color:#9aa3b6;font-size:13px;font-weight:600;padding:10px;border:0}
  .tabs button.on{background:#0e1016;color:#fff;box-shadow:inset 0 2px 0 #3b82f6}
@@ -76,8 +78,9 @@
  <div class="stat"><b id="s_time">–</b><span>EST TIME</span></div>
  <div class="stat"><b id="s_turns">–</b><span>TURNS</span></div>
 </div>
-<div id="nav"><a id="navG" class="navbtn" target="_blank" rel="noopener">🗺️ Google Maps</a><a id="navA" class="navbtn" target="_blank" rel="noopener">🍎 Apple Maps</a></div>
-<div id="navnote" class="navnote" style="display:none">Google follows the route via turn-points · Apple navigates direct to the destination.</div>
+<div id="nav"><a id="navG" class="navbtn" target="_blank" rel="noopener">🗺️ Google Maps</a><a id="navA" class="navbtn" target="_blank" rel="noopener">🍎 Apple (direct)</a></div>
+<button id="navL" class="livebtn" style="display:none">🔵 Follow my live location</button>
+<div id="navnote" class="navnote" style="display:none">Google traces the route via up to ~9 waypoints (it straightens long gaps). Apple only walks direct. For the exact path, tap “Follow my live location” and follow the blue line.</div>
 <div class="tabs"><button id="tabMap" class="on">Map</button><button id="tabDir">Directions</button></div>
 <div id="map"></div>
 <div id="dirs"></div>
@@ -113,6 +116,12 @@ function dijkstraW(src){const dist=new Float64Array(N.length).fill(Infinity),pre
   while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const v=au[k][0],e=au[k][2];const cost=au[k][1]*(E[e][3]===0?0.8:1);const nd=d+cost;if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}
   return {dist,prevN,prevE};}
 function directRoute(s,t){const r=dijkstraW(s);const p=pathTo(r.prevN,r.prevE,s,t);return finalize(p?p.ns:[s]);}
+function perpDist(p,a,b){const k=Math.cos(a[0]*Math.PI/180);const ax=a[1]*k,ay=a[0],bx=b[1]*k,by=b[0],px=p[1]*k,py=p[0];const dx=bx-ax,dy=by-ay,L2=dx*dx+dy*dy;let tt=L2?((px-ax)*dx+(py-ay)*dy)/L2:0;tt=Math.max(0,Math.min(1,tt));const cx=ax+tt*dx,cy=ay+tt*dy;return Math.hypot(px-cx,py-cy);}
+function rdp(pts,eps){if(pts.length<3)return pts.slice();let dmax=0,idx=0;for(let i=1;i<pts.length-1;i++){const d=perpDist(pts[i],pts[0],pts[pts.length-1]);if(d>dmax){dmax=d;idx=i;}}if(dmax>eps){const l=rdp(pts.slice(0,idx+1),eps),r=rdp(pts.slice(idx),eps);return l.slice(0,-1).concat(r);}return [pts[0],pts[pts.length-1]];}
+function waypointsFor(ns){const poly=ns.map(n=>[N[n][0],N[n][1]]);let eps=0.0003,simp=rdp(poly,eps);while(simp.length>10&&eps<0.02){eps*=1.5;simp=rdp(poly,eps);}let tps=simp.slice(1,-1);if(tps.length>8){const st=tps.length/8,s=[];for(let i=0;i<8;i++)s.push(tps[Math.floor(i*st)]);tps=s;}return tps;}
+let _watchId=null,_meMarker=null;
+function toggleLive(){const b=document.getElementById('navL');if(_watchId!=null){navigator.geolocation.clearWatch(_watchId);_watchId=null;b.textContent='🔵 Follow my live location';b.classList.remove('on');return;}if(!navigator.geolocation){setStatus('Geolocation not available on this device.');return;}b.textContent='🔵 Following — tap to stop';b.classList.add('on');_watchId=navigator.geolocation.watchPosition(function(p){const ll=[p.coords.latitude,p.coords.longitude];if(!_meMarker){_meMarker=L.circleMarker(ll,{radius:8,color:'#fff',fillColor:'#3b82f6',fillOpacity:1,weight:3}).addTo(map);}else{_meMarker.setLatLng(ll);}map.panTo(ll,{animate:true});},function(e){setStatus('⚠ Location error: '+(e.message||e.code));b.textContent='🔵 Follow my live location';b.classList.remove('on');_watchId=null;},{enableHighAccuracy:true,maximumAge:2000,timeout:20000});}
+
 function nearestNode(la,lo){let best=-1,bd=Infinity;for(let i=0;i<N.length;i++){const dla=(N[i][0]-la),dlo=(N[i][1]-lo)*0.758;const d=dla*dla+dlo*dlo;if(d<bd){bd=d;best=i;}}return best;}
 
 // greedy coverage route from s to t within budget B meters
@@ -237,12 +246,11 @@ async function run(mode){
   const pe=$('s_pct'); if(pe){pe.textContent=newPct+'%'; pe.style.color=newPct>=33?'#34d058':'#e8a33b';}
   // hand-off links to Apple/Google Maps (walking)
   const sLat=startLL[0].toFixed(5), sLng=startLL[1].toFixed(5), dLat=dest.lat.toFixed(5), dLng=dest.lon.toFixed(5);
-  let tps=res.legs.slice(1).map(l=>[N[l.a][0],N[l.a][1]]);
-  const MAXW=8; if(tps.length>MAXW){const st=tps.length/MAXW,s=[];for(let i=0;i<MAXW;i++)s.push(tps[Math.floor(i*st)]);tps=s;}
+  const tps=waypointsFor(res.ns);
   const wstr=tps.map(p=>p[0].toFixed(5)+','+p[1].toFixed(5)).join('|');
   const gUrl='https://www.google.com/maps/dir/?api=1&travelmode=walking&origin='+sLat+','+sLng+'&destination='+dLat+','+dLng+(wstr?'&waypoints='+encodeURIComponent(wstr):'');
   const aUrl='https://maps.apple.com/?dirflg=w&saddr='+sLat+','+sLng+'&daddr='+dLat+','+dLng;
-  $('navG').href=gUrl; $('navA').href=aUrl; $('nav').style.display='flex'; $('navnote').style.display='block';
+  $('navG').href=gUrl; $('navA').href=aUrl; $('nav').style.display='flex'; $('navnote').style.display='block'; $('navL').style.display='block';
   // directions
   let html='<ol>';let cum=0;
   res.legs.forEach((lg,i)=>{
@@ -264,6 +272,7 @@ async function run(mode){
 $('tabMap').onclick=()=>{$('tabMap').classList.add('on');$('tabDir').classList.remove('on');$('map').style.display='block';$('dirs').style.display='none';setTimeout(()=>map.invalidateSize(),50);};
 $('tabDir').onclick=()=>{$('tabDir').classList.add('on');$('tabMap').classList.remove('on');$('map').style.display='none';$('dirs').style.display='block';};
 $('go').onclick=()=>run('coverage');
+$('navL').onclick=toggleLive;
 $('direct').onclick=()=>run('direct');
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
 </script></body></html>
