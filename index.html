@@ -65,6 +65,11 @@
  .hbar{height:6px;background:#1a2230;border-radius:4px;overflow:hidden}
  .hbar>i{display:block;height:100%;background:linear-gradient(90deg,#3b82f6,#34d058);border-radius:4px}
  .hood.done .hbar>i{background:#34d058}
+ #cmap{height:400px;border-radius:16px;overflow:hidden;border:1px solid #1f2937;margin-bottom:12px;background:#0a0e15}
+ .lvlpin{width:46px;height:46px;position:relative}
+ .lvlpin .ring{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #0b0d12}
+ .lvlpin .ring i{width:32px;height:32px;border-radius:50%;background:#11161f;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;font-style:normal}
+ .lvlpin .lbl{position:absolute;top:46px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9px;font-weight:700;color:#cfd5e2;text-shadow:0 1px 3px #000,0 0 4px #000}
  .panel{background:#11161f;border:1px solid #1f2937;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:9px}
  label{font-size:11px;color:#9aa3b6}
  input[type=text],input[type=number]{width:100%;padding:12px 11px;border-radius:11px;border:1px solid #2a3647;background:#0a0e15;color:#fff;font-size:15px}
@@ -127,7 +132,9 @@
    <div class="card"><b id="d_remain">–</b><span>Miles to go</span></div>
  </div>
  <div class="section">Badges</div><div class="badges" id="badges"></div>
- <div class="section">Neighborhood conquest · tap one to plan a clear</div><div class="hoods" id="hoods"></div>
+ <div class="section">Conquest map · tap a level to plan a clear</div>
+ <div id="cmap"></div>
+ <div class="hoods" id="hoods"></div>
  <div class="section">Plan a walk</div>
  <div class="panel">
    <div class="field"><label>Destination</label><input type="text" id="addr" placeholder="address or place (e.g. Tompkins Square Park)" autocomplete="off"></div>
@@ -208,6 +215,9 @@ let _tt;function toast(t){const el=$('toast');el.textContent=t;el.classList.add(
 
 // ---------- dashboard ----------
 const LEVELS=[[0,'Rookie'],[6,'Wanderer'],[15,'Pathfinder'],[30,'Trailblazer'],[60,'Cartographer'],[90,'Surveyor'],[150,'Redliner'],[250,'City Stalker'],[400,'Street Sovereign'],[525,'Manhattan Master']];
+function computeHoods(){if(typeof HOODBOX==='undefined')return STATS.hoods||[];const agg={};HOODBOX.forEach(b=>agg[b[0]]=[0,0]);
+  for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;for(const b of HOODBOX){if(b[1]<=mla&&mla<=b[3]&&b[2]<=mlo&&mlo<=b[4]){agg[b[0]][1]++;if(E[i][3]===1)agg[b[0]][0]++;break;}}}
+  return HOODBOX.map(b=>({name:b[0],done:agg[b[0]][0],tot:agg[b[0]][1],pct:agg[b[0]][1]?Math.round(1000*agg[b[0]][0]/agg[b[0]][1])/10:0})).filter(h=>h.tot>=10);}
 function renderDash(){try{
   $('d_pct').textContent=STATS.pctRedlined.toFixed(1)+'%';$('d_bar').style.width=Math.min(100,STATS.pctRedlined)+'%';
   $('d_streets').textContent=STATS.segsDone.toLocaleString();$('d_streets_sub').textContent='of '+STATS.segsTotal.toLocaleString();
@@ -225,13 +235,28 @@ function renderDash(){try{
   $('d_streaksub').textContent=STATS.todayWalked?'walked today ✓':'walk today to keep it alive';
   $('d_cal').innerHTML=(STATS.cal||[]).map(v=>`<i class="${v?'on':''}"></i>`).join('');
   // badges
-  const w=STATS.walks,hoods=STATS.hoods||[],hoodDone=hoods.filter(h=>h.pct>=100).length,hood50=hoods.filter(h=>h.pct>=50).length;
+  const w=STATS.walks,hoods=computeHoods().sort((a,b)=>b.pct-a.pct),hoodDone=hoods.filter(h=>h.pct>=100).length,hood50=hoods.filter(h=>h.pct>=50).length;
   const B=[['🥾','25 mi redlined',mi>=25],['🏙️','50 mi',mi>=50],['💯','100 mi',mi>=100],['🚶','25 walks',w>=25],['🏃','50 walks',w>=50],['🎖️','100 walks',w>=100],['📏','10-mi walk',STATS.longestMi>=10],['🔥','3-day streak',STATS.streak>=3],['⚡','7-day streak',STATS.streak>=7],['🏆','Clear a hood',hoodDone>=1],['🗺️','3 hoods 50%+',hood50>=3],['🌆','20% island',STATS.pctRedlined>=20]];
   $('badges').innerHTML=B.map(b=>`<div class="bdg ${b[2]?'on':''}"><span class="ic">${b[2]?b[0]:'🔒'}</span>${b[1]}</div>`).join('');
   // hoods
   $('hoods').innerHTML=hoods.map(h=>`<div class="hood ${h.pct>=100?'done':''}" data-name="${h.name}"><div class="hr"><span>${h.pct>=100?'✅ ':'▸ '}${h.name}</span><span class="p">${h.pct}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div></div>`).join('');
 }catch(e){}}
 renderDash();
+let cmap=null;
+function buildConquestMap(){if(typeof HOODBOX==='undefined'||!document.getElementById('cmap'))return;
+  const hs=computeHoods(),pct={};hs.forEach(h=>pct[h.name]=h.pct);
+  cmap=L.map('cmap',{zoomControl:false,attributionControl:false,dragging:false,scrollWheelZoom:false,touchZoom:false,doubleClickZoom:false,keyboard:false,boxZoom:false});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:16}).addTo(cmap);
+  const cents=HOODBOX.map(b=>({name:b[0],lat:(b[1]+b[3])/2,lon:(b[2]+b[4])/2,pct:pct[b[0]]||0})).sort((a,b)=>a.lat-b.lat);
+  L.polyline(cents.map(c=>[c.lat,c.lon]),{color:'#2a3647',weight:3,opacity:.6,dashArray:'3 7'}).addTo(cmap);
+  const pts=[];
+  cents.forEach(c=>{pts.push([c.lat,c.lon]);const cleared=c.pct>=100,inner=cleared?'⭐':(c.pct>0?Math.round(c.pct)+'%':'🔒');
+    const ring=cleared?'#34d058;box-shadow:0 0 12px rgba(52,208,88,.85)':'conic-gradient(#34d058 '+c.pct+'%, #2a3340 '+c.pct+'% 100%)';
+    const html='<div class="lvlpin"><div class="ring" style="background:'+ring+'"><i style="'+(cleared?'color:#ffd23f':'')+'">'+inner+'</i></div><div class="lbl">'+c.name.split(' / ')[0]+'</div></div>';
+    L.marker([c.lat,c.lon],{icon:L.divIcon({className:'',html:html,iconSize:[46,60],iconAnchor:[23,23]})}).addTo(cmap).on('click',()=>neighborhoodRoute(c.name));});
+  cmap.fitBounds(L.latLngBounds(pts).pad(0.1));
+  setTimeout(()=>{try{cmap.invalidateSize();cmap.fitBounds(L.latLngBounds(pts).pad(0.1));}catch(e){}},300);}
+buildConquestMap();
 
 // ---------- map (fog of war) ----------
 let map=L.map('map',{preferCanvas:true,zoomControl:false}).setView([N[HOME][0],N[HOME][1]],13);
