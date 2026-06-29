@@ -41,6 +41,10 @@
  #dirs li{padding:5px 6px;font-size:14px;border-bottom:1px solid #1b1f29;line-height:1.35}
  #dirs li .d{color:#8b93a7;font-size:12px} .new{color:#7ee08a;font-weight:600}
  .pill{display:inline-block;font-size:10px;background:#214a2a;color:#7ee08a;border-radius:6px;padding:1px 5px;margin-left:4px}
+ #nav{display:none;gap:8px;padding:0 12px 10px;background:#141720}
+ .navbtn{flex:1;text-align:center;padding:12px 6px;border-radius:10px;background:#0e1016;border:1px solid #2c3140;color:#fff;font-size:14px;font-weight:600;text-decoration:none}
+ .navbtn:active{background:#1b2330}
+ .navnote{font-size:10px;color:#8b93a7;padding:0 12px 8px;background:#141720}
  .tabs{display:flex;border-top:1px solid #262a35}
  .tabs button{flex:1;border-radius:0;background:#171a22;color:#9aa3b6;font-size:13px;font-weight:600;padding:10px;border:0}
  .tabs button.on{background:#0e1016;color:#fff;box-shadow:inset 0 2px 0 #3b82f6}
@@ -69,6 +73,8 @@
  <div class="stat"><b id="s_time">–</b><span>EST TIME</span></div>
  <div class="stat"><b id="s_turns">–</b><span>TURNS</span></div>
 </div>
+<div id="nav"><a id="navG" class="navbtn" target="_blank" rel="noopener">🗺️ Google Maps</a><a id="navA" class="navbtn" target="_blank" rel="noopener">🍎 Apple Maps</a></div>
+<div id="navnote" class="navnote" style="display:none">Google follows the route via turn-points · Apple navigates direct to the destination.</div>
 <div class="tabs"><button id="tabMap" class="on">Map</button><button id="tabDir">Directions</button></div>
 <div id="map"></div>
 <div id="dirs"></div>
@@ -223,6 +229,14 @@ $('go').onclick=async()=>{
   $('s_time').textContent=fmtTime(mins);
   $('s_turns').textContent=Math.max(0,res.legs.length-1);
   const pe=$('s_pct'); if(pe){pe.textContent=newPct+'%'; pe.style.color=newPct>=33?'#34d058':'#e8a33b';}
+  // hand-off links to Apple/Google Maps (walking)
+  const sLat=startLL[0].toFixed(5), sLng=startLL[1].toFixed(5), dLat=dest.lat.toFixed(5), dLng=dest.lon.toFixed(5);
+  let tps=res.legs.slice(1).map(l=>[N[l.a][0],N[l.a][1]]);
+  const MAXW=8; if(tps.length>MAXW){const st=tps.length/MAXW,s=[];for(let i=0;i<MAXW;i++)s.push(tps[Math.floor(i*st)]);tps=s;}
+  const wstr=tps.map(p=>p[0].toFixed(5)+','+p[1].toFixed(5)).join('|');
+  const gUrl='https://www.google.com/maps/dir/?api=1&travelmode=walking&origin='+sLat+','+sLng+'&destination='+dLat+','+dLng+(wstr?'&waypoints='+encodeURIComponent(wstr):'');
+  const aUrl='https://maps.apple.com/?dirflg=w&saddr='+sLat+','+sLng+'&daddr='+dLat+','+dLng;
+  $('navG').href=gUrl; $('navA').href=aUrl; $('nav').style.display='flex'; $('navnote').style.display='block';
   // directions
   let html='<ol>';let cum=0;
   res.legs.forEach((lg,i)=>{
