@@ -114,6 +114,7 @@
    <label class="opt"><input type="checkbox" id="loop"> Round trip — return to start</label>
    <button id="go" class="btn primary">Plan route</button>
    <button id="nearnew" class="btn ghost">🧭 Nearest unwalked street</button>
+   <button id="walkabout" class="btn ghost">🥾 Walkabout — chain nearest segments</button>
    <div id="status"></div>
  </div>
 </div>
@@ -262,6 +263,46 @@ async function run(){const addr=$('addr').value.trim();if(!addr){setStatus('Ente
 function nearestNew(){if(!navigator.geolocation){setStatus('Geolocation needed.');return;}setStatus('Finding your location…');
   navigator.geolocation.getCurrentPosition(function(pos){const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){setStatus('⚠ Off the Manhattan grid.');return;}START=sn;startLL=[pos.coords.latitude,pos.coords.longitude];setStatus('Finding nearest unwalked street…');const {dist}=dijkstra(sn);let best=-1,bd=Infinity,bt=-1;for(let i=0;i<E.length;i++){if(E[i][3]!==0)continue;const a=E[i][0],b=E[i][1],dn=Math.min(dist[a],dist[b]);if(dn<bd){bd=dn;best=i;bt=dist[a]<dist[b]?a:b;}}if(best<0){setStatus('No unwalked streets reachable.');return;}const pace=parseFloat($('pace').value)||22.37;const res=directRoute(sn,bt);setStatus('');showPreview(res,{lat:N[bt][0],lon:N[bt][1],name:(NM[E[best][2]]||'nearest unwalked street')},pace);},function(e){setStatus('⚠ Location needed: '+(e.message||e.code));},{enableHighAccuracy:true,timeout:12000});}
 
+// ---------- walkabout (daisy-chain nearest unwalked segments) ----------
+// From the start node, repeatedly route to the closest uncovered edge and walk it,
+// chaining outward until the distance budget is hit. One-way, pure-coverage grind.
+function walkabout(s,B){
+  let routeN=[s],total=0,cur=s;const collected=new Set();const tol=0.18*MI;
+  for(let it=0;it<200;it++){
+    const {dist,prevN,prevE}=dijkstra(cur);
+    let best=null;
+    for(let i=0;i<E.length;i++){
+      if(E[i][3]===1||collected.has(i))continue;
+      const a=E[i][0],b=E[i][1],da=dist[a],db=dist[b];
+      let near,far,dn;if(da<db){near=a;far=b;dn=da;}else{near=b;far=a;dn=db;}
+      if(!isFinite(dn))continue;
+      if(total+dn+elen[i]>B+tol)continue;          // would blow the budget
+      if(best===null||dn<best.dn)best={dn,near,far,i};
+    }
+    if(!best)break;
+    const seg=pathTo(prevN,prevE,cur,best.near);
+    if(seg){for(const ei of seg.es){if(E[ei][3]===0)collected.add(ei);}routeN=routeN.concat(seg.ns.slice(1));total+=dist[best.near];}
+    routeN.push(best.far);total+=elen[best.i];collected.add(best.i);cur=best.far;
+    if(total>=B-tol)break;
+  }
+  // budget too small to fit any whole segment → at least head to the single nearest one
+  if(routeN.length<2){const {dist}=dijkstra(s);let bi=-1,bd=Infinity,bt=-1;for(let i=0;i<E.length;i++){if(E[i][3]!==0)continue;const a=E[i][0],b=E[i][1],dn=Math.min(dist[a],dist[b]);if(dn<bd){bd=dn;bi=i;bt=dist[a]<dist[b]?a:b;}}if(bi>=0)return directRoute(s,bt);}
+  return finalize(routeN);
+}
+function startWalkabout(){if(!navigator.geolocation){setStatus('Geolocation needed.');return;}
+  const btn=$('walkabout');btn.textContent='Locating…';setStatus('Finding your location…');
+  navigator.geolocation.getCurrentPosition(function(pos){
+    const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);
+    if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){setStatus('⚠ Off the Manhattan grid.');btn.textContent='🥾 Walkabout — chain nearest segments';return;}
+    START=sn;startLL=[pos.coords.latitude,pos.coords.longitude];
+    const target=parseFloat($('dist').value)||3.33,pace=parseFloat($('pace').value)||22.37;
+    setStatus('Chaining nearest unwalked segments…');
+    setTimeout(()=>{const res=walkabout(sn,target*MI);btn.textContent='🥾 Walkabout — chain nearest segments';
+      if(!res||res.legs.length===0){setStatus('No unwalked streets reachable.');return;}
+      setStatus('');const last=res.ns[res.ns.length-1];
+      showPreview(res,{lat:N[last][0],lon:N[last][1],name:'Walkabout · '+res.newMi.toFixed(1)+' mi new'},pace);},20);
+  },function(e){setStatus('⚠ Location needed: '+(e.message||e.code));btn.textContent='🥾 Walkabout — chain nearest segments';},{enableHighAccuracy:true,timeout:12000});}
+
 // ---------- guided navigation ----------
 let navWatch=null, NAV=null;
 function buildNavSteps(res){const ns=res.ns;const names=[];for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);names.push(ei>=0?(NM[E[ei][2]]||'street'):'street');}
@@ -294,6 +335,7 @@ function endNav(){if(navWatch!=null){navigator.geolocation.clearWatch(navWatch);
 // ---------- wiring ----------
 $('go').onclick=run;
 $('nearnew').onclick=nearestNew;
+$('walkabout').onclick=startWalkabout;
 $('pvback').onclick=()=>showScreen('home');
 $('startnav').onclick=startNav;
 $('nav_end').onclick=endNav;
