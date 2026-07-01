@@ -201,8 +201,9 @@ function havNN(i,j){const A=N[i],B=N[j];const dla=(B[0]-A[0])*toR,dlo=(B[1]-A[1]
 function havLL(la1,lo1,la2,lo2){const dla=(la2-la1)*toR,dlo=(lo2-lo1)*toR,m=Math.sin(dla/2)**2+Math.cos(la1*toR)*Math.cos(la2*toR)*Math.sin(dlo/2)**2;return 2*R*Math.asin(Math.sqrt(m));}
 function segDistM(la,lo,la1,lo1,la2,lo2){const k=Math.cos(la*toR);const x=lo*k,y=la,x1=lo1*k,y1=la1,x2=lo2*k,y2=la2;const dx=x2-x1,dy=y2-y1,L2=dx*dx+dy*dy;let t=L2?((x-x1)*dx+(y-y1)*dy)/L2:0;t=Math.max(0,Math.min(1,t));const cx=x1+t*dx,cy=y1+t*dy;return Math.hypot(x-cx,y-cy)*111320;}
 const adj=Array.from({length:N.length},()=>[]);
-const elen=new Float64Array(E.length);
+const elen=new Array(E.length);
 E.forEach((e,i)=>{const L=havNN(e[0],e[1]);elen[i]=L;adj[e[0]].push([e[1],L,i]);adj[e[1]].push([e[0],L,i]);});
+function liveTotalsFull(){let tl=0,cl=0,sd=0;for(let i=0;i<E.length;i++){const L=elen[i]||0;tl+=L;if(E[i][3]===1){cl+=L;sd++;}}return{pct:tl?100*cl/tl:0,coveredMi:cl/MI,totalMi:tl/MI,segsDone:sd,segsTotal:E.length};}
 function Heap(){this.a=[];}
 Heap.prototype.push=function(x){const a=this.a;a.push(x);let i=a.length-1;while(i>0){const p=(i-1)>>1;if(a[p][0]<=a[i][0])break;[a[p],a[i]]=[a[i],a[p]];i=p;}};
 Heap.prototype.pop=function(){const a=this.a,top=a[0],last=a.pop();if(a.length){a[0]=last;let i=0;for(;;){let l=2*i+1,r=l+1,s=i;if(l<a.length&&a[l][0]<a[s][0])s=l;if(r<a.length&&a[r][0]<a[s][0])s=r;if(s===i)break;[a[s],a[i]]=[a[i],a[s]];i=s;}}return top;};
@@ -245,13 +246,14 @@ function computeHoods(){if(typeof HOODBOX==='undefined')return STATS.hoods||[];c
   for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;for(const b of HOODBOX){if(b[1]<=mla&&mla<=b[3]&&b[2]<=mlo&&mlo<=b[4]){agg[b[0]][1]++;if(E[i][3]===1)agg[b[0]][0]++;break;}}}
   return HOODBOX.map(b=>({name:b[0],done:agg[b[0]][0],tot:agg[b[0]][1],pct:agg[b[0]][1]?Math.round(1000*agg[b[0]][0]/agg[b[0]][1])/10:0})).filter(h=>h.tot>=10);}
 function renderDash(){try{
-  $('d_pct').textContent=STATS.pctRedlined.toFixed(1)+'%';$('d_bar').style.width=Math.min(100,STATS.pctRedlined)+'%';
-  $('d_streets').textContent=STATS.segsDone.toLocaleString();$('d_streets_sub').textContent='of '+STATS.segsTotal.toLocaleString();
-  $('d_milesred').textContent=STATS.coveredMi.toFixed(1);$('d_milesred_sub').textContent='of '+Math.round(STATS.totalMi)+' mi';
+  const LT=liveTotalsFull();
+  $('d_pct').textContent=LT.pct.toFixed(1)+'%';$('d_bar').style.width=Math.min(100,LT.pct)+'%';
+  $('d_streets').textContent=LT.segsDone.toLocaleString();$('d_streets_sub').textContent='of '+LT.segsTotal.toLocaleString();
+  $('d_milesred').textContent=LT.coveredMi.toFixed(1);$('d_milesred_sub').textContent='of '+Math.round(LT.totalMi)+' mi';
   $('d_longest').textContent=STATS.longestMi.toFixed(1)+' mi';$('d_totmi').textContent=Math.round(STATS.totalWalkedMi)+' mi';
-  $('d_walks').textContent=STATS.walks;$('d_remain').textContent=Math.round(STATS.totalMi-STATS.coveredMi)+' mi';
+  $('d_walks').textContent=STATS.walks;$('d_remain').textContent=Math.round(LT.totalMi-LT.coveredMi)+' mi';
   // level
-  const mi=STATS.coveredMi;let li=0;for(let k=0;k<LEVELS.length;k++)if(mi>=LEVELS[k][0])li=k;
+  const mi=LT.coveredMi;let li=0;for(let k=0;k<LEVELS.length;k++)if(mi>=LEVELS[k][0])li=k;
   const cur=LEVELS[li][0],hasNext=li+1<LEVELS.length,next=hasNext?LEVELS[li+1][0]:cur;
   $('d_lv').textContent=li+1;$('d_title').textContent=LEVELS[li][1];
   $('d_xpbar').style.width=(hasNext?Math.min(1,(mi-cur)/(next-cur))*100:100)+'%';
@@ -262,7 +264,7 @@ function renderDash(){try{
   $('d_cal').innerHTML=(STATS.cal||[]).map(v=>`<i class="${v?'on':''}"></i>`).join('');
   // badges
   const w=STATS.walks,hoods=computeHoods().sort((a,b)=>b.pct-a.pct),hoodDone=hoods.filter(h=>h.pct>=100).length,hood50=hoods.filter(h=>h.pct>=50).length;
-  const B=[['🥾','25 mi redlined',mi>=25],['🏙️','50 mi',mi>=50],['💯','100 mi',mi>=100],['🚶','25 walks',w>=25],['🏃','50 walks',w>=50],['🎖️','100 walks',w>=100],['📏','10-mi walk',STATS.longestMi>=10],['🔥','3-day streak',STATS.streak>=3],['⚡','7-day streak',STATS.streak>=7],['🏆','Clear a hood',hoodDone>=1],['🗺️','3 hoods 50%+',hood50>=3],['🌆','20% island',STATS.pctRedlined>=20]];
+  const B=[['🥾','25 mi redlined',mi>=25],['🏙️','50 mi',mi>=50],['💯','100 mi',mi>=100],['🚶','25 walks',w>=25],['🏃','50 walks',w>=50],['🎖️','100 walks',w>=100],['📏','10-mi walk',STATS.longestMi>=10],['🔥','3-day streak',STATS.streak>=3],['⚡','7-day streak',STATS.streak>=7],['🏆','Clear a hood',hoodDone>=1],['🗺️','3 hoods 50%+',hood50>=3],['🌆','20% island',LT.pct>=20]];
   $('badges').innerHTML=B.map(b=>`<div class="bdg ${b[2]?'on':''}"><span class="ic">${b[2]?b[0]:'🔒'}</span>${b[1]}</div>`).join('');
   // hoods
   $('hoods').innerHTML=hoods.map(h=>{const ec=h.pct>66.6?'':(h.pct>0?'bw':'lk');return `<div class="hood ${h.pct>=100?'done':''}" data-name="${h.name}"><div class="hr"><span><span class="emo ${ec}">${emojiFor(h.name)}</span>${h.name}</span><span class="p">${h.pct}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div></div>`;}).join('');
@@ -467,5 +469,24 @@ $('recenter').onclick=()=>{if(NAV)NAV.follow=true;if(meMarker)map.panTo(meMarker
 $('rotBtn').onclick=()=>{headingUp=!headingUp;$('rotBtn').textContent=headingUp?'🧭':'⬆';$('rotBtn').classList.toggle('on',headingUp);if(!headingUp)$('map').style.transform='';else{_lastRot=999;setHeading(lastHeading);}setTimeout(()=>{try{map.invalidateSize()}catch(e){}},60);};
 $('muteBtn').onclick=()=>{voiceOn=!voiceOn;$('muteBtn').textContent=voiceOn?'🔊':'🔇';$('muteBtn').classList.toggle('on',voiceOn);if(!voiceOn&&window.speechSynthesis)window.speechSynthesis.cancel();};
 map.on('dragstart',()=>{if(NAV){NAV.follow=false;clearTimeout(_recenterT);_recenterT=setTimeout(()=>{if(NAV){NAV.follow=true;if(meMarker)map.panTo(meMarker.getLatLng(),{animate:true});}},8000);}});
+// ---------- pedestrian layer: parks + plazas loaded at runtime ----------
+const _nameIdx=new Map();NM.forEach((n,i)=>_nameIdx.set(n,i));
+function _decPoly(s){const pts=[];let i=0,lat=0,lon=0;while(i<s.length){let sh=0,res=0,b;do{b=s.charCodeAt(i++)-63;res|=(b&0x1f)<<sh;sh+=5;}while(b>=0x20);lat+=(res&1)?~(res>>1):(res>>1);sh=0;res=0;do{b=s.charCodeAt(i++)-63;res|=(b&0x1f)<<sh;sh+=5;}while(b>=0x20);lon+=(res&1)?~(res>>1):(res>>1);pts.push([lat/1e5,lon/1e5]);}return pts;}
+async function loadPedestrianPaths(){
+  const coordId=new Map();for(let i=0;i<N.length;i++)coordId.set(N[i][0].toFixed(5)+','+N[i][1].toFixed(5),i);
+  const newIdx=[];let added=0;
+  for(const f of ['plazas.txt','parks.txt']){let txt;try{const r=await fetch(f);if(!r.ok)continue;txt=await r.text();}catch(e){continue;}
+    for(const line of txt.split('\n')){if(!line)continue;const t=line.split('\t');if(t.length<3)continue;const covered=t[0]==='1'?1:0;const nm=t[1]||'(path)';let pts;try{pts=_decPoly(t[2]);}catch(e){continue;}if(pts.length<2)continue;
+      let nmi=_nameIdx.get(nm);if(nmi===undefined){nmi=NM.length;NM.push(nm);_nameIdx.set(nm,nmi);}
+      let prev=-1;
+      for(const p of pts){const key=p[0].toFixed(5)+','+p[1].toFixed(5);let id=coordId.get(key);if(id===undefined){id=N.length;N.push([p[0],p[1]]);coordId.set(key,id);adj[id]=[];}
+        if(prev>=0&&prev!==id){const ei=E.length;E.push([prev,id,nmi,covered]);const len=havNN(prev,id);elen[ei]=len;adj[prev].push([id,len,ei]);adj[id].push([prev,len,ei]);newIdx.push(ei);added++;}
+        prev=id;}}}
+  if(!added)return;
+  for(const ei of newIdx){const e=E[ei],a=N[e[0]],b=N[e[1]];edgeLines[ei]=L.polyline([[a[0],a[1]],[b[0],b[1]]],edgeStyle(e[3])).addTo(map);}
+  try{renderDash();}catch(e){}
+  try{if(cmap){cmap.remove();cmap=null;}buildConquestMap();}catch(e){}
+}
+loadPedestrianPaths();
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
 </script></body></html>
