@@ -1,0 +1,5288 @@
+0		qtywFdfpbMrBpF
+0	East 71st Street Pedestrian Bridge	m~xwFtwjbMOn@
+1	Battery Park City Greenway	aymwFjxwbMiX}DII@M
+0		unkxFjedbMUACHJDMb@
+0	Great Hill Oval	{b_xF`~kbMWMg@?]RGVC~@TxBNl@XPn@ANKXc@Ju@S_Cg@o@
+0	West 63rd Street	enzwF~jqbM}BvH
+0	Arlington Avenue	ugoxF|ycbMHkA
+1		_|uwF|zubMTsA
+0	Hudson River Park Esplanade	c{swFtcvbM|a@~AN[NCXNFTxPp@
+1	Hudson River Park Esplanade	ifvwFtyubM~EG~@NjAn@dAw@|ANDeARq@
+1		o_uwFn~ubMVeD
+0		_zuwFnqubMe@[
+0		kxuwFrpubMSCYRUpAUX
+0		oyuwFvpubMIYi@]IU
+1	West 26th Street	mivwFlxubML}@
+0	Terrace Drive	ga{wF`jobMKu@i@q@{CyBg@w@
+0		gy}wFnzkbMaBs@oAyAiBsAk@{Ac@m@_CcAuCS@~EfAbCCZ[^
+0		g{}wFd_lbM`@aB\s@
+0	Hoboken Newport Walkway – Hudson River Waterfront Walkway	w|~wFjxrbMu@bFa@`B
+0		cnywF`_pbMnCzA
+0		}iywFvapbMo@d@a@dBu@xAUhC
+0		y|xwFb~nbMCY
+0		}|xwFh}nbMBG
+0		mcywFnmobMCM
+0		mcywFzkobMf@Il@u@X}@TcB`AiALa@Oi@Ng@AW
+1	Brooklyn Bridge Promenade	{snwFv`ubMLBv@eA
+0		yfmxF|vfbMu@A{A]eAi@{JuCcIaDQ@
+0		sdnxFrifbMXgA
+0		mz{wFdrmbMvAw@f@cAx@eA
+0		me_xF|}kbM{@iAKg@Dw@Vg@^O
+0	North Woods	wh_xF`gkbM@c@
+0		us~wFdxjbMf@BTc@Im@c@Y]JMb@D`@TT
+0		kyywFlpnbM[I?m@
+0		uuywFfmnbMqA{Ah@kARsA
+0		gxywFjjnbMe@m@eBg@
+0	Wien Walk	gzywFtnnbMa@i@
+0		mcywFzkobMoBQsAq@u@?[m@qBmAQZ
+0		ysywFhoobMuChDYv@OxAb@hAd@L
+0	Central Park Driveway	gszwFzunbMSj@e@Va@H}@E
+0		_w{wFlmnbMg@HcBrCKp@Bd@
+0		i}{wFrzmbM}@TyAK}BsAoAwAcAyBHcCp@aBnAs@`BDbC|@bB~An@bCH|@Cv@[nAeAfA
+0		}{{wFlymbMl@|ALC
+0		ud|wFhanbM~@Bv@S~@BVV\yADoAGw@
+0		gs{wFdjmbM[Sq@eAUMiBQw@i@Yg@
+0		_j_xFzakbMPe@JiBOeB
+0		af_xF~~kbMoBS
+0		{j~wFtlkbMPwA
+0		mm~wFllkbMCG
+0		yq~wFphkbM@cAN[pAW|@p@XDp@a@bAoBt@]
+0		gh~wF~akbM_A_@
+0		os~wFpwjbMTDLKAe@WOQBGb@NR
+0		gs~wF`wjbMLBBMWOEJJL
+0		cu~wFvvjbMOz@n@?
+0		ct~wFrxjbM\VDRMt@
+0		}s~wFvxjbMDQ
+0		su~wFrxjbMu@d@iAvA]qAZe@
+0		gz{wFzumbMt@UhA}@l@KNAVPd@n@Fh@k@pBIbAk@dCLh@CV
+0		it{wFxrmbMQ}Ac@aAwA[s@u@iCw@kB{A_@w@WoABe@\m@
+0		_vzwFfknbMPRBd@MZ_@HYa@?_@X_@V@
+0		gxzwFr|mbMe@}AKqAHw@
+0		myzwFtymbMEd@[p@
+0		czzwFdynbMo@^QAQUUwA@uBSq@lAyA|ANz@[H|@Zd@
+0		ezzwFxwnbM[SBq@xBk@Xg@XOJ[PEZa@
+0		ualxFt`gbM@[PE
+0		y_lxFv_gbMg@C
+0		u}kxFhcgbMPY
+0		owkxFbdgbMKN
+0		{wkxFrdgbM_Aa@Gi@
+0		sykxFpagbMB[
+0		czkxFbbgbMD_@
+0		yvkxFxcgbMGi@WWkBY
+0		e{ywFhxnbM[b@c@Pu@Gi@_@g@?p@wD`@q@
+0		kgzwFduobMDQ
+0	Pinebank Arch	cvywF~_pbMa@g@
+0		ewywFv~obMASP[r@c@xA?
+0		{xywFtunbMWHOV
+0		kzywFzxnbMT_@E[]UWZ
+0		kyywF`{nbMbA]d@F
+0		cxywFv_obMVP
+0		ovywFv`obMbAeD@w@
+0		stzwFxnnbMKSJs@PG
+0		kazwFxvobMe@Cm@Y
+0		stzwFxnnbM\J
+0		_~zwFlqnbMMF
+0		_dzwFffnbMl@{BLoAp@[Ta@
+0	Wallach Walk	gezwF|lnbMSq@Rw@FcA
+0		guzwFpanbMWy@BUZU
+0		atzwFhlnbM^H
+0		gw{wF~anbMNJ
+0		{y{wFbdnbMg@@}@e@c@i@
+0		sj|wFvqmbMYzCs@z@
+0		am|wFnxmbM_BJc@\
+0		m`~wFvkkbMOLs@HQP
+0		kx}wFpgkbMmA?_ANs@vAYXCXVl@pA~@f@nBj@b@bADfA_@f@oATsAWaAq@qA}AkA
+0	Ramble Rustic Bridge	ak{wFllnbMUI
+0		qyywF`iobM~A~@d@jAh@t@h@TxAvB\bB^t@~@r@
+0		kxywF~dobMz@gC
+0	Playmates Arch	kxywF~dobMYd@
+0		kwywFh`obMj@X~@vAx@C
+0		iv~wFrflbMX@RX
+0	Ed Koch Queensboro Bridge Path	{zvwFhcjbMs^`hAa@v@sA|D
+0	Ed Koch Queensboro Bridge Path	e~wwF`tlbMmAxDS^KA
+0	West 67th Street	ki{wFb{qbMBI
+0		}x`xFzymbM[Q]@
+0		qfdxFrokbMYfA]|E
+1		{}swF|jubMd@}A
+0	East 102nd Street	gc~wFb}jbMs@vByAdBSr@OfBUN
+0		czywFvdobMMQ
+0		au}wFtskbMWlA
+0		ev}wF~vkbMJ[
+0		iv}wFfwkbMKZ
+0		iv}wFfwkbMBG
+0		qv}wFxwkbMVF
+0		sq}wFlukbMj@a@h@KbAFfBh@zBGtCvAfK|G
+0		m|}wFxgkbMEM
+0		w}}wFzekbMID
+0		m}}wFvekbMIB
+0		a_~wF~ekbMa@aAgAh@EPAj@\x@RbANL
+0		s|}wFjgkbMOc@
+0		wb~wFddkbMGK
+0		{e~wFlakbMJT
+0		kb~wFfekbMKa@
+0		_c~wFxckbMgAk@
+0		kh~wFf_kbMEI
+0		{e~wFlakbMGI
+0		gm~wFr}jbMRk@
+0		_n~wFtyjbMLH
+0		ul~wFv|jbMZ@JMB_@m@m@[bA\T
+0		gw}wFjwkbMIK
+0		{w}wFvvkbMHF
+0		gf~wFz`kbMS[o@W
+0		wn~wFxdkbMKsAv@Yt@Nl@[n@kA
+0		qh~wF|~jbMOoAQQ
+0		cl~wF~zjbMPm@
+0		sl~wFtzjbM]U
+0		}m~wF|wjbMaA|C
+0		oo~wFf}jbMc@[
+0		er~wF`|jbMFS
+0		gp~wFn}jbMFS
+0		er~wF`|jbMAVP^XDRO
+0		}q~wFl{jbMa@Y
+0		cu~wFvvjbMXiBP[
+0		wt~wF`ujbMMA
+0		eu~wF~tjbMKA
+0		uy~wFxxjbM@G
+0		qz~wF~yjbMg@N
+0		y{~wFnzjbMOA
+0		e~~wFbyjbM_@H
+0		c}~wF|yjbMXk@
+0		i|~wFpxjbMDa@
+0		c|~wFnwjbMZqAZSf@?t@b@r@hB
+0		y|~wFjyjbMMg@SS
+0		{}~wFnwjbMQI
+0		o__xF`{jbMYRm@OSP?h@b@d@
+0		ca_xFh~jbMCA
+0		s`_xF`~jbMSo@
+0		o__xFx{jbMJqAGu@LONB
+0		sp~wFv{jbMAVO?AWR?
+1	Battery Park City Greenway	ixowFtuvbMi@xHLb@g@pIdUbC
+1	East River Greenway	qolwFfhvbM}AcJoDgHSQ
+0	Queens Plaza Greenway	mhvwFlwhbMnByF
+0	West 230th Street	qooxFt{bbMSfAGCe@|AIBCX
+0		oajxFbuebMgEcC}@iAqAs@mA{AkAo@Wy@y@C_@XUA_DqBsIc@OJQKAQ
+0		gujxFn|fbM@Z^`@
+0		_sjxFjyfbM[ECPJN
+0		ssjxFfzfbMLF
+0		sqjxFt{fbMP^GJ]C
+0		grjxF||fbM}@U
+0		etjxFf|fbMUCKJ
+0		}{jxFvzdbMSa@
+0		u~jxFd~dbMMOJi@G[GHQGGQU@
+0		m~jxFd|dbMID
+0		a{jxFdzdbM[PLz@OtA
+0		esjxFnzfbMp@d@
+0		etjxFl~fbMLRCT
+0	Tunnel Street	eqjxFhkfbMJFyEdQ
+0		{jcxFfqlbMQn@
+0		wtbxFxrkbMc@oAe@[ITGE
+0		kfexFlakbMpAHTUAT
+0		skexFvlnbMgAnE[E
+0		meoxFn}dbMTW
+0		_eoxFf~dbMTU
+0		udoxFz|dbMOY
+0		ugoxFt{dbMTN
+0		_goxFd|dbMl@b@P\
+0		ko_xFvlkbMGGFq@
+0		emzwFnoobMQeG@wD`@aCFwAr@qB
+0	Nell Singer Lilac Walk	ewzwFrhobMl@c@jAkBhCmAt@w@
+0	West 214th Street	comxFlfdbMeBtB
+0		ktkxFdfdbMd@qA
+0	Northwest Central Park Loop	mr~wFrplbMb@~Ad@\
+0		sj~wFxqlbMDf@v@j@r@BP[
+0		we~wFbvlbMYyAWg@
+0		_t}wFh}lbMPaA]_Fc@yBSmBm@iBAoB
+0	North Woods	ys~wFtvlbMdAa@
+0		{x~wFxnlbM?dC
+0		uv~wFxflbMJE
+0		ut}wFncmbMHpCY~CUv@
+0		os~wFdwlbMIO
+0		e`~wFlxlbMi@Jy@i@ZcBAaA
+0		sj~wFxqlbMc@p@
+0		qm~wFzelbMmCp@
+0		{_~wFjnlbMa@lAq@n@MA
+0		uo~wFxolbMs@vB
+0		ir}wFpimbM]|@cAhA
+0		aw~wF`glbMm@OKa@QK[q@aAw@YCGMAcAO[YIk@l@k@EAJ
+0		mz}wFfvlbMk@Pq@rB
+0		ql}wFllmbMw@j@
+0	Northwest Central Park Loop	ur~wFdplbMFL
+0		qw}wFtilbMYRm@H
+0		}|~wF`llbMHy@SkA_@e@g@YA_@q@O
+0		_t}wFh}lbMq@r@mABgBSg@c@
+0		uv~wFthkbMx@x@LFLG
+0	North Woods	sz~wFlokbMv@p@p@vBjAbBz@fB
+0	North Woods	cl_xFbxkbMUv@[`@WfA_@GIa@e@I]YEoAPo@BoARu@
+0		ut~wFx}kbMD]NBPS
+0	Northwest Central Park Loop	wm_xFhtkbME|@N\h@\
+0	North Woods	oi_xFrhlbMVg@j@C
+0	Northwest Central Park Loop	my~wFrvkbMo@E[[e@?_@[uA_@QL
+0		y`_xFj~jbMPMnALn@Qj@@Gu@i@a@MY
+0	North Woods	il_xFlbkbM_@NOT}BfFUA
+0	North Woods	_l~wFjykbM[Ck@cBGiBYkBDaANU`@O
+0		ky~wFl`kbMcA|@Kd@Fv@l@zBFp@GtBM^
+0		mq_xFpalbMW\
+0		}w_xFt}kbMd@HJG
+0		qa_xFd_lbMBm@Qm@m@uAo@i@Ym@
+0		e__xFryjbM_@Q
+0		im_xF|bkbMBu@t@{B?q@KQ
+0		cy~wFz_kbMDS
+0	Northwest Central Park Loop	uc_xFbrkbMIWg@_@
+0	North Woods	mn~wFn~kbMDF
+0		ey~wFnjkbMr@?V]B[Oa@sAeBASLWOy@
+0		as~wFb{kbMCJ
+0	Northwest Central Park Loop	qu~wFfclbMd@kB@g@
+0		ws_xFd`lbMe@c@o@gAMaADi@K{@
+0	Northwest Central Park Loop	oi_xF~okbM_@Xs@H
+0		a|~wF|vjbMy@]w@NOTAz@
+0		uo|wFtpmbM[ZGn@Th@f@H^a@Bq@O_@m@K
+0		uw|wFftmbM?\
+0		ivywFdrobMOaA_@}@c@i@o@]k@Ho@z@oAdAi@z@Ov@?bAVr@j@r@fAh@h@?n@URW
+0		yk|wFfcmbMIGY\m@xCyA`DOlA@dAQv@
+0		kb~wFvalbMSdCBv@Pp@z@nAPrA
+0	Wallach Walk	g_zwFhcnbMuBkD{DmAaBuA
+0	West 77th Street	yv{wF|}nbMLY
+0		s{{wFbunbMi@P}@GWZ
+0	Fort Tryon Park	kvkxFrsfbMi@o@
+0	Fort Tryon Park	cvkxFdtfbMGQ
+0	Fort Tryon Park	mskxFvsfbM_@N
+0	Fort Tryon Park	}tkxFntfbMETR^
+0	Fort Tryon Park	mtkxFftfbMOF
+0	Fort Tryon Park	cvkxFdtfbMd@H
+0		srjxFjxfbMK^
+0		ylkxF|vfbMcCu@gGaD_CWwBt@k@Ai@Y
+0		orlxFt_fbMZT
+0		yrlxFbbfbMFS
+0		}qlxFh`fbMGd@K?CMRY
+0		molxFljfbMiAjAQK
+0	Overlook Path	cnlxF~kfbMS\{A~@{AlBm@fADx@Sp@BT\N\K
+0		aklxFjifbMu@FMS
+0		{slxFnvfbMJ[^G
+0		etlxFpwfbMHa@
+0		ctlxFpxfbMA_@
+0		}qlxFvtfbMPJ
+0	Overlook Path	ktlxFxxfbMOiB
+0		orlxFjufbMPS
+0	Overlook Path	qtlxFxtfbMdB_A
+0		ktlxFxxfbM~@lA|@l@`AJ_C_BMSC_@J{@x@{Ab@[v@M
+0		aqlxFprfbMPOdB?
+0		}qlxFvtfbMTe@D_@IF
+0		mjlxFdwfbMDO
+0		cjlxFdvfbMV`@
+0		kmlxFrsfbMbAVb@x@CN
+0		gf|wFnjnbMa@uBk@cAu@So@Bk@a@m@Ms@^y@N
+0		qe|wFzhmbMF}@Vm@VcB
+0		yk|wFdcnbM?h@ZjA@z@I`@SN_@U
+0	Northwest Central Park Loop	cf|wFhnnbMEu@
+0		_~zwFhkmbMmAE_DaBc@}@UkA
+0	Wallach Walk	im{wF`fmbM`A`B`@V
+0		i{zwFlqmbMc@FUwANcA
+0		gb{wFxlmbMWeB
+0		gg{wFvcmbMwAbCI^B^
+0		shlxFf}fbMPeBKs@]e@a@AQT
+0		ohlxF`~fbMCY
+0		knlxF`}fbMtBh@dAH
+0		ohlxFf~fbM?E
+0		mhlxFlxfbMd@Z
+0		ohlxFj~fbM?C
+0		gglxFhyfbMRL
+0		y_lxFv_gbMAz@vBbBfAf@
+0		y`lxFxcgbMb@X
+0		a{kxFrdgbMBQ
+0		c}kxFnbgbMhB~Al@v@tAt@
+0		y_lxFv_gbMvCw@fAMZF
+0		oglxF~~fbM_@I?I
+0		c_lxF|dgbMdAv@pB~@dAVl@?@O
+0		ablxF|`gbMmD}@
+0		u_lxFrdgbMPH
+0		eizwFxwnbMnAAdA~@^H
+0	Wallach Walk	s|ywFtgnbMt@zBKx@
+0		yzywFhvnbM@SSe@aAaB
+0		w{kxFx_gbMNe@fAGl@S`CfAEo@
+0		uskxFn~fbMDS
+0	Stan Michels Promenade	yvkxFxcgbMrACrALxDfA
+0		oskxF~_gbM`ExBNX?f@
+0		}zkxF`dgbMGcB
+0		k|kxF|`gbMWp@
+0		kmywFlvnbMiBmA
+0		opywFbtnbM?k@KGf@{AJF
+0		epywFzpnbMEC
+0		aoywFfunbMV{@
+0		skywFprnbMc@rAWFoAw@Gg@^qA
+0		{pywFlwnbMm@PGG?_@f@oAF?BX
+0		unywF~qnbMo@c@
+0		olywF`vnbMh@eBe@]?Q
+0		opywFbtnbMQr@Dt@p@Ib@TRo@
+0		klywFzunbMII[V
+0		emywFdsnbM^T
+0		ynywFjrnbMBTXRX]
+0		qnywFv|nbMP`A
+0	East 78th Street Pedestrian Bridge	q{ywF|fjbMlAsD
+0	East 78th Street Pedestrian Bridge	_vywFdajbMgAaA[dA
+0	East 51st Street Esplanade	g~vwF|slbMfBdBlEhD
+1	Brooklyn Bridge Promenade	uqnwFt~tbMm@Xy@A
+1	Brooklyn Bridge Promenade	usnwFr_ubMEb@
+1		w|swFfvubMH@
+0		ojywFpfobMUf@]N
+0		wgywFn}nbM^E`@TZOr@\t@sAl@a@Ne@
+0		qbywFt}nbMS@
+0		ejywFzuobMcA]uAv@
+0		gkywFviobMe@bAMp@eCkA
+0		gkywFviobMLh@\h@t@LfAfAjAI
+0		g}xwFb`obM{@Q[e@m@AYe@
+0		qhywFt~nbMWy@
+0		sjywFd}nbMNDXOUKOL
+0		_hywFd`obMQo@
+0		afywF`mobMr@RZK
+0		sjywFf}nbMwAz@SIw@H
+0		e|ywFx`obMP|@`@l@
+0		axywFdunbMGD
+0		mdywFtmobMMT
+0		gkywFviobMXsAF_BbAk@@qA
+0		}oywFtxobM]fAvAbC
+0	Hudson River Greenway	izlxFpyfbMGBBL^N
+0	Fort Washington Park Greenway	k_jxF`vhbM}GkEiE}AmScPe@Gg@[wBqBcBkDsAmAuEg@eM_HkIyBkEuB{AeA
+0	West Harlem Piers Park Path	olcxFrolbM}@u@
+0	Hudson River Greenway	_e|wFrwqbMAiB
+1		o~{wFljqbMTLJUSWML?P
+1		ko{wF`|qbMBX
+1		}|{wFniqbMEH
+0		ww{wFb}qbMQe@a@O[ROj@
+0		oaexFzekbMYwHT_B
+0		eaexFbgkbMyBtIfCxAvCaA
+0		s_exFlvkbMOl@xCdB
+0		wudxFjnkbMlLlI
+0		akdxFrvkbMqC`KtBjArB{HIg@Hc@
+0		y|dxFbxkbMOw@
+0		qcexFjbkbMLH}@dDzA~@
+0		saexFbyjbMNk@
+0		kmdxFxtkbMQl@NhAKj@]l@LVe@dBa@PUn@uHqE\gAiBeAeCoO
+0		y|dxFbxkbMCTYR
+0		_odxF~`lbMEAb@eBUM
+0		ecexFvakbMKR
+0		u{dxF`kkbMd@dC
+0		wldxFpzkbMDQ
+0		ymdxF|ykbM`@R
+0		k~dxF`rkbMzAqF
+0		qodxF~albMJa@
+0		qldxF~ykbMDB
+0		qodxFfalbMK`@JI
+0		oxdxF`tkbMThB`H|D
+0		qwdxFtqkbM|@U~ElCTX
+0		whdxFr|kbMsBoA
+0		kqdxFr{kbMd@Dl@M
+0		ypdxFl`lbMf@X
+0		_dbxFt_mbMmBu@
+0		whnxFv_dbMzBnA
+0		_ezwFl~obMm@C
+0		ksywFdnobMXAXWd@cA?_A]c@
+0		uezwFt{obMOHFl@
+0		uyywFx~obMAS
+0		iyywF`_pbMKG
+0		iwywFp~obM]^
+0		_oywFtvobMIDSx@
+0		mvywFlipbM]{@Jo@
+0		stywFjepbMJiCEMu@S
+0		m~ywFn`pbMHRAb@GVa@XK^
+0		auywFb|obMOWe@?_BxAa@Ms@iA
+0		m|ywFl{obMNY
+0		}{ywF`_obM}@qA
+0		mzywF|kobMD}@T]
+0		mtywFr`pbMJm@n@aAH_@j@e@
+0		utywFzdpbMdB_Bx@wA^U
+0		ezywFb~obME`@a@PU\
+0		wvywF|dobMPRNALM@_@QUQ@OX@T
+0		kfywFrrobMa@EkAu@e@y@{@o@
+0		iuywFvcobMT[
+0		{iywFjlobMuATIJ
+0		svywFdeobMYd@
+0		avywFdjpbMj@VZ?
+0		m~ywFr|nbMWA?f@
+0		izywFzynbMYU]F
+1	Hudson River Greenway	ylowFtvvbMfEp@
+1	Battery Park City Greenway	gdowFhowbMrGj@HSb@sF
+0		{zywFpfnbMu@k@Mi@e@Y]A
+0	East 37th Street	o_uwF|jnbM]hA
+0		{xzwFxbnbMjEV
+0		ki{wFf`obMg@kAuA_AC_@S[
+0		waoxFhbdbMxAkA
+0		q{oxF|lbbM`B?j@Mp@Xd@C
+0		m`}wFhcqbMTT
+0		m`}wFhcqbMm@y@i@Q
+0		y~|wFhdqbMLc@
+0		q}|wFnfqbMt@Qv@A
+0		}~|wFpdqbMYQ
+0		w}}wFf`mbM\e@F[@[QaAO]g@CSOWg@@SJo@vA{Cn@}@`@}BhBwEz@aATq@[iCBsAOOe@GBU
+0		qoywFfmpbMJ{Cx@yCE{B
+0		{qywFvnpbMIg@oByDO}@
+0		wp_xFzkobMa@cA?w@
+0		{q_xFvhobMqAJ
+0		uqywFzeobMf@a@?y@V_AMM
+0		oa{wFn}mbM|@^`C]
+0		asexFlynbMLE
+0		krexFvxnbMx@B
+0		srexFfynbMHW
+0		gumxFdzebMGdA
+0		wcnxFhzebMJc@
+0		{{lxFz`fbM]d@q@nCg@Fa@K[OKU
+0		w_mxFl{ebMG^TfBYnCUb@q@j@m@hB[Hi@A_@S{C?mAy@mAqBeCmBcBqBgDmCiAuBYUk@?_Bw@oAO]g@Oo@
+0		c~mxF~rebMk@uA{GwDo@qC
+0		{gnxFrnebMw@wAq@q@gAs@}@Da@[QoAPi@AS_@c@aAL}@EaAt@
+0		{`nxF|eebMQrA
+0		{_nxFrxdbM|@|@^bAJ~AObAa@fA[^{@ZuAOg@W[]s@wBrBuAzAiBh@eAXoAAwAOeA{@aAc@WW?
+0		gvmxFh_fbMA]Lw@
+0		canxF|eebMo@t@
+0		eenxFldfbMCs@
+0		ajnxFpkebMiAPi@p@~AfA|@OZY|Af@cAhAo@Tk@n@ERXd@fChBt@Iv@c@hA@`A]Xc@Lu@nBfAxBbCz@`@jG`@v@{AjAU\WY}Ag@gA[Lm@MuA{Au@iCoBa@cAoA{BcAmAyAOq@CaAJ{@\i@vCy@
+0		{kmxFrifbMkCWw@c@_ByD@c@
+0		uxmxFx|ebMqBIiB|@q@Ee@Wm@eB[Yg@eB}@cAWi@
+0		wcnxFbgfbMEc@g@q@cCiAi@]a@k@yDiBYa@E[b@eAHqAWqBy@uB
+0		ofmxFjdfbMa@o@gAd@aABe@SUoA^}AZg@
+0		ycmxF~ifbMMx@iAd@MT?h@JXlDeAPZ
+0		}dnxFzoebMxEbBbAj@
+0		emmxFt|ebMLl@
+0		usmxFj{ebMeAf@eAR
+0		eonxF~}ebM_@Bk@O{AeAg@m@[uADmCGwAo@eAQoAPaDl@gC`@y@f@WlBKnC`AnA~@v@RxBrBXJ\Gd@\
+0		uqmxFxbebMzAnATBvAbCnAhAz@|Cz@`A`@rALB
+0		sxmxFpeebMDhEJh@
+0		ijmxFltebMI_A
+0		_kmxFhkebMcBZ
+0		kvmxFdgebMaArBUVq@T
+0		semxF~|ebM[fB
+0		gmmxFblebMGbA
+0		wsmxFrhebMb@gAn@oD`@Uf@Pl@?\WcCkEMIk@D
+0		ogmxFd_fbMtAM
+0		gnmxFbwdbMqB|B]FyDi@{At@gAS
+0		{hnxFnqdbME\{B~A][?O|@yBlAyEPGl@`@xB\
+0		menxFpcfbMWJ
+0		u_nxFffdbMBpDHj@b@x@`@Vb@Bv@SxAAhBc@t@Bh@Zr@fAp@nACL
+0		u_nxF|idbMYlAw@d@
+0		atmxF`ndbMRk@Cs@
+0		y{mxF|udbMGt@a@p@q@L
+0		}knxFfpdbMrAH
+0		{~mxFvodbM?w@
+0		qhnxFbqdbMIJGKEQFW\UNDLq@\s@v@c@
+0		msmxFbldbMJd@TZ
+0		_|mxF|qdbMSw@MMg@EQDKR
+0		k_nxFjedbMO~@i@~@y@f@
+0		uzmxF`xdbMmAb@Qz@
+0		sgnxFjpdbMARKHUSL[TP
+0		ohkxFlggbMN]EA
+0		qvaxFztkbMGf@N\
+0		yuaxFlkkbMAW
+0		u}`xFd`lbM@V
+0		kpaxFvqkbMRUE[
+0		um`xFhalbMVZ`@N
+0		}``xFfglbMNe@
+0		kz`xFtdlbMKL
+0		}jaxFbtkbMO^Jr@IjA
+0		}saxFltkbM_@b@
+0		_waxFtmkbMCC
+0		wuaxFjvkbM@F
+0		uuaxFjukbMCL
+0		u|`xFvclbMGR
+0		wz`xFbelbMo@c@
+0		{_{wFbmobMs@i@
+0		w~zwFtlobMMNUA
+0		kkaxFbykbMm@K
+0		gfaxFx{kbMEF
+0		}taxFttkbMAB
+0		ylaxFvxkbMGCER
+0		}z`xFnblbM@\
+0		gxaxFdvkbMTa@XI^PnCVzAx@~BHp@ZzCzC
+0		ofaxFr|kbMl@^
+0		aeaxFr}kbMFBGR
+0		sy`xFdelbMDU
+0		{z`xFlclbMGT
+0		we`xFnjlbMVlAj@Z
+0		sk`xFljlbMiBiBoAc@yAEY[
+0		{m`xFbhlbMl@fB
+0		sy`xFdelbM|@PrAYb@g@
+0		my`xFndlbMm@a@
+0		mq`xF~elbMeAx@
+0		c{`xFbdlbMRL
+0		}{`xFv_lbMLW
+0		kz`xFtdlbMDB
+0	Stephanie and Fred Shuman Reservoir Running Track	og|wFzxlbM\_B@aBYwAe@{@yWgQoAc@iD@cD{@aAJq@z@Kn@@v@l@|BNzCIjAk@dCAdB^|A`AnAZ`AArCLvCOtBFjBPx@l@rAbAz@p@TxK~Aj@A`@YhA_Bx@qBhAuFp@aBnAuA`DkA|@{A
+0		ep}wFbulbM_@D
+0		eq}wFhulbMDi@
+0	Bridge No. 28	mr}wFvvlbMf@m@
+0	Bridge No. 27	uv|wFbombMh@n@
+0		_t|wFvblbMKb@
+0		od|wFd{lbMm@c@
+0		wy|wFzsmbMI]
+0		og|wFzxlbMPL
+0		oi}wFzvkbMp@f@`AzA
+0		s_{wFjkmbMoAr@
+0		wq|wFfglbMEQu@q@EY
+0		qv|wFfblbMwAM
+0		ms}wFf{lbM\iA@eA
+0	Northwest Central Park Loop	wv|wFhvmbMlAv@Vr@D|@OpB
+0		_r}wF`qlbMSc@?gAIc@
+0		ks}wFj`lbM\?j@^
+0		og|wF|{lbMEYf@aBJMXA
+0		_r|wFrkmbM_@O[iA
+0		ap|wFzxmbMeBqAiAc@M]VsAC_@PCT[l@iC
+0		kx{wFdkmbM_A@
+0		emvwFnntbMAT
+0		amywFvrnbMEWUQQDIV
+0	Pomander Walk	wr~wFf{nbMpAx@
+0	Pomander Walk	ep~wF`}nbMDD
+0	Pomander Walk	{r~wFb{nbMBB
+0	Pomander Walk	_s~wF~znbMBB
+0	Pomander Walk	_p~wFf}nbM@@
+0		emnxFracbM@v@a@x@
+0		sinxFt{bbMJ_@
+0		ginxFtzbbMQO
+0		yinxFdzbbMIE
+0		qykxFlfcbM[c@
+0	West 215th Street	ylmxFj{cbMIP
+0	West 215th Street	sjmxFtxcbMeAtA
+0	Northwest Central Park Loop	cb~wFbzlbMs@a@UJ_@rAQT
+0		_e_xFjrjbMa@Im@g@
+0		qv}wFxwkbMUM
+0		{w}wFvvkbMq@gA
+0		yu}wFbvkbMFVOb@
+0		wizwFfonbMBe@Is@\oALyAC]Sc@
+0		cgkxFlfgbMa@?
+0		krzwFhrnbMd@WFi@Zc@
+0		{uzwF`_nbM_@Fk@~@
+0		kszwFbdobMCm@m@g@
+0		yl}wFftkbMRcARSVu@
+0		el}wF|nkbMERaBL
+0		mo}wF~okbMIMMDBNRG
+0		mj}wFhqmbMYd@
+0	Strawberry Fields	a`{wFdhobMn@e@f@cApAWVW
+0		oeaxFtslbMg@]ITqAdEf@Z
+0		ieaxFvtlbMNL
+0		kgaxFtvlbM\V
+0		giaxFxxlbMmD}BCLqBqA
+0		weaxFr{lbMk@]
+0		olaxFnolbMeAjD
+0		oeaxFtslbMIV
+0		agaxFlslbMmD}B|@uC
+0		kraxFvrlbMELKGGRw@g@
+0		_saxFrqlbMHW
+0		uuaxFbtlbMQKEF
+0		qgaxF`zlbMNJ
+0	Hoboken Newport Walkway – Hudson River Waterfront Walkway	wg_xFfurbMJ[PKRaATIxBxAT`@tBt@Pd@
+0	Hoboken Newport Walkway – Hudson River Waterfront Walkway	g{fxFnknbMqAcBjBsKV_@x@KhEhBdBIn@ZRKZH
+0	Hoboken Newport Walkway – Hudson River Waterfront Walkway	skexFvlnbMhBr@Op@jAl@Qt@JFXIb@w@rAl@`@Dh@wBHGn@VxOtI[bCVd@\Bd@k@v@MxB`@bDxBzGjDzBtB
+0		oj_xFvbobM[@WV
+0		gb_xFfdobMIR
+1		gb_xFfdobMHO
+0		{}~wFvdobMcAjCc@XeADaBg@yGaE
+0		wb_xFzcobMDQ
+0		gj_xFxbobMGA
+0		ms_xFhaobMv@^bEj@xAFbCIh@Lt@p@Jp@M~@k@\
+0		_`_xFbiobMi@]
+0		cl_xFpcobMM\
+0		gvaxF`smbMnA|AfCxA
+0		_z_xFd{nbMDe@GSk@s@{AqCeB_B{Ay@wJ}GeDcAoAaA}FkCgBiAgBq@gFsDsB_Cc@Q}@_A_DmBmBu@
+0		st~wFf}obMCZ`@lA
+0		y_`xFtqnbM_A[g@Bs@r@U|@
+0		sn~wFp{obMAgAJ}@f@s@
+0		ec}wF|`qbMuFkD
+0		y}|wFnypbMd@`CWx@QJ
+1		y}|wFnxpbM?^
+1		w}|wFfwpbMAf@
+0		o|axFhmmbMk@Q
+0		s`bxFlcmbMEM
+1		cp}wFdrpbMH[
+1		ok~wFh`pbMNY
+0		e~axFrlmbMHB
+0		so}wFlwpbML{@
+1		m}}wFtjpbMH]
+1		qf~wFzdpbMJ[
+1		qm}wF|spbMJ[
+1		sl}wFdtpbMJNHKGOMJ
+1		{m~wFn|obMfDjDfEzClMzFrFdD
+1		kn~wFh}obMxC|C|EnDjMxFtF|C
+0		sx}wFbmpbM\p@tAhA|BtAx@X@`@
+1		wz~wFdnobMCp@Np@lFtEvAvD
+1		eo~wFz|obMLNNALSAWMMQ@KR@T
+0		oj~wFbuobMcAR_BCsG_Cc@N
+0		s|axFtgmbMAb@
+1		{n~wFf}obMQL
+0		s~axF|embM_AoA
+0		u|axFxhmbMz@G
+0		s|axF~lmbMSaAPcA
+0		}}|wFv_qbMi@X
+0		}c}wFnaqbMb@YN[
+0		un~wFhyobMc@wAg@m@
+0		{p}wFdypbMR?LU
+0		}n}wFnzpbMYk@Bu@
+0		g_}wFx`qbMNN
+0		yjaxFtwlbMq@rBKBYQ?i@
+0		keaxFnilbMXaA
+0		smaxF`|lbMJ]
+0		gfaxF|llbMlAx@
+0		iiaxFr|lbMAA
+0		}saxF|llbMLa@
+0		itaxF|mlbMM`@
+0		edaxFrolbMDK
+0		qnaxFlmlbMPi@
+0		utaxFjolbMRN
+0		_kaxF|klbMbAp@
+0		oqaxFlllbMJ[
+0		{maxFr|lbMFQ
+0		_gaxFrnlbMNe@
+0		csaxFrklbMPL
+0		yeaxFnslbMr@{B
+0		wjaxFr{lbMKX
+0		ggaxFxllbMEN
+0		iiaxFxqlbMVs@
+0		okaxF`mlbM^V
+0		agaxF~mlbMAF
+0		_haxFhmlbMEL
+0		}kaxFdxlbMGP
+0		epaxF|klbMa@Y
+0		itaxF|mlbMJ_@
+0		ciaxFhplbMTP
+0		utaxFjolbMAK
+0		siaxFrylbM_@`A
+0		coaxFbulbMw@fC
+0		keaxFnklbMn@qB
+0		osaxFzklbMJG
+0		itaxFvplbMDK
+0		gkaxFvxlbMm@c@
+0		shaxFhzlbMu@|B
+0		osaxFhslbMWt@k@a@
+0		qmaxFtylbMsA_A
+0		igaxFtnlbMp@d@
+0		{laxFpplbMz@h@L_@
+0		gnaxFzslbMz@h@M`@
+0		_daxFfolbMFS
+0		yiaxFf|lbMgAs@
+0		ofaxFlmlbMHS
+0		mgaxFhmlbMQ?
+0		qhaxFjrlbMp@wB
+0		mgaxFhmlbMJT
+0		ehaxFvmlbMGCo@pB
+0		wdaxF~ilbMSO
+0		{naxFtxlbMf@aB
+0		wrywFr{hbMKJ
+0		ojwwF~zjbM?rA
+0	East 60th Street Pedestrian Bridge	wwwwF`clbMj@oB@QKK
+0	East 78th Street Pedestrian Bridge	_vywFdajbMp@f@
+0	Bobby Wagner Walk	ca}wFpehbMbEpDvFhN|@`BhA|A~BnA
+0	John Finley Walk	y|wwFdvkbMKXRt@zAhB~ArA
+0	John Finley Walk	oiywFvkjbMlIhGfAhA
+0	John Finley Walk	ak{wFl|hbM|Ai@^u@jDE\`@Lh@rBb@rAl@fJzH
+0	John Finley Walk	ekzwFtkibMlC~D
+0	John Finley Walk	wfzwFtqibM|@xA
+0	East River Esplanade	{vtwFjpnbMdAn@R\
+0	John Finley Walk	{nzwF`hibMtBrB
+0	John Finley Walk	adzwFlsibM`@j@pMrL
+0	John Finley Walk	y|xwFjvjbMbQ`O`GbH
+0	Bobby Wagner Walk	_k|wF|bibMzEr@dAArGeAbDoAbHkB
+0		{nzwF`hibMWx@
+0	East 71st Street Pedestrian Bridge	g_ywFhtjbM|@v@
+0	East 71st Street Pedestrian Bridge	y|xwFjvjbMOI
+0	East 71st Street Pedestrian Bridge	}~xwFdyjbMp@iB
+0	City Hall Park Greenway	yznwFhlubM|@}B^g@LaAt@kBh@G
+0		cpfxF~onbMHwAlCaNLSd@EbBpAtAnB~ABfAf@xA\
+0	East River Esplanade	uwtwFlpnbMmCyA
+0	Riverside Walk	{ucxFjglbMoF{DUi@Cw@IQwCsBuEkFyLqLsGuF_@Sk@Hg@jAkAv@
+1	Old Slip	uylwFnrubMOP
+1	Battery Bikeway	_tlwF|xvbMC{C|A]x@a@Xo@
+0	Ed Koch Queensboro Bridge Path	udvwF|nhbMDVOj@
+0		{stwFltnbMH[
+0		eavwFlyubMk@`EmAzDm@OvCmJ
+0		cdvwFh_vbMv@S
+1		mbvwFb{ubM{Bm@
+0		igdxF|pkbMy@e@aAqA
+0		uszwFxmnbMc@K
+0		erzwFhnnbMh@N
+0		qmvwF~bibMCC
+0	Bradley Terrace	mfoxFfxdbMOUHKi@cA
+0		wpoxF~mdbM]\y@XYE
+0		cpoxFnodbMNE
+0		uqoxF|ndbM^dC
+0		knoxFpqdbMH`E
+0		_qoxFnmdbMZ~@Bz@Kh@_@\k@Ka@i@OaAAy@
+0		kqoxFrsdbMWZKl@HrAj@n@b@RXAVq@CeA_@gAa@]a@A
+0		wroxFfsdbMLt@
+0		apoxF|qdbMHdAIL
+0		_uoxFxfdbM_@P
+0		ivoxF`hdbMaAy@
+0		awoxFvfdbMGL
+0		eqoxFjjdbMgAj@cA@e@]Um@k@m@k@[Ce@FO
+0		ivoxFredbMHv@Oj@Rz@Zh@
+0		_toxFxkdbMb@w@D]
+0		cvoxFrgdbM_Ay@
+0		{voxFpbdbMQVb@hAlA|@nA~A
+0		{poxF|idbMIL
+0		{uoxFrjdbMQP
+0		_qoxFnbdbMFO`ArA
+0		qmoxF|edbM|DpF
+0		sgoxFnmdbMpQd[
+0		aunxFtiebMl@zC
+0		kloxFbadbMUj@
+0		amoxFnbdbMM`@
+0		umoxFj`dbMBd@
+0		qmoxFpadbMMh@
+0		mszwFjhobMe@m@YB
+0	Riverside Park South Esplanade	wz{wFl}qbMS?wEqC
+0		_gdxFdqkbMhAbAh@Rp@?
+0		yfuwFt_tbMq@g@[LyA[
+0		seaxFpolbM?@
+0		eduwFp`tbMgAu@
+0		waywFnkpbMhC`B
+0	6½ Avenue	}wxwFvbpbMzAjA
+0		}}twF`mubMJF
+0		meuwFbhubMJF
+0		keuwFdiubM@E
+0		}ktwFprubMRL
+0		wk`xF|cmbM{AcA
+0		ar`xFdnmbMtCkJ
+0		as`xFximbMo@a@xBeH
+0	Wien Walk	}oywFtnnbM]?m@e@gBG}At@w@G
+1	High Line	ohtwFjtubMrAV
+1		{~swFbvubMN@
+1		k~swFdvubMH?
+1		a~swFdvubML@
+1		s}swFfvubMP?
+1		w|swFfvubMI?
+1	High Line	__twFnvubMBK
+0	High Line	ittwF~nubMARvAz@
+1	High Line	obtwFvuubMLB
+0		iktwF~rubMI\
+0	High Line	sktwF|subMOC
+0		cltwFxsubMUC
+0	High Line	_ltwFntubMLG@Y
+0	High Line	yltwFtsubMCE
+1	High Line	}dtwFluubMlAH
+1	High Line	odtwFxtubMz@PBJ
+1	High Line	oetwFhuubMNQN@
+0	High Line	oetwFhuubMPB
+0	High Line	oktwFlsubM~@R
+1	High Line	ohtwFjtubMVVp@H
+0		keuwFdiubMAB
+0		ieuwF~hubMBQ
+0		ieuwFvhubMBI
+0		ieuwFvhubM@@
+0		u}twF~mubMCA
+0		y}twF|mubMBQ
+0		u}twF~mubM?D
+0		y}twFvmubMBK
+0		y}twFvmubM@@
+0		aeuwFlhubMEJ
+0		aeuwFlhubM?A
+0		s}twFlmubMCJ
+0		s}twFlmubM@C
+0	High Line	eouwFnbubMt@Z
+0		aruwFd`ubMLH
+0		aruwFd`ubMIG
+0		kruwF|_ubMGE
+0		sruwFv_ubMKG
+0	High Line	_suwFn_ubM?K
+0	High Line	u~uwFzvtbMOA
+0		}dvwFvrtbMAA
+0		}dvwFvrtbMBA
+0		_evwFtrtbMC?
+0		cevwFtrtbMCF
+0		eevwF~rtbMBG
+0		gevwF|rtbM@@
+0		aevwFvrtbMEE
+0	High Line	amvwFpntbMDZ
+0		emvwFfotbMDC
+0		gmvwFdotbM@@
+0		amvwFpntbMCG
+0	High Line	u}uwFzwtbMDKFDCJ
+0	High Line	w|uwFfxtbM@H
+0	High Line	sqtwFnqubMrAx@~@H
+0	High Line	mqtwFdqubMrAv@z@P@Ij@F
+0	High Line	qttwFznubMbBhA
+0	Fort Washington Park Greenway	izlxFpyfbMuDkB@JtBhBwFaC
+0	Fort Washington Park Greenway	owlxFd{fbMw@_@
+0		atmxF|ifbMJa@
+0		ienxFxbfbMN]
+0		usmxFzhfbMDB
+0		ydnxFzafbM@@
+0	Northwest Central Park Loop	uu~wFf~kbMYMe@mAOoAg@gA
+0	Ravine Rustic Bridge	ku~wFd~kbMI@
+0		m{~wFdpkbM@C
+1	High Line	__twFnvubMd@H?Qh@A
+0		i{jxFlsbbMTyA
+0		u{jxFrsbbMUWWE
+0		ybkxFj_cbMkAbF
+0		eekxFnfcbMEN
+0		qbkxFv~bbMDW
+0	Old Croton Aqueduct Walk	syjxF~lbbMl@d@`EhBzAvAER
+0		s~}wFncpbMUj@i@Eg@Q{F{DWJOZ
+0		ydlxFtofbMs@[e@u@{AsA]K
+0		cblxFjwfbMv@p@XFb@KDs@Y{A?s@Lg@l@_A
+0	Overlook Path	mklxFbjfbMJW
+0		aklxFjifbMPb@
+0		g~jxFlrbbMN`A^j@
+0		c_kxFfrbbMAaA
+0		evjxFhwbbMHO@y@WYoAg@
+0		qvjxFdtbbMVs@
+0		_zjxFrubbMJk@QI
+0		y{jxFzvbbMn@X
+0		syjxFfvbbMIFYpA
+0		cxjxFjecbMXN
+0		c}jxFdncbMVDKIN]
+0		s|jxFnmcbMiAo@?I\C
+0		}_kxF~rcbM?m@s@]
+0		}`kxFvqcbM@W
+0		q`kxFdqcbMBKj@GC`@fAJB]
+0		i}jxF|kcbMTR
+0		myjxF~gcbMh@T
+0		on_xF~{nbMNA
+0		_|{wFrcnbMEc@
+0		gr{wF|`nbMY@Yd@
+0		ql~wFn{jbM?HN?OI
+0		iyzwF|bobMaBoB
+0		}ozwFjqnbMEVPRnAj@
+0	Oak Bridge	mq{wFpqnbM]X
+0		gkaxFtsmbMIV
+0		qkaxFltmbMJL
+0		}{_xFnsnbM_@U
+0		}m`xFhfnbM?H
+0		in`xFfenbMET
+0		aoaxFbqmbMAT
+0		ekaxFztmbMAF
+0		_laxF~smbMCD
+0		qkaxFltmbMMM
+0		on`xF|enbMPJ
+0		}|_xFxrnbMM@QZ
+0		woaxFvombMTj@
+0	Coach Passage	omvwFjktbM{@jC
+0	Spur	cpvwFrqtbMV{@
+0		}svwFn{tbMEL
+0	Bow Bridge	q`{wFlsnbMbAw@
+0	High Line	yzuwFlytbMTN
+0	High Line	w{uwFfytbMJG
+0	High Line	}zuwFtytbMC@
+0	High Line	ezuwF|ytbMDL
+0		utzwFtqobMs@xA
+0	Northwest Central Park Loop	{o|wF|fnbMgAwA
+0	Northwest Central Park Loop	cr|wFddnbMUE
+0	Northwest Central Park Loop	ms|wF`bnbMM{A
+0		st|wFn}mbM^W
+0		{s|wFd_nbMGf@{@vA[bA
+0		ww_xFjzkbMEH
+0		qa{wFtiobM]i@g@Qu@o@
+0		_q{wFzrmbMeAX
+0		a~{wFxkmbMp@g@
+0		eb|wFlimbMEk@Hm@
+0		ie|wF|fmbMw@KUX_@@{AeAKi@DU
+0		_k|wFlqmbMW{@cAu@q@C}@^
+0		{`|wF`jnbMf@YP]De@
+0		sy{wFhhnbMk@aC
+0		sy{wFhhnbMV^k@nB
+0		{x{wFhinbMVELm@As@Qa@QM?J
+0		ik|wFdvmbMr@Ud@@
+0		er|wFdtmbMeA`A
+0		ot}wFx_mbMa@[
+0		yz~wFh}jbMd@W
+0		uv~wF`bkbM{@oAiAu@
+0		sb_xFzijbME]
+0		gu{wFtgmbMs@`@
+0		}s{wFfkmbMTa@|@E
+0	Greywacke Arch	st{wFblmbMT[
+0		qhzwFtfnbM^c@
+0		cpywFp`obMOW
+0		egzwFrtobMp@sBhBkAlAgCh@eEn@o@l@@f@[@_@L[TK`@B
+0		grzwFftobMi@g@q@I
+0		_dzwFzuobMYs@u@i@
+0		}tzwFlaobMUCw@^Qp@ArAXbA
+0		s{{wFbunbMf@~AjAx@PF^Gp@u@
+0		sk{wF|xnbM?XaAAm@d@
+0		cv{wFtynbMf@jAVJjAe@x@F
+0		{t{wFfxnbMGI
+0	Strawberry Fields	wzzwFbdobMXZ@^EZe@~@y@Lu@OCo@
+0		aszwFjlobMvA{AnAiD
+0		krzwFhrnbMQ~@Bf@JVZPhAOpAi@K]
+0		eizwFxwnbMq@S}@cA
+0		wjzwFdwnbMBeCZwB
+0		elzwFlunbMl@m@
+0		i~ywFz}nbM@i@
+0		ku{wFtwnbMc@k@a@oBo@q@Oy@gAkB}@cAmAA
+0		mx{wF`nnbMa@[mCuEwCaD
+0		mt{wF|bnbMMYOC
+0		k|zwF~ynbMSh@HTxAGFO
+0		kx{wFvgnbMJSH@
+0		wx{wFthnbMAF
+0		wy{wFvgnbMD@
+0		wx{wF|gnbMJE@HIHCM
+0		su|wFx|pbM~@dAv@tCx@hA|@`@j@F~CYt@Pp@d@j@z@L`AEjA
+0		y_|wFpkqbM{@Mm@_@
+0		_e|wFrsqbMLi@
+0		oc|wF~oqbMp@yAnBsA
+0		ss_xFxiobMCQ
+0		g~axF~cmbML[
+0		_nbxFpzlbMyAScAi@HkAUeAo@I}@LSI
+0		urbxFdwlbM]KETsAc@BQICEXIB
+0		o|bxFjtlbMr@ClAl@
+0		kwbxFzslbMkAgAu@I
+0		m{bxFbtlbMD}@Ga@
+1		ep~wFv}obMYIq@gAMEML
+1		mo~wFt}obMW@
+1		sx}wFbmpbMF_@
+0		ob{wFtorbMb@J|@Kb@DvBtA?n@
+0		}p{wFv`rbMQh@KG?e@
+0		m~zwFbsrbMEkB
+0	Riverside Park South Esplanade	wi{wFngrbMeAkAgCqAyAwAs@_@o@I}@i@g@B
+0	Riverside Park South Esplanade	qzzwF`trbMe@Mw@?]O
+0		}uaxFtylbM{@hC
+0		y|jxF~hhbMd@x@NEEQo@a@
+0		y|jxF~hhbMm@o@{Au@}@{@qCeByD_DuBy@{BuAaA_@oB}AsBiAoIqGmE{BeCcBmPeH
+0		}pkxF~fgbMaAk@{A?[g@
+0		onkxFjkgbM_@B]Mm@mAa@]
+0		onkxFjkgbMLY
+0		ankxFpjgbMI{@qAu@
+0		gmbxFjzlbMU??\TA?[
+0		mlbxFn{lbMOr@`DdAXwAyC{AQx@
+0		ulywF|aobMGq@
+0		_nywFzfobMy@FMK
+0		glywFrnnbM}@k@[`A
+0		mkywF`rnbMZcAu@i@
+0	Wien Walk	soywF|nnbMIG
+0		_xzwFlymbMJe@VPO`@SM
+0		mfaxFlwlbMb@uAOIM\
+0		}eaxFxwlbMd@X
+0		mfaxFlwlbMNJ
+0		khaxFnzlbMJY
+1		ck{wF~spbMfALOZw@e@
+0		ugzwFhzpbMs@zB
+1		}izwFzvpbMQj@
+0	Lasdon Colonnade	ojzwFfxpbMs@zB
+0		_a{wFzaqbMWx@
+0		_a{wFzaqbMoBoA
+0		ye{wFx`qbMX{@
+0		ig{wFvdqbMyAzE
+0		e_{wFhgqbM\T
+0		{c{wFdpqbM\mAk@a@J[d@Zp@oB
+0		_e{wFlfqbMy@b@
+0		ee{wFhfqbMXcA
+0		ae{wF~eqbMA]
+0		ud{wFrfqbMZ_A
+0		iq~wFz{jbMSM
+0		{l~wFd}jbMPFVGRk@Gc@u@k@g@|Af@\
+0		}q~wFl{jbM`A}C
+0		et~wFhsjbMxE~C
+0		c_~wFtcmbMmAV
+0		oszwFhmobML]
+0		grzwFftobM`AL^KV_@ZcA
+0		mdzwFruobMLF
+0		e`zwF|{obM\f@
+0		_`zwFd~obM]g@
+0		gvywF~dpbMp@C
+0		uuywFtxnbM\J
+0		wtywF`ynbMNFAN
+0		uuywFtxnbM{@_AOo@KqB]e@
+0		mzywFbgnbMZE
+0		{hzwFzzmbMEJ
+0		wwxwFv~nbM`@qA
+0		}zxwFh|nbM`@oA
+0		ymywFf|nbMy@?
+0		ecywFv}nbMqBq@cAL
+0		yqjxFd_hbMMKVQI\
+0		_cnxFrjdbMOJ
+0		_cnxFpmdbMM?
+0		mcnxFpmdbMg@CUZOO
+0		ocnxF~jdbM_A~@cAjB
+0		}kzwF`|obMl@mC]YDWTM?]Yi@
+0		mwywFjfobMaAoA
+0		{j|wF`ymbMSm@@_@
+0		u{}wFtclbM@rBe@|A[{@
+0		eb~wF`flbMYC
+0		ce~wFrvlbM\BZVMp@
+0		mh~wFntlbMM|@f@~ATzC@bAMr@
+0		or~wFhkkbMo@Y
+0		}xzwFlbnbMTc@
+0		uh{wFf`mbMc@~@aAn@u@tAi@\k@z@a@V
+0	Northwest Central Park Loop	ag|wF|pnbM\sA
+0		um~wFh}jbMg@HIP
+0		oyywFzcobMMS
+0		}yywFfcobMMk@
+0		e~zwFdvmbMeC_Bg@mAQmB
+0		_adxFnjobMiAo@QP
+0		mbdxFpjobMRS
+0		mbdxFvgobMHY
+0		madxFjhobMFY
+0		ybdxFnkobMGV
+0		gddxFpjobMGT
+0	High Line	uxuwF~ztbMnAdAdB|@~N~JV?z@h@
+0		iutwF`nubMP?
+0		u`bxFz|kbMc@lAo@bAq@pD
+0		e{axF|tkbMy@]
+0		_}axF~skbM_@G]i@
+0		k`bxFpnkbMW}B
+0		g|axFzikbMw@R
+0		e`bxFfqkbMvAa@
+0		a|axF~ikbMLz@
+0		c{axFtjkbMcBeA
+0		}jbxFxclbMFD~@{CHDt@_C
+0		chaxFhqlbMLF
+0		wfaxFnrlbM^sA
+0		w_axFfxlbMZaA
+0		{~`xFdvlbMGEJ_@TNM^KI
+0		wl~wFpmmbMm@_@
+0		an~wFdhmbMoDaC
+0		iu~wFtgmbMq@e@
+0	74th Street Track	of|wFhsqbM]i@y@g@k@CML?d@vBrAVO@a@
+0		gvnxFpldbMXNtAsC
+0		ecoxFnrdbMpAaA|CgA`B{@jAF
+0		kakxFdbdbMKh@D`@z@x@pBlAvAnB|A~@jBl@dACh@b@
+0	Ed Koch Queensboro Bridge Path	_evwF`qhbMwAlE
+0		}{cxFhdlbMPg@
+0		}hzwFfsobMMp@G@
+0		qjzwFruobMHB
+0		u|axFxhmbMCVNPfARREbClA\lAt@~@f@hA
+0		}m`xFrfnbMCJ
+0		_`axFt|mbMWt@
+0		ix`xF`dnbMNyA
+0		qk`xFzjnbMEM
+0		aaaxFp`nbMHeA
+0		mfbxFrbmbMEK
+0		mp`xFhfnbM^I
+0		}x`xFvenbMRu@
+0		y`bxF~bmbMGA
+0		al`xFphnbMHz@
+0		{paxF~smbMj@n@H^B`@Mf@
+0		ks`xFjknbMw@e@
+0		mfbxFrbmbMr@TvBK
+0	East River Esplanade	astwFzsnbMETp@TnDn@
+0	East 71st Street Pedestrian Bridge	m~xwFtwjbMFFU~@
+0		mvjxFhndbMZi@`@_B
+0		szjxFvjdbMLmFkEoAYj@
+0		ozjxF`idbMg@B
+0		cpjxFrodbMCJ
+0		afkxFdegbMDi@iDoA
+0		odlxFjtfbMc@o@eAi@mB[
+0	Overlook Path	eplxFzofbMCZ
+0	Overlook Path	qolxFrofbMXV
+0		}ykxFdsfbMm@vA}@`@u@pA]NoAe@Wc@qBmBuAy@{BM
+0	Overlook Path	gklxFtpfbMG_AOe@w@{@Ea@
+0		i}kxF~vfbMOcAJ_@\WpA@
+0		__lxFr}fbMbB_@^YP_CNOZB
+0		u{kxFdvfbMRZ
+0		wxkxF~rfbM`@Q?I
+0		u}kxFjtfbMGc@N]bAZ
+0		ielxF|pfbM[Vu@MAF
+0		atlxF|xfbMAK
+0		qwkxFv}fbMz@Q
+0		oukxFrzfbMyAf@w@MQU
+0		{zkxFx{fbMXK
+0		iukxFb|fbMEo@
+0		qvkxFf{fbMf@L
+0		ktkxFf}fbMWt@
+0		utkxFf~fbMJd@
+0		qvkxF|dgbMd@MnA?zBd@t@\
+0		cnkxFfggbMBWGO
+0		ypkxFfkgbM?E
+0		mnkxFnkgbM?D
+0		}pkxFtggbMJL
+0		{ykxF~egbMPD
+0		iykxFdfgbMrBf@rAU|BTl@MVc@
+0		}pkxFnkgbMgBUM[Bq@
+0		otkxFljgbMe@o@
+0		knkxF|kgbMj@PPb@?V
+0		}vkxFxbgbMp@m@h@EPe@
+0		mykxFfagbMx@]bB^
+0		yvkxFxcgbMI@
+0		a{kxFrdgbMER
+0		qpkxFpkgbMx@H
+0		uikxF~igbMrB|@Lu@
+0		uhkxFfsgbMk@kA[oCcAqA_@G
+0		}o{wFn{nbMx@xA
+0		_ezwFdwobMa@dAFx@f@lC^b@|@FlAUVDh@iATwAYY
+0		otkxFdvfbMdCjB
+0	Hudson River Greenway	ae|wFhtqbMw@yAeCgByAwAsDsAiBcAkB[
+0		}o{wFn~qbMNe@
+0		ap|wFtjqbM]H_@h@
+0		ur|wFzmqbML_@?e@e@yA
+0		oozwFr{rbM]V
+0		ic{wFvmrbMmAKcAyAsAi@
+0		}pzwFn{rbMBM
+0		ax{wF|grbMG}AFiAMkA
+0		gi{wFfhrbMPpANT\VvAXd@~@
+0		ux{wFtgrbMFpD\V?]QUDy@GoA
+0		uz{wFd~qbMAO
+0		wa{wFlmrbMCF
+0		ue{wFdlrbMIK
+0		ux{wFtgrbM?E
+0		gc{wFllrbM?H
+0	Pier D	ka{wF`prbM@`@
+0		cy{wFv_rbM?A
+0	Pier B	y|zwFdrrbM?i@
+0		cx{wF`hrbM@C
+0		ib}wFx_qbMLt@
+0		ox{wFh`rbM@E
+0		gy{wFh}qbMBjA
+0		cy{wFv_rbMLvF
+0		kxzwF`urbMa@D
+0		cwzwFhvrbMIq@
+0		exzwFhtrbMEt@
+0		cvzwFhvrbM_@?CL
+0		{l|wFxoqbMFe@Gq@
+0		gr|wFzlqbMvChB
+0		m_{wFtorbM@d@
+0		gvzwFlwrbMLw@
+0		mx{wFb`rbM@}A
+0		_d}wFl`qbM@`@
+0		yj{wFbfrbMDnBZcA
+0		ig{wFrjrbM@dA
+0		_i|wFvoqbMcBA[PQh@
+0		wh}wF~}pbMVM
+0		q_{wFxqrbMe@e@e@mA
+0	Riverside Park South Esplanade	uszwFdyrbMaEcCY_@
+0		iqtwFnuubMUVEb@NP^ARWBc@USUB
+1		wuuwFtxubMSB@S[?GLS@E\
+1		mwuwFrxubMM^
+1		uvuwF|yubMJOASMEMb@
+1		gwuwF|{ubM?eA
+0	Riverside Walk	kc|wFhxqbMs@U
+0	Hudson River Waterfront Walkway	gg}wF~_tbMb@NrGpE`HjF|ExCpCdCu@zBzJhHgAfDbGfEPVbE~BnHbG}AzEvElD|B~AhAsCZQfAVv@l@n@?~A_ETSZCnBnAf@MzA`ADZTHnBdFl@hAa@rAjAvBpAdA@He@t@LZlA^t@AzBtAl@r@?^|@n@ZC\eAhNdJM^`@VJBp@]vDXj@C|A{@xAv@vAhB
+0		sf{wFdnqbMvA}E
+0		_f{wFb}pbMMG
+0		m~zwFvfqbMHfA
+0		qooxFbldbMF\
+0		qvywFhdpbMMv@
+0		qvywFhdpbMN[z@c@
+0	Wien Walk	i}xwF`ynbM}ByAwD_@sGiE
+0	Dipway Arch	_lywF~yobMVP
+0		ufywFjunbMEl@QN
+0		_gywFzznbMFh@
+0		gkywFpzobMf@~@
+0		qnywFf}nbMe@z@
+0		yr~wFvwjbMDR
+0		_t~wFzvjbMOB
+0		os~wFpwjbMDO
+0		ir~wFnvjbMNC
+0		kr~wFhwjbMKI
+0		_s~wFjvjbMDO
+0		os~wFtujbMES
+0		qs~wFlvjbMKI
+0		ql~wFn{jbMIE
+0	Crabapple Allée	km~wFhxjbMcA|C
+0		oo~wFf}jbMPJ
+0		co~wF`wjbMBM
+0		ql~wFh|jbMR?FU]]Od@PL
+0		um~wFh}jbM`@T\AZYH_@Co@MSiAu@
+0		{i~wFx{jbMSU
+0		uk~wFt{jbMd@@
+0		_l~wFh|jbMRl@
+0		yn~wFdvjbMFM
+0		qr~wFfujbMFS
+0		ah_xFrdkbM~@d@x@E
+0		ws~wFprjbMDM
+0		_o~wFrvjbMBG
+0		{n~wFjvjbM@E
+0	Bridge No. 24	}e|wF`zlbMYS
+0		}f|wFhylbMDB
+0		i{~wFpokbMCI
+0		uq~wFdfkbMq@MMV
+0		k{~wF`pkbM@O
+0		_kaxFzqlbMDR
+0		klaxFdulbMNE
+0		ijaxF~wlbMLa@`@V
+0		{iaxF|vlbMAQ
+0		ahaxFtrlbMMb@^T
+0		ohaxFxslbMMB
+0	Low Library Steps	kgaxFtvlbMEC
+0		u`axFp{lbMBB
+0		cgaxFtzlbMaA~C
+0		maaxFvplbMqEvN
+0		}haxFb_mbMb@Z
+0		udaxF|tlbMbAaD
+0		wbaxFjplbMb@X
+0		acaxFbflbML_@
+1		y`vwFlyubMl@^^~@
+0		{o|wF|fnbMt@]Z?PTDTGfAKR
+0		_vuwFhfvbMu@sB
+0		uwuwFzavbMfAQ
+0		q~uwF|xubMHtDrElAEnFH@f@Dn@eM
+0		qmoxFvwbbMS^
+0		mmoxFnwbbMC?
+0		qmoxFnwbbMDD
+0		kmoxFpwbbMAA
+0		kmoxFpwbbM?B
+1		qtlwFlsvbMLR
+0		{u~wFjwmbMZcA
+0		{u~wFjwmbMfCbB
+0		{u~wFjwmbMwA_A`@mA
+1		_zlwF~tubMGa@
+1	East River Esplanade	iolwF`ivbMa@oDcAgFiDyGw@g@gE_IDUc@s@E]qEcH}BeE
+1	East River Greenway	g{lwF`rubMTZp@H
+1	East River Greenway	gylwFzrubMyAgCk@G
+0		_d{wFhombMYUYoA
+0		gg{wFvcmbMNaA
+0		}wzwFvqmbMd@B
+0		axzwF|qmbMAI
+0		uvzwFjzmbM?SKO
+0		ywzwFtxmbM]O[H
+0		irzwFxumbMOMCW
+0		yrzwFvtmbMAYQK
+0		{szwF~smbM@M
+0		yszwFpsmbM@C
+0		gj{wFvhmbM_@J
+0		o|zwF|qmbM@G
+0		{tzwFfsmbM@G
+0		}uzwFnrmbMDK
+0		wuzwFbrmbM@A
+0		ytzwF~rmbM@C
+0		gxzwFr|mbM@P
+0		ovzwFd_nbMw@s@
+0	Wallach Walk	_ozwFvwmbMT?
+0	Wallach Walk	cozwFvwmbMB?
+0	Wallach Walk	{szwFjymbMRR^@x@u@h@S
+0	Wallach Walk	inzwFvwmbMD?
+0		syzwFzrmbMIG
+0		irzwFxumbMFO
+0		{szwFjymbMDMf@KHWKo@DO
+0		cxzwFfrmbMJg@
+0		if{wFponbMAE
+0		of{wF`onbMA[
+0		ei{wFhnnbMJK
+0		yh{wF|mnbMKa@
+0		cj{wFrlnbMBS
+0		yj{wF~onbMAQ
+0		{j{wFlonbMQU
+0		yj{wFzonbMLK
+0		yj{wF~onbM?B
+0		sn{wFnnnbMEA
+0		yn{wFlnnbMEA
+0		yo{wFdnnbMBF
+0		kp{wF|qnbMNL
+0		ip{wFrqnbMToAAU
+0		gq{wFdpnbMBC
+0		aq{wF|onbMBG
+0		}s{wFtcnbMCI
+0		et{wFfcnbMGI
+0		ij{wFtenbMTG
+0		_j{wFbdnbM?G
+0		yk{wF`lnbMAE
+0		yk{wFjknbM@E
+0		{k{wFtknbMD?
+0		oa{wF|bnbMJj@jA`A
+0		_a{wFnonbM\{@Bg@M_@c@[
+0		_a{wFnonbM[a@Ic@i@i@
+0		oa{wFn}mbMf@jB@f@QX
+0		oa{wF|bnbMQA
+0		oa{wFnjnbMq@B
+0		oa{wFn}mbMSYIw@
+0		gc{wFzymbM_@Q[P
+0		{a{wFxrnbMV]BkA
+0		{a{wFxrnbMe@]
+0		ab{wFzbnbMk@?
+0		}b{wFbonbMGg@WA
+0		ac{wFzqnbMk@_A
+0		ac{wFrjnbMG_B
+0		ac{wFrjnbMQV
+0		ic{wFrgnbMZP\hA
+0		ic{wFrgnbMI]
+0		mc{wFvbnbMAa@]k@
+0		mc{wFvbnbMm@D
+0		mc{wFzbnbM?C
+0		oc{wF~knbMy@Z
+0		sc{wFjknbMBR
+0		sc{wFjknbMi@e@Ow@
+0		sc{wFtfnbMJm@d@kA
+0		sc{wFtfnbMCy@
+0		wc{wFzdnbMH_A
+0		wc{wFzdnbM]D
+0		}c{wFxmnbMk@]
+0		cd{wF~}mbMVNr@e@
+0		md{wFzonbMPo@AQ
+0		md{wFh`nbMjAFJ`@TLI\
+0		md{wFh`nbMMU
+0		ud{wF`enbMa@s@
+0		{d{wFr_nbMFc@NO
+0		{d{wF|bnbM[N
+0		{d{wF|bnbM]mA
+0		{d{wFp|mbMVl@
+0		ce{wFzymbMFtA
+0		gf{wFlymbMaAO
+0		ie{wFzlnbMc@C_@[
+0		me{wFlhnbM?k@Pe@
+0		se{wFh`nbMVU
+0		se{wFh`nbMcAeAa@O
+0		we{wFlcnbMCE
+0		ye{wFn`nbMDE
+0		{e{wFfcnbMg@e@
+0		af{wFdinbMRW
+0		af{wFdinbM[_@Ek@
+0		cg{wFxfnbMHaA\o@
+0		cg{wF`bnbMh@q@
+0		cg{wF`bnbMYc@
+0		mg{wFzknbM\YL{@
+0		mg{wFzknbMi@?M^
+0		mf{wF|{mbMp@R
+0		wg{wFngnbMJI
+0		wg{wFngnbMSe@Fg@
+0		}g{wF|`nbM[iB
+0		eh{wFxcnbM@O^g@
+0		ih{wF|xmbM?ZXhA
+0		yh{wFr}mbMEa@
+0		_i{wFp|mbMn@M
+0		kj{wFnonbM@G
+0		ui{wFl`nbMf@ZNK
+0		ui{wFl`nbMB[_@UIS
+0		yi{wFbhnbMb@J\_@
+0		yi{wFbhnbMOmA
+0		cj{wF~lnbM]Q@YJGRR
+0		gj{wFlbnbMd@?Zj@
+0		gj{wFlbnbMP_A
+0		mj{wF`inbMR]
+0		{j{wF|cnbMJ[
+0		wj{wF`~mbMv@o@
+0		ok{wFzinbM`@Y
+0		sk{wFd_nbMV]
+0		kl{wFfnnbMEJ
+0		kl{wFfnnbMSSQs@
+0		ml{wFbinbMN{A
+0		ql{wFjjnbM`@O
+0		ql{wFjjnbMBg@
+0		gj{wF`wmbMiA[
+0		om{wFhrnbMK]c@I?S
+0		ym{wFjlnbMDQ
+0		sm{wFxknbMe@m@
+0		_n{wFtnnbMDIJJZC
+0		cn{wFvrnbMq@m@@c@
+0		oo{wFxymbMfAwB
+0		yn{wFjjnbMUtB
+0		yn{wFjjnbMSO
+0		_o{wFlpnbM^w@
+0		oo{wF`nnbMIB
+0		mo{wFzinbM`@Y|@@
+0		mo{wFzinbM{Ai@
+0		oo{wFxymbMIO
+0		so{wFdpnbMRF
+0		wo{wFjanbMjARTMVo@
+0		wo{wFjanbME]
+0		yo{wFdnnbM_@E
+0		{p{wFdonbMVN
+0		ko{wFf{mbMp@b@dAxA
+0		}o{wFxzmbML_@
+0		}o{wFl`nbMQmBPeA
+0		qp{wF~`nbMXJ
+0		qp{wF~`nbMRQ
+0		yp{wF~mnbM]I
+0		{p{wFdonbMEUFO
+0		iq{wFlqnbMAe@
+0		kq{wFfpnbMKeA
+0		wq{wFtmnbMGe@
+0		_r{wFnlnbMOYAu@
+0		ir{wFphnbMVk@z@u@Dg@G{A
+0		qs{wFngnbMb@e@ASUW
+0		qr{wF~inbMFm@
+0		as{wF|rnbMTQ
+0		as{wF|rnbMeBoAS_@
+0		es{wF|dnbMMJ@J
+0		es{wF|dnbMWg@
+0		et{wFnlnbMdA?
+0		}t{wFzknbMjA{@
+0		{v{wFlonbMC_A
+0		{v{wFlonbMi@N
+0		_w{wFlmnbMTU^G
+0		m_{wF~wmbMiA`@
+0		wa{wF`ymbMCp@QH
+0		ot{wFjmnbMSAEY
+0		ot{wFjmnbM@D
+0		}r{wFlnnbMPMR@
+0		kq{wFfpnbMO?a@y@
+0		}r{wFlnnbMe@i@
+0		ct{wFbmnbMKF
+0		wa{wF`ymbMe@@IV
+0		mb{wF|zmbMYa@
+0		ql{wFdvmbMUC
+0		wq{wF`nnbM?K
+0		iu{wFnlnbMb@?
+0		o_{wFl~mbMLz@GL@h@
+0		c_{wFzbnbMDMIK
+0		c_{wFzbnbMAZ
+0		g_{wF`bnbMBX
+0		w`{wF|bnbMHLf@J
+0		e_{wFvcnbMn@@Ax@FF
+0		o}zwFzenbMAT
+0		o}zwFzenbMb@^P\?V
+0		e_{wFvcnbMJ|@RV
+0		w~zwFjfnbMLbA
+0		si{wFlenbMn@K
+0		si{wFlenbM@K
+0		}o{wFl`nbM`@WLW?[]q@?g@
+0		wj{wF`~mbMUaA
+0		it{wFdgnbM[g@@a@F]\G
+0		qs{wFngnbMWI
+0		y{zwFphnbM^ZF^
+0		q}zwFpfnbMb@r@RJ
+0		e~zwFlfnbMRB
+0		w~zwFjfnbMP@
+0		w`{wF|bnbMQ@
+0		ce{wFzymbMc@M
+0		og{wFb|mbM`@E
+0		ch{wF`enbMAg@
+0		ih{wF|xmbMIK
+0		sh{wFpxmbMKQ
+0		qi{wF`enbMFA
+0		ij{wFtenbMQw@
+0		oj{wF`cnbMFS
+0		{j{wFf~mbMBE
+0		wj{wF`ymbMMM@Q
+0		wk{wFdknbMFi@
+0		}k{wFffnbM`@iA
+0		}k{wF``nbMH[
+0		om{wFrknbMNJZG
+0		qm{wF~knbMAE
+0		}o{wFxzmbMPL
+0		kp{wF|qnbM]O
+0		ir{wFphnbMg@a@
+0		iu{wFnlnbMJS
+0		cn{wFvrnbMBC
+0		cm{wF|qnbMB@
+0		_n{wFrrnbMZU
+0		_m{wF~qnbMFTINa@M
+0		ia{wF~bnbMEA
+0		_i{wF~wmbMg@]
+0		gezwFdhnbM[Di@z@q@I
+0	Wallach Walk	_ezwFngnbMFK
+0		{ezwFjknbMi@i@
+0		ojzwFbdnbMHi@
+0		ujzwFbenbMEX
+0		_wzwFfxmbMEH
+0		ayzwFxzmbMQ?
+0		iizwF`enbM]I
+0		cq{wF`pnbM@C
+0		kq{wFfpnbMBA
+0		ei{wFlnnbM?C
+0		_o{wFjnnbMCD
+0		kp{wF|qnbM?C
+0		kp{wFxqnbM@E
+0		yi{wFvknbM?s@Sa@
+0		ql{wFrnnbMDj@VZRCDS
+0		cj{wF~lnbM?K
+0		kl{wFfnnbMDB
+0		{p{wFdonbMAN
+0		qi{wF`enbMM]
+0		qj{wFbcnbMPV
+0		_n{wFtnnbMSE
+0		}kzwF~cnbMVa@^C
+0		el{wFjnnbMVJ
+0		oo{wF`nnbMJN
+0	Glade Arch	ed{wFhmmbMAcA
+0		ei{wFzlnbM]B
+0		svzwFr}nbMCm@M[UQk@E
+0		svzwFr}nbM{Av@{A@
+0		guzwFnqnbMBB
+0		quzwFjqnbMHB
+0		}yzwFrrmbMKI
+0		aszwFtinbMMC
+0		oszwFpinbMGC
+0		oyzwFtznbMFC
+0		sk{wFvynbMRR?No@r@
+0		cxzwF|xnbM@_@MSMCUNE^JTVDPS
+0		gyzwFpznbMSMQm@@]Ve@f@En@b@\Df@SVa@
+0		gd{wFdkmbMOuA
+0		as{wF|rnbMb@hA
+0		mm{wFzznbMX_@
+0		wszwFlinbMe@HYb@
+0		syzwFf{nbMBQ
+0		ok{wFnynbMBGZROV
+0		}{ywF`_obMNcAb@uA
+0		o{ywFv_obMFkAf@{A
+0		}zywFnxnbMPJ
+0		amzwFbtnbMb@wC
+0		e{ywFhxnbMFD
+0		{}ywFn|nbMQB
+0		g|ywFj`obMHi@
+0		g~ywFp|nbMSyA
+0		i~ywFr{nbM^s@
+0		q{ywFdwnbM@XHH
+0		oczwF`znbM`Ai@
+0		uzywF|znbMeBp@
+0		qrzwFbvnbMAzB
+0		}pzwFxgobMEB
+0		me{wFhfobMEQ
+0		{tzwFjmnbMEC
+0		}izwFdpnbMuEsA
+0		ojzwFtrnbMuEoA
+0		auzwFfmnbMGE
+0		spzwFfwnbMFO
+0		qpzwFpxnbMAY
+0		cnzwFjsnbM^mC
+0		ytzwFlmnbMAA
+0		suzwF|~nbM_@i@
+0		opzwFtiobMCG
+0		se{wFveobMUWeAQu@kAsAeAi@q@
+0		spzwFvwnbMK[
+0		stzwF|fobMC[
+0		qkzwFxxnbMs@Uo@C]Rg@Ae@XQRg@|AyAfBUbA
+0		utzwFtqobM^}A?W
+0	Nell Singer Lilac Walk	kxzwFhjobM\k@
+0		eqzwFpqnbM`@P
+0		mnzwFleobMoAjA
+0		_rywFhjobMOh@
+0	Inscope Arch	ugywFxxnbMT`A
+0		_zywFhgobMGQB_A
+0		}xywFr_obM_@c@Eo@
+0		ojywF||nbMCF
+0		gxywFp_pbMMM
+0		wyywFvgobMGM
+0		{hywFr|nbM@F
+0		iiywFz|nbMLG
+0		avywFjznbM\J
+0		uxywFb_pbMSA
+0		cuywFvznbMVL
+0		orywFrkobMi@tB
+0		{fywFxvnbMPLJ\
+0		eyywFdfobMQp@
+0		gpywFvfobMg@H
+0		qnywFlynbM?hB
+0		qyywF`iobMEi@
+0		}oywFf|nbMCf@
+0		izywFfhobMGV
+0		{hywFr|nbMTs@
+0		khywFh}nbMD@
+0		uyywFfhobMS?IW
+0		mgywFhwnbMKTBX
+0		{oywFd_obMEu@
+0		ijywFr|nbMO@MU
+0		geywFdoobMe@r@q@U
+0		qyywF|fnbMD@
+0		ofywFbmobMLA
+0		c_zwF~bnbMCH
+0		{dywFxnobM@F
+0		{dywFjnobM?L
+0		ikywFduobMTa@Hg@Ei@Qa@g@o@cD{A
+0		kgywFjmobMZG
+0		{zywFpfnbMLP
+0	Northwest Central Park Loop	cm|wFhjnbMUIa@eA_@[
+0	Northwest Central Park Loop	sf|wFhlnbMi@g@a@s@QFc@t@[B[K
+0		ukywFbmnbMIZ
+0		ml|wFbknbMUY
+0		k`ywFvvnbMPi@
+0		_lywF~mnbMGR
+0		if|wFrlnbMII
+0		e~{wFtanbMSdB
+0		qkywF~lnbMBLb@XIVk@_@
+0		ol~wFv{kbMKoAw@J
+0		gn~wFhnlbMKJ
+0		me~wFnvlbMIK
+0		ke~wFzqlbMOE
+0		ce~wFrvlbMIC
+0	Northwest Central Park Loop	_b~wFhzlbMCE
+0		ce~wF|qlbMGA
+0		k`~wFjflbMLuBQQ{@KZkB
+0		ad~wFlrlbMa@O
+0		q_~wFnflbMYC
+0	North Woods	gn~wFv~kbM`@A
+0		qc~wFlrlbMO?
+0		u{}wFtclbMLoC
+0		is~wFv{kbMCR`A^
+0		{_~wFjnlbM`BcC
+0		im|wFncobMj@KPU|@]d@uABkA
+0	Central Park Driveway	mxzwFjynbM^Z`@t@HjA
+0		wx{wF`enbMMNGIBO
+0		gw{wF~anbMAF
+0		a}{wF~bnbMHU
+0		sx{wFjhnbMCH
+0		ey{wFvdnbMC?
+0		_y{wFzgnbMF@
+0		{x{wFdinbM?B
+0		cx{wFnlmbMDY
+0		os{wFbsmbM?@
+0		_y{wFxdnbMEA
+0		y{{wFjbnbM@I
+0		yk|wFfcmbMJF
+0		gx{wFbmmbMBS
+0		aj|wFlfmbMf@aB
+0		a|{wFrbnbMFG
+0		ku{wF~anbMGE
+0		{x{wF|dnbMBB
+0		_y{wFdgnbMDO
+0		qy{wFxgnbMP@
+0		yk|wFfcmbMNW`@E|AdAJp@CNKG
+0		a~{wFdanbM\P
+0		y}{wFt`nbMd@G
+0		os{wFdsmbMEJ
+0		_x{wFbgnbMGI
+0		_k|wFlqmbMJH
+0		ay{wFndnbMYK
+0		e{{wFbdnbMNq@o@]Ok@Bo@Xi@SOU?
+0		}z{wFzbnbMAM
+0		gx{wFxfnbMSNKQ@KLJNIMKL]
+0		iw{wFfbnbMw@fA
+0		yr~wF`ylbMAG
+0	North Woods	g}~wFlolbMCW
+0	North Woods	k}~wFtnlbMN_BKm@m@W_BE_@]Kq@
+0		{r~wFxxlbMSs@
+0		e|~wFbblbMUG
+0		cw_xFxykbME?
+0		kv_xFv}kbMFK
+0	Northwest Central Park Loop	{t~wFnglbMB_@WWCi@
+0		yx~wFdflbMSa@
+0	North Woods	kg_xFfglbMv@UNQ
+0		oe~wFbbkbMFH
+0		}a~wFx`kbMEE
+0		yb~wFz_kbMCC
+0		cf~wFbakbMMA
+0		sc~wF|~jbML[
+0		cb~wFr`kbMUW
+0		}b~wFv_kbMII
+0	Huddlestone Arch	m|~wFlnkbMKa@
+0		wo_xF~tkbMUE
+0		m{~wFdpkbMIL
+0		kt~wFpnkbMOB[l@AlB
+0		ax~wF~jkbM^PVALy@
+0		op_xFptkbMB_@
+0		ob_xFvklbMqAu@_AoA
+0		m{~wFvtkbMBe@
+0		{__xF|llbMa@D[u@
+0	Northwest Central Park Loop	wg_xFtrkbMx@c@Te@
+0		w{~wFrpkbMg@a@Mm@
+0	Northwest Central Park Loop	qa_xFtskbMk@EWk@
+0		it~wFr~kbMHQ?a@
+0		u__xF`qkbMNG@T
+0		mc_xFrilbMl@h@`AXJ|@F?
+0		_q~wFp`lbMYY@c@e@Na@e@
+0		eb_xFdpkbMXAfAj@P~A
+0		ko_xFh_lbMA[
+0		s__xFj|jbMBQ
+0		ij_xFjmkbMAA
+0		cg_xF`lkbMCE
+0		_c_xF~ilbMFO
+0		u}~wFvjlbMJQ
+0		sl_xFlpkbMAD
+0		uy~wFrjkbMNC
+0		ep_xFlpkbM@C
+0		ch_xFlmkbMGG
+0		}`_xFj~jbMCA
+0		}d_xFlrjbMAA
+0		_g_xFdlkbMCC
+0		ks~wFhskbM\a@
+0		es_xFr`lbMQM
+0		ko_xF|jkbM?K
+0		s~~wFbnlbMf@H
+0	North Woods	oq~wFd}kbMCC
+0		mp_xFxtkbMAG
+0		e{~wF|pkbM?G
+0		q__xFzllbMI@
+0		ya_xFlklbMCC
+0		eh_xFzdkbMBG
+0		e`_xFrklbMHk@
+0		o{~wF~tkbM@G
+0		i__xFtmlbMFF
+0		e{~wFdskbM@C
+0		ud_xFjjlbMJa@
+0	North Woods	kq~wFj}kbMCE
+0		}y~wFvjkbMFC
+0		kl_xFnnkbMCI
+0		{m_xFvlkbME?
+0		ih_xF~dkbMBC
+0		kd_xFtqjbMTB
+0		wv~wFpukbMMV
+0		wg_xFvmkbMGE
+0		_h_xFpmkbMCC
+0		oc_xFpilbMKI
+0	Northwest Central Park Loop	wm_xFhtkbMLm@d@w@
+0		kj_xFhmkbMk@Om@J
+0		{z~wFxqkbM@[M?
+0		mp_xFlskbMG]Hi@
+0		___xFzqkbMpA^RVNA
+0		a__xF|mlbMLD
+0		wn_xFvlkbME?
+0		}n_xFvlkbMM?
+0	Northwest Central Park Loop	ga_xFbtkbMIM
+0		iv~wFnkkbMZLLMT@
+0		an_xFvlkbMU?
+0		wf_xFdlkbMG?
+0		y{~wFpukbMHQ
+0		_o_xFrokbMEM
+0		sv~wFvukbML}@h@Un@D
+0	North Woods	wp_xFprkbMSy@Ub@S@
+0		cp_xFhpkbM`A]|@b@
+0		un_xFrrkbMOI@O
+0		kp_xFpskbMAC
+0		wb_xFfhlbMWh@
+0		uq_xFnalbMo@[
+0		gf_xF|qjbMO`@
+0	North Woods	ci_xFhgkbMJG
+0		ed_xFxflbME^
+0		ez~wFdmkbMi@W
+0		c{~wF`skbMHI
+0		{`_xFdklbMa@aA
+0		wi_xFlmkbMQA
+0		un_xFfskbM?Y
+0	North Woods	sq~wF`}kbMOO
+0		wd_xFppjbMLXEb@MA
+0		ka_xF|skbMWqBQ]yA_Bo@Qm@JII
+0		i{~wFpskbMBK
+0		s__xFrllbMRq@KG
+0	North Woods	_j_xFbgkbMZD
+0		e{~wFtpkbMGO
+0		ux~wFjqkbMv@M]a@KaABeB
+0		c__xFrklbMV?T[
+0		kh_xFdmkbMi@@
+0		g`_xF|}jbMRq@
+0		mo_xFl~kbM?o@
+0		ul_xFrpkbME?
+0		{n_xFxskbM[d@
+0	North Woods	as~wF~zkbM\\
+0		oa_xFbjlbMMP?^Q@
+0		ol_xFdnkbMk@m@
+0		gg_xFdglbMDJz@T
+0		g{~wF|pkbMOI
+0		ox~wFtrkbMQJWC
+0		at~wFt}kbMSB
+0		kt}wFftlbME@
+0		mt}wFbulbMAK
+0		it}wFbulbMC?
+0		}u}wF|~lbMISBSl@q@SuCb@i@
+0		{b_xFtzkbM~@yAIoA
+0		q`~wFpkkbMd@J
+0		ec|wF~nlbMMI
+0		{b|wF|_mbMi@aB?a@
+0		uu|wF|blbMNa@
+0		qa|wFlolbMS?
+0		eb|wFlolbM_@M
+0		md{wFzonbMi@FQQ
+0		kf{wFjonbMAC
+0		mf{wFfonbMAE
+0		_pzwFpanbM`@[hA?dDtAx@~@nA`Dj@`Ab@`@fBv@
+0		orzwFlknbM_@oAwAoAGg@gA?
+0	72nd Street Transverse	orzwFpcnbMA_@
+0	Wallach Walk	}lzwFfxmbMe@O
+0		}izwFzanbMG\R\Fh@
+0		k|zwFl_obMaEFkD\q@K
+0		wc|wFxylbMJh@
+0		ac|wFbslbM~@wC
+0		kc|wFb{lbMh@zB
+0		}xzwFt~mbMTc@L}@nAoA
+0		wxzwFdenbMx@lBPnA
+0		mqywFblobMw@c@
+0		}rywFziobMyA{@u@s@
+0		aqywF`kobM{@e@
+0		esywF~jobMyA{@cCkC
+0		k}ywFhonbMr@b@
+0		w{ywFlpnbMn@fAd@bB?~@]tA
+0	Northwest Central Park Loop	wv|wFhvmbMe@EkA|Aq@Xc@@eDSqBc@aB}@aAaA
+0		yk}wF~rmbM[lA
+0		ubywFlqobMMIiA`Aw@Xs@~@EXDnBe@fAVz@VT
+0		aaywFpmobMaAJ
+0	Riverside Walk	_hcxFrtlbMy@Sq@m@
+0	Riverside Walk	kkcxFprlbM_CoB
+0	West Harlem Piers Park Path	wncxFtmlbMSj@
+0	Riverside Walk	kocxF`olbMuBgB
+0	West Harlem Piers Park Path	mncxF|mlbMM@eCeA
+0	Riverside Walk	ascxFxklbMyAmC
+0		_mcxFfolbMwAnAmBuD
+0		atcxFfjlbMZx@
+0		ascxFxklbMCF
+1	Brooklyn Bridge Promenade	uqnwFt~tbMf@s@
+1	Battery Bikeway	sylwFj_wbMr@GZQt@mA
+1	Battery Bikeway	scmwFvmwbMPEBu@
+0	Riverside Park South Bike Path	unzwFn{rbM]c@GYDMmHkF_`@wV
+0	Cherry Walk	egbxFxnmbM`@N
+0	Cherry Walk	wp_xFzkobM{^kUqBaB{IwFmC}BoFaDkByAqKwFeJyF
+1	Hudson River Greenway	}rwwFl}tbMpXnQbTfGpAR
+0	Hudson River Greenway	}wowFzsvbMcEu@}IeAg@QkSeCkScBwGU
+0		ydnxFfjfbMBK
+0		cdnxF|jfbMUU
+1	Old Slip	ezlwF`subMKH
+0	Pulaski Bridge	wntwF~tjbMmAU_@X
+0		udaxFt|lbMg@`B
+0		{eaxFp_mbMHF
+0		ecaxFn`mbM_Aq@
+1	Battery Bikeway	u~lwFt~vbMVV`ATfAW
+0	Pulaski Bridge	ertwFbujbMMV
+0	6½ Avenue	{{xwF~_pbM`Al@
+0	6½ Avenue	q|xwFd_pbMTX
+0	6½ Avenue	yyxwFlapbMb@V
+0		uztwFxxtbMSM
+0		}ytwFl}tbMu@g@
+0		e{twFd_ubMl@mBi@]
+0		uztwFp_ubMy@i@
+0		krtwF`aubMt@aC
+0		{stwFf~tbMKZ
+0		aqtwFlbubMMKz@kC
+0		yttwFt~tbMw@[
+0		istwFj`ubM\TuAfE
+0		{utwFj`ubMd@Z
+0		}stwFj_ubM[Uk@dB\T
+0		i}vwFncjbMDI
+1	West 29th Street	uvvwFhpubMEV
+0		_ekxFzzgbMEN
+1	Hudson Street	}xpwFdtubMCC
+0		c~uwFhxtbMFQ
+0		{n`xFf|lbMxAiD
+0		kskxFbcdbMRMDTOHIQ
+0		}mjxFxaebMaDiC
+0		srjxFx}dbMcBb@
+0		kbkxFrydbMAKRIGkA
+0		ekkxFz}dbMVk@Z?pBkBt@Iz@L
+0		q|jxFtydbMMGWF
+0		c~jxFl|dbMQv@Lf@p@JTO
+0		meexFhrnbMMGBK
+0		_gexF`snbMECCNmAu@
+0		am`xFr}lbMAD
+0		ch`xFrvlbMFO
+0	Hudson River Greenway	ib}wFx_qbM}@aAwAy@{BK
+0		cf`xFfvlbMQM
+0		og`xFjvlbMKG
+0		uf`xFxulbMMI
+0		at{wFjcnbMCC
+0		su{wFxanbMKIWZ
+0		ozuwFtsubMX@
+0		astwF|wubMZQ
+0		yntwFtxubM[GWW
+0		q}uwFluubMc@U
+1	Hudson River Park Esplanade	uctwFb_vbMjAz@dEtA
+0		ot{wFpbnbMRK
+0	West 27th	ozuwFzctbMl@mB
+1		c}{wFxiqbMN@
+1		az|wFtvpbMqAN{DFsCYaD_A
+0	East Midtown Greenway	}xwwFlzkbMeBoB
+0	East 60th Street Pedestrian Bridge	sxwwFldlbMZk@
+0		yg~wFdkkbMCu@
+0		ooywFprpbMKG
+0		yrywFhnpbMIU
+0		qsywFxppbMFK
+0		enywF~qpbMFB
+0		woywFb_obMo@d@Uj@G`ATjCOdA
+0		_uzwFj~mbMNc@
+0		otzwFf}mbMDoALk@
+1		ol{wFxrpbMZBFN
+1		o~{wFziqbMqFyA
+0		a_{wFffqbMO]qFmD
+0		_e{wF|~pbMi@_@
+1	Park Row	cnnwF|~tbM{AoE
+0	Hudson Boulevard West	{|vwFlmtbM}AuA
+1	Hudson River Park Esplanade	mvqwFzivbMxJb@~VvC
+0	New Wave Pier	_huwFvbnbMkEkD
+0	East River Esplanade	c|twFrmnbMkBuA
+0	East Midtown Greenway	yawwFjmlbMoH_F
+0	Central Park Outer Loop	ks|wF`albMtBrA
+0		opdxFnfobMxAoF
+0		eydxFr_obMtFxCf@b@
+0		qwdxFzvnbMT{@
+0		qudxF`{nbMv@}C
+0		evdxFptnbMKLOC?]
+0		{tdxFhbobMK[
+0		wvdxFdaobMBO
+0		gwdxFz`obMBM
+0		cxdxFj`obM@G
+0		axdxFb`obMGC
+0		ixdxF~_obM@G
+0	High Line	omvwFvotbMnAUv@NdGzD
+0		shdxF|ykbM[BSr@
+0		gkaxFtsmbMJ[
+0		a~vwFhjtbMK^@j@
+0		gr{wF|`nbMt@@
+0		meexFlenbMcBxG
+0		q`{wFlsnbMQ?WS
+0		mq{wFpqnbMBC
+0		}~{wF|`nbMIY_E_CiA}@K^
+0		u}}wFjhlbMAo@
+0		udnxFzifbMJD
+0		idnxF`jfbM@G
+0		gdnxFxifbMKE
+0		u_nxFffdbMK?
+0		a`nxFffdbMGDB{AUG
+0		{`nxFhcdbMe@j@c@MOa@Y]K?
+0		e`nxFhddbMRe@EUc@Z
+0		abnxFtddbMKR
+0		c`nxFffdbM?Q
+0		}xmxFdodbMS[C]
+0		uymxF|mdbMOh@
+0		ymmxFbtdbM^V
+0		_imxFl~dbMYLSO
+0		_jmxFx~dbMq@j@[E
+0		q{xwFfznbMKG
+0		wyxwF`|nbMy@i@?SJAv@h@
+0		uukxFd}fbMh@@
+0		kukxFh}fbM@c@
+0		iukxFv~fbMAe@
+0		ed|wFx{lbMIS
+0		}}mxFd`dbMQBK^YHAX
+0		e}vwFfhtbMGP
+0	North Woods	qp_xF`jkbMQC
+0	North Woods	ks_xFbmkbMNj@QvAHN
+0		ko_xFl_lbM?C
+0		kj_xFnhlbM@G
+0	North Woods	ck_xFdykbMLl@Bz@^z@
+0		{e_xFbvkbMCQk@u@Ke@
+0		ga_xFrtkbM?O
+0		cgkxFlfgbMJD
+0		wi~wFf~obMaBaA{@{A
+0		wnaxFp~lbMEP
+0	Fort Washington Park Greenway	oylxF~yfbMYM
+0		ebaxFlvlbMp@yB
+0		}}`xFjylbM@C
+0		w~`xF~tlbMw@i@
+0		{}`xFfylbMBI
+0		}t~wFl_sbMTJ
+0		yp~wF`bsbMBo@
+0		gb_xF`csbMv@a@
+1	East River Greenway	m}lwFjnubMwK}R
+0	Dyckman Street	ujkxFbdebMl@GxAy@
+0		ieaxFhilbMc@YVy@x@f@Xy@
+0		w}`xF|xlbMSONe@RL
+0		ixywFlrnbM|@Kj@P
+0		qvywF`rnbMCe@d@]DQeA]
+0		sbaxFbelbMFAUhA
+0		gnmxFbwdbMr@}@EI
+0	Horatio Street	gxswFdytbMA]
+0	North Woods	ij_xFfhlbMXJ
+0		_h|wF~jjbMoAy@KZUQ
+1	Battery Bikeway	ybmwF|dwbMGj@BnB
+1	Battery Bikeway	ybmwF|dwbMHiB
+1	Battery Bikeway	sylwFj_wbM_BYaAB
+1	Battery Bikeway	{~lwFr~vbMD@
+0		gnaxFrambM]v@
+0	John Finley Walk	ydzwFntibMVa@
+0		o}|wFpjjbM?A
+0		a_}wFfojbM?B
+0		q}|wFxjjbMA?
+0		y}|wFjkjbMAA
+0		y}|wFbpjbMEC
+0		s}|wF~jjbMAA
+0		u}|wFbkjbMAA
+0		so_xFz}ibMiEzM
+0		qs_xFbgjbMlBlA
+0		wt_xFzijbMlBlA
+0		iu_xFjkjbMjBnA
+0		ew_xFldjbMPbAl@^r@M
+0		wt_xFzijbMMiA
+0		kx_xFfgjbMv@U
+0		o|cxFfzkbMo@c@DQWk@[S
+0		m_dxFpvkbMDK
+0		_edxF`mkbMIV
+0		ozbxF`mlbMGN
+0		wzbxFpmlbM]RGT
+0		{{bxFlolbMAQ
+0		ozbxF`mlbMWIkB`@c@t@
+0		w_cxFnolbMWx@
+0	Saint Clair Stairs	{`cxF`rlbMm@i@eA[
+0		o`cxFhqlbMKV
+0		mnaxFx}lbMDM
+0		eoaxFlylbMHW
+0		eoaxFhxlbMJ_@XPM^
+0		_c|wFlmjbMNJDO
+0		ac|wFhkjbMg@[IR
+0		yibxFttlbMH[
+0		mjbxF`vlbMHU
+0		_jbxFlulbMHIEOKDFR
+0		agbxFdzlbMBG
+0		iebxF|vlbMNF
+0		ojbxFpslbMCY
+0		akbxF`tlbMCA
+0		ekbxFbulbMm@R
+0		iebxF|vlbMyCmBUFKT?VVZ
+0		a}|wFvpjbM@C
+0		qi}wFdijbMiArD
+0		gh}wFjdjbMCF
+0		yf}wFvejbMq@c@ODWx@@`@
+0		qh}wFzijbMOd@
+0		wh}wFfjjbM]U
+0		uf}wFnejbMLP
+0		sd}wFfcjbMELi@J_AtC
+0		si}wFxojbMaBwA
+0		ek}wF~njbMZo@AWk@Yo@fB
+0		qg~wFxmjbM@@
+0		{f~wFjnjbM@E
+0		g`~wFvfjbMa@rAi@x@I|@Wt@
+0		cv}wF~qjbMIl@[h@
+0		wq}wF`vjbMaAq@C]e@Y
+0		qk~wFldjbMt@d@
+0		}g~wF`ajbMsAdEl@`@
+0		_}}wFrojbMv@d@LIAYs@g@
+0		ur}wFhujbMIV
+0		ub~wFpkjbMeAq@
+0		ai~wFvcjbMr@d@AF
+0		}s}wFvojbMe@~AeBiA
+0		ui~wFzgjbMY~@
+0		s`~wFtijbMN~AiAV
+0		se~wFxhjbMIE
+0		}t}wFzrjbMe@vA
+0		iv}wFnujbMf@ZPMbAp@
+0		aw}wFlmjbMg@~A[SOPSfA~BzA
+0		}b~wFbmjbMlCbB
+0		qx}wFfpjbM[b@Kp@
+0		uq}wFxtjbMa@L
+0		ab~wFfjjbMeAu@
+0		{l~wF`djbMb@XDKL_@c@Y
+0		gy}wFxsjbM?JZRRs@
+0		ga~wFdijbMjCfB
+0		yz}wFnpjbMj@Z
+0		of}wFzwjbMDNJC
+0		wd}wFdyjbMHF
+0		sc}wF`zjbMoAgAUE
+0		g~}wFjkjbMIZQD
+0		amaxFlbmbMM`@VNL_@WQ
+0		seaxFv{lbMCC
+0		{_axFf`mbMwDoC
+0		eeaxF|~lbMKG
+0		qeaxFx_mbM~@p@
+0		k_|wFvijbMOHDRNGEU
+0		k_|wF`kjbMUK
+0		g_|wFpkjbME[
+0		u`|wFpjjbMKECNJDBO
+0		y_|wFnjjbM[B
+0		y~{wFvkjbMMEGNNLDW
+0		i`|wF`mjbMBWSC?VNB
+0		}_|wFlljbMKW]?BU
+0		a_|wFhijbMGP
+0		aa|wFxkjbMFJ
+0		_a}wF~ckbMxA|@
+0		e~|wF|ekbMNH
+0		w`}wFjhkbMN_@
+0		g`}wFjgkbMDK
+0		a`}wF~fkbMIGVy@
+0		gs|wF|skbM@C
+0		}s|wFnskbM@C
+0		}s|wFnskbMB@
+0		y{|wFvmkbM@?
+0		s}`xF|`lbMVj@
+0		{|`xFhblbMFD
+0		emaxFlskbMOj@UTc@C}Ag@oAP
+0		}q`xFx`lbMDG
+0		}s`xFtclbM~@{A
+0		wv`xF|elbMrA|@
+0		ct`xFzglbMDB
+0		y`axFj`lbMbBrA`@O
+0		gaaxFj`lbML?
+0		ocaxFp~kbMfAx@
+0		ucaxFh~kbMDF
+0		{caxFb~kbMDD
+0		}caxF~}kbM@B
+0		mfaxF`|kbMAP
+0		uuaxFxrkbMDS
+0		uuaxFxrkbMGT
+0	West 116th Street	k{`xFv~kbMBG
+0		ss`xFxglbMIJ
+0		}s`xFdhlbMCL
+0		at`xFrhlbM?D
+0		sc`xFxmlbMVP
+0		wk`xF~clbMJh@|@zApAdAb@Bj@[Zu@Bq@
+0	Giraffe Path	}``xFfglbMa@Yk@A
+0		mfkxF`bebM?_@
+0		u`axFpslbMGE
+0		o`axFtslbMEC
+0		m`axFvslbMM^
+0		eaaxFntlbMCA
+0		}`axFttlbMGE
+0		c_axF~ulbMy@i@
+0		{n}wFzambMd@@
+0	East River Esplanade	o_uwF|jnbMsBcB
+0	Roosevelt Island Greenway	q{ywFdqhbM~BjA|@~BbD|ErE~DbHvEjM|KxPzMjCzDrEzDfA~AlBnA|@FZN~AhATRFt@j@bApBdA|AfBSP
+0		}b`xFl|mbMEJ
+0		kc`xFt{mbMLVJE
+0		ob`xFl{mbM?@
+0		ea`xFr|mbMIE
+0		wk{wFblnbMAA
+0		ej{wF`onbMJQRAj@x@~@p@vA@
+0		ij{wFfonbMBE
+0		_j{wF~knbMDG
+0		eg{wF~fnbM@E
+0		kg{wFdgnbMDE
+0		cu{wF|wnbMGG
+0		{gzwFdaqbMEVHS
+0		oozwFhzpbMSM
+0		cizwFfypbMPg@
+0	Riverside Walk	_e|wFrwqbMqWcP
+0	Riverside Walk	}n}wFnzpbM}@i@
+0	Hudson River Greenway	}n}wFnzpbMVG
+0		en}wFfzpbMg@k@Ga@
+0		ae|wFhtqbM@U
+1		kjvwFhxubM?F
+0		_v|wFftmbMMP
+0		es{wF`ynbMQX
+0		}o{wFn{nbM_@c@WISAc@R
+0		qm{wFx|nbMPQ
+0		so{wFbpnbM?@
+0	Ramble Stone Arch	cp{wFtonbMNL
+0		ig|wFrnnbMXV
+0		yr|wF~cnbM_ABk@t@
+0		_k|wFhqmbM{AJ
+0		mj}wFhqmbMRWvEz@jFd@PT
+0		ss}wFbylbM^B
+0		ys}wFjxlbMDmATmA
+0		a|}wFjplbMR~CEf@
+0		k_~wFvylbMLbA
+0		og~wF~ylbMN]VIb@Cj@L
+0	Riverside Walk	yq~wFzapbM}]_U
+0	Riverside Walk	{p}wFdypbM}KyG
+0	West Harlem Piers Park Bike Path	_hcxFrtlbMoC_D
+0	Riverside Walk	yh~wFphpbM_HuE
+0	Riverside Walk	y}}wFjppbMsGwDkAaA
+1		}r~wF~zobMNU@g@
+0		g`~wFlepbMl@`@
+0		y~}wFnfpbMd@XRn@C\
+0		ee~wFlapbMRI
+0		ee~wFlapbM@[
+0		wg~wFr_pbMLa@
+0		ig~wFp~obMZaAnAv@
+0		}c~wFf~obMYjAKA
+0		wd~wFr`pbMDN
+0		mf~wFn|obM@eAa@sAW_@iAq@
+0		}bwwFpftbMJUL?Lm@
+0		kcwwFjetbMXN
+0	Hudson Boulevard West	_cwwFhgtbM^\
+0		cbwwFzetbMFPZ@\f@
+0		ibwwF|ctbMCL
+0	Center Boulevard	}stwF|glbMsAo@YUAW
+0	Center Boulevard	_stwFjhlbM]M
+0	Center Boulevard	wotwFfilbMgB[
+0	Center Boulevard	kntwFrilbMk@K
+0	Hoboken Newport Walkway- Hudson River Waterfront Walkway	wg_xFfurbMN\HfAX`Aa@dBRj@f@\
+0	Hoboken Newport Walkway- Hudson River Waterfront Walkway	ma_xFlasbM|@b@
+0		i~vwF`ltbMNm@b@SBSI[
+0		i~vwF`ltbMXG
+0		g|vwF|ktbM[q@
+1		co}wFrtpbMrAf@j@U
+0		guxwFlfkbMWQKZ[U
+1	Battery Park City Greenway	eznwFlhwbMfG~@JJ
+1	Battery Park City Greenway	qqnwFxjwbMa@zE
+0		egkxFhqcbMiBkD
+0		cikxFrrcbMg@sCMuCa@wAAc@
+0		elkxF`ecbMUdA
+0		}lkxFhhcbM[p@
+0		{lkxFfgcbMA`@
+0		}lkxFvgcbMl@vBj@dE
+0		cjkxFtqcbMDf@
+0		cikxFrrcbMVdA
+0		m{dxFdqnbMQp@
+0		k|dxF|snbMFW
+0		{{dxFzrnbMAHIEJC
+0		s`fxF~unbMf@qC^eAnAoH
+0		{}exFzlnbMQw@k@i@oAVm@p@c@R{@B{@_@
+0		e`fxFvtnbMc@C?V
+0		s}exFzknbMUE
+0		i}exFpjnbMOy@i@c@{@Ni@lA
+0		gafxFbjnbMSM
+0		}|exFjinbMOB
+0		wgfxFnlnbMs@jE
+0		cifxFbrnbMpC|@fBP
+0		qafxFzhnbMEw@Ui@OOm@Aw@HOL_@bBY\
+0		udfxFvfnbMViB
+0		gffxFtenbMu@i@{@mAq@wB
+0		ghfxFdlnbMPs@Om@BY
+0		sjfxFz_nbMe@F
+0		__fxFtgnbMY{AQKkA`@
+0		k~exFfonbMGO
+0		o~cxF~cobM_@pB
+0		ajdxFd~nbM@^
+0		gmdxFp_obMk@|AB^
+0		yiexF|qnbM_By@
+0		qlaxF|elbMDB
+0		ulaxFxelbMBB
+0		}taxF~wkbM?@
+0		ysaxFxwkbMAB
+0		}taxFbxkbM??
+0		ypzwF`{rbM?K
+0		{pzwFbzrbMk@_AGRSWGJ
+0	Riverside South Park Esplanade	uszwFdyrbMd@X
+0		gfaxFdqlbMM@
+0	Low Library Steps	khaxF~ulbMQK
+0		qhaxFdmkbMCC
+0		epaxFrwlbMIG
+0		caaxF|slbMCA
+1	Battery Bikeway	gbmwF`awbMb@y@|@U
+0		}~axFlrkbMcAdD
+0		_cbxFp|kbMVVTp@
+0		wp`xFb`lbM?o@
+0		idbxFndlbMTDNZE`A
+0		ilaxF|ambMAFMIGP
+0		abbxFfokbMJpAKTg@BO_@[}B
+0		g~axFnhkbMJXIl@g@Hk@W
+0		kszwFjxrbMOT
+0		gdaxF~wlbMEC
+0		adaxFdxlbMEE
+0		mdaxFlylbMfBhANE
+0		acaxFbvlbMmAvD
+0		edaxFhcmbMOM
+0		qaaxF|~lbMpAeE
+0		q`axFt{lbMBB
+0		m`axFx{lbMJF
+0		ccaxF`vlbMnElC
+0		cgaxFtzlbMlAwD
+0		}caxFfxlbMCA
+0		sdaxFxylbMCA
+0		u`axFp{lbMGSeBkA
+0		}daxFrylbMEC
+0		wdaxFvylbMEC
+0		}taxFdykbMBI
+0		qvaxFtykbM??
+0		uvaxFrykbM@@
+0		euaxFrtkbMF@
+0		}uaxFnskbM?B
+0		auaxF`ukbMAB
+0		uuaxFdtkbM@@
+0		muaxFntkbMB@
+0		o~`xFnvlbMr@b@
+0		euaxFjukbM?B
+0		{uaxF|skbM@B
+0		}uaxFrskbM?D
+0		_uaxF|tkbMAB
+0		suaxFftkbMBB
+0		u|`xFdwlbMB@
+0		yuaxF|ukbM@L
+0		iuaxFptkbMB@
+0		cuaxFdukbMAD
+0		yuaxF`tkbMBB
+0		{|`xFrwlbML_@s@c@
+0		_uaxFxtkbM?B
+0		ouaxFjtkbM@B
+0		}uaxFxskbM@B
+0		yuaxFxukbM?B
+0		_~`xFnylbM@C
+0		w}`xF|xlbMRo@
+0		gmmxF|hdbMf@p@Rp@GZ\^jAEvD}B
+0		kkmxF`ldbMr@Wq@gAJw@Xw@GW
+0		cjmxFpedbMd@_@
+0		kgmxFrddbMr@nB
+0		ehmxFpkdbMlAo@
+0		wemxF`jdbMdAUGf@
+0		ikmxF`idbMUl@
+0		kgmxFrddbMJsAIeANS
+0		kimxFpcdbMG@
+0		kjmxFxddbM@K
+0		gmmxF|hdbMCG
+0		qbmxFxidbMBA
+0		_mbxFjulbM`@oA
+0		}kbxFzrlbMNi@
+0		yt_xFjqnbMAA
+0		ojkxFnvfbM]Nk@An@pA
+0	Fort George Hill	_{jxFbbfbMw@]eAsB_A}@qDiAa@[yB_EyAsA_CaAuAOy@F
+0		uvkxFnmebMGq@
+0		{soxF`nbbMcBbDyAj@
+0		mu_xF|pnbMCA
+0		sv~wF|rmbMPk@
+0		av~wFpqmbMHY
+0		_u~wFjrmbMJY
+0		qu~wFvsmbMPk@
+0	West 100th Street	co_xFp}nbMPm@
+0		on_xF~{nbMES
+0		yq_xFbxnbMZz@~@r@
+0		eeaxF`qlbM@@
+0		{eaxF|{lbMEC
+0		aeaxFh|lbMKA
+0		ceaxFbqlbMFD
+0		meaxFf|lbMMI
+0		ob`xFt{mbM?D
+0		qb`xF~{mbMgA]
+0		qb`xF~{mbMPTNEEQ[@
+0		ob`xFn{mbM?D
+0		}eaxFnplbMVP
+0		exaxFzzlbMIE
+0		mwaxFl{lbM[GFQRX
+0		mf`xFxzmbMRJFI]I@F
+1		qm{wFf{obMAD
+0		ss`xFhinbMH[`@g@x@[
+0		gb`xFbinbM@C
+0		wz`xFjymbMU^
+0		itaxFvplbMq@tB
+0		ydaxFdqlbMBB
+0		}naxFbmlbMrA|@
+0		kraxFvrlbMDOcAo@
+0		qraxF`llbMBIx@h@J[
+0		eoaxF|llbMFD
+0		qmaxFtulbMnA_E
+0		s{{wFnrlbMuB|BWrAKtBa@dA`Br@dAfB
+0		osaxFpalbMJ[GE
+0		ah`xFvmnbMx@n@
+0		_e`xFfpnbM|@T
+0		}g`xF|onbMt@UVJNRHhA
+0		{f`xFbtnbMtAz@
+0		ke`xF|xnbMGuAg@cAa@WyAHWPOb@
+0		_d`xFlunbMEP
+0		ke`xFntnbMj@\
+0		i`axF`cnbMDM
+0		i`axF`cnbM_@O
+0		i__xFpijbMBE
+0		k__xFvgjbMCD
+0		y~~wFnhjbMAK
+0		_`_xF~hjbM@E
+0		g|`xF~clbMMG
+0		_~zwFhkmbMj@n@nAL^PXlAPVtDhC\D|@WRF\p@?f@
+0		_gbxFtokbMv@dAQfA
+0		w`bxFxvkbMrA_@
+0		k}_xFzrnbMxA~@r@~@
+0		}m_xFh|nbMX\tAp@
+0		s|`xFnblbMhA@l@Nv@z@J^
+0		amaxFlbmbMOI
+0		gnaxFrambMDOwA}@K\gEuC
+0		y}`xFtslbMOf@
+0		i~`xF|tlbMCF
+0		gd{wFv~pbM_@lA
+0		k_{wFvdqbMYtA
+0		md{wF~eqbMNA
+0		_|jxFfufbMFB
+0		w{jxFjufbMHD
+0		cz~wF|fmbMoAy@
+0		s{~wFljmbM`A}C
+0		a|~wFvcmbMpBnA
+0		cnaxFtambMCA
+0		qmaxFbbmbMQM
+0		mwaxFppkbMb@mBVY
+0		gnaxFbrkbMkAK{BV_AW]e@
+0		axaxFdpkbMRJ
+0		qj`xFd_lbM_@r@Iz@Bh@
+0		_}axF~skbMu@Ra@E
+0	Giraffe Path	quaxFhlkbMRBhCbBjApA
+0		sabxFfykbMeEzL
+0		wk`xF~clbMe@`@WtA
+0		}~axFlrkbMAgAUm@UEiAV}@a@
+0		{c~wFn}jbMm@rA]V
+0		{t~wFlujbMBB
+0		qt~wFrujbMDD
+0		us|wFvalbMpL~Hz@v@Rd@R`B[`FB^
+0		ao|wFlblbMdBhA
+0		en{wF|qmbMOD
+0		g|zwFhimbMYh@]T
+0		goywFdklbMCC
+0		aoywF~jlbMAA
+0		qnywF|ilbMCC
+0		coywFfklbM?K
+0		aoywF~jlbM??
+0		unywFxilbMAD
+0		ke|wFhqnbMrC~@bBTb@c@\?
+0		{t{wFfxnbMj@HHNlAB
+0		gt{wFvznbMXC
+0		gt{wFvznbMN[
+0	North Woods	{x~wF~rlbMyAe@c@g@Mc@
+0		k|zwFl_obMm@b@
+0		k`{wFr_obMQo@
+0		kx}wFpgkbMPe@
+0		cs}wFpnkbM\g@\cA
+0		eb~wFxembMdAcCfAm@
+0	Northwest Central Park Loop	kf~wF||lbMwAWiAo@mAuAy@eB
+0	Northwest Central Park Loop	_f~wFv|lbMKD
+0	Northwest Central Park Loop	u`~wFrambMYiANiB_@u@
+0		ad~wFldmbMFS
+0		yt}wFdjmbM]N
+0		aqaxF~slbMB@
+0		{paxFbtlbMBB
+0		mvaxF~slbMEQ
+0		}paxF`tlbM@@
+0		wpaxFftlbMJA
+0		svaxFlslbMEC
+0		uqaxFpslbMRL
+0		y~axFtcmbMfN~IrClDtIvE`FnBfFlC~UpObEbF~E`E|Br@vAJhBK|@h@
+0		y`bxF~bmbM~@T
+0		}q~wFrcmbMlCbB
+0		up~wFf}lbM{AzE
+0		qn~wFfimbMkCeB
+0		ik~wFdjmbMu@g@
+0		ko~wFfpmbMd@}A
+0		qm~wFnombMQe@Bs@d@c@Z@
+0		qx~wFpimbMnAx@
+0		wu~wFftmbMDO
+0		ms~wFjvmbMw@g@
+0		eu~wFbumbMBIUQoEqC
+0		{v~wFnsmbMFQ
+0		}o~wFhwlbM@L
+0		sx~wFjumbMsCkB
+0		_daxFlcmbMCA
+0		edaxFhcmbMz@{C
+0		m_bxFj~kbMg@f@c@I
+0		{abxFbtkbMz@\
+0		ks|wFzskbMB@
+0		w{|wFpmkbMAD
+0		qg~wFtmjbM?B
+0		}f~wFfnjbM@B
+0		oj}wF`wmbMP]b@B
+0		wa_xFvgjbMCC
+0		k~{wFlljbMKG
+0		ad|wFjpjbMCC
+0		ey{wFtzjbMb@X
+0		yd|wFbrjbMVw@
+0		ax{wFn{jbM`@T
+0		_w{wFd|jbM^X
+0		ad|wFpujbM?QMIIqA
+0		ayywFz`jbMdCzBrBrA
+0		wr|wFpfkbMDK
+0		mk|wFjkkbMCL
+0		{j|wFhlkbMDM
+0		sv|wFvckbMBM
+0		ew|wFxbkbMEL
+0		yn|wFnikbMDM
+0		ko|wFnhkbMEL
+0		a{|wF|_kbMEL
+0		gs|wFtekbMCJ
+0		qz|wFz`kbMDM
+0		gm{wF`vmbMBa@Os@a@g@[Gm@^c@hB
+0		ej{wFzimbM@h@Ib@{@j@u@tB
+0		o|`xF|_lbMy@[MV
+0		og`xFjvlbM^V
+0	Giraffe Path	{_`xF~glbMa@W
+0		{sywFbppbM@C
+0		ctywFlqpbM?C
+1	East River Greenway	ymlwFtovbMo@sE
+0		_f{wFhmnbMMQ
+0		oj{wFrjnbMIC
+0		kg{wFrknbMIm@
+0		yj{wFnjnbMSG
+0		cl{wFvknbMFB
+0		sm{wFxknbM`@m@
+0		uk{wFtknbMAS
+0		yi{wFzjnbMUG
+0		_l{wFxknbMANRN`@pA
+0		ks{wFbgnbMEm@
+0		ks{wFrdnbMHM
+0	Northwest Central Park Loop	ml}wFrrmbMGE
+0		em}wF|qmbMEb@FPN?L[
+0	Northwest Central Park Loop	em}wF|qmbMs@gAqAgAm@kDs@iA{BFeBo@y@BaAc@g@k@
+0		c_lxF~}fbMQj@
+0		u_lxFj_gbMCJ
+0		a|kxFdxfbMDPND
+0		}zkxFjyfbMDF
+0		__lxFpyfbMk@tC
+0		k{kxF|xfbMLL
+0	Alpine Garden Trail	ydlxFtofbMOf@
+0		ejkxF|cgbM]}@I_Aa@u@kAc@{BsAwA@]mAq@?]W
+0		olkxFl}fbMPp@
+0		yikxFxdgbMBMOM
+0		yfkxFvfgbMG\
+0		afkxFdegbMI^
+0		kfkxFjfgbMGB
+0		uhkxFddgbM@G
+0		cfkxFnegbMqAi@
+0		oz`xFpdlbMBB
+0		g~axFnhkbMCG
+0		ez`xFxdlbMPJ
+0		g{}wFd_lbM]Vm@?uAi@sAOuAm@m@Lg@p@u@\k@Cy@Y
+0		gy}wFnzkbM`@[d@C
+0		o_}wFhpjbMBH
+0		{~|wFjojbMEC
+0		q~|wFhqjbMF?
+0		{}|wFhpjbM@E
+0		ufbxFh{kbMEILe@WO
+0		kabxFl~kbMVK
+0		m_bxFj~kbMe@I
+0		gjbxFzblbMpBn@
+0		ugbxFtalbMa@pA
+0		chbxFnblbMTn@
+0		gjbxFzblbMl@u@MhA
+0		cg`xFnulbMKZ
+0		ch`xFrvlbMqAhELh@Kb@
+0		si`xFj~lbMSC
+0		mk`xFzqlbMb@LTy@HAGC
+0		o}|wFrkjbMIG
+0		m}|wFhkjbMGE
+0		k}|wFdkjbMGE
+0		i}|wF`kjbMGG
+0		e}|wFvjjbMIE
+0		}}|wFnkjbMNe@]UOd@\T
+0		_s}wF`vjbMKV
+0		_s}wF`vjbMBB
+0		a`}wF~fkbMTLVy@
+0		k`~wFjflbMy@I
+0		ib`xFhinbM@E
+0		iszwFrjrbMAA
+0		gszwFtjrbMAA
+0		wqzwFtkrbMUOBE
+0		grzwFhkrbM@E
+0		iqzwFtjrbMQK
+0		irzwF~jrbM@E
+0		{qzwFhjrbMEA
+0		erzwFbkrbMHSGC
+0		kszwFpjrbMw@i@
+0		krzwF~irbMQM
+0		wrzwF~grbM@E
+0		wrzwF~grbMc@Y
+0		oi`xFhnlbMBP
+0		mi`xFdnlbMA?
+0		_vywFt_obMUO
+0		ya}wFh`qbMl@A
+0		sw{wFb}qbMRA
+0	Riverside Park South Esplanade	sz{wFl}qbMh@C
+0		kt~wF~xkbM[Z
+0	North Woods	cr~wF|{kbM?R
+0		osmxF~hfbMLF
+0		asmxFfifbMTBp@[
+0		mdnxFhbfbMdAz@|A`@~AbAnA`@vDn@
+0		wdnxF|afbMHJ
+0		manxFphebMlAnA|EbA
+0		axmxFdmebM`Ap@xCbE|ExD^`BvAnAJt@WzBaBhAQp@
+0		}bmxFxafbM?q@MYm@Ug@mA}@i@kAsC@}@Pa@JiAw@aDTm@
+0		}amxFfefbM_@mB
+0		sfmxFxofbMx@bA
+0		ydmxF|qfbM|Av@
+0		{amxFtsfbMrB\dBGp@Q
+0		{_mxFxofbMp@jASb@y@Z
+0	Fort Washington Park Greenway	gylxFdzfbMGE
+0		}|lxF|pfbMk@f@
+0		umnxFtmebMWg@ScAr@s@?q@Mk@L]`E|@dBdAlCr@
+0		wd{wFrenbM@Q
+0		{d{wFzenbMBG
+0	Roosevelt Island Greenway	qpywFdoibMZ`AlCfBbEjDvLlIAh@fC~CbElDlDfCbDxA~D`EbAxALDP[
+0		yazwFrmhbMi@@_Ap@Y@y@]mAKgAa@
+0		mlzwF|lhbMOh@
+0		}lzwFfnhbMhAlA
+0		sjzwFtphbMJXJdBh@hB
+1		ym}wFrrpbMVYr@b@HT?p@
+0		am}wFxqpbM_@mALy@
+0		ij}wFnupbMr@q@Ny@E}@[aA
+1		ak}wFbtpbMfA?
+1		cg}wFrvpbMc@u@Ig@
+0		eh}wFzqpbM`Aw@jA?d@L~@n@bB~Br@Z
+1		c_}wF|spbM?|@[n@
+0		sh}wFpopbMbAT
+0		a|zwFr{pbM}B{A
+0	Ed Koch Queensboro Bridge Path	wgvwFnwhbMcRxj@
+1	Brooklyn Bridge Promenade	mpnwF`}tbM~NcS
+0		}l_xFntmbMnE}NLH
+0		cg_xFt{lbMrFlD
+0		qa_xF`fmbMbBmF
+0		qd_xF`jmbMh@eB
+0		yd_xFt`mbMvFlD
+0		w~~wFfimbMj@kB
+0		gl_xFvrmbMzA`A
+0		wi_xFxumbMp@yB
+0		mk_xFvpmbM|A~@
+0		wi_xFxumbMHP
+0		eh_xF~qmbMP@
+0		wj_xF~nmbMhBpA
+0		yh_xFljmbMtFnD
+0		qi_xFblmbMdBfA
+0		}h_xFvjmbMc@Y
+0		sm_xFpimbM~BxA
+0		ig_xFvfmbMnHzE
+0		y}~wFrmmbMd@yA
+0		i`_xFrsmbMd@yA
+0		af_xFtpmbMj@iB
+0		a__xFtnmbMRq@
+0		me_xFbombMfFfD
+0		_u~wF|jmbMlDyK
+0		av~wFjkmbM`@M
+0	Riverside Park South Esplanade	{nzwFp{rbMaAAq@o@
+0		qp~wF`nmbM@h@fAv@
+0		sm~wF~fmbMp@`@
+0		_m~wF|hmbMzAwE
+0		_r~wFj`mbMb@V
+0		eq~wFp~lbMh@\
+0		cs~wF`cmbMb@V
+0		}k~wFjbmbMj@\
+0		_k~wFhdmbMJH
+0		{c{wFvlobMAE
+0		gb{wFpnobME@
+0		ch|wFjrnbM?E
+0		if|wFzsnbMCJ
+0		ylywF`opbMGK
+0		gfaxF~ambM?E
+0		qiaxFp_mbMBA
+0		sjaxFx~lbM?E
+0		sjaxFvambM@D
+0		wkaxFbambMDA
+0		_qjxFnjfbMEX
+0		swjxFv}fbMAF
+0		u~|wFjrjbME@
+0		{_}wFbqjbM?B
+0		}~|wFxnjbMBA
+0		i}|wFhpjbMAD
+0		gqzwFprpbMBC
+0		srzwFrrpbMCE
+1		sszwFdupbMGB
+1		grzwFbupbM@D
+1		{kzwFvupbM@?
+0		uzxwFtvnbMGJ
+0		mzxwFtunbM@F
+0		a{xwFfunbMC@
+0		q~xwFzvnbM@M
+0		s}xwFxdobM@L
+0		a}xwFrcobMD?
+0		cwzwF|~qbMcBeA
+0		eobxF|clbM`@s@
+0		cnbxFhblbMPEl@P
+0		cqbxFnblbMHU
+0		_kbxF``lbMOI
+0		ypbxFxalbMhDaA
+0		cobxFnalbMQoA
+0		arbxFjykbMbApB`@Xz@P
+0		{tbxFv_lbMNc@
+0		ktbxFr~kbMlCu@
+0		clbxFpykbMpCu@
+0		eibxFt{kbMWwB
+0		_mbxFh~kbMhBk@
+0		wnbxFlvkbMj@rA
+0		clbxFpykbMg@O
+0		{rbxFl`lbMP_@VIXP
+0		msbxFv`lbMdBg@j@w@
+0		}lbxFv{kbMnBk@
+0		ylbxFb|kbMIk@
+0		cmbxFxykbMh@aB
+0		ykbxFvvkbMIW
+0		enbxF`zkbM`@G
+0		cmbxFvzkbM?]
+0		embxFj`lbMOgA
+0		m}axFdpkbMrBoG
+0		ccbxFbvkbMf@_A
+0		_l`xFhvlbMzAbA
+0		ck`xFrtlbM~A~@
+0		kj`xFzrlbMXcA
+0		qi`xFvplbM^R
+0		mcaxFxmlbMcAw@
+0		wcaxFrnlbMHY
+0		{eaxF~klbMH@DQ
+0		efaxFxllbMHY
+0	116th Street Entrance to Riverside Park	}oaxFnombMs@QUV@t@h@rA
+0		c}}wFffkbMCE
+0		ic~wFh_kbMCC
+0		g}}wF`fkbMu@eB_BaA
+0		gc~wFl_kbMAC
+0		mc~wFd_kbMEG
+0		wkbxFfdlbMvFpD
+0		}fbxFxdlbMh@Dh@O
+0		sdbxFhflbMPFV`@
+0		ufbxFh{kbMZW
+0		yebxFpzkbMxA~@
+0		sebxFt|kbMv@W
+0		ehkxFlfgbM]U~@kF
+0		{iaxFbambMDM
+0		s`zwF~qpbM?cAk@O
+0		_dzwFptobMdKyRx@_ClA_HdAeD
+0		s`zwFzopbM`@Ap@b@
+0		q_zwFxopbMJm@
+1		ayzwFfzqbMBP
+1		gyzwFl}qbMCe@PO`@DTh@CXUL
+0		wzzwFp_rbMn@cA
+1		qwzwFj{qbMEP
+1		awzwFz|qbM\G
+0		qxzwFbarbMTsA
+0		skexFnvnbMIG
+0		}kexFfvnbMH?
+0		skexFfvnbM?F
+0		skuwFp_tbMt@L
+0		gjuwFz_tbMDe@
+0		kkuwFr_tbMDi@
+0		_kuwFdatbMAr@^nA
+0		sjuwFp~sbMBO
+0		{tuwFp|sbMQj@e@[
+0		muuwF|}sbMHF
+0		mozwFlnqbMjDhC
+0		ypzwFtqqbM`C~A
+0		oszwF|wqbMrDbC
+0		wlzwFlpqbMeDhKnAx@d@wA
+0		ejzwF|mqbMk@jB
+0	Hudson River Waterfront Walkway	wtxwFdexbM|BiGzF|D
+0	North Bridge	{mtwFl}ubM_AvCf@\
+0		sntwFbcvbMzAh@TAFQ
+0		ek~wFjambMkDtK
+0	West Harlem Piers Park Bike Path	mncxF|mlbMmFqE
+0		ax{wFd}qbMLA
+0	Riverside Park South Path	orzwF~yrbMs@wAg@g@iCwAM`@
+1	Hudson River Park Esplanade	ifvwFtyubMgN{DMOEk@
+0		gqywFjgjbMbBfAFX
+1	Hudson River Park Esplanade	w~twFhyubMzCd@l@AhEb@NN|L`B
+0	Hudson River Park Esplanade	idrwFlhvbMzLl@
+0		sfaxF~vmbMJ[GEc@UKZ
+0		i~_xFnonbMM`@
+0		}~axFnbmbM@Z
+0		anaxFdpmbML[o@o@
+0		af`xFdknbML][UM^
+0		w~`xFjzmbMI`@
+0		{jaxFxrmbMJC
+0		qbaxFlymbMHYg@WIZ
+0		akaxFbrmbMDT
+0		{{`xFz{mbMI^
+0		}}_xFdqnbMLa@
+0		on`xF|anbMJB
+0		au`xFzzmbMKRWBkBq@q@P
+0		qt`xF~{mbMQP
+0		cu`xFp|mbMhDlC
+0		an`xFlenbML_@]SK^
+0		ak_xFhyjbMn@Zt@[R_@p@oBNeBp@wBCu@b@iA|Af@lAhA|BdAbBtA~@^
+0		uz}wFzijbMNc@
+0		}z}wFdhjbMMb@
+0		sovwFxcibMeLl]
+0		umvwFzbibMMG
+0	Queens Plaza Greenway	}dvwFrohbMLc@
+0		okywFxlnbMEH
+0	Hudson River Waterfront Walkway	_hxwFncxbMlBtA
+0	Hudson River Waterfront Walkway	uhxwF~bxbMLH
+0		w}~wFtqlbMTa@~Ae@r@e@JYN}CNm@JG
+0		ox_xFt}kbMP?
+0		mfzwFh~obMiAg@[@IL
+0		sm_xFd|jbMESm@a@u@?
+1		iavwFzxubMBP
+1	Hudson River Park Esplanade	qtowFluvbMh@D
+0		aqzwFnrrbMfCiF
+0		aqzwFnrrbMUA
+0		knzwFtrrbMtAD
+0		_ozwFrrrbMvAuE
+0		ymzwFvrrbM?aA
+0		ymzwFtprbMIE
+0		emzwFrorbMDIMI
+0		_ozwFrrrbMFt@
+0		qnzwFxtrbMEOYF
+0		qozwFptrbMQg@
+0		ukzwFzrrbM^s@
+0		qnzwFxtrbMNcA
+0		kpzwFzrrbMQNg@K
+0		kwywFpgpbMc@D_@Iw@uAaAQc@e@
+0		snzwFrsobM_@E
+0		mkzwFpvobMOBg@S
+0		iizwFptobMk@E
+0		avywFdjpbMKW
+0		mmzwFrtobMe@_@
+0		u{ywFdlobM][YB
+0		c}}wFx`kbMDQ
+0		ay}wFxpjbMFD
+0		y{}wF`akbMc@Y
+0	East 100th Street	iv}wFnujbM_@jA
+0		_|}wFrakbMDQ
+0		ac~wFnijbMQj@
+0		k`~wF|njbMCJ
+0		ss}wFpvjbMQF
+0		gt}wFnpjbMOKITYS
+0		u~}wFbkjbMDK
+0		g{}wFjojbM^K
+0		k`~wFzijbMDK
+0		ss}wFpvjbMIZVQ
+0		ey}wFxojbMAM
+0		}a~wFxmjbMCH
+0		sd~wF`sjbMgBiA
+0		mk}wF~kjbMBI
+0		ie}wFxcjbME`@SP
+0		u_|wF~skbMCJ
+0		sz{wFfxkbMDO
+0		u{{wFzvkbMEL
+0		qc|wFbqkbMEL
+0		c_|wF|tkbMDM
+0		ac|wF`rkbMDM
+0		i}bxFvolbMu@W
+0		aoaxFpwmbM`@I
+0		w}bxFpmlbMEi@
+0		{paxF~smbMqA[yAA
+0		ohaxFp}mbMJe@
+0		ooaxFnumbMhDlDjFtCnBv@xBb@dBp@pDtBnB`@tB`AnBzAFr@Qt@
+0		et_xFjcobMc@Hu@QgFaCqAcAaBy@mOuJBWyFmDDMqA{@eB_AKKE_@X_@
+0		ooaxFxxmbMpIbFvJnEFUnc@jX^t@Gx@OV
+0	Riverside Walk	kfexFlakbMu@Jy@MqNuI
+0		anbxFp|lbMI\
+0		gvaxF`smbM}@Qq@g@m@w@m@oA
+0		s|axFtgmbM_Aw@
+0		u}bxFltlbMWC
+0		u__xF~wobMNm@EuAa@kAw@s@cA[o@Ds@f@[l@
+0		ms~wFl{obM_@p@
+0		st~wFf}obMi@Xe@@
+0		cl_xFbqkbMBq@Ka@
+0		sq~wFrulbMi@zB
+0		ge_xFjpkbMgA}@GU
+0	North Woods	sz~wFlokbMi@EOY
+0		ao_xFr`lbMsAZ
+0		cf|wFhnnbMtBaAp@eAo@Ec@Si@}@MkCPs@g@gBk@eAqByAeAQ
+0	Giraffe Path	kc`xFjflbMoDyCg@Sm@CkBRo@i@e@N_AQsAT{@?yB_@gAJq@]aEaDsBiCwBkAa@i@
+0		cl~wFxikbMDgB
+0	North Woods	cl_xFbxkbMRV
+0		_s_xFtmkbMsDjL
+0		{s|wFd_nbMC]a@Y
+0	North Woods	iq~wFpslbMI`A
+0		oi_xF~okbMKi@@c@Vm@\SBQY_Ae@y@
+0		ao_xFr`lbMCQ
+0	Northwest Central Park Loop	{t~wFnglbMJvAj@dAGrATb@
+0	North Woods	qm~wFdlkbMBO
+0	North Woods	qi_xFj~kbM}@~@qBF
+0	North Woods	_l~wFjykbM?b@e@dC
+0	Northwest Central Park Loop	wg_xFtrkbMQk@e@i@
+0	North Woods	_j_xFbgkbMe@U]B_BxB_@B
+0	North Woods	sj_xFvflbMKg@gBaBYy@
+0		my~wFrvkbMg@aBOsA
+0	North Woods	kq~wFj}kbMj@O
+0		if|wFrlnbMJmB\k@
+0		em~wFt~kbM?fDu@~FRjAb@t@nAx@hBFl@KpBmAlA[
+0	Wallach Walk	q|ywF~onbM]n@i@AaAs@gAWcAcA
+0	Wallach Walk	oyzwFjumbM_BmBcB{@sAgBUOg@C
+0		cy|wFvwmbMa@xBa@dAS~B
+0		gezwF|lnbM_@HoAfA_@G
+0	Wallach Walk	iuzwFbymbMqAs@s@cA
+0		i{ywFjmnbM`A[^cA
+0	North Woods	ys~wFtvlbMq@Qa@g@i@Oc@k@
+0		_ezwFngnbMu@s@sAY
+0		oyzwFjumbMCoAVUV@
+0	Wallach Walk	s|ywFtgnbMi@a@i@iB
+0		m}zwFlqmbMWvC
+0		g|ywFj`obM@L[z@
+0	Wallach Walk	{szwFjymbMm@G
+0		kdzwFtfnbMJM
+0	Hudson River Waterfront Walkway	ktxwFfrwbML`AKnA]p@i@d@
+0		wm_xF`dsbM~DyM
+0	East 78th Street Pedestrian Bridge	a|ywF`gjbMNC
+0		kvzwFxdrbMBE
+0		kvzwFxdrbM?PRD
+0		mjywFbgobMJFJU
+0		iiywFdgobMXD
+0		ihywFfgobMb@^
+0		egywFfhobMEN
+0		egywFfhobMDKb@FJb@v@H
+0		ihywFfgobMAS
+0		khywFrfobMGG
+0		khywFrfobMTQ
+0		uiywFtfobMESHQ\QXNBR
+0		ugywF`fobMN?HZNARP
+0		{eywFbhobMBU
+0		weywFlgobMLO
+0		ieywF|fobMRR
+0		ieywF|fobM?eA`@EPYZRT?
+0		ieywF|fobM{@aA
+0		ohywFjgobMDC
+0		uiywFtfobMJN
+0		swywF|ijbM@A
+0		yf{wFxuqbMo@c@Ts@{EaD`@oA
+0		ah{wFvrqbMW|@kEwCX{@
+0		st`xFnwlbMr@d@FO
+0		mt`xF~vlbMt@d@
+0		_s`xFtxlbMEL
+0		_tjxFj{cbMm@UiBG
+0		g{jxFhwcbMEd@eAUC`@
+0		i|jxF~vcbMEb@
+0		}xvwF|otbM{AwA
+0		qrvwFtntbMsBvG
+0		ixvwFzutbMp@I
+0		uvvwFrutbM?@
+0		uvvwFnutbM@A
+0		uvvwFtutbMBB
+0		qvvwFxutbMO^
+0		qvvwFxutbMr@}B
+0		guvwFtrtbM?S
+0		guvwFzqtbM?E
+0		kvvwFjutbMCG
+0		svvwFlutbMDE
+0		yvvwFpttbMAE
+0		qpvwFhqtbMqH_G
+0		avvwFxntbMa@DQj@Ll@ZJ
+0		szvwFljtbM~BhB
+0		uvvwFvntbM}@i@
+0		swuwF`avbMJKJHPG?_@h@yA
+0		ivuwF|_vbMg@@KU@}@
+1		kwuwFpzubMZM
+1		}vuwFl{ubMl@GPS
+0		s}uwFz~ubMf@Mp@H
+0		kbvwFt~ubMp@_BlA\
+0		uyuwFvsubMr@q@Iq@
+1		iatwFngubMvChB
+1		m}swF|iubMsBuA
+1		watwFvfubMwA}@?S
+1		qftwFddubMmBoA
+1		iftwFncubMm@E
+0		u|swF~gubMAsA
+0		{ktwFnntbM|AdA
+0		qjtwFlotbMLa@
+0		o|uwFnftbMMB?JN?AO
+0		y|uwFbgtbMQh@X@
+0		k}uwFlhtbMJb@cBgA
+0		myuwFd`tbMm@jBJH
+0		_~uwFzhtbMDI
+0		i~uwFrhtbM^iA{@i@
+0		i}uwFhftbMJH
+0		q|uwFnftbMFSTN
+0		m}uwFdftbMRcAQYW?
+0		k}uwFfctbMIYv@aC
+0		k}uwFpatbMGE
+0		{zuwFpctbMm@_@
+0		ezuwFzatbMUaAy@F
+0		c|uwFx~sbMTfAv@I
+0		{zuwFx_tbMFO
+0		}zuwFbatbMJY
+0		w{uwFp`tbMH[
+0		m{uwF`atbMCF
+0		i|uwF|_tbM@JWh@
+0		i|uwFzetbMWQ
+0		c}uwF|gtbMUO
+0		edwwF~akbMCH
+0		wsywFtlibMHQ
+1	Pier 26 Tide Deck	klpwFrdwbMXbBHANwA
+1		c}twFxyubMBY
+1		}|twFtxubM?I
+0		ewuwFvcvbMFlAQlA
+0		mfvwFzdvbMd@IZW
+0		et{wF~embM[~@
+1		e{swFbdubM?WMGDPFI
+1		s{swFlcubMI?
+0		}stwFxaubMb@X
+1		_{~wFlnobMDH
+0		}rkxFpmebMt@Up@J
+0	Skills Loop	uokxFfmebMvAzA`@?Gw@}@eCKCU^QdA
+0	Hessian Hill	}ikxFvfebMFJMl@d@@^a@VBE`@[NCRh@R
+0		qnkxFdjebMl@kAPLPCLUr@U
+0		}ikxFvfebMP_@\QPi@f@G
+0	Engine Block	cfkxFhjebMIOi@b@s@BCv@OZXP?b@b@SHUCUb@g@Ry@
+0		kikxF`kebMYFIR?b@H?FY@Z
+0	Wonderwall	_jkxFtmebMWAOxA^\z@tC`@p@HECYs@wAI}@Q]DI`@AH{@
+0		uckxFviebMk@C_@N
+0	Speedway	y`kxFzhebMUOs@h@Q@EZm@Nq@rABv@_@z@BtAf@z@x@f@We@A{@Wg@Iy@Tk@\_@Cg@Py@VWT?Nh@JBf@o@?}@
+0	Rough Ryder	ahjxF`sebMcA}A{@a@w@q@]c@Mg@g@]K]_@a@o@KWLIVaAYaA_@Oo@[JWk@c@LgA]a@?[Ps@WSF}B_@OJ
+0		kgaxFrxlbMKEDEDJ
+0		sgaxFvxlbMK\LJb@sA
+0		gfaxFjulbMCLCKFA
+0		kfaxFxulbMc@nA
+0		qbaxF`_mbMFD
+0		q|`xF~dlbM@I
+0		q}`xFfdlbMBG
+0		epaxF|klbM\T
+0		goaxFrllbM@H
+0		gqaxFbklbMIE
+0		cqaxFpklbMBG
+0		gpaxFdllbM@G
+0		w|kxF||dbMfC}Ad@k@Pg@
+1		kjvwFjxubMQE
+0		ckvwF`xubMcAbD
+0		wkvwFn|ubMCC
+0		clvwFj}ubMCC
+0		ukvwF~zubMI\
+0		}kvwFxzubMKZ
+0		snvwFbavbMDL
+0		eovwFj~ubMCC
+0		iovwFh~ubMY~@
+0		iovwFh~ubMJ[
+0		cfxwFjxlbMKD
+1	Hudson Street	kypwFtsubMCC
+0	Cherry Walk	sdaxFffnbM|@l@
+0		go{wFz|qbMxApBvBjB?\Wn@
+0		go{wFz|qbMlB~AxEfCfAPTu@
+0		kfkxFjfgbMBB
+0		ac{wFjdrbMCH
+0		qc{wFrdrbMZaA
+1		{b{wF~brbMRN
+0		qg{wFpbrbMCHnB`BeAWy@c@_@dA
+0		ed{wF|erbMPC
+0		sc{wFxerbMLc@
+1		}c{wFpdrbMJs@kC_BEF_B_AUt@
+0		_i{wF|hqbMGE
+1		ch{wFjpqbMCF
+1		ug{wFtoqbMCJ
+0		wi{wFvjqbMa@J
+0		ssnxFpnebMmA_EMy@^aBT[
+1		ylzwFlvpbM@E
+0		yuuwFdzubMm@v@cAnC
+0		{{uwFn_vbMD_@
+0		onuwFjoubM`@N
+0		yx{wF|hnbMAF
+0	Nell Singer Lilac Walk	kmzwF|_obMbAa@nCmB
+1		gulwFfsvbMTD
+0		}akxFfqebME?
+0		ickxF|pebMB@
+0		cbkxFztebME@
+0		mckxFhuebMBA
+0		uo_xF`|kbM~@c@
+0		}p_xFp{kbMRdC
+0		mp|wFjqmbMQH
+0		mm|wFhumbM_@lB
+0		mn|wF|pmbMTu@
+0		oj}wFxskbMOF
+0		ej}wF~skbMDZ
+0		ej}wF`skbM?G
+0		ij}wF~skbMGOLMDNKL
+0		yk}wFbskbM^r@p@DRSE[SKg@Kc@L
+0		ek}wFvpkbM^T]HBLZDAL
+0		}r~wFdtjbMw@T
+0		}pjxFhjfbMAD
+0		{njxFzkfbMAI
+0		cojxFb`fbMAC
+0		gojxFlzfbMA?
+0		}ojxF~yfbM@@
+0		qf|wFzvkbMAI
+0		kf|wFvwkbMECNe@KI
+0		sf|wFpvkbMBU
+0		sf|wFpvkbMQGBXVA
+0		}f|wFhvkbMCS
+0		cw{wFdzkbMEL
+0		sv{wFb{kbMDM
+0		yr~wFlnjbMiAq@FQLFPm@
+0		{i~wFrejbMDD
+0		ci~wFhhjbMFC
+0		ks~wF`njbMZaA
+0		cu~wFzljbMCL
+0		gh~wFnkjbMKS
+0		{~}wFlmjbMf@Z
+0		i`~wFbkjbMWHGRD^
+0		}e~wFrhjbMwByA
+0		if~wFhhjbMMd@_@WLc@
+0		og~wFdejbMk@~A
+0		wk~wFzdjbMBR
+0		am~wF~gjbMJY
+0		wk~wFzdjbMGT
+0		idbxFn_lbMcBmA
+0		ko_xFvgjbMmBmA
+0		kv_xF|njbMFBQj@
+0		iv_xFtpjbMl@oBGU}CsBGB
+0		m_|wFdljbMUF
+0		cd~wFtkjbMJ[
+0	54th Street Pedestrian Bridge	{_wwFvtlbMHb@L?
+0		qj_xFt_obM?U^q@
+0		yi_xF|aobMAX
+0		sakxF|gcbMyDmBfAqE
+0		{`kxFvecbMIcBe@gA[Sq@A_@ZG\Dj@N\XVf@H`@INQJ}@
+0		{_kxF|bcbMkAr@
+0		}ekxF|`cbMEC
+1	Fulton Street	innwFtdvbMFM
+0		afkxF|kgbM[rAML
+0		kfkxFxlgbMKE
+0		uekxFpjgbM_@M
+0		ufkxFbjgbMa@OKh@
+0		wgkxFrigbMQI
+0		ihkxFhigbMYEI^
+0		sgkxFdkgbMCJ
+0		eikxFljgbMId@D@
+0		gjzwFvdnbMMJIQNMFR
+0	Strawberry Fields	w~zwFxhobMi@SS@SR
+0		a{vwFlejbMHQ
+0		y|vwFfbjbMI\
+0		unvwFrbibM]d@
+0		akwwF~tibMGN
+0		uozwFbzjbMSM
+0	South Bridge	ijtwFtbvbMp@uB
+0		yjtwFxcvbMNc@
+0		oltwF`dvbMZIQKBm@FBEXFBJUA\PQTN?R
+0		ejtwFlevbMEYDY
+0		oltwF`dvbMCNWJ@JRH@PWZAf@H?@Yn@c@`@HET]A]TCZHFRa@PJU`@
+0		ujtwFlgvbMETKA
+0		kktwFhgvbMEJ
+0		oktwFnfvbMHJCH
+0		cktwF~dvbMEHJB@X
+0		ejtwFlevbMWg@
+0		kmtwF`gvbMMe@SEWL?MRKCIWLQ`@D@
+0		iotwFlfvbMEHIE
+0		entwFhdvbMA^IB
+0		gntwFhevbM?D
+0	Ed Koch Queensboro Bridge Path	q~wwFpslbM?e@
+1	Brooklyn Bridge Bicycle Path	mpnwFr|tbMmApAe@Be@O
+1	Centre Street	}xnwFj{tbMw@k@
+0		qlywFv_mbMJA
+0		elywFt_mbMTw@
+0	East River Esplanade	gttwFdsnbMd@T
+0	East River Esplanade	attwFxrnbMCF
+0		saxwFxzlbMCF
+0	Ed Koch Queensboro Bridge Path	saxwFxzlbMp@gCn@_B
+0		}w~wFnhmbMj@BPMTu@Ku@
+0		uu~wFxdmbMEI
+0	Nell Singer Lilac Walk	mwzwF|hobMFI
+0		azzwFd`nbMT]
+0		ihmxFvmdbMVJ@T
+0		kgmxFlndbM\aA
+0		kimxFpcdbML^
+0		}hmxFpddbMp@@
+0		wemxFbhdbM?|@
+0		wimxFhkdbMRL\E
+0		qp}wFjtmbMRm@
+0	East Midtown Greenway	c|wwF|vkbMUW
+0		eh{wF|crbML]
+1		ak{wFh`rbMRs@
+1		ei{wFn_rbMBIQKCH
+0		ch{wFdbrbMNEXL\kA
+0		kh{wFharbMAB
+0		mh{wFlarbMCN
+1		qh{wFz_rbMDIHH
+0		oe{wFparbMSZ
+0		cf{wFlbrbMAD
+0		ef{wFrbrbMKN
+0		yf{wFlbrbMCD
+0		}f{wFrbrbMAF
+1		sf{wF|`rbMDIOICH
+0		qh{wFzdrbMoFcE
+0		ij{wFfcrbMAB
+0		kk{wFpbrbMAB
+0		ii{wFbdrbMA@
+0		{g{wFparbMb@V
+0		{g{wFparbMCJ
+0		{g{wFparbMNe@
+1		kg{wFj`rbMJ]
+0		ik{wFd`rbMTs@
+0		}j{wFf_rbMOI
+0		sj{wFr`rbMXq@
+0	Hudson River Waterfront Walkway	qvxwFpywbM]`@
+0	Hudson River Waterfront Walkway	evxwFddxbMl@^
+0		gklxFfwfbMPF
+0		iukxFb|fbMB?
+0		wtkxFd|fbMJ?
+0		aukxFb|fbMH@
+0		eukxFb|fbMB?
+0		izkxFxwfbMH?
+0		kukxFp}fbM?G
+0		iukxFd|fbM?A
+0		}pkxF~fgbMAJ
+0		wpkxFhhgbMU?
+0		}xkxFlwfbMZQDWIw@Uk@
+0		}xkxFlwfbMGk@OEsAnAi@dB_@b@Oh@
+0		wvkxFfdgbMAM
+0		wvkxFjdgbM?C
+0		enkxFnggbM?p@
+0		cnkxFfggbMAF
+0		cwkxFzcgbMKF
+1		klnwFn_wbMb@D
+1	Hudson River Greenway	ybnwFfbwbMnJzB
+1	City Hall Park Greenway	c{nwFdmubM?S
+1	City Hall Park Greenway	mtnwFlaubMBC
+1		itnwFhaubMDG
+1		annwF`_ubMAC
+0		mi}wF`~jbMNH
+0		sh}wFr~jbM@@
+0		}h}wFj~jbMHF
+0		mi}wF`~jbMAA
+0		sh}wFz~jbMDM
+0		ai}wFp~jbMDM
+1	Hudson River Greenway	sdmwFhmwbMVH
+1	Battery Bikeway	{cmwFrmwbMFB
+1	Battery Bikeway	obmwFrawbMFQ
+1	City Hall Park Greenway	c{nwFplubMHG
+0		oh{wF|yqbMSM
+0		uh{wFpzqbMUO
+0		{gnxFbsbbMOZ
+0		{gnxFbsbbMHM
+0		kgnxFfobbMNb@
+0		{fnxFjpbbMMP
+0		kqywFpnnbMFK
+0		qt}wFhtlbM@L
+0		ufkxFbjgbMKh@
+0		ihkxFhigbMKj@
+0		uwkxFbrfbMWo@
+0		{xkxF~rfbMvAd@
+0		}ykxFdsfbM`@E
+0		mnkxFnkgbMAC
+0		ypkxF`kgbMDE
+0		shkxF|cgbMJe@
+0		ixkxFfxfbM@D
+0		gxkxF`xfbMAD
+0		qykxFn{fbMAB
+0		qykxFn{fbMBA
+1		emvwFbjtbMEN
+1		sjvwF~gtbMAF
+1		ojvwF~gtbMCH
+0		kmvwFrjtbM?L
+1	Moynihan Connector	whvwFt`tbMyAjF
+0		ctvwF|{tbMGC
+0		}svwFn{tbMAA
+0		_tvwFl{tbMEL
+0		etvwFz{tbMBB
+0		atvwF~{tbMDM
+0		{svwFp{tbMBE
+0		ktvwFx{tbM@E
+0		gtvwFl{tbMGId@sA
+0		{tjxFrvgbMGF
+0		cujxFzvgbMIG
+0		atjxFxxgbMm@jB
+0		e{jxFttgbMa@I
+0		izjxFxtgbMKlB
+0		_qkxFjggbM@H
+0		qpkxFbhgbMED
+0		mqkxFhhgbMGD
+0		uqkxFnhgbMEB
+0		czkxFfbgbM?C
+0		czkxFfbgbMJBBY
+0		wnkxFzkgbMJ@
+0		}pkxFnkgbMJ@
+0		ykkxFxmgbMp@dB
+0		ajkxFjqgbMBC
+0		gjkxF~pgbMDJ
+0		elkxFvmgbMJ@
+0		mlkxFrmgbMFB
+0		wkkxFxmgbMRSBOIQ
+0		ikkxFblgbM@A
+0		yskxFxggbM{@b@
+0		}rkxFtggbM[B
+1	Hudson River Greenway	w{nwFj{vbMfBf@
+0		gnkxFhegbMMOAF
+0		qokxFvdgbM@GS@
+0		_qkxFhdgbM@GS@
+0		irkxF~cgbM@IQC?H
+0		sskxFvcgbM?IQA?H
+0		ytkxFtcgbM?GQF
+0		g|jxFjtgbMGA
+1		entwFt|ubMBY
+1		_ntwFn{ubM?I
+1		{mtwFlzubM@I
+0	West 15th Street	astwF|xubM?L
+1		estwFbzubM?F
+1		istwFd{ubM?D
+1		{mtwFl}ubMDO
+1		qitwF`}ubMAX
+1		whtwF~~ubMJ[
+1		kitwFd{ubM?D
+0		kltwF|cvbMGq@UGMLMv@
+0		gntwFpevbM?B
+0		qntwFlevbMA?
+0		untwFfdvbMPG
+0		eotwFbfvbMAB
+0		cktwF~dvbM@S
+0		_mvwFbotbM@?
+0	Hudson River Park Esplanade	ixwwF`ztbMKEKVQDwBuA
+0	Hudson River Park Esplanade	sswwFl}tbMcC}A
+0	Hudson River Greenway	cxwwFtytbMNH
+0	Hudson River Greenway	sxwwFfytbMNL
+0	Hudson River Greenway	eywwFzxtbMPJ
+0	Hudson River Greenway	swwwF~ytbMfC`B
+0	Hudson River Greenway	kswwF`}tbMLJ
+0		gntwFtevbM?J
+0		gntwFpevbM?A
+0		ojtwFnevbM@E
+0		gjtwFpevbMND
+0		oktwFnfvbMAC
+0		kktwFhgvbM@C
+0		gotwFffvbMAD
+0		{jtwFlfvbM?E
+0		ujtwFlgvbM?A
+0		gntwF`fvbMAJ
+0		intwFlfvbMHF
+0		_ntwFtfvbMFG
+0		entwFpfvbMAF
+0		untwFnfvbMCI
+0		ymtwFbgvbMFA
+0		{ntwFjgvbMKG
+0		gotwFbgvbMF[VG
+0		yntwFdfvbM?A
+0		}mtwF`hvbMJ_@
+0		omtwF`gvbMB?
+0		wmtwFlfvbMDG
+0		untwFfdvbM[dAFZ
+0		ontwF|gvbMH_@M@GT
+0		gntwFxfvbMA@
+0		kntwFvgvbM??
+0		wntwFlgvbMCA
+0		sntwF~fvbMAA
+0		entwFhgvbM??
+0		entwFhgvbMFD
+0		untwF|fvbMEC
+0		entwF`gvbMJA
+0		mntwFzfvbMEM
+0		qqywFjrpbMYE
+0		crywFpopbMGrA
+0		ickxFrhgbMKj@
+0		m`kxFnjgbMMp@
+0		kbkxFnjgbMCH
+0		q}jxFfpgbMFNL?
+0		e}jxFnpgbMCF
+0		i}jxFvpgbMAB
+0		uekxFzpgbM@A
+0		oekxFtpgbMFI
+0		sekxFvpgbM?E
+0		sekxFppgbMFI
+0		ydkxFppgbMWY
+0		s}jxFtagbMCJ
+0		_xjxFddgbMET
+0	8th Avenue	mvswFd{tbMg@k@
+0	8th Avenue	mzswFvvtbMu@kA
+0		a_kxFttgbMBG
+0		u`kxFnogbM@C
+0		mgkxF`ogbMA@
+0		kgkxF~ngbMA@
+0		sekxFvpgbMBA
+0		sekxFxpgbM?A
+0		m`kxF~ngbMDQ
+0		saaxFrhlbMNc@
+0		udaxF|tlbMj@\
+0		icaxFzulbMDD
+0		ebaxFlvlbMg@[
+0		g_axFt`mbMOK
+0		y~`xF~`mbMGE
+0		wwjxFnzgbMBI
+0		ovjxFn{gbMBI
+0		s`kxFjogbMDK
+0		kbkxFnjgbMLu@
+0		ebkxFrigbMDB
+0		qykxF~vfbM?H
+0		c}jxFhsgbM@@
+0		ie_xFhcmbMMK~AcF
+0		i}axFjrlbMEJ
+0		s|axFzrlbMCL
+0		qyaxFtulbMDM
+0		ymaxF|qlbMDD
+0		smaxFbrlbM@@
+0		yraxFhilbMFB
+0		etaxFjmlbMGE
+0		etaxFjmlbM@?
+0		yvaxFhslbMCC
+0		exaxFbvlbMEL
+0		_~`xFnylbMCH
+0		swjxFdzgbMBE
+0		kvjxFd{gbMBE
+0		sjkxFhjgbM]MCF
+0		q~jxFplgbMK\
+0		w}jxF~mgbMCF
+0		w{jxFrmgbM@@
+0		efzwF~{obMK}@RmA
+0		}ezwFrwobM|@aB
+0		uskxFn~fbMBB
+0		qskxFr~fbM?A
+0		ssjxFvwgbMM`@
+0		qsjxFpwgbMAD
+1		in{wFvzobMAB
+0	East River Esplanade	}fuwFddnbMa@m@
+0	East Midtown Greenway	ikwwFjflbMmGwD
+0		_~mxFj}bbMxAhB
+0		gxmxFndcbMeAyA
+0	West 215th Street	mjmxFlxcbMEF
+0		slmxFdudbMHI
+0		e|kxFxlfbMIg@
+0		eplxFf~ebMTj@ED
+0		{|jxF~ofbM?i@
+0		a{jxFtjgbMBR
+0		q}jxFfpgbMCD
+0		u}jxFlpgbMAD
+0		o_kxFtqgbMBaA
+0		i_kxFjpgbMc@Y
+0		}n}wFxknbM?E
+0		en}wFhlnbM@C
+0		a|jxFrrgbMDB
+0		{{jxFvrgbMHD
+0		gqjxFfqgbMD[
+0		yrjxFzxgbMFW
+0		{k{wFzknbM?E
+0		{k{wFtknbM@I
+0		sr{wFpikbMH@
+0		_t{wFhhkbMDD
+0		{s{wFxhkbMHA
+0		ir{wFrikbM?A
+0		ys{wFnhkbMFD
+0		ct{wFrhkbMFD
+0		ir{wFpikbMr@d@
+0		wy_xFxzmbMCJ
+0		yq_xF`~mbMEL
+0		}xlxFtsfbMO^
+0		kutwFpfvbMA?
+0		qutwFddvbMGE
+0		qutwFddvbMOjA
+0		yutwF~cvbMYC
+0		mvtwF|avbME|@
+0		}utwF~cvbMCZ
+0		ovtwFzcvbMCZ
+0		svtwFvdvbMPB
+0		}utwFpfvbMKlBc@ER_GJB
+0		_wtwFjevbM@B
+0		}vtwFnevbMAZ
+0		_wtwFjfvbMF@
+0		qutwFddvbMFyB_@CIp@
+0		{utwFh`vbM?E
+0		ivtwFf`vbMGG@]n@FI`@
+1	Brooklyn Bridge Bicycle Path	q`nwFthtbM{N|R
+0	Cherry Walk	egbxFxnmbMcAs@aAeAe@EkA_Au@UiEaCiCiBmEuDiEmE
+0	Cherry Walk	cfbxFhombMQQO@
+0		a`ywFxnlbMDD
+0		ut_xFl{mbMFB
+1		aozwFzurbM?A
+1		}ozwFttrbMFO
+1		{ozwFnurbMCS
+1		eozwF|urbMBA
+0		kpzwFzrrbM@I
+0		ipzwF~rrbMAC
+0		kjzwFdqrbMq@@Uq@OG
+1		_pzwFztrbM@E
+1		}ozwFttrbMJC
+1		aozwFxurbMAG
+0		_i}wFz|pbMFZEX
+0		_m_xF~mobMf@H
+1		wqzwFlrrbMCT
+0	High Line	oitwF`tubM^H
+1	High Line	eftwFluubMTC
+1	High Line	{etwFbuubMJD
+1	High Line	abtwFzuubM`BR
+0		sn~wFtnlbMSR
+1		ue|wF~eqbMG`@
+1		{d|wFjfqbMGj@
+0		qb|wFlmobM@@
+0		_f|wF`kobMCC
+0		ag|wFfjobMCA
+1		eg|wFdjobMBG
+1		eg|wFdjobM?A
+1		_j|wFffobM@I
+1		kj|wFpeobMEH
+0		if{wFbbpbMBE
+0		qe{wFrbpbMCC
+0		ua{wFnepbMCA
+0		kb{wF|dpbMBB
+0		ua{wFnepbM@E
+0		ca{wF`dpbM?G
+0		sa{wFncpbME@
+0		ib{wFvdpbMAD
+0	Moynihan Connector	ylvwF`_tbMtBrA
+0		ay{wFv`qbMAD
+1		o|{wFvhqbM@[
+1		s{{wFbjqbMB@
+1		m|{wFzgqbMHT
+1		g{{wFdiqbMBB
+1		kq{wFnhqbM@E
+1		kq{wFnhqbMB@
+0		mq{wFvtqbMB@
+1		gs{wFdyqbM@@
+1		qr{wFpyqbM@?
+0		up{wFbuqbMAA
+1		}n{wFzzqbMAB
+1		}n{wFzzqbMB@
+0		ml{wFhwqbMCA
+1		uo{wFngqbMAD
+1		kp{wFjiqbMCC
+1		ip{wFhiqbMA@
+0		avzwFdlpbMzEkO
+0		eyzwFpipbMCA
+0		wyzwFdipbMCC
+0		{yzwF`ipbMCF
+0		{yzwFdkpbM@C
+0		eyzwFpipbMAF
+0		myzwFdjpbM@E
+1		cvzwFjlpbMAB
+0		wjkxF|_ebMPk@
+0		kkkxFv_ebMRD
+0		ejkxFp~dbMLJ
+0		y}zwFffpbMAB
+0		y}zwFffpbMB@
+0		o~zwFxgpbMBE
+0		a~zwFxfpbM@C
+0		e}zwFrfpbM@B
+0		o~zwFxgpbMBB
+0		{}zwFfhpbM@@
+0		y}zwFhhpbM@C
+0		i}zwFhgpbM@C
+0		e}zwF|fpbM@E
+0		qzzwFtjpbM@E
+0		qzzwFtjpbMB@
+0		{yzwFdkpbMAA
+0		cszwF`yobM@C
+0		orzwFpyobMBA
+0		eozwFx{obM?A
+0		onzwFj|obM@A
+0		a`kxF~zdbMFSf@@M`@
+0		q~jxFn~dbMrAYh@L@MEBDF
+0		m_kxFhzdbM@PPH
+1		mizwFzspbM@M
+0		ybzwFvdpbM@@
+0		sbzwFtdpbMCB
+0		iczwFjdpbM@?
+0		kczwFfdpbM?@
+0		uszwF~mobMDU
+0		wdzwFbgnbMJM
+0		mm~wFtkkbMF[TY
+0		qc~wFrmkbMa@n@
+0		us|wFvalbMAF
+0		{t|wFfalbMBG
+0		md|wFbwlbMW@
+0		ab|wF~~lbMPA
+0		a{zwF`}mbMMN
+0		ah_xFrdkbM}@wAm@H
+0		{ezwF~~obMCj@
+0		}ezwFl}obM@p@
+0		eo_xF``lbMAG
+0		kr~wFpglbMoAA
+0		_t}wFh}lbMWlD
+0		wn}wFbnmbMWZ
+0	Northwest Central Park Loop	ek}wFxsmbMIM
+0	Northwest Central Park Loop	yk}wF~rmbMKG
+0		qq|wFhzmbMaAlA
+0	Northwest Central Park Loop	yr|wF~cnbMMi@
+0		{~{wF`fnbM@e@
+0		ep{wF|xnbMFE
+0		ej{wF`bobMHS
+0		oi{wFt`obMBM
+1		elzwFnspbMPL
+1		_izwFzspbMDO
+1		eyzwFpspbMEL
+1		mxzwF~spbMDM
+1		m}zwFxspbMDM
+1		g~zwFhspbMEN
+0		yb{wF~qpbMAD
+0	West 65th Street	ka{wFj`rbMRq@
+0		qxywFxcpbMc@cB
+0		cz{wFtzjbMCA
+0	Hudson River Greenway	{j}wFp{pbMw@Kq@]
+0	Riverside Walk	q}|wFnfqbMkP_K
+1	Hudson River Greenway	}wowFzsvbMzCf@
+1	Hudson River Greenway	srowFduvbMJB
+0		}vxwF~~obMPJ
+0		cbzwFlcpbM@E
+0		ybzwFzbpbM@C
+1		crzwFxppbMB@
+0		wzlxFdbebMGA
+0		_{lxFbbebMEA
+0		e{lxF`bebMa@eB
+0		g|lxFt~dbM?D
+0		a|lxFp~dbMEB
+0		{{lxF|_ebMo@\
+0		g|lxFz~dbMk@\
+0		w}lxFz_ebMBA
+0		m}lxF|`ebM@A
+0		k{lxFpaebM[PCVM?
+0		g|lxFbbebMOs@
+0		i|lxFf`ebMKa@
+0		g|lxFdcebMAC
+0		i|lxF`cebMAE
+0		m}lxF|`ebMIa@
+0		u{lxFr`ebMA@
+0		q|lxFdaebMBA
+0		y|lxFl|dbMA@
+0		{|lxFn|dbMC@
+0		_}lxFp|dbMSL
+0		{vjxFrmbbMKRUIWh@
+1		sj{wFvgobMAA
+1		sj{wFvgobM@C
+0		_j{wFjfobM@G
+0		uj{wFzeobMBE
+1		gk{wFfgobM@@
+1		gk{wFfgobM?C
+0		izzwFtsobM@@
+0		czzwFpsobMAD
+0		}zzwFdsobM@C
+0		}zzwFhsobMB?
+0		_wzwF~uobM@A
+0		{vzwFbvobMC?
+0		ivzwFrvobMCC
+0		gvzwFpvobM?C
+0		kvzwFrtobM@C
+0		uuzwFbuobM@C
+0		in|wFtdobMAB
+0		qn|wFvdobMD@
+1		cz{wFxqobM@C
+0		}m{wFlcobM@C
+1		un{wF|bobM@C
+1		qn{wFzdobMCA
+1		qn{wFzdobM@C
+1		go{wFjdobM@C
+1		go{wFjdobM@@
+0		sd}wF|`pbMCD
+0		sd}wF|`pbMEA
+0		ge}wFn`pbMC?
+0		ke}wFn`pbMAD
+0		_f}wFzapbMAD
+0		af}wF`bpbMB@
+0		me}wFnbpbMB@
+0		ge}wFjbpbMAD
+0		or}wF~xobMBB
+0		mq}wFvyobMDB
+0		iq}wFzyobM@E
+0		up}wFlxobM@E
+0		sp}wFfxobMCA
+0		or}wF~xobMBE
+0		{q}wFrwobM@G
+0		yq}wFjwobMB@
+0		gd~wF~|obMEB
+1		uq|wFj}pbMBB
+1		cq|wF|}pbM@B
+1		_n|wF`aqbMAB
+1		on|wFbbqbMAF
+1		ym|wFxbqbM@E
+1		km|wFtaqbM@E
+1		im|wFnaqbMCA
+1		}m|wFbaqbMAA
+1		{h|wF`wpbMCD
+1		ci|wFbwpbMBB
+1		k`|wFfhqbMEV
+1		ga|wFzgqbMGV
+1		{}|wFvpobMAA
+1		{}|wFvpobMBC
+1		g}|wFloobM@G
+1		e}|wFdoobMCA
+1		}}|wFvnobMAB
+1		o~|wFbpobMAD
+1		uu|wFn}nbMAB
+1		gv|wFz~nbMCD
+1		aw|wFn~nbM@E
+1		ov|wF|~nbMBB
+1		uu|wFn}nbMCC
+1		gv|wF`}nbMEC
+1		mv|wF||nbMAD
+1		{xzwFf{qbM@N
+1		}xzwFxzqbM@L
+0		cibxF|_mbMDU
+0		}rbxFrxlbMcBYa@e@Kg@
+0		skbxFr`mbMBP
+0		okbxFdambMAHYEg@c@
+0		smbxFd`mbMyDiB
+0		gsbxF||lbMDU
+0		mkbxFpqlbMBE
+0		kkbxFdrlbMBI
+0		golxFvzfbM?]{@{@
+0	116th Street Entrance to Riverside Park	coaxFxmmbMUp@
+0	116th Street Entrance to Riverside Park	yoaxFjombMCB
+0		}oaxFnombMDF
+0	Saint Clair Stairs	m~bxFhtlbMg@Qe@u@
+0		ycbxF~~lbMmBw@
+0		edbxFl`mbMoBw@
+0		irbxFr|lbM?L`Av@
+0		ylbxFh{lbMJD
+0		{vbxFrwlbMd@`@b@A
+0		cfbxFl_mbMJm@
+0		sibxFb`mbML@
+0		{`cxFnnkbMjBdA@Na@pAi@]Sj@Z~@`@mA
+0		q_cxFdvkbMQl@
+0		m}bxFdqkbMNCz@j@a@rA\hA
+0		a{bxFlrkbMb@V
+0		}|bxF`qkbMCOpBsG
+0		o}bxFtpkbMLC
+0		}zbxFlkkbMc@oA\gA
+0		{{bxFrmkbMi@}Ae@M_@Vk@jB
+0		{_cxFflkbM_@eAPe@^MP|@
+0		i_cxFlhkbMTSf@yA
+0		i_cxFlhkbMc@s@YG[HSTcA|C
+0		sccxFpikbMYBBp@
+0		mdcxFtikbMYU]E
+0		uacxFrfkbMOc@h@_B
+0		ebcxFnekbM]aAZ{@
+0		cccxFlckbMY?
+0		sccxFpikbMEQ{@i@
+0		gbdxFnskbMQc@B[
+0		}edxFjokbMYM
+0		icbxFrglbM@H
+0		g_bxFl~kbMEA
+0		s`bxF`~kbMGW
+0		e_cxFfplbMj@Q\R
+0		i}bxFvolbMLP
+0		chaxFj|mbMq@wBi@p@
+0		uiaxFrxmbMIoA
+0		kdaxFf`nbMLi@
+0		c`axFrbnbMLo@
+0		ey`xFlfnbMtDbCJ]
+0		ks`xFhjnbMh]`TDQ
+0		mw_xFv}nbMFQ
+0		_z_xFd{nbMGR
+0		c}_xFxynbMHU
+0		ua`xFrvnbMFU
+0		_g`xFzrnbMNe@
+0		kh`xF`qnbMGT
+0		sh`xFvqnbMEJm@a@
+0		}g`xFjsnbMqAy@_@tA
+0		gj`xF`qnbMGN
+0		gl`xFdonbMFS
+0		{p`xF~knbMFS
+0		ks`xFjknbMAF[Q
+0		cu`xFdjnbMXZ
+0		as`xFpjnbMIX
+0		it`xF`knbMAD
+0		k}_xFzrnbMo@I
+0		mxbxFtulbMNZX@
+0		mxbxFtulbM@g@JKVH
+0		owbxFjulbMJi@
+0		owbxFjulbMMLOC
+0		gwbxFjtlbMXHE^
+0		ih_xFrnobMNjA
+0		id_xF~nobMy@MsDG
+0		{g_xFrnobM@[
+0		wk_xFhnobM@[
+0		sm_xFbnobMRC
+0		qb_xFzdobMGJ
+0		{b_xFjeobMSIYHYMAFf@VVB@\W\OQLm@
+0		ee_xFdeobMq@UMRFTpAl@
+0		qe_xFpfobMCHZND`@r@JXmAU_@
+0		ob_xFthobMPu@
+0		kc|wFhxqbM^IbA_Av@FtBxA^DtA|@bRhM
+0		{mbxFdblbM?G
+1		aj~wFr{nbMHW
+1		ci~wFp{nbMEL
+0	Pomander Walk	cs~wF|znbMB@
+1		gozwFpspbM?N
+0		_}vwFzjtbMCH
+0		ch{wFd`rbMGb@
+0		u_cxFvqlbMBh@JPn@X
+0		{_cxFjalbMeBkA
+0		}icxFjclbMbBfA
+0		{~kxFxlbbMWq@
+0		q_lxFpjbbMAE
+0	West 230th Street	ymoxFbwbbMm@pB
+0		kmoxFnwbbM@C
+0		u}jxFl~bbMp@^
+0		}fkxF|{bbM?SUO
+0		g_}wFp`qbM?F
+0		sw|wF~jqbMBM
+0		}~|wFpdqbMBG
+0		k~|wFdcqbM@G
+0		w~|wFhaqbMDB
+0		_m|wFfpqbMBM
+0		{l|wF`mqbMK_@
+0		qo|wFpjqbMOB
+0		md|wFbrqbMcAm@a@G
+0		_r|wFhlqbMGP
+0		se|wFdwqbM@_@o@i@
+0		am|wFnpqbMDB
+0		{l|wFrpqbMHD
+0		yg|wFzpqbMCH
+0		qa|wFluqbMYx@QPgAk@
+0		gc|wFvwqbM?B
+0		gc|wFzwqbMAD
+0		ic|wF`xqbMAF
+0		y`|wFhvqbMW[
+0		kb|wFfwqbMLJ
+0		md|wFbrqbMDK
+0		gd|wFvqqbMVw@
+0	Riverside Park South Esplanade	wz{wFl}qbMB?
+0		wz{wFt}qbM?G
+0		qa|wFluqbMSm@SKi@DYh@
+0		gd|wF|sqbMW?
+0	Riverside Park South Bike Path	cb|wFzxqbMXIf@q@j@GtB|AZH
+0	Riverside Park South Esplanade	cb|wFzxqbMg@Q
+0		}o{wFn~qbMYz@
+1		sn{wFh|qbMSP
+0	Riverside Park South Esplanade	m~zwFbsrbMc@i@}@eCw@e@iAQg@W}AsB
+0		wi{wFngrbMJ]
+0		eh{wF`drbM?C
+0		wg{wF~brbM@C
+1		mo{wFh}qbMDM
+0		ky{wFl{qbMBz@
+0		ub|wFboqbMEQ
+0		ukzwFzrrbMFJ
+0		uo|wFtnqbMBG
+0		wn|wFhoqbMFg@KYc@ES\
+0		gn|wFtoqbMBG
+0		cn|wFloqbM?A
+0		om|wFdpqbMMb@
+0		am|wFnpqbMMI
+0		cq|wFtmqbM@E
+0		aq|wFnmqbM@C
+0		_q|wFjmqbMf@]`@JRh@Af@
+0		qq|wFtnqbM@GPJHY
+0		wn|wFhoqbMGXLJAH
+0		gr|wFzlqbMEC
+0		mr|wFvlqbMIE
+0		m`}wFhcqbMCB
+0		q`}wFlcqbMKT
+0		cd}wF|aqbMDM
+1		cv|wF`{pbMHM
+1		cu|wFl{pbMIN
+1		c}{wFxiqbMKB
+1		kk|wFleqbMfB^
+0		kk|wFleqbMUb@k@T
+1		kk|wFleqbMBO
+1		gk|wF|dqbM?M
+1		gl|wFncqbMiAc@i@e@
+1		gk|wFndqbM_@_@
+1		yl|wFxdqbM?K
+1		im|wFpdqbMBI
+1		cr|wF`cqbMBg@N_@
+1		eq|wFp`qbMIF
+1		eq|wFp`qbMP?VR
+1		ss|wF~~pbM|@dA
+1		wt|wFp}pbMFI
+1		gu|wF`}pbMFO
+1		oh}wFnspbMVH
+0		eh}wFbrpbMVF
+1		eb|wFllobMBC
+1		sj|wF`fobMAD
+1		cj|wFrfobM@E
+1		qm|wF|cobMCB
+0		i}{wFpznbMMDkBoA?O
+0		i}{wFpznbM@E
+0		ca|wFvwnbM@E
+0		aa|wFpwnbM@C
+0		g}{wFjznbM@E
+0		a~{wF~ynbMCJ
+0		a~{wF~ynbM@E
+0		_~{wFxynbM@C
+0		o_|wFxynbM@G
+0		m_|wFpynbM@A
+0		u~{wFpynbMCJ
+0		u~{wFpynbM@E
+0		s~{wFjynbM@C
+0		w_|wFpxnbM@C
+0		w_|wFpxnbMAD
+0		y_|wFvxnbMCJ
+0		k`|wFbxnbM@E
+0		k`|wFbxnbMAD
+0		m`|wFhxnbMCH
+0		q|{wFb{nbMHD
+0		g|{wFh{nbMFE
+0		w~{wFvznbMn@VP[
+0		q`|wFjynbMc@]Bk@
+0		gz{wFx}nbMJA
+0		{y{wFv}nbMPE
+0		iy{wFp}nbMFI
+0		k}{wFrdobMLH
+0		w|{wFrdobMIR
+0		w|{wFrdobM@G
+0		a}{wFfeobMCH
+0		m|{wFhdobMHD
+0		c}{wFzeobMHD
+0		c}{wFzeobMAI
+0		u|{wFjdobMFA
+0		c|{wFndobMUp@
+0		w|{wF`eobM@@
+0		u|{wFbeobMDB
+0		o|{wFfeobMB@
+0		a|{wFpdobMb@f@
+0		w|{wFbfobMl@P
+1		uf|wFbiobM@E
+1		qe|wF~iobM@E
+1		a`|wFtkobMFr@
+0		mf|wFlhobMLs@[aAwAe@u@BSQ
+0		oh|wFzcobMQYIu@
+0		af|wFrfobMn@W
+0		oe|wFbiobMLg@?q@
+1		ke|wFxhobMWk@
+0		yg|wFxbobMOf@
+0		yg|wFxbobMFQ
+0		qg|wFfbobMBM
+0		mg|wFxaobMJY
+0		}h|wFl`obMLJ
+0		oh|wFx`obMFD
+0		ah|wFp}nbMF@
+0		yg|wFr}nbMF@
+0		{i|wFp{nbMl@\b@A
+0		ye|wF~|nbMQQAU^eA
+0		mf|wFv{nbMA@
+0		eh|wF|{nbMBcAb@kBMY
+0		me|wFpynbMHYAs@Wm@a@Y
+0		mf|wFftnbME@
+0		ee|wFbwnbM`@VM`@
+0		cd|wFzwnbML?Vy@
+0		ue|wFfznbMRL
+0		{x~wFxnlbMQy@Ya@[?STg@?
+0		w~cxFz}jbML`Ab@r@CX
+0		e}cxFpakbMVXEN
+0		s_dxFr`kbMh@Y
+0		ylbxFh{lbMKE
+0		wlbxFzwlbMSjA
+0		anywFpnpbMHY
+0		ymywFtmpbMDB
+0		uoywFnrpbMGa@VGFNCRSD
+0		gnywFrspbM[g@
+0		qnywFvopbMSl@
+0		gqywFlrpbMf@M
+0		qsywFfqpbM?M
+0		qsywFfqpbMAJ
+0		uwywFxopbMCA
+0		ctywFfqpbMaB@
+0		uwywFxopbM|@n@
+0		ewywFjqpbMF_@
+0		ewywFjqpbM?B
+0		ewywFnqpbM?F
+0		wvywFhqpbM?@
+0		wvywFjqpbM?B
+0		wvywFnqpbM?D
+0		qwywFxnpbMFB
+0		iwywF|npbM@C
+0		gwywFxnpbMJ[PH
+0		ijaxFj{jbMKZ
+0		giaxFh|jbMc@O
+0	The President’s Bridge	mrzwFh_qbMQDYS
+1		omzwFtupbMLB
+1		{lzwFpvpbM@C
+1		ylzwFnvpbMXR
+0		cltwFzfvbMBT
+0		aa{wFrqnbMDD
+0		afzwF||nbMHY
+0		igzwFp|nbMAS
+1	Centre Street	uvnwF|}tbM[W
+1	Centre Street	qwnwFd}tbM_@o@
+1	Hudson River Greenway	}dmwFfmwbMH@
+1	Hudson River Greenway	aemwFfmwbMB?
+0		_cwwFzetbMK`@F\GT
+0		qbwwFrdtbMMf@
+0		s`wwFzntbMQl@
+0		k_wwF|ktbMg@|A
+0		m~vwFhktbM]R
+0		q_wwFrotbMSl@
+1		e`wwF`qtbMeDyB
+0		o}vwF~htbMQh@
+1	East River Greenway	olmwF`vtbMGM
+1	Broadway	immwF|svbM^DdBfA
+1		gzlwFpsubM@O
+1		gzlwF|subM?K
+0		a`ywFxnlbMEC
+0	West 26th Street	}hvwF|uubMA{A
+0		et_xFtdjbMh@F
+0		ut_xFzejbM\f@
+0		ut_xFzejbMOt@
+0		sv_xFpfjbMXq@
+1		mwuwFj_tbMJQR@JTEV
+0		mm`xFt|lbMGT
+0		izdxF|okbM@F
+0		ozdxFfokbMDT
+0		i{dxFhrkbMXaANClAp@]jAyAw@
+0		_|dxFprkbMFA
+0		w{dxFnrkbMLE
+0		shaxF~ambMDM
+0		aa{wFj|pbMCH
+0		}a{wFd|pbMDK
+1		of{wFpsqbM\kA
+0		ad{wFzuqbMHF
+0		mb{wFzcrbMc@Y
+0		ixdxFh~jbMUf@
+0		g`exFxxjbMnCnBvAfB
+0		_ydxFp_kbMGN
+0		gydxF``kbMCD
+0		kydxFf`kbMM\fJnIjBn@
+0		mr}wF`imbMjAR
+1		amzwF~arbM@E
+1	Battery Bikeway	}bmwFzkwbM?aA
+1		gstwFrzubM?B
+0		kxjxFblgbMDI
+0		}vjxFdmgbMDI
+0		cjnxF~ybbMAA
+0		gmnxFlacbM@D
+0	High Line	ufwwFf|tbMC|@H`An@`BrDdC~@TbAIdAu@d@aA`AgD
+1		s}swFxevbMFaB
+1		c}swFrevbMBwA
+0	High Line	m}uwF~wtbMvC~A
+0	High Line	aavwFlutbMrBpA
+0		o{zwFp}mbMpAzC
+0		}xzwFlbnbMDvA
+0		m{mxFt{dbMWb@Mn@
+0		go{wFz|qbM{Fu@
+0	54th Street Pedestrian Bridge	q{vwFxtlbMSDe@i@w@dA
+0	54th Street Pedestrian Bridge	{_wwFvtlbMKGGN
+0		o`wwF~tlbMCH
+0	East Midtown Greenway	yvwwFz|kbMcAmA
+0		s`wwFdvlbM?[
+0	New Wave Pier	{buwFfgnbMcDoC
+0		elvwF`}sbMQf@
+0		wlvwFh~sbMGT
+0		ylvwFn~sbMDA
+1		sjvwF~gtbMGX
+0		_ltwFntubMAA
+0		}wzwFtjobMe@tB
+1	Spur	{jvwFxhtbMsApA
+1	Moynihan Connector	qkvwF`htbMTV
+1	Battery Bikeway	}slwFvyvbMAY
+1	Battery Bikeway	qnlwFppvbMLE
+1	Battery Bikeway	cnlwFjpvbMFC
+1	East River Greenway	{mlwFfpvbM@Q
+1	East River Greenway	iolwF`ivbMGY
+0	Crabapple Allée	ip~wFdvjbMaA|C
+0		qt}wFdalbMd@Y
+1	East River Greenway	m}lwFjnubM\p@
+1	East River Greenway	o|lwF|oubMDH
+1	East River Greenway	i|lwFfpubMZl@
+1	East River Greenway	m{lwFtqubMDJ
+1	East River Greenway	sxlwFhsubMSM
+1	East River Greenway	_ylwFfsubMJ@
+1	Old Slip	qzlwFjsubMGD
+0		ooexFzvnbMBI
+0		koexFpvnbMTu@
+0		ioexFlvnbMz@M
+0		unexFztnbMh@P
+0		mmexF~unbM@Q
+0		snexFvtnbMBI
+0		unexFztnbM@C
+0		kmexFlunbMHJKD
+0		_mexFdvnbMCG
+0	Hudson River Greenway	u|qwFjgvbMsKo@sCCsE]_N_@yAQkHW{HR{@KqC{@_DcBwHiA
+1	Hudson River Greenway	{wtwFtyubM`Hv@
+1	Hudson River Greenway	a|twFhyubMr@N
+1	Hudson River Greenway	q}twFtxubMa@K
+1	Hudson River Greenway	_}twFzxubMQE
+1	Hudson River Greenway	_}twFzxubM\L
+0	Hudson River Greenway	_`vwF|xubMtAEn@SdBL~A{@Tu@TOrTxB
+1	Hudson River Greenway	uavwFxxubMZB
+1	Hudson River Greenway	y`vwF|xubMP?
+1	Hudson River Greenway	g`vwF|xubMF?
+1	Hudson River Greenway	mztwFxyubM`@G
+1	Hudson River Greenway	{wtwFtyubM]KQF
+1		kg{wFlvpbMDQ
+1		cg{wFzupbMGCFMDDEJ
+1		ag{wFjupbM?W
+1		az{wFhjpbM@C
+0		kvvwFpptbMDEED
+0		mvvwF|ptbMBI
+0		cuvwFjutbMMK
+0		wvvwFputbM@@
+0		wvvwFputbM@A
+0		}uvwFxvtbMDB
+0		ovvwFbutbMCE
+0		svvwF|ttbMAA
+0		uvvwFzttbMAE
+0		wvvwFtttbMAC
+0		{vvwFjttbMGmA
+0		ovvwFpotbMRBFLC\MHIC@I
+0		guvwF`rtbM?E
+0		guvwFtqtbM?E
+0		kvvwFdrtbMXOLi@CSY]
+0		ivvwFhptbMAG
+0		kvvwF`ptbMAG
+0		mvvwFxotbME]
+0		svvwFzntbMAC
+0		evvwFjptbMDC
+0		evvwFrptbMDD
+0		mvvwFnptbME?
+0		_vvwFxptbM@@
+0		_vvwFfptbMBC
+0		svvwFnptbMG?
+0		}uvwFzptbMDD
+0		{uvwFbptbMDE
+0		{vvwFnptbMGB
+0		{vvwFnptbMEI
+0		awvwFdptbMIQ
+0		cwvwFrptbMMD
+0		qwvwFxptbMA?
+0		kwvwFrotbMAA
+0		guvwFnqtbM?I
+0		ayvwFzstbMC@
+0		iyvwF~stbMEB
+0		}xvwFbttbMCB
+0		eyvwFjttbMCD
+0		eyvwFjttbMBC
+0		eyvwF|stbMC@
+0		czvwFpttbMf@_B
+0		oyvwFbttbMOD
+0		iyvwFpttbMGJ
+0		cwvwFbstbM_@ZWE
+0		}xvwFbttbMBE
+0		ayvwFzstbMDA
+0		{xvwFxstbMf@_B
+0		g|vwFdntbMVT
+0		o{vwFxntbM@A
+0		m{vwFvntbM@?
+0		k{vwFvntbM@A
+0		o{vwFzntbMB@
+0		k{vwF|ntbM\Z
+0		mzvwFxotbM@@
+0		kzvwFzotbM\ZKZ
+0		myvwFvptbMDA
+0		yyvwFrqtbM?@
+0		yyvwFtqtbM[~@
+0		uzvwFtstbM?B
+0		uzvwFxstbMCF
+0		}yvwFnrtbMGE
+0		_zvwF~otbM@A
+0		czvwF`ptbMBA
+0		ezvwF`ptbM@?
+0		uzvwFfotbMCF
+0		{xvwFpqtbMAs@
+0		{xvwFpqtbMZc@
+0		izvwFhktbM^hBt@dA
+0		sxvwFxotbMh@O
+0		i{vwFfmtbMGB
+0		g{vwFdmtbMA@
+0		wyvwF~ltbMo@D
+0		uyvwF~ltbMA?
+0		gyvwFbmtbMMC
+0		eyvwFdmtbMAA
+0		uxvwFjmtbMOE
+0		sxvwFlmtbMAA
+0		uvvwFvntbML[
+0		_vvwFdmtbMFM
+0		{xvwFfptbMDI
+0		uxvwF|otbM@C
+0		iyvwFbmtbMLURA
+0		izvwFhktbM?S
+0		svvwFvmtbMp@f@JVB\Kd@
+1		wr{wFxqpbMGA
+1		{t{wF`ppbMEf@H@
+1		os{wFlppbMAL
+1		ev{wFtopbMzB`@
+1		or{wFdqpbM{B]
+0		}i|wFv~obM@E
+0		yxvwFrptbM??
+0		m}vwFxhtbMAD
+0		o}vwFxktbMPS
+0		}|vwFdktbM@C
+0		c|vwFdjtbMDJ
+0		u|vwF~itbMPD
+0		}{vwFpjtbMDD
+0		i~vwFthtbMMNKC
+0		e}vwFfhtbMIA
+0		o}vwFdhtbMYN
+0		o_wwFdktbM@C
+0		w_wwFfktbMEC
+1		kawwFnntbMDB
+0		_`wwF|otbMCF
+0		aawwFjetbMAV
+0	Hudson Boulevard West	qawwFthtbM^F
+0		{awwFlftbMUh@
+0		_cwwFhgtbM@W
+0	Hudson Boulevard West	_bwwFfhtbMLL
+0	Hudson Boulevard West	{cwwFpftbMZV
+0		cawwFbftbM?H
+0		}`wwF`etbMCH
+0		i`wwFvftbMC?
+0		s`wwFvftbMG?
+0		m`wwFvftbME?
+0		mbwwFjdtbMCF
+0		wwvwFjktbM@C
+0		yqvwFjptbMVy@
+0		krvwF|otbMEN
+0		cqvwFlqtbMCS
+0		cpvwFrqtbMMI
+0		czvwFhitbMDA
+1		yvvwF~atbMEE
+1		covwFdhtbMTP
+0		wnvwFpitbMNe@
+1		gnvwFjhtbM@C
+1		_nvwF`jtbMNe@
+1		omvwFzhtbM?A
+0		mmvwFtktbMJF
+0		qnvwF|ntbMD@
+0		ebexFhrkbMWGGQB}@x@c@
+0		uaexFvnkbMCo@VK
+0		mcexF|mkbMr@U
+0		g`exFvjkbMy@g@
+0		e~`xF`ymbMFS
+0		s}`xFbxmbMGE
+0		m}`xFhwmbMCH
+0		}}`xFlxmbMBG
+0		y}`xFtwmbMwBq@
+0		s}`xFzwmbMrAVNT
+0		{rtwFzdubM[S
+0		{mywFxnpbMJA
+0		{mywFxnpbMUW
+0		anywFdopbMDK
+0		wrjxFrqdbMKw@v@gC
+0		aqjxFpodbMg@w@
+0		{rjxFhjdbM_@USJ
+1		qstwFtyubMHX
+0		qz_xFrzmbMEL
+0		yq~wF`rmbMAD
+0		ak{wFllnbM\lA
+0		mu~wF|kkbMFdAEd@
+0		_l{wFtfnbMQOs@Am@[
+0		_a{wF`qnbM}@}@
+0		qf{wFdnnbMa@Q
+0		qf{wFdnnbM`@k@
+0		yc{wFzqnbMMt@
+0		ct{wFbmnbMAS
+0		oe{wF|gnbMjAT
+0		uh{wFnhnbMKj@Y?
+0		aq_xFn~mbMCJ
+1	West 15th Street	qutwFdzubM?B
+1	West 15th Street	outwFtyubM?F
+1	West 15th Street	autwFpxubMEH
+1		satwFxbvbM?k@HM
+1		c}swFbevbMP@
+1		m}swFvcvbMJ@
+1		s}swFnevbMWA
+1		satwFxbvbM~AFHPEhF
+1		qbtwFpjvbMH}E
+0		yqkxFvgebM{@aD`@g@TD~BrB
+0		}wkxF|hebMhDkB
+0		uskxFtbebMEhAWx@
+0		mbbxFb{kbMi@HOKE]
+0		qyvwFrptbM?@
+1		e{swFx_vbMI|A
+0		u}nwFzkwbMIE
+0	Central Park Outer Loop	s}xwFf{nbM@I
+0		qyxwFf|nbMEE
+0		myxwFj{nbMDB
+0		}{xwF~ynbMGE
+0		gxxwF~|nbMZR
+0		axxwFn|nbMZR
+0		uxxwF`~nbMnAn@
+0		evxwFp_obMCQ
+1	Battery Park City Greenway	yimwF|zwbMcATkBa@Mu@?q@MYiEgC
+1	Battery Park City Greenway	ovmwFfrwbMqAbE
+1	Hudson River Greenway	ummwFziwbMrGjB
+1		cwmwFdfwbMXH
+1	Hudson River Greenway	_gnwFjawbMrAN
+1	Hudson River Greenway	}cnwFzawbMVH
+1	Battery Bikeway	e_mwFp~vbMH@
+1	Centre Street	}{nwF`ytbMII
+1	Centre Street	qxnwFt{tbMKI
+1	Centre Street	uznwF~ytbMg@]
+0		ce`xF`hnbMGP
+0		me`xF|gnbMEN
+0		mt|wFhwmbM@a@
+1	Park Row	aqnwFhxtbMo@gA
+1	Park Row	qrnwF`vtbMCC
+1	Brooklyn Bridge Promenade	annwFbztbM]d@
+1	Hudson River Greenway	s|nwFb{vbMJB
+1	Hudson River Greenway	}|nwF~zvbMHB
+1	Hudson River Greenway	sdowF|xvbMx@`@
+1	Hudson River Greenway	cfowFjxvbMZH
+1	Park Row	_qnwFlxtbMAC
+1	Hudson River Greenway	}umwFrfwbMdF~A
+1	Hudson River Greenway	qnmwFtiwbMXD
+1	Hudson River Greenway	wmmwFziwbM@?
+1	Hudson River Greenway	wnmwFriwbMD@
+1	Hudson River Greenway	ivmwFnfwbMD@
+1	Hudson River Greenway	cvmwFpfwbMD@
+1	Hudson River Greenway	gwmwFbfwbMB@
+1	Hudson River Greenway	iwmwFbfwbM@?
+1	Hudson River Greenway	}bnwFfbwbMB?
+1	Hudson River Greenway	ecnwFdbwbMF@
+1	Hudson River Greenway	gknwFt_wbMZJ
+1	Hudson River Greenway	kjnwF``wbMzAd@
+1	Hudson River Greenway	ognwFfawbMNB
+1	Hudson River Greenway	kdnwFzawbML?
+1	Hudson River Greenway	cmnwFh_wbMVD
+1	Hudson River Greenway	cqnwFr~vbM~BT
+1	Hudson River Greenway	qqnwFp~vbML@
+1	Hudson River Greenway	{snwF|}vbMhAR
+1	Hudson River Greenway	atnwFz}vbMD@
+1	Hudson River Greenway	_unwFr}vbM\F
+1	North Cove	wnnwFffwbMJS
+1	North Cove	{nnwFtfwbMBM
+1		_wmwF~qwbMGA
+1		gwmwF|qwbMSG
+1	Hudson River Greenway	{wnwFx|vbMtAV
+1	Hudson River Greenway	oxnwFr|vbMRD
+1	Hudson River Greenway	eunwFp}vbMD@
+1	Hudson River Greenway	g|nwFf{vbMNB
+0		_~nwFtkwbMEE
+0		kfowFnkwbMAO
+0		gfowFtkwbMCE
+0	East Midtown Greenway	wtwwFj_lbMaAoA
+1	Hudson River Greenway	w}nwFvzvbMXF
+0	East Midtown Greenway	wswwFr`lbM_@g@
+0	East Midtown Greenway	oswwF``lbMrN`J~ArAnDtE
+0	East Midtown Greenway	wtwwFj_lbMf@T
+1		yizwFrvpbMCF
+1	Hudson River Greenway	_`owFvzvbM`@Gd@F
+1	Hudson River Greenway	o`owFrzvbMNB
+1	Hudson River Greenway	kbowFbzvbMz@N
+1	Hudson River Greenway	ybowF~yvbMLB
+1	Hudson River Greenway	geowFtxvbMRF
+1	Hudson River Greenway	qfowFfxvbMLB
+1	Hudson River Greenway	mqowFnuvbMbBX
+1	Hudson River Greenway	gmowFpvvbMLB
+1	Hudson River Greenway	}mowFjvvbMTD
+1	Hudson River Greenway	{qowFjuvbMLB
+1	Hudson River Greenway	inowFhvvbMJ@
+1	Hudson River Greenway	asowFbuvbML@
+1	Hudson River Park Esplanade	gsowFruvbMDA
+1	Battery Park City Greenway	_xowFptvbMIb@
+1	Hudson River Park Esplanade	gxowFluvbMhBXJY
+1	Battery Park City Greenway	}wowFzsvbM?D
+1	Battery Park City Greenway	}wowF`tvbMAN
+0		ojtwFnevbMGN
+0		ymtwF~fvbMYQ
+0		gltwF|cvbMHM
+0		gltwFpbvbMHB
+0		mztwF|nubMDB
+0		gztwF`oubMEDDC
+0	High Line	iztwFboubMDU
+0		gztwFboubMA?
+1	Hudson River Park Esplanade	oxowFjuvbMF@
+1	Hudson River Park Esplanade	mapwFjsvbM|G~@
+1	Pier 26 Tide Deck	wlpwF`ewbMFM
+1	Hudson River Park Esplanade	qmpwFxpvbMzCb@@f@pBV|@Ut@B
+1	Hudson River Park Esplanade	iqpwF`pvbMvBV
+1	Hudson River Park Esplanade	srpwFvovbMh@H
+1	Centre Street	g|nwFvxtbMWg@Gm@
+0		uuvwF~}tbMGRDF
+0		suvwFh~tbMB@
+0		uuvwFf~tbM@@
+0		wuvwFd~tbM@@
+0	High Line	yuvwFz~tbMn@uB
+0	High Line	msvwFdytbMM^
+0	High Line	itvwFd{tbML_@
+0		itvwFr{tbM`@mACQ
+0		gsvwFhxtbMZ_A
+0		isvwFnxtbM@E
+0		irvwFbvtbMR[
+0		krvwFhvtbM@E
+0		sqvwFbutbMJ_@
+0		uqvwFfutbM@C
+0		gqvwFbttbM@C
+0		eqvwF~stbM?Q
+0		cqvwFhstbMX{@
+0		eqvwFlstbM@C
+0	High Line	msvwFdytbM\y@\cBl@sA
+0	High Line	unvwFnptbMJE
+0	High Line	ynvwFpptbMBA
+0	High Line	invwFhptbMXQ
+0		emvwFnntbM?E
+0		kkvwF|mtbMx@h@
+0		qivwFfotbMB@
+0		mlvwF|ntbMWU
+0		anvwFtptbMv@[DJ
+0		envwFvptbMBA
+1	Lafayette Street	k~nwFjxtbMZEf@P
+1		}q~wFjunbMOI
+1		}q~wFjunbMDB
+1		ms~wFhtnbMNJ
+0		ue`xFvzmbMCL
+0		w}jxFtydbMEX
+0		}}jxFt{dbMEV
+0		wplxFl}ebMBD
+0		uolxFx_fbMWRFeA
+0		}}jxFxzdbM?Z
+0		}}jxFnzdbM?H
+0		k~jxFdzdbMJ?
+0		o|kxFpkfbMK\
+0		svkxFbnebMEG
+0		ovlxFhydbMk@Z
+0		yvkxFzmebMBG
+0		yvkxFzmebMGA
+0		svlxFzxdbMa@R
+0		_}kxFllfbM\D
+0		{qmxFtjdbMh@E`APX^N?
+0		cpmxFnxfbMPD
+0		kpkxFhmfbM~A{@
+0	High Line	cpvwFrqtbMh@a@
+0		uqjxF`_hbMOI
+0		}qjxFz~gbMAD
+0		gtkxFj|fbMCE
+0	Fort George Hill	_zjxFtbfbM_@Q
+1		gozwFbvrbM@K
+0		}x_xFzvnbMLO
+0	Carrere Stairs	{i_xFxbobME@
+0	Carrere Stairs	aj_xFzbobMEA
+0		cc_xF`eobMDO
+0		cc_xFdeobM?C
+0		}b_xFpdobMDU
+0		yb_xFfeobMAB
+0	Queens Plaza Greenway	{mvwFrcibMpA_E
+0	Queens Plaza Greenway	ikvwFr}hbMJ[
+0		}a_xF~fobMGS
+0		_c_xFxhobMNC
+0		m~~wFhiobMMj@Al@Pf@PPR?h@_@
+0		{~~wFtjobMxA|@
+0		m~~wFhiobMH[
+0		e`~wFlcpbMSDi@Sc@c@G]
+0		ed`xF~unbMo@vB
+0		s{lxFbgfbMRZ
+0		s{lxFbgfbMIG
+0		i|lxF~gfbMRX
+0		i|lxF~gfbMAC
+0		aemxFbxfbM@t@|@^
+0		acmxFxzfbMFS
+0		ubmxFtyfbMNH
+0		ybmxFdzfbMBO
+0		mbmxFpzfbMMG
+0		mbmxFpzfbM@C
+1		sg~wFxdpbMQMEW
+1		gh~wFjcpbMCF
+1		qz|wFh_pbMCJ
+1		}y|wFf`pbMBK
+0		{llxF~ifbMBK
+0		omlxFhjfbM[H
+0		iolxFxefbMKfBRPz@SDa@i@mA_@H
+0		emlxFdjfbMBA
+0		sfkxFnfgbMA@
+0		ufkxFpfgbMCD
+0		agkxFtggbMAH
+0		kfkxFdfgbM?D
+0		gfkxFnfgbMB?
+0		ifdxFdokbMGL
+0		kj`xF~~kbMED
+0	West 116th Street	g{`xFn~kbMFO
+0	West 116th Street	az`xFh_lbMDK
+0		}h{wF`{qbMSM
+0		avxwFtwnbM@@
+0		suxwF~wnbMY|@
+0		_vxwFhxnbMCJ
+0		gvxwF`xnbMB@
+0		cvxwFbxnbMEP
+0		mvxwF~ynbMCD
+0		mvxwF|ynbM?@
+0		ivxwFtxnbMHF
+0		cvxwFbxnbM??
+1		kzzwFraqbMFK
+0		qc_xFxjmbMj@eB
+0		}a_xFxgmbM?C
+0		ka_xFnfmbM@G
+0		qb_xFhembM`A}C
+0		o}_xFtmnbMGN
+0		}|_xFxnnbMDQ
+0		s`~wFtdpbMJV
+0		{~}wF~epbMBC
+0		w~}wFzepbM?G
+0		c_~wFhfpbMBG
+0		__~wF`fpbMBA
+0		mzjxFnobbMDq@Iy@
+0	Old Croton Aqueduct Walk	syjxF~lbbM][
+0		}zjxF`kbbMG_@
+0	Old Croton Aqueduct Walk	qzjxFblbbMKa@
+0	Old Croton Aqueduct Walk	}zjxF`kbbMMO
+0		_}jxF`nbbMVCdAq@
+0		{yjxF|lbbMQPYI?YTG
+0		itkxFvxfbMgAs@q@HKG
+0		sskxFlzfbM?E
+0		sskxFfzfbMI?
+0		}skxFfzfbMCM
+0		atkxFxyfbMGa@
+0		_m`xFl}lbM?M
+0		wi`xFxplbMa@Y
+0		{f`xFfblbMFM
+0		gg`xF~blbMDK
+0		ag`xFrblbMDK
+0		me`xF~klbM{Cm@
+0		ij`xFpjlbMi@C
+0		mn`xFzhlbMWP
+0		um`xFvglbMKX
+0		an`xFphlbMKH
+0		mo`xFvilbMCL
+0		eo`xFlilbMED
+0		ko`xFrilbMAB
+1		otuwFb{ubMN@
+1		stuwF~{ubMBW
+1		otuwFf{ubM@S
+0		omcxF`vlbMKL
+0		omcxF`vlbMFEDJr@oB
+0		{mcxFnvlbMc@f@DF
+0		amkxFx|fbMPR
+0		emkxFp|fbMBF
+0		mmkxFh|fbMFF
+0		omkxFf|fbM@@
+0		apkxFxyfbMpAlA
+0		ipkxFpyfbMFF
+0		{utwFb`vbMBY
+0		wutwFh_vbM?C
+0		yk`xFnvlbMZw@
+0		}p`xFhtlbMGCRo@
+0		qh`xFjqlbMz@Z
+0		}i_xFr`obMS]
+0		}i_xFx`obM?E
+0		y{_xFhcmbMw@e@
+0		aiuwFhetbMRH
+0		mhuwFretbMNa@XIOl@QHGK
+0		yhuwFbftbM?U
+0		qhuwF`gtbMXN
+0		ajuwFt~sbMZcA
+1	High Line	}}swFxvubM?F
+1	High Line	}}swF`wubM?D
+1		w}swFfwubMj@B
+0		eiuwFlatbMVV
+0		{fuwFb}sbMLD
+0		eluwF|}sbMa@K
+0		aluwF~}sbMCA
+1		ibwwFflubMFI
+0		q}`xFrwmbMCF
+0		q`axFvvmbM@\n@X
+0		__axFnxmbMXP
+0		y}`xFtwmbM@B
+0		es`xFd~mbMGP
+0		_u`xFt|mbMQZ
+0		iz_xFbqnbMP\
+0		ie_xFxkmbMPRT?NQ?a@
+0		sf_xF~nmbMh@eB
+0		qc_xFxjmbMGOWG
+0		ie_xFxkmbMVw@
+0		ud_xFjmmbMJ[
+0		qc_xFzkmbMPJ
+0		_c_xFflmbMDB
+0		_n_xF|{nbMBI
+0		un_xFj{nbMBG
+0		}`_xFvxmbM_BcA
+0		i__xF~xmbMXT
+0		u~~wFnymbMHU
+0		y~~wF|xmbMLa@
+0		i~~wFtxmbM@G
+0		k~~wFxxmbM@C
+0		e~~wF|ymbMBB
+0		o~~wFtymbMHF
+0		intwFdilbMQ_@
+0		{ntwFdhlbM[X
+0		i~~wFpxmbMPLM\
+0		{~~wFhymbMMd@
+0		s}_xF~ambM_@U@[MN
+0		q}_xFbbmbM?@
+0		{~_xF`ambMAB
+0		ucexF`bkbMBH
+0		ucexF`bkbMBK
+0	West 116th Street	kz`xFd`lbMDO
+0	West 116th Street	ez`xFt_lbMBK
+0	West 116th Street	o{`xF~~kbMBG
+0	West 26th Street	}hvwFdvubM?G
+0		wj`xFrqlbMCMNCAPI?
+0		{j`xF|qlbMFQ
+0		qj`xFfqlbMDO
+0		gj`xFpqlbMIG
+0		sj`xFfqlbMMI
+0		qj`xFjqlbM??
+0		cn_xFd|nbMDB
+0		}n_xFr{nbMD@
+0	West 100th Street	qn_xFb|nbM@C
+0		yw_xFbqnbMJ@
+0		oj`xFxinbMGP
+0		_ydxFp_kbMx@t@d@~@Id@
+0		ur`xFnklbMCH
+0		_r`xFznlbMKQPD
+0		kr`xFhnlbMEC
+0		qr`xFdnlbMCA
+0		{s`xFnqlbM@@
+0		ys`xFpqlbMPJ
+0		mjbxF`vlbMM^
+0		sebxFrylbMIG
+0		}ebxFjylbMAA
+0		_fbxFhylbMIE
+0		ifbxFbylbM@C
+0		ydbxFdwlbMBB
+0		q~axFnambMAD
+0		y}axFbcmbM@C
+0		wq`xFtrmbMDK
+0		mp`xFbsmbMEL
+0		wt`xF~ombMEJ
+0		s|`xFnzlbMFD
+0		k|`xFtzlbMDB
+0		w_axFh`mbMCA
+0		a_axFx`mbMEC
+0		mjbxF`vlbMdC|AZcA
+0		_naxFznmbM@C
+0		coaxFtmmbM?B
+0		__cxF~nlbMMC
+0		_nbxFf|lbMAH
+0		_nbxFf|lbMDY
+0		}hbxFf_mbMBM
+0		eibxFd`mbM@G
+0		sfbxFfbmbM?E
+0		mmbxF``mbMEB
+0		ambxFz_mbMKD
+0		ahbxF~{lbM?A
+0		ghcxFzslbMAD
+0		kgcxFfulbM?C
+0		yqbxFzykbMn@O`@PBb@Yz@
+0		yobxFlykbMLSIq@
+0		oq_xF|eobM@_@Wa@_AO
+0		aotwFpstbMLH
+0		cptwFxrtbMD@
+0		}otwFzrtbMZT
+0		si~wFz{jbM[F
+0		{_axFzzkbMGPe@[GP
+0		u~`xFt{kbMAD
+0		uaaxFn}kbMR}@`AXT\
+0		}baxFpxkbMCF
+0		acaxFxxkbMEN
+0		gcaxFhykbMO^QC
+0		ocaxF|ykbMRJL^ZE
+0		{|`xFp_lbM@E
+0		aaaxFp{kbMOM
+0		mjaxF`skbMEH
+0		sjaxFjskbMIV
+0		ujnxF|oebMHfBLd@
+0		wmmxF`afbMOdAFt@Kh@YF
+0		afmxFh|ebMN]WaA
+0		mgmxFjsebM?q@L_@
+0		cnmxFdlebM]cAFk@n@aA
+0		armxFnydbMV^
+0		immxFn~dbMdC{C
+0		womxFxvdbMX`@
+0		uomxFtqdbMl@fA?PcC~Co@YcDCu@Og@sAAoBb@kA
+0		_nmxFftdbME?
+0		_pmxFnvdbMBB
+0		{omxFrvdbMBD
+0		enmxFftdbMA?
+0		momxFhqdbMCD
+0		qomxFnqdbMCD
+0		o|cxFfzkbMCH
+0	Fort Washington Park Greenway	sdmxFnufbMRH
+0		wdmxFfxfbMOU
+0		u|}wFt~lbM`@O
+0		au`xFb{mbM@D
+1	Greenwich Street	{vnwFnlvbMVE
+1	Greenwich Street	cvnwFhlvbMRG
+0	1st Avenue Tunnel	svuwFngnbMsSaN
+0		qiaxFrbmbM@GSf@P_@
+0		wiaxFpbmbMD@
+0		}maxFplmbMN_@Mh@AI
+0		ymaxFtlmbMCC
+0		ai_xFhambMMKLJ
+0		km_xFf~lbMIMHL
+0		gn_xFr}lbMKKJJ
+0		unoxFrddbMb@h@
+0	Roosevelt Island Greenway	qhzwF~whbMLh@`InIx@zA`AnArBnAvA\DVz@p@d@F
+0		ct~wFrxjbM[c@CW
+0		wt~wFpujbMD@
+0		yo|wFrcmbMCF
+0		}o|wFzcmbM?@
+0		au|wFl}mbMCs@YQSFSj@Cj@Ff@LLNAb@mA
+0		myzwFzcobMTO
+0		ofaxF|umbM@E
+0		ogaxF`umbMCD
+0	East River Esplanade	uwtwFlpnbMXA
+0		yrywFjmnbM?OME@Md@Hb@qA
+0		co_xFxqkbM?O
+0		co_xFxqkbMB?
+0	1st Avenue Tunnel	yquwFfknbMyCwB
+0	1st Avenue Tunnel	gkvwFlxmbMkD{B
+0		e{uwF~wubMBK
+1		w|swFfvubMBM
+1		w|swF|jubM@}A
+0	Ed Koch Queensboro Bridge Path	}dvwFrohbML@
+0	Queens Plaza Greenway	odvwFnnhbMFU
+0	Queens Plaza Greenway	gdvwFxmhbM@E
+1		_tnwF~`ubMgAsA
+0	Wallach Walk	e|ywFbonbMKZ
+0	Wallach Walk	i{ywFjmnbM[v@
+0		o{ywFrmnbMMGa@F[V
+0		}ozwFjqnbMCgAPmA
+0		oozwFtlnbMFc@
+0		q{ywFdwnbMiTkG
+0		{z~wF|pkbMDG
+0		uy~wFbpkbM[B
+0		gx~wFnrkbMGD
+0	Northwest Central Park Loop	it~wFr~kbMa@M
+0		es~wFn{kbMCF
+0		au~wF~}kbMIA
+0		cu~wFb~kbMLI
+0		ot~wFd`lbMSIAw@
+0	Northwest Central Park Loop	su~wFldlbM@e@
+0		ev~wFnflbMPg@
+0		qxlxF`ydbMNK
+0		ixlxFzydbMRK
+0		cxlxFjzdbMFE
+0		gwlxFxzdbMID
+0		ywlxFd{dbMFE
+0		ewlxF~{dbMo@aC
+0		ewlxF~{dbMHGo@_CQJn@~BFC
+0		upmxFj_dbM[q@Tq@E_@
+0		qqmxFj}cbMk@MQmAe@c@
+0		}smxFd}cbMQf@
+0		}smxFd}cbMDE
+0		wsmxF~|cbMLCFS
+0		}smxFd}cbMFL
+0		osmxFnzcbMx@qB
+0		{qmxFhwcbMGE
+0		aqmxFf{cbMo@eA
+0		{pmxF`|cbMt@{@
+0		momxFlzcbMAX
+0		{omxFdycbMUC?T
+0		qpmxF`ycbMQ?
+0		qpmxF`ycbMFK
+0		}v{wFpanbMGE
+0		ew{wFjanbMAA
+0		kv{wF|anbMQK
+0		e`_xFpdnbMQM
+0		_`_xFtdnbMEC
+0		e`_xFpdnbM??
+0		yu{wF`anbMCC
+0		_v{wFnanbMJ[
+1	West 24th Street	q~uwFrxubMAI
+0		a{uwFrwubMBK
+0	John Finley Walk	sbxwFpokbMxDrE
+0		qrcxFdmobMa@i@
+0	Hoboken Newport Walkway – Hudson River Waterfront Walkway	sscxFzkobMpAd@GT
+0		gl{wFz`nbMgA_@@]
+0		}_rwFnfvbMO}@
+0		{orwFrcvbMYo@
+0		uprwFbbvbM]h@
+0		kzywFzxnbM@j@LL
+0		_xywFjvnbMFC
+0	Wallach Walk	gd{wFdlmbMa@@_B}@{@M
+0	Wallach Walk	ed{wFdlmbMA?
+0		}xtwFx}ubMbAJ
+1		}xtwFx}ubMHcB
+0		awtwF~cvbMUvD
+0		}vtwFvdvbMKP
+0		gwtwFhgvbMEQ
+0		awtwFvevbMIL
+0		clvwFlwubMaCtHUQCH
+1		ijvwFbxubMAD
+1		akvwFxwubMAF
+0		kjvwFpxubMi@lB
+1	Pier 34	{gqwFrkvbM_@nBs@nN
+0		oxixFnfibM_@a@eAi@c@eAcAmAqEmEwBsAaHkDyGmE
+1	Battery Bikeway	mulwFb|vbMn@kA
+1	East River Greenway	ejmwFlztbM]gAc@u@
+1	East River Greenway	glmwFnvtbMGM
+0		u|twFdwubMAH
+0		qcywF`mobMBe@
+0		ccywF|mobMIM
+0		}gywFn}nbMD?
+0		ehywFj}nbMFB
+0		whywF~|nbMJH
+0		yhywFz|nbM@B
+0		su|wFpdlbMDM
+0		mu|wFbdlbMb@XAa@
+0		mu|wFbdlbM]UTO
+1	Hudson River Greenway	growFhuvbMJ@
+0	Hudson River Greenway	enzwFx{rbMOI
+0	East Midtown Greenway	k{vwFltlbMEJ
+0	East Midtown Greenway	q{vwFxtlbM?KmAmAoBiC
+0	East Midtown Greenway	oawwFtmlbMII
+0		}lbxFr`kbM@G
+0		glbxF|~jbM@G
+0		kjaxFn{jbMEC
+0		wm_xFntmbMr@}B
+0		ycnxFjgfbM@G
+1		}q|wFv`obM?B
+0	Fort Washington Park Greenway	iemxFbufbMTJ
+0		mflxFtvfbM@[aBgAmAc@_AA
+0		wmlxF|qfbM@J
+0		emlxFhrfbM?j@
+0	Overlook Path	}plxFnqfbMD@
+0	Overlook Path	kqlxF`rfbM@E
+0		}`lxFbqfbMFN
+0		u`lxFrqfbMTjA
+0		iflxF`vfbMDA
+0		cflxF~ufbM?G
+0		cflxFvufbMGK
+0		qflxF|tfbM@I
+0	North Woods	on~wFf~kbM@F
+0	North Woods	qn~wF|}kbM@H
+0	North Woods	wn~wFl}kbM@@
+0	North Woods	_p~wFz|kbMd@N
+0		wu~wFvslbMNM
+0		}v~wFrtlbMd@[
+0		_u~wFhqlbM`@[
+0		gu~wFhslbMHkAJQhAP
+1		anzwFtjqbMBK
+1		qqzwFbhqbMBI
+1		erzwFpgqbM@G
+1		guzwFheqbM@G
+0		i}zwFp_qbMBI
+1		avzwFjdqbMCF
+0	East 71st Street Pedestrian Bridge	k}xwFzujbM{@q@
+0	John Finley Walk	mtywFlbjbM~DhCELv@d@NZzAnA
+0	West 26th Street	_ivwFjvubM@E
+1	West 29th Street	evvwF|qubMBK
+1		swvwFjqubMBK
+1	West 29th Street	_vvwFfqubM@G
+1		mwvwFtpubM@G
+1		szvwFznubMBE
+0	Hudson River Park Esplanade	{nzwFp{rbMB@
+0	Alpine Garden Trail	cblxFjwfbMm@M
+0	Alpine Garden Trail	qclxF|vfbMGU
+0	Alpine Garden Trail	yclxFfvfbMCE
+0	Alpine Garden Trail	}clxF`vfbM_@OI]
+0		gelxFrtfbM@Q
+0	Alpine Garden Trail	odlxFjtfbMCJ
+0	Alpine Garden Trail	sdlxFvtfbMCC
+0	Alpine Garden Trail	wdlxFrtfbMAA
+0	Alpine Garden Trail	ydlxFptfbMCE
+0	Alpine Garden Trail	}dlxFjtfbMAC
+0	Alpine Garden Trail	_elxFftfbMA?
+0	Alpine Garden Trail	aelxFftfbM?A
+0	Alpine Garden Trail	aelxFdtfbMAA
+0	Alpine Garden Trail	celxFbtfbMA?
+0	Alpine Garden Trail	eelxFbtfbM?A
+0	Alpine Garden Trail	eelxF`tfbMAA
+0	Alpine Garden Trail	gelxF~sfbMA?
+0	Alpine Garden Trail	ielxF~sfbMc@_@
+0		oflxFbufbMAE
+0		kflxFjufbMCC
+0		oflxFfufbM?C
+0	Alpine Garden Trail	gelxFrtfbMAA
+0	Alpine Garden Trail	ielxFptfbMCA
+0	Alpine Garden Trail	melxFntfbMOM
+0	Alpine Garden Trail	}elxF`tfbM][
+0		oflxFptfbM@K
+0		{flxFnsfbM?I
+0		mflxFdtfbMMU
+0	Alpine Garden Trail	mflxF~rfbMAA
+0	Alpine Garden Trail	oflxF|rfbMKI
+0	Alpine Garden Trail	{flxFrrfbMC?
+0	Alpine Garden Trail	{flxFdsfbMq@_@
+0	Alpine Garden Trail	_glxFrrfbMQK
+0	Alpine Garden Trail	qglxFfrfbMC?
+0		{hlxF~sfbMMS
+0		_ilxFxrfbMMD
+0		milxF~rfbM?D
+0		milxFdsfbMBD
+0		_ilxFxrfbMAM
+0		ailxFjrfbMAE
+0		ejlxFzpfbMBD
+0		ajlxF`qfbMD@
+0		{ilxFbqfbMDP
+0		cilxFdrfbM?E
+0		mhlxFdrfbMCC
+0		qhlxF`rfbMGK
+0		yhlxFtqfbMAA
+0	Alpine Garden Trail	{hlxFrqfbMKC
+0	Alpine Garden Trail	gilxFnqfbMEB
+0	Alpine Garden Trail	qilxFzqfbMVF
+0	Alpine Garden Trail	yhlxFbrfbMD@
+0	Alpine Garden Trail	shlxFdrfbMD?
+0	Alpine Garden Trail	uilxFtqfbMFA
+0	Alpine Garden Trail	uglxFfrfbMa@U
+0	Alpine Garden Trail	whlxFpqfbMC@
+0		ydlxFztfbM@G
+0		}dlxFdufbM@E
+0		{dlxF~tfbM@C
+0		m_lxFhtfbMLH
+0		_`lxF~sfbM@?
+0		}_lxF~sfbMDB
+0		w_lxFbtfbM@@
+0		u_lxFdtfbMB@
+0		q_lxFftfbMB@
+0		amlxFbjfbMDC
+0		imlxFrifbMP?
+0		anlxFvifbMJ?
+0		umlxFvifbMJC
+0		enlxFhifbM@H
+0		cnlxFrifbM@B
+0		_plxFbafbMd@rC
+0		aolxF|hfbMp@KDQk@cAMDEl@Ad@HF
+0		enlxFhifbMAI
+0		gnlxF|hfbM?C
+0		gnlxF~hfbM?A
+0		molxFngfbMB?
+0		oolxFngfbM@?
+0		molxFngfbM??
+0		iolxF~hfbMCF
+0		golxFzhfbMAB
+0		iolxF~hfbM??
+0		kmlxFfhfbMB@
+0		emlxFhhfbMB@
+0		gmlxFhhfbM@?
+0		ynlxFxefbM?B
+0		ynlxFvefbM?@
+0		ymlxF`gfbMBA
+0		smlxF|ffbM@A
+0		umlxF~ffbM@A
+0		snlxF~hfbMMD
+0		aolxFdifbMGD
+0		qnlxF|hfbMA@
+0		cnlxFfffbMIO
+0		mnlxFvefbMCE
+0		cnlxFlffbM?E
+0		molxFljfbMBa@
+0		molxFljfbMJF
+0		eolxFpjfbMJICU
+0		snlxFtjfbMC@
+0		wnlxFvjfbMC?
+0		{nlxFvjfbMEA
+0		knlxFrjfbMG@
+0		knlxFrjfbM??
+0		emlxFdjfbMGB
+0		mmlxFhjfbMA?
+0		}mlxFpjfbM?C
+0		inlxFnefbMEKMBKP
+0		kolxFzbfbMKFGfATB
+0		kolxFzbfbMLAZt@MR
+0		qolxFldfbMPJJUSUI^
+0		qolxF`dfbMI?
+0		{olxFldfbMH?
+0		snlxFbdfbMFE
+0		wnlxFxcfbMFE
+0	Overlook Path	}jlxFrhfbMCV
+0	Overlook Path	mklxFbjfbM{@VYb@
+0		wqlxFxlfbM|@Al@_@FF
+0	Overlook Path	kqlxFxrfbM?W
+0	Overlook Path	iplxFvpfbMMX
+0		wplxFpqfbMSN
+0	Overlook Path	gklxFtpfbMmAYa@N
+0		imlxF`rfbM~@[@O
+0		wjlxFlhfbMED
+0		wnlxFjpfbMq@J
+0		sblxFxnfbM?C
+0	Alpine Garden Trail	sclxFfpfbM^m@
+0	Alpine Garden Trail	sclxFfpfbMe@Q
+0		mflxFxnfbMb@bA
+0	Alpine Garden Trail	aclxFxufbMm@m@
+0		qglxFfrfbMGU
+0	Alpine Garden Trail	ielxF|pfbMdBlE
+0	Alpine Garden Trail	uilxFtqfbMBD
+0		{lzwFh}mbMIGIN
+0		kxuwFrpubMHY
+0		gxuwFprubMf@A
+0		gd_xFrekbMVM
+0		i__xFvdkbMAWUg@?i@M]IcA
+0		i__xFvdkbMNp@f@dA
+0		q}~wFnhkbMHP
+0		g}~wF`ikbMJx@
+0		i}~wFpikbMAfAPp@
+0		{|~wFzjkbMKT
+0		k}~wFxkkbM]Es@e@mAuBIw@H_@\Gd@R
+0		oc_xFdekbMZU
+0		i}~wFpikbM}AeD
+0		u}~wF`hkbMMx@c@Bm@m@e@oA@i@LKfAT
+0		o__xFxikbMEF
+0		{__xFhjkbMAB
+0		u__xF`jkbMEF
+0		}a_xFlfkbMIB
+0		gb_xFpfkbMC@
+0		wa_xFhfkbMEB
+0		y`_xFj~jbMC?
+0		aa_xFh~jbMA?
+0		sc_xFj|jbMp@xBBdAGl@
+0		g`_xF~`kbMGH
+0		o`_xFhakbMGX
+0		w`_xFbbkbMER
+0		}`_xFvbkbMGD
+0		ea_xF|bkbMCD
+0		ia_xFbckbMAH
+0		ka_xFlckbMAH
+0		k}~wFvhkbMLO\B
+0		_c_xF~wjbMYRId@NpA
+0		e`_xF`yjbM[DY_@c@G
+0		mh_xFhekbM?A
+0		kh_xFbekbM@C
+0		mh_xFfekbM@C
+0		yhywF~uobMk@C
+0		av~wF|ckbMS{@
+0		qv~wFtbkbMu@k@
+0		ox~wFrakbMHq@
+0	Central Park Outer Loop	mk_xFdzjbMCH
+0		wj_xFdzjbMFO
+0		ik_xFl{jbMEJ
+0		ii_xF|~jbMPe@d@}C
+0		i|~wFlzjbMQCW]
+0		s}~wFjyjbMQG
+0		ke_xFrsjbMCA
+0		ie_xFfsjbMC?
+0	North Woods	un~wFn}kbMBL
+0	North Woods	yn~wFj}kbM@@
+0		{h_xFlwjbMVM?i@^UGk@RS
+0		gi_xFr_kbMD?
+0		gi_xFr_kbMA?
+0		yv_xF~ykbMEC
+0		_w_xFzykbMCA
+0		}v_xFhwkbMVY?c@
+0		cv_xFrvkbMCA
+0		sx_xF`{kbMOL
+0		gx_xFzzkbMC@
+0		kx_xF|zkbMC@
+0		ax_xFvzkbMEB
+0		}w_xFtzkbMC@
+0		ow_xFzykbMCH
+0		sw_xFdzkbMCD
+0		iw_xFxykbME@
+0		m|_xFb_lbM?F
+0		u{_xFb`lbMHF
+0		g{_xFp}kbMp@@
+0		u{_xFp}kbMJ?
+0		i{_xFp}kbM@?
+0	Rainey Park Esplanade	qbywFlnhbMhADNGDS
+0	Queens Plaza Greenway	}jvwFv|hbM|@iC
+0	Queens Plaza Greenway	_ivwFlxhbMP_@
+0		m}axFlbmbM@C
+0		}_ywFhepbMCF
+0		{~xwFlfpbM@E
+0		m{xwFphpbMCF
+1		w~xwFlrpbMBE
+1		s_ywFdrpbMAB
+1		scywFrqpbMBG
+0		qd|wFhrqbMBE
+0		i~|wF|bqbMK[BS
+0		oj~wFr~obMA]
+0		cb~wF~bpbMH_@
+0		mt~wF~|obMEF
+0		yq_xF~gobMHaA
+0	2nd Avenue	wdxwFjambMz@D
+0	2nd Avenue	{bxwFpambMVN
+0	2nd Avenue	cbxwF`bmbMHZ
+0	2nd Avenue	yaxwF|bmbMPJ
+0	2nd Avenue	gaxwFhcmbM\J
+0	2nd Avenue	i`xwFtcmbM`@t@
+0		waxwF`{lbMAF
+0		cl{wFpujbM@E
+0		eq{wFtqjbMAB
+0		op{wFjrjbM@E
+0		wo_xF|~nbMDI
+1		ur}wFz`obMAB
+0		y{ywFxxkbM@C
+0		isywFx~kbMCB
+0		{rcxFzilbM@A
+0		arcxFljlbMAB
+1		ml{wF~rpbMBG
+1		ym{wF`spbMAH
+0		kmzwFfpobMDW
+0		{i_xFvbobM?@
+0		{soxF`nbbMDE
+0		qloxFfsbbM@F
+0		ymoxFbwbbMBI
+1		ck{wFbtpbM?C
+0		mykxFh_cbMBB
+0		czkxFt~bbM@I
+0		czkxFn~bbMBD
+0		uf`xFz}jbMBG
+0		uwkxFzmebMDA
+0		kg`xFj}jbMDO
+0		mwkxFjkebMIB
+0		ixkxFzkebME@
+0		eykxFdpfbMH[
+0		}b~wFfrlbMK@
+0		ic~wFhrlbMGB
+1		o~|wFj|obMEL
+1		}}|wFh}obMBK
+1		kf}wFdjobMBG
+1		qe}wFljobMAB
+1		wj}wFrfobMAD
+0		un}wFbpmbM@E
+0	Northwest Central Park Loop	am}wF~qmbMCA
+0	Northwest Central Park Loop	wl}wFjrmbMGG
+0	Northwest Central Park Loop	el}wFvrmbMCA
+0	Northwest Central Park Loop	il}wFtrmbMCA
+0	Northwest Central Park Loop	ul}wFlrmbMAA
+0	Northwest Central Park Loop	_m}wFbrmbMAC
+0		ee{wFrapbMBE
+0		{e{wF`apbM@E
+0		ei{wFr~obM@C
+0		auuwFpsubM@K
+0	West 22nd Street	usuwFvqubMLC
+1		av{wF`mpbMAD
+1		qw{wFnppbMCJ
+1		o{{wFxopbMDK
+1		e|{wFfopbMCH
+1		qq{wFhxobMAD
+1		gv{wF|tobMAD
+1		qu{wFluobMAD
+0	West 23rd Street	{vuwF`oubMCD
+0	West 24th Street	_|uwFjkubMCF
+1	West 24th Street	u~uwFpwubMAM
+1		}_|wFbnpbMEJ
+1		y`|wF|mpbMEL
+1		og{wFjspbMDM
+1		kszwFbtpbMDK
+1		itzwFdtpbMDM
+1		wcuwFt}ubMfAJ
+1		}guwF||ubMdCV
+1		cjuwFp|ubMdAJ
+1		inuwFv{ubMdCX
+1		mpuwFh{ubMbAL
+1		yuuwFdzubMjDb@
+0		{clxF~sebMAC
+0		c{ywFvhpbMCJ
+0		qzywFtipbMDK
+0		a~}wF`fkbMIF
+0		k~}wFhfkbMG@
+0		s~}wFjfkbME@
+0		y~}wFlfkbMCE
+0		}~}wFffkbMAA
+0		__~wFdfkbMAE
+0		winxFzmbbMCB
+0		ceoxFhzcbM?E
+0		ogoxF~zcbMAC
+0	West 20th Street	ekuwFzuubM?E
+0	West 20th Street	gkuwFdvubM?A
+1		aauwFvwubM@E
+1		aauwF`xubM?A
+0		}`uwFvvubM@I
+0	West 20th Street	akuwF~tubM?M
+0	West 26th Street	whvwFduubMBM
+0		kzuwFxuubMFU
+0		w||wFxejbMNvA
+0		yy}wFfpnbMEC
+0		oy}wFnonbMEE
+0		{w}wFxtnbMO?{A{@
+0		ov}wFlqnbM@?
+0		yx}wFtonbMA?
+0		am`xF`vmbMDK
+0		sm`xFdumbMCJ
+0		uu`xFzombMDM
+0		yx`xFnmmbMDM
+0		ky`xFplmbMEJ
+0		ibdxFrpkbMAD
+1		qhzwF~wpbM@C
+0		wkzwF|mrbMX?
+0		wlzwFtnrbMMI
+0		wkzwF|mrbM?_@
+0		mlzwF`nrbMOK
+0		wkzwFbnrbM?E
+0		spzwFprrbMT?
+0		}ozwFprrbMB@
+0		aqzwFnrrbMH@
+0		wpzwFprrbMB?
+0		emzwFrorbM?`A
+0		wlzwF~orbMBF
+0		wlzwF~orbMEO
+0		_mzwFhorbMLF
+0		okzwFfqrbMa@u@
+0		clzwFnprbMXC
+0		wozwFdprbMBB
+0		yozwFrrrbMh@@
+0		onzwFtrrbMB?
+0		cpzwFhsrbMAC
+0		epzwFdsrbMAC
+0		gpzwF`srbMAA
+0		unzwFlnrbMJcC
+1		qy{wFprobM?B
+1		ahzwFbvpbM@I
+1		ghzwFnupbM??
+0	Rough Ryder	y`kxFzhebMTg@vBA|Bt@j@l@H?D_@NA
+0	Rough Ryder	avjxFriebMhAdAxDtAzAlB~Ab@
+0		me|wFndobMGj@
+0		ef|wF|eobMj@B
+1		_e|wFlgobMPVFd@|@h@RVAN
+0		oc~wF|`pbMc@W
+0		kbywF~jpbMCC
+0		ubywFjkpbMB@
+1		md|wFdhobMHK
+0		ws}wFrsnbMSENc@
+0		{r}wFxsnbMLH
+0		ss}wFvsnbMGMHMVPGPQG
+0		ku}wFdqnbMXF`@l@
+0		ahmxFhyfbMSp@
+0		chmxFpyfbMm@KK^
+0		qvnxFhwebMKB
+0		ovnxFvuebM_@Rm@C
+0		whnxFjadbMFcB
+0		enywFxwnbMI\
+0		onywFvxnbMAT
+0		gj|wF`rmbMEY
+0		yj|wFhrmbME[
+0		{~xwFnwlbMDB
+0		kzxwFp~kbMCD
+0		u~jxFfobbMRA
+0		u~jxFbnbbMBC
+0		asjxFpsbbM?E
+0		khkxFrpebMRV
+0		_rkxF~lebMb@yAAa@
+0		ke{wFrlrbMGK
+0		se{wFflrbMAA
+0		_f{wFxkrbMCI
+0		s}nxFpicbMJQJJ
+0		yrjxFp}cbMA]XC@`@Y?
+0		arjxFr}cbMFHPIHd@
+0		}rjxFd}cbM]B
+0		gucxFpsjbMaBjF
+0		}{cxFrxjbMIG
+0		g|cxFjxjbMCA
+0		escxFtqkbMM}AOc@YW
+0		yh~wF|wjbMBK
+0		uh~wFpwjbMDK
+0		oh~wFbwjbM?A
+0		oh~wFdwjbM?A
+0		oh~wFdwjbMD@
+0		ih~wFfwjbMEC
+0		szjxFrpbbM@I
+0		}dkxFzjcbMZfBPF
+0	New Wave Pier	mbuwFpgnbMMI
+0	East River Esplanade	ccuwFxgnbM_@_@
+0		qgkxF~dcbMg@S
+0		mgkxFndcbMMl@
+0		gozwFpknbMHQ
+0		}kzwF~cnbM^N
+0		s_lxFfkbbMN?
+0		k_lxFfkbbM?E
+0		q{jxFl|dbM^I^r@LA
+0		yakxF|xdbM~A?Zb@
+0		miaxF`plbMHF
+0		mhaxFzplbMJF
+0		wfaxFvrlbM?G
+0		kiaxFp|lbMIE
+0		uiaxFj|lbMCC
+0	High Line	k`uwFllubMp@h@bA^jFUVX
+0		am`xFr}lbM@E
+0		ojaxFxmlbM@@
+0		mjaxFzmlbMFB
+0		ejaxF~mlbM@B
+0		cjaxFbnlbMVN
+0		kiaxFrnlbMDB
+0		eiaxFvnlbMDD
+0		}iaxFdqlbMAB
+0		seaxFrolbMAD
+0		ueaxFxolbMA@
+0		ahaxFfvlbMIG
+0	Low Library Steps	}gaxFhvlbMCA
+0	North Woods	ij_xFfhlbMIo@
+0		{n_xFxskbMDQd@B
+0		kp_xFdqkbMDW
+0		gxaxF`pkbMDB
+0		svaxF|mkbMKG
+0		{b`xFjnlbMHL
+0		qo`xFdjlbM?B
+0		{~axFjbmbMAB
+0		{~axFjcmbM@H
+0		cdaxFjcmbMAA
+0		sf`xFxalbM@E
+0		w~`xFz{kbMGN
+0		quaxFhlkbMG[
+0		goaxFjxlbM@A
+0		mnaxFzxlbMAB
+0		qmaxFpylbMd@uA
+0		klaxFzvlbM@G
+0	West 69th Street	{d{wF~ypbM@G
+0		ki`xFp~lbMEC
+0		qi`xFl~lbMAA
+0		}naxFb_mbMM`@
+0		wiexFvqnbMd@oB
+0		shexF~mnbMDQ
+0		_hexFnmnbMFQ
+0		kgexFtpnbMDQ
+0		kgexFtpnbMAB
+0		ihexFjnnbMH[
+0		shexF~mnbMAD
+0		cn`xF`bnbMDB
+0		{}`xF|wmbMA@
+0		}}`xF~wmbMHD
+0		s}`xFdxmbM?A
+0		}fbxF|ylbMLa@
+0		sjbxFvrlbMCA
+0		wjbxFtrlbMGE
+0		_kbxFnrlbMCA
+0		ckbxFlrlbMGG
+0		gkbxFzqlbMFD
+0		_kbxF`rlbMB@
+0		{jbxFbrlbMFD
+0		sjbxFhrlbM@A
+0		qjbxFfrlbM?A
+0		qjbxFdrlbM@E
+0		ekbxF~slbM]S
+0		{jbxF`wlbMCH
+0		wvbxFfwlbM?@
+0		wvbxFhwlbMCH
+0		qtbxFrxlbM?G
+0		qtbxFjxlbM?C
+0		gqaxFhmlbM@A
+0		eqaxFfmlbM@E
+0		cqaxF`mlbM@C
+0		aqaxF|llbM@E
+0		uraxFzplbM@E
+0		sraxFtplbMj@kB
+0		acaxFjglbMzAlA
+0		e`axFxilbMDD
+0		ca}wF~fkbMDG
+0		}`}wFbgkbMDG
+0		u`}wFfgkbM@E
+0		m`}wFjgkbM?C
+0		gjtwFrjtbM@C
+0		{jtwF~itbMCF
+1		_tnwF~`ubMC@
+1	Brooklyn Bridge Bicycle Path	gunwFx~tbM]U
+1	Centre Street	uvnwF|}tbMLL
+1	Centre Street	evnwFb~tbMOE
+1		gvnwFj~tbM@G
+0	Hudson River Greenway	w{qwFlgvbM]A
+0	Low Library Steps	qgaxFpvlbMKG
+0		c~`xFxylbMAD
+0		gaaxFzslbMAA
+0		udaxFhqlbMDB
+0		cgaxFfnlbMCD
+0		ggaxFlnlbMAF
+0		{haxFnmlbMB@
+0		whaxFpmlbMFD
+0		ctaxFjplbMDM
+0		}saxF|olbMCA
+0		}lywFj`obMMg@
+0		u_uwF|~ubMF@@M
+0		oauwF`~ubM~@L
+1		qk{wFzupbMDK
+1		ck{wFdvpbMBK
+1		sj{wFpvpbMBK
+1		aj{wF`wpbM_BiA
+1		ol{wFdupbMBM
+1		al{wFpupbMDM
+0		ymzwFtprbMRa@
+0		kc{wFthlbMCJ
+0		yb{wFpilbMBI
+0		g{{wFl}jbMCD
+0		uz{wFb~jbMBE
+0		or{wFp}kbMEL
+0		ks{wFn}kbMDK
+0		gj{wF~ikbM?B
+0		_k{wFpikbM@C
+0		gf{wFzlkbMAB
+0		_g{wFnlkbM@C
+0		__{wFbrkbMAD
+0		k~zwFxrkbM@C
+0		kzzwFpukbM?B
+0		c{zwFdukbM@C
+0		yqzwFv{kbMAD
+0		qrzwFl{kbM@C
+0		qn{wFn`lbMCJ
+0		mo{wFj`lbMDK
+0		sf{wFhflbMCH
+0		og{wFbflbMBK
+0		{mzwFt~kbMAB
+0		snzwFh~kbM@C
+0		qw~wFnhlbM_@Nu@|A
+0		cmpwFheobMXL
+0	Williamsburg Bridge Bike Path	}qnwFxumbMeT`eAFP
+0	East River Esplanade	{vtwFjpnbMdAn@R\
+0	East River Esplanade	w`twFnwnbMkBYKSoFs@KdA
+0	East River Esplanade	uwtwFlpnbMmCyA
+0		{stwFltnbMH[
+0	East River Esplanade	{_swFtcobMf@g@vBYbAHb@Sf@Ff@Uv@IxAs@bFw@
+0	East River Esplanade	astwFzsnbMETp@TnDn@
+0		g{owFngobM?uA
+0	East River Esplanade	}jswFbcobMpDp@n@@
+0	East River Esplanade	e_swFfdobMxKgB
+0		s{owFfhobMJW
+0		i|owFtdobMSnA
+0		}|owFdgobMF`@
+0	East 20th Street Cycleway	msrwFrbobMBp@GR
+0	East River Esplanade	cgswF`dobM`BC
+0	South 5th Street	_onwF~gmbMl@iC
+0	South 5th Street	qmnwFtcmbMBQ
+0	East River Esplanade	mjrwFf~nbMxCyCtBaDhCaB~BYpEj@
+0	East 20th Street Cycleway	krrwF~`obM[`@
+0	East River Esplanade	gttwFdsnbMd@T
+0	East River Esplanade	attwFxrnbMCF
+0	Avenue C	agrwFb`obMOW
+0	Avenue C	ugrwFh_obM[N
+0	Avenue C	qhrwF~_obMH^
+0	East River Esplanade	sprwFp`obMtB_@z@]
+0	East River Esplanade	ucswFtdobMj@F
+0	East River Esplanade	qyswFjynbM@IiE}@
+0	East River Esplanade	q`twFdwnbMEH
+0	East River Esplanade	y_twFbwnbMW@
+0	East River Esplanade	ykswFjcobMZG
+0	Williamsburg Bridge Bike Path	ghnwF`slbM}Hf`@Fn@
+0	East River Esplanade	uwtwFlpnbMXA
+0	East 20th Street Cycleway	qsrwFxdobMgLj^?b@
+0	East River Esplanade	ibswF|dobMfAQ
+0	East River Esplanade	a`swFjdobMZC
+0		evnwF~sobM_@w@g@c@gCw@wB}BcAa@WL
+0	East River Esplanade	{cswFvdobMDA
+0	East River Esplanade	ucswFpdobMEA
+0	East River Esplanade	adswF|cobMDP
+0	East River Esplanade	sbswFvdobMlAU
+0	East River Esplanade	krrwF~`obM\G
+0	East River Esplanade	akrwFr~nbMRK
+0	Avenue C	qhrwFx_obM?D
+0	Avenue C	qgrwFj_obMCA
+0	Avenue C	airwFz_obMU?
+0	Avenue C	wirwFz_obMICKo@
+0	Avenue C	qhrwFx_obMO@
+0	East 20th Street Cycleway	gsrwF`bobMEP
+0	East River Esplanade	mqrwFv`obMXE
