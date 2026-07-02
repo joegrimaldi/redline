@@ -150,6 +150,11 @@
  .ucrow span{font-size:17px;color:#dfe6f1}.ucrow b{font-family:var(--pix);font-size:9px;color:var(--grn);white-space:nowrap}.ucrow:active{transform:translateY(3px);box-shadow:0 0 0 var(--line)}
  #umap{flex:1;display:none;border-radius:4px;overflow:hidden;border:3px solid var(--line);background:#0a0e15;box-shadow:inset 0 0 0 2px #201840}
  #uncov.mapview #umap{display:block}#uncov.mapview .uclist{display:none}
+ #hoodview{position:fixed;inset:0;z-index:2100;display:none;flex-direction:column;background:rgba(6,5,14,.96);padding:calc(14px + env(safe-area-inset-top)) 12px calc(14px + env(safe-area-inset-bottom))}
+ #hoodview.show{display:flex}
+ #hmap{flex:1;border-radius:4px;overflow:hidden;border:3px solid var(--line);background:#0a0e15;box-shadow:inset 0 0 0 2px #201840;margin-bottom:10px}
+ .hvleg{display:flex;justify-content:center;gap:14px;font-size:14px;color:var(--dim);margin-bottom:8px}
+ .hvleg i{font-style:normal}.hvleg .r{color:var(--red)}.hvleg .g{color:var(--grn)}.hvleg .b{color:var(--cyan)}
  #bpop{position:fixed;inset:0;z-index:2200;display:none;align-items:center;justify-content:center;background:rgba(5,4,11,.85);padding:20px}
  #bpop.show{display:flex}
  .bcard{width:100%;max-width:320px;background:linear-gradient(160deg,#1a1240,#100a24);border:3px solid #000;border-radius:4px;padding:24px 20px;text-align:center;box-shadow:0 8px 0 #000,inset 0 0 0 2px #2c2258}
@@ -191,7 +196,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v33</div>
+ <div class="ver" id="ver">REDLINE v34</div>
 </div>
 
 <div id="map"></div>
@@ -217,6 +222,14 @@
  <div class="ucsub" id="uc_sub"></div>
  <div class="uclist" id="uc_list"></div>
  <div id="umap"></div>
+</div>
+
+<div id="hoodview">
+ <div class="uchead"><b id="hv_title">Neighborhood</b><button id="hv_close" class="btn ghost" style="width:auto;padding:6px 13px">✕ Close</button></div>
+ <div class="ucsub" id="hv_sub"></div>
+ <div class="hvleg"><i class="r">■ walked</i><i class="g">■ to-do</i><i class="b">▢ neighborhood</i></div>
+ <div id="hmap"></div>
+ <button id="hv_clear" class="btn go">⚑ Clear neighborhood — plan the sweep</button>
 </div>
 
 <div id="bpop"><div class="bcard"><div class="bemoji" id="bp_emoji">🏅</div><div class="bname" id="bp_name"></div><div class="bstat" id="bp_stat"></div><div class="bdesc" id="bp_desc"></div><div class="btap">tap to close</div></div></div>
@@ -321,7 +334,7 @@ function buildConquestMap(){if(typeof HOODBOX==='undefined'||!document.getElemen
   L.polyline(cents.map(c=>[c.lat,c.lon]),{color:'#2a3647',weight:3,opacity:.6,dashArray:'3 7'}).addTo(cmap);
   const pts=[];
   cents.forEach(c=>{pts.push([c.lat,c.lon]);
-    L.marker([c.lat,c.lon],{icon:L.divIcon({className:'',html:pinHTML(c.name,c.pct),iconSize:[46,60],iconAnchor:[23,23]})}).addTo(cmap).on('click',()=>neighborhoodRoute(c.name));});
+    L.marker([c.lat,c.lon],{icon:L.divIcon({className:'',html:pinHTML(c.name,c.pct),iconSize:[46,60],iconAnchor:[23,23]})}).addTo(cmap).on('click',()=>openHoodView(c.name));});
   cmap.fitBounds(L.latLngBounds(pts).pad(0.1));
   setTimeout(()=>{try{cmap.invalidateSize();cmap.fitBounds(L.latLngBounds(pts).pad(0.1));}catch(e){}},300);}
 buildConquestMap();
@@ -426,6 +439,22 @@ async function hoodClear(START,loop,hoodSet){
   if(loop){const {prevN,prevE}=dijkstra(cur);const p=pathTo(prevN,prevE,cur,START);if(p)routeN=routeN.concat(p.ns.slice(1));}
   const r=finalize(routeN);let left=0;remaining.forEach(i=>left+=elen[i]/MI);r.hoodLeftMi=left;return r;
 }
+// focused neighborhood map: streets lit red/green + cyan boundary, then Clear
+let hmap=null,hmapLayer=null,hoodViewName=null;
+function openHoodView(name){const box=(typeof HOODBOX!=='undefined')?HOODBOX.find(h=>h[0]===name):null;if(!box)return;hoodViewName=name;
+  const hs=computeHoods().find(h=>h.name===name);const pct=hs?hs.pct:0;
+  $('hv_title').textContent=emojiFor(name)+' '+name;
+  $('hv_sub').textContent=pct+'% cleared — tap Clear to sweep the rest';
+  $('hoodview').classList.add('show');
+  setTimeout(()=>{try{
+    if(!hmap){hmap=L.map('hmap',{preferCanvas:true,zoomControl:true,attributionControl:false});L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:20}).addTo(hmap);hmapLayer=L.layerGroup().addTo(hmap);}
+    hmapLayer.clearLayers();
+    const s=box[1],w=box[2],n=box[3],e=box[4],pad=0.004;
+    for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;if(mla<s-pad||mla>n+pad||mlo<w-pad||mlo>e+pad)continue;const a=N[E[i][0]],b=N[E[i][1]];L.polyline([[a[0],a[1]],[b[0],b[1]]],edgeStyle(E[i][3])).addTo(hmapLayer);}
+    L.rectangle([[s,w],[n,e]],{color:'#37d5f2',weight:3,fill:false,dashArray:'7 6',interactive:false}).addTo(hmapLayer);
+    hmap.invalidateSize();hmap.fitBounds([[s,w],[n,e]],{padding:[18,18]});
+  }catch(err){}},90);
+}
 
 // ---------- uncovered streets picker (list + map) ----------
 let umap=null;
@@ -520,7 +549,9 @@ $('uc_list').addEventListener('click',e=>{const r=e.target.closest('.ucrow');if(
 function openBadge(i){const b=BADGES[i];if(!b)return;$('bp_emoji').textContent=b[2]?b[0]:'🔒';$('bp_emoji').className='bemoji'+(b[2]?'':' lk');$('bp_name').textContent=b[1];const s=$('bp_stat');if(b[2]){s.textContent='✓ UNLOCKED';s.className='bstat on';}else{s.textContent='🔒 LOCKED';s.className='bstat off';}$('bp_desc').textContent=(b[2]?'':'To unlock: ')+b[3];$('bpop').classList.add('show');buzz(30);}
 $('badges').addEventListener('click',e=>{const el=e.target.closest('.bdg');if(el&&el.dataset.i!=null)openBadge(+el.dataset.i);});
 $('bpop').onclick=()=>$('bpop').classList.remove('show');
-$('hoods').addEventListener('click',e=>{const el=e.target.closest('.hood');if(el&&el.dataset.name)neighborhoodRoute(el.dataset.name);});
+$('hoods').addEventListener('click',e=>{const el=e.target.closest('.hood');if(el&&el.dataset.name)openHoodView(el.dataset.name);});
+$('hv_close').onclick=()=>$('hoodview').classList.remove('show');
+$('hv_clear').onclick=()=>{$('hoodview').classList.remove('show');if(hoodViewName)neighborhoodRoute(hoodViewName);};
 $('rc_done').onclick=()=>{$('recap').classList.remove('show');showScreen('home');};
 $('recenter').onclick=()=>{if(NAV)NAV.follow=true;if(meMarker)map.panTo(meMarker.getLatLng(),{animate:true});};
 $('rotBtn').onclick=()=>{headingUp=!headingUp;$('rotBtn').textContent=headingUp?'🧭':'⬆';$('rotBtn').classList.toggle('on',headingUp);if(!headingUp)$('map').style.transform='';else{_lastRot=999;setHeading(lastHeading);}setTimeout(()=>{try{map.invalidateSize()}catch(e){}},60);};
