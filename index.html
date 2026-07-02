@@ -64,9 +64,13 @@
  .hs{background:#161006} .hs b{color:var(--yel)}
  .section{font-family:var(--pix);font-size:9px;color:var(--cyan);text-transform:uppercase;letter-spacing:.5px;margin:16px 2px 9px;text-shadow:2px 2px 0 #000}
  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
- .bdg{background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:8px 10px;font-size:15px;color:#6f68a0;display:flex;align-items:center;gap:6px;box-shadow:0 3px 0 var(--line)}
- .bdg.on{color:var(--ink);background:#0f2417;border-color:#000;box-shadow:0 3px 0 #000,inset 0 0 0 2px #1f6b3d}
- .bdg .ic{font-size:16px;filter:grayscale(1);opacity:.5} .bdg.on .ic{filter:none;opacity:1}
+ .bdg{width:46px;height:46px;background:var(--panel);border:2px solid var(--line);border-radius:4px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 0 var(--line)}
+ .bdg.on{background:#0f2417;border-color:#000;box-shadow:0 3px 0 #000,inset 0 0 0 2px #1f6b3d}
+ .bdg .ic{font-size:23px;filter:grayscale(1);opacity:.4} .bdg.on .ic{filter:none;opacity:1}
+ #bdg_ct{color:#6f68a0;font-size:8px}
+ .acts{display:flex;gap:8px}
+ .acts .act{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:12px 4px;font-size:14px}
+ .act .ai{font-size:21px;line-height:1}
  .hoods{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
  .hood{background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:10px 11px;box-shadow:0 3px 0 var(--line)}
  .hood .hr{display:flex;justify-content:space-between;font-size:16px;margin-bottom:6px}
@@ -149,31 +153,33 @@
 
 <div id="home">
  <div class="brand"><h1>🟥 REDLINE</h1><button id="updateBtn" class="upd">⟳ Update</button></div>
- <div class="hero"><div class="big" id="d_pct">–</div><div class="cap">of Manhattan redlined</div><div class="bar"><i id="d_bar" style="width:0%"></i></div></div>
+ <div class="hero"><div class="big" id="d_pct">–</div><div class="cap">redlined</div><div class="bar"><i id="d_bar" style="width:0%"></i></div></div>
  <div class="lvl"><div class="badge"><small>LV</small><b id="d_lv">–</b></div><div class="info"><div class="t" id="d_title">–</div><div class="x" id="d_xpsub"></div><div class="xpbar"><i id="d_xpbar" style="width:0%"></i></div></div></div>
  <div class="streakrow"><span class="fire">🔥</span><div><div class="sb" id="d_streak">–</div><div class="ss" id="d_streaksub"></div></div><div class="cal" id="d_cal"></div></div>
  <div class="grid">
-   <div class="card"><b id="d_streets">–</b><span>Streets done</span><div class="sub" id="d_streets_sub"></div></div>
-   <div class="card"><b id="d_milesred">–</b><span>Miles redlined</span><div class="sub" id="d_milesred_sub"></div></div>
-   <div class="card hs"><b id="d_longest">–</b><span>🏆 Longest walk</span></div>
-   <div class="card hs"><b id="d_totmi">–</b><span>🏆 Total miles</span></div>
-   <div class="card"><b id="d_walks">–</b><span>Walks logged</span></div>
-   <div class="card"><b id="d_remain">–</b><span>Miles to go</span></div>
+   <div class="card"><b id="d_milesred">–</b><span>Mi done</span><div class="sub" id="d_milesred_sub"></div></div>
+   <div class="card"><b id="d_remain">–</b><span>To go</span></div>
+   <div class="card"><b id="d_streets">–</b><span>Segments</span><div class="sub" id="d_streets_sub"></div></div>
+   <div class="card"><b id="d_walks">–</b><span>Walks</span></div>
+   <div class="card hs"><b id="d_longest">–</b><span>🏆 Longest</span></div>
+   <div class="card hs"><b id="d_totmi">–</b><span>🏆 Total</span></div>
  </div>
- <div class="section">Badges</div><div class="badges" id="badges"></div>
- <div class="section">Conquest map · tap a level to plan a clear</div>
+ <div class="section">Medals <span id="bdg_ct"></span></div><div class="badges" id="badges"></div>
+ <div class="section">Conquest</div>
  <div id="cmap"></div>
  <div class="hoods" id="hoods"></div>
- <div class="section">Plan a walk</div>
+ <div class="section">Plan</div>
  <div class="panel">
-   <div class="field"><label>Destination</label><input type="text" id="addr" placeholder="address or place (e.g. Tompkins Square Park)" autocomplete="off"></div>
-   <div class="field"><label>Start from</label><div class="seg"><label><input type="radio" name="start" value="home" checked><span>🏠 Home</span></label><label><input type="radio" name="start" value="loc"><span>📍 My location</span></label></div></div>
-   <div class="two"><div class="field"><label>Target distance (mi)</label><input type="number" id="dist" inputmode="decimal" step="0.1" value="3.33"></div><div class="field"><label>Pace (min/mi)</label><input type="number" id="pace" inputmode="decimal" step="0.1" value="22.37"></div></div>
-   <label class="opt"><input type="checkbox" id="loop"> Round trip — return to start</label>
-   <button id="go" class="btn primary">Plan route</button>
-   <button id="nearnew" class="btn ghost">🧭 Nearest unexplored (streets + paths)</button>
-   <button id="walk" class="btn ghost">🚶 Walkabout — free roam (no destination)</button>
-   <button id="uncovBtn" class="btn ghost">📋 Unexplored land — streets &amp; paths</button>
+   <div class="field"><input type="text" id="addr" placeholder="🔎 Destination — address or place" autocomplete="off"></div>
+   <div class="seg"><label><input type="radio" name="start" value="home" checked><span>🏠 Home</span></label><label><input type="radio" name="start" value="loc"><span>📍 Me</span></label></div>
+   <div class="two"><div class="field"><label>Miles</label><input type="number" id="dist" inputmode="decimal" step="0.1" value="3.33"></div><div class="field"><label>Pace</label><input type="number" id="pace" inputmode="decimal" step="0.1" value="22.37"></div></div>
+   <label class="opt"><input type="checkbox" id="loop"> ⟲ Round trip</label>
+   <button id="go" class="btn primary">▶ Plan route</button>
+   <div class="acts">
+     <button id="nearnew" class="btn ghost act"><span class="ai">🧭</span>Nearest</button>
+     <button id="walk" class="btn ghost act"><span class="ai">🚶</span>Roam</button>
+     <button id="uncovBtn" class="btn ghost act"><span class="ai">📋</span>Explore</button>
+   </div>
    <div id="status"></div>
  </div>
 </div>
@@ -182,15 +188,15 @@
 
 <div id="preview">
  <div class="pvhead"><div class="t" id="pv_title">Your route</div><button class="btn ghost" id="pvback" style="width:auto;padding:8px 14px">← Back</button></div>
- <div class="pvstats"><div class="s"><b id="s_dist">–</b><span>MILES</span></div><div class="s"><b id="s_pct">–</b><span>% NEW</span></div><div class="s"><b id="s_time">–</b><span>EST TIME</span></div><div class="s"><b id="s_turns">–</b><span>TURNS</span></div></div>
- <button id="startnav" class="btn go">▶ Start guided walk</button>
- <div class="handoff" style="margin-top:9px"><a id="navG" target="_blank" rel="noopener">🗺️ Google Maps</a><a id="navA" target="_blank" rel="noopener">🍎 Apple (direct)</a></div>
- <div class="section">Turn-by-turn</div><div class="dirs" id="dirs"></div>
+ <div class="pvstats"><div class="s"><b id="s_dist">–</b><span>Mi</span></div><div class="s"><b id="s_pct">–</b><span>New</span></div><div class="s"><b id="s_time">–</b><span>Time</span></div><div class="s"><b id="s_turns">–</b><span>Turns</span></div></div>
+ <button id="startnav" class="btn go">▶ Start walk</button>
+ <div class="handoff" style="margin-top:9px"><a id="navG" target="_blank" rel="noopener">🗺️ Google</a><a id="navA" target="_blank" rel="noopener">🍎 Apple</a></div>
+ <div class="section">Route</div><div class="dirs" id="dirs"></div>
 </div>
 
 <div id="navtop"><div style="display:flex;align-items:center;gap:12px"><div id="nav_arrow">↑</div><div style="flex:1"><div id="nav_inst">Head out</div><div id="nav_dist"></div></div></div></div>
 <div id="navctl"><button id="rotBtn" class="on" title="Heading-up / North-up">🧭</button><button id="muteBtn" class="on" title="Voice on/off">🔊</button><button id="recenter" title="Recenter">◎</button></div>
-<div id="navbot"><div id="nav_new"></div><div id="nav_prog"></div><button id="nav_end">End walk</button></div>
+<div id="navbot"><div id="nav_new"></div><div id="nav_prog"></div><button id="nav_end">✕ End</button></div>
 
 <div id="toast"></div>
 <div id="recap"><div class="rcard"><h2 id="rc_title">Walk complete 🎉</h2><div class="rsub" id="rc_sub"></div><div id="rc_body"></div><button id="rc_done" class="rdone">Nice work →</button></div></div>
@@ -262,8 +268,8 @@ function computeHoods(){if(typeof HOODBOX==='undefined')return STATS.hoods||[];c
 function renderDash(){try{
   const LT=liveTotalsFull();
   $('d_pct').textContent=LT.pct.toFixed(1)+'%';$('d_bar').style.width=Math.min(100,LT.pct)+'%';
-  $('d_streets').textContent=LT.segsDone.toLocaleString();$('d_streets_sub').textContent='of '+LT.segsTotal.toLocaleString();
-  $('d_milesred').textContent=LT.coveredMi.toFixed(1);$('d_milesred_sub').textContent='of '+Math.round(LT.totalMi)+' mi';
+  $('d_streets').textContent=LT.segsDone.toLocaleString();$('d_streets_sub').textContent='/'+LT.segsTotal.toLocaleString();
+  $('d_milesred').textContent=LT.coveredMi.toFixed(1);$('d_milesred_sub').textContent='/'+Math.round(LT.totalMi);
   $('d_longest').textContent=STATS.longestMi.toFixed(1)+' mi';$('d_totmi').textContent=Math.round(STATS.totalWalkedMi)+' mi';
   $('d_walks').textContent=STATS.walks;$('d_remain').textContent=Math.round(LT.totalMi-LT.coveredMi)+' mi';
   // level
@@ -271,17 +277,18 @@ function renderDash(){try{
   const cur=LEVELS[li][0],hasNext=li+1<LEVELS.length,next=hasNext?LEVELS[li+1][0]:cur;
   $('d_lv').textContent=li+1;$('d_title').textContent=LEVELS[li][1];
   $('d_xpbar').style.width=(hasNext?Math.min(1,(mi-cur)/(next-cur))*100:100)+'%';
-  $('d_xpsub').textContent=hasNext?((next-mi).toFixed(1)+' mi to LV'+(li+2)+' · '+LEVELS[li+1][1]):'Max level — legend';
+  $('d_xpsub').textContent=hasNext?((next-mi).toFixed(1)+' mi → LV'+(li+2)):'MAX · legend';
   // streak
-  $('d_streak').textContent=STATS.streak+(STATS.streak===1?' day streak':' day streak');
-  $('d_streaksub').textContent=STATS.todayWalked?'walked today ✓':'walk today to keep it alive';
+  $('d_streak').textContent=STATS.streak+'-day 🔥';
+  $('d_streaksub').textContent=STATS.todayWalked?'✓ today':'go today';
   $('d_cal').innerHTML=(STATS.cal||[]).map(v=>`<i class="${v?'on':''}"></i>`).join('');
   // badges
   const w=STATS.walks,hoods=computeHoods().sort((a,b)=>b.pct-a.pct),hoodDone=hoods.filter(h=>h.pct>=100).length,hood50=hoods.filter(h=>h.pct>=50).length;
   const B=[['🥾','25 mi redlined',mi>=25],['🏙️','50 mi',mi>=50],['💯','100 mi',mi>=100],['🚶','25 walks',w>=25],['🏃','50 walks',w>=50],['🎖️','100 walks',w>=100],['📏','10-mi walk',STATS.longestMi>=10],['🔥','3-day streak',STATS.streak>=3],['⚡','7-day streak',STATS.streak>=7],['🏆','Clear a hood',hoodDone>=1],['🗺️','3 hoods 50%+',hood50>=3],['🌆','20% island',LT.pct>=20]];
-  $('badges').innerHTML=B.map(b=>`<div class="bdg ${b[2]?'on':''}"><span class="ic">${b[2]?b[0]:'🔒'}</span>${b[1]}</div>`).join('');
+  $('badges').innerHTML=B.map(b=>`<div class="bdg ${b[2]?'on':''}" title="${b[1]}"><span class="ic">${b[2]?b[0]:'🔒'}</span></div>`).join('');
+  const _bc=$('bdg_ct');if(_bc)_bc.textContent=B.filter(b=>b[2]).length+'/'+B.length;
   // hoods
-  $('hoods').innerHTML=hoods.map(h=>{const ec=h.pct>66.6?'':(h.pct>0?'bw':'lk');return `<div class="hood ${h.pct>=100?'done':''}" data-name="${h.name}"><div class="hr"><span><span class="emo ${ec}">${emojiFor(h.name)}</span>${h.name}</span><span class="p">${h.pct}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div></div>`;}).join('');
+  $('hoods').innerHTML='';
 }catch(e){}}
 renderDash();
 let cmap=null;
