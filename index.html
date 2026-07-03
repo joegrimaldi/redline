@@ -217,7 +217,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v50</div>
+ <div class="ver" id="ver">REDLINE v51</div>
 </div>
 
 <div id="map"></div>
@@ -631,7 +631,7 @@ function projectionCap(){if(WL.length<2)return'';const done=WL[WL.length-1][4],r
   if(perWk<=0.05)return '<b>'+rem.toFixed(0)+' mi</b> of streets to go — break some new ground to project a finish date!';
   const d2=new Date(Date.now()+(rem/perWk)*7*864e5);return '<b>'+rem.toFixed(0)+' mi</b> of streets to go. At your last-8-week pace (~'+perWk.toFixed(1)+' new mi/wk) you clear every street by ~<b style="color:#37d5f2">'+MONTHS[d2.getMonth()]+' '+d2.getFullYear()+'</b>';}
 function openViz(kind){$('viz').classList.add('show');const body=$('viz_body');$('viz_cap').innerHTML='';
-  if(kind==='calendar'){$('viz_title').textContent='🔥 Walk calendar';body.innerHTML=calendarHTML();$('viz_cap').textContent='Tap a day for its miles + new ground redlined';wireCal();}
+  if(kind==='calendar'){$('viz_title').textContent='🔥 Walk calendar';body.innerHTML=calendarHTML();$('viz_cap').textContent='Tap a day for its miles + new ground redlined';wireCal();requestAnimationFrame(()=>{body.scrollTop=body.scrollHeight;});}
   else if(kind==='coverage'){$('viz_title').textContent='🟥 Redlined over time';body.innerHTML=coverageSVG();const done=WL.length?WL[WL.length-1][4]:0;$('viz_cap').innerHTML='<b>'+done.toFixed(0)+' mi</b> of streets redlined since Sep 2025 · '+(100*done/523).toFixed(0)+'% of the ~523-mi grid';}
   else if(kind==='togo'){$('viz_title').textContent='🎯 Finish projection';body.innerHTML=coverageSVG();$('viz_cap').innerHTML=projectionCap();}
   else if(kind==='walks'){$('viz_title').textContent='🚶 Walks by month';body.innerHTML=barsSVG(monthAgg(),0,'#37d5f2');const tot=WL.reduce((s,w)=>s+w[1],0),avg=WMI.length?WMI.reduce((s,m)=>s+m,0)/WMI.length:0;$('viz_cap').innerHTML='<b>'+tot+'</b> walks · avg <b>'+avg.toFixed(1)+' mi</b> each';}
