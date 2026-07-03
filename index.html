@@ -78,7 +78,8 @@
  .hood{background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:10px 11px;box-shadow:0 3px 0 var(--line)}
  .hood .hr{display:flex;justify-content:space-between;font-size:16px;margin-bottom:6px}
  .hood .hr .p{color:var(--dim);font-family:var(--pix);font-size:10px} .hood.done .hr .p{color:var(--red)}
- .hood .hr .emo{margin-right:6px;font-size:17px} .hood .hr .emo.bw{filter:grayscale(1);opacity:.6} .hood .hr .emo.lk{filter:grayscale(1);opacity:.35}
+ .hood .hr .emo{margin-right:6px;font-size:17px} .hood .hr .emo.bw{filter:grayscale(1);opacity:.6} .hood .hr .emo.lk{filter:grayscale(1);opacity:.35} .hood .hr .emo.gold{filter:drop-shadow(0 0 4px rgba(255,210,63,.95))}
+ .hood .hr .p .med{margin-right:4px;font-size:13px;vertical-align:-1px} .hood.t3 .hr .p{color:#ffd23f} .hood.t3{border-color:#ffd23f;box-shadow:0 3px 0 #6b5410}
  .hbar{height:9px;background:#0a0713;border:2px solid var(--line);border-radius:0;overflow:hidden}
  .hbar>i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--red) 0 8px,#a3242c 8px 10px)}
  .hood.done .hbar>i{background:var(--red)}
@@ -89,6 +90,8 @@
  .lvlpin .ring i.bw{filter:grayscale(1)} .lvlpin .ring i.lk{filter:grayscale(1);opacity:.4}
  .lvlpin .ring i.red99{background:#3a0d0d;box-shadow:0 0 10px rgba(255,46,46,.95) inset,0 0 8px rgba(255,46,46,.7)}
  .lvlpin .lk2{position:absolute;right:-1px;bottom:15px;font-size:11px;text-shadow:0 1px 2px #000}
+ .lvlpin .medb{position:absolute;top:-4px;right:-4px;font-size:16px;line-height:1;text-shadow:0 1px 2px #000;filter:drop-shadow(0 0 3px rgba(0,0,0,.85));z-index:2}
+ .tierkey{display:flex;gap:14px;justify-content:center;align-items:center;margin:0 0 9px} .tierkey span{font-size:16px;display:inline-flex;align-items:center} .tierkey small{font-family:var(--pix);font-size:8px;color:var(--dim);margin-left:3px}
  .lvlpin .lbl{position:absolute;top:47px;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--pix);font-size:7px;color:#dfe6f1;text-shadow:1px 1px 0 #000,0 0 4px #000}
  .panel{background:var(--panel);border:3px solid var(--line);border-radius:4px;padding:13px;display:flex;flex-direction:column;gap:11px;box-shadow:0 5px 0 var(--line),inset 0 0 0 2px #291f52}
  label{font-family:var(--pix);font-size:8px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
@@ -197,6 +200,7 @@
  </div>
  <div class="section">Medals <span id="bdg_ct"></span></div><div class="badges" id="badges"></div>
  <div class="section">Conquest <span class="ctabs"><button id="ct_map" class="ctab on">Map</button><button id="ct_list" class="ctab">List</button></span></div>
+ <div class="tierkey"><span>🔒<small>&lt;34</small></span><span>🥉<small>34%</small></span><span>🥈<small>67%</small></span><span>🥇<small>100%</small></span></div>
  <div id="cmap"></div>
  <div class="hoods" id="hoods"></div>
  <div class="section">Plan</div>
@@ -213,7 +217,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v48</div>
+ <div class="ver" id="ver">REDLINE v49</div>
 </div>
 
 <div id="map"></div>
@@ -314,6 +318,12 @@ let _tt;function toast(t){const el=$('toast');el.textContent=t;el.classList.add(
 const LEVELS=[[0,'Rookie'],[6,'Wanderer'],[15,'Pathfinder'],[30,'Trailblazer'],[60,'Cartographer'],[90,'Surveyor'],[150,'Redliner'],[250,'City Stalker'],[400,'Street Sovereign'],[525,'Manhattan Master']];
 const HOODEMOJI={'Financial District':'🏦','Battery Park City':'🔋','Seaport / Civic Center':'⚓','Tribeca':'🎬','Chinatown':'🥟','Lower East Side':'🥯','SoHo / Nolita':'🛍️','West Village':'☕','East Village':'🎸','Chelsea':'🖼️','Flatiron / Gramercy':'📐','Murray Hill / Kips Bay':'🏢','Midtown':'🏙️',"Hell's Kitchen":'🍳','Upper East Side':'🎩','Upper West Side':'🎻','Harlem / Morningside':'🎷','Washington Hts / Inwood':'🌉'};
 function emojiFor(nm){return HOODEMOJI[nm]||'📍';}
+// ---- three-tier discovery: Bronze 33.9% / Silver 66.6% / Gold 99.3% (=complete, rounds to 100) ----
+const HTHRESH=[33.9,66.6,99.3];
+function hoodTier(pct){return pct>=99.3?3:pct>=66.6?2:pct>=33.9?1:0;}
+function hoodMedal(t){return ['','🥉','🥈','🥇'][t];}
+function hoodTierName(t){return ['Locked','Bronze','Silver','Gold'][t];}
+function hoodDisp(pct){return pct>=99.3?100:pct;}
 function computeHoods(){if(typeof HOODBOX==='undefined')return STATS.hoods||[];const agg={};HOODBOX.forEach(b=>agg[b[0]]=[0,0]);
   for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;for(const b of HOODBOX){if(b[1]<=mla&&mla<=b[3]&&b[2]<=mlo&&mlo<=b[4]){agg[b[0]][1]++;if(E[i][3]===1)agg[b[0]][0]++;break;}}}
   return HOODBOX.map(b=>({name:b[0],done:agg[b[0]][0],tot:agg[b[0]][1],pct:agg[b[0]][1]?Math.round(1000*agg[b[0]][0]/agg[b[0]][1])/10:0})).filter(h=>h.tot>=10);}
@@ -335,22 +345,23 @@ function renderDash(){try{
   $('d_streaksub').textContent=STATS.todayWalked?'✓ today':'go today';
   $('d_cal').innerHTML=(STATS.cal||[]).map(v=>`<i class="${v?'on':''}"></i>`).join('');
   // badges
-  const w=STATS.walks,hoods=computeHoods().sort((a,b)=>b.pct-a.pct),hoodDone=hoods.filter(h=>h.pct>=100).length,hood50=hoods.filter(h=>h.pct>=50).length;
+  const w=STATS.walks,hoods=computeHoods().sort((a,b)=>b.pct-a.pct),hoodDone=hoods.filter(h=>h.pct>=99.3).length,hood50=hoods.filter(h=>h.pct>=50).length;
   const pkMi=parkCoveredMi();let uptown=false;for(let i=0;i<E.length;i++){if(E[i][3]===1&&(N[E[i][0]][0]>40.79||N[E[i][1]][0]>40.79)){uptown=true;break;}}
   BADGES=[['🥾','25-Mile Club',mi>=25,'Redline 25 miles of the pedestrian network.'],['🏙️','50-Mile Club',mi>=50,'Redline 50 miles of the network.'],['💯','Century',mi>=100,'Redline 100 miles of the network.'],['🚶','Regular',w>=25,'Log 25 GPS-tracked walks on Strava.'],['🏃','Devoted',w>=50,'Log 50 tracked walks.'],['🎖️','Centurion',w>=100,'Log 100 tracked walks.'],['📏','Long Hauler',STATS.longestMi>=10,'Finish a single walk of 10+ miles.'],['🔥','On Fire',STATS.streak>=3,'Walk 3 days in a row.'],['⚡','Unstoppable',STATS.streak>=7,'Walk 7 days in a row.'],['🏆','Conqueror',hoodDone>=1,'Get any neighborhood to 100%.'],['🗺️','Cartographer',hood50>=3,'Get 3 neighborhoods past 50%.'],['🌆','Redliner',LT.pct>=20,'Redline 20% of the whole network.'],['🌳','Park Ranger',pkMi>=25,'Redline 25 miles of parks & greenways.'],['🌉','Uptown Bound',uptown,'Redline any block north of 96th St.']];
   $('badges').innerHTML=BADGES.map((b,i)=>`<div class="bdg ${b[2]?'on':''}" data-i="${i}" title="${b[1]}"><span class="ic">${b[2]?b[0]:'🔒'}</span></div>`).join('');
   const _bc=$('bdg_ct');if(_bc)_bc.textContent=BADGES.filter(b=>b[2]).length+'/'+BADGES.length;
   // hoods
-  $('hoods').innerHTML=hoods.map(h=>{const ec=h.pct>66.6?'':(h.pct>0?'bw':'lk');return `<div class="hood ${h.pct>=100?'done':''}" data-name="${h.name}"><div class="hr"><span><span class="emo ${ec}">${emojiFor(h.name)}</span>${h.name}</span><span class="p">${h.pct}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div></div>`;}).join('');
+  $('hoods').innerHTML=hoods.map(h=>{const tr=hoodTier(h.pct);const ec=tr===0?'lk':tr===1?'bw':tr===3?'gold':'';const med=hoodMedal(tr);return `<div class="hood t${tr} ${tr===3?'done':''}" data-name="${h.name}"><div class="hr"><span><span class="emo ${ec}">${emojiFor(h.name)}</span>${h.name}</span><span class="p">${med?`<b class="med">${med}</b>`:''}${hoodDisp(h.pct)}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div></div>`;}).join('');
 }catch(e){}}
 renderDash();
 let cmap=null;
-function pinHTML(name,pct){const emo=emojiFor(name);
-  // state: locked(0) / b&w(>0..66.6) / color(>66.6) / red bg(>=99)
+function pinHTML(name,pct){const emo=emojiFor(name);const tr=hoodTier(pct);
+  // tier: locked(0) / bronze(1,>=33.9) / silver(2,>=66.6) / gold(3,>=99.3 complete)
   let icls='',lock='';
-  if(pct>=99)icls='red99';else if(pct>66.6)icls='';else if(pct>0)icls='bw';else{icls='lk';lock='<span class="lk2">🔒</span>';}
-  const ring=pct>=99?'#ff2e2e;box-shadow:0 0 13px rgba(255,46,46,.9)':'conic-gradient(#ff2e2e '+pct+'%, #2a3340 '+pct+'% 100%)';
-  return '<div class="lvlpin"><div class="ring" style="background:'+ring+'"><i class="'+icls+'">'+emo+'</i></div>'+lock+'<div class="lbl">'+name.split(' / ')[0]+'</div></div>';}
+  if(tr===0){icls='lk';lock='<span class="lk2">🔒</span>';}else if(tr===1){icls='bw';}else{icls='';}
+  const med=hoodMedal(tr),medBadge=med?'<span class="medb">'+med+'</span>':'';
+  const ring=tr===3?'#ffd23f;box-shadow:0 0 13px rgba(255,210,63,.9)':'conic-gradient(#ff2e2e '+pct+'%, #2a3340 '+pct+'% 100%)';
+  return '<div class="lvlpin"><div class="ring" style="background:'+ring+'"><i class="'+icls+'">'+emo+'</i></div>'+lock+medBadge+'<div class="lbl">'+name.split(' / ')[0]+'</div></div>';}
 function buildConquestMap(){if(typeof HOODBOX==='undefined'||!document.getElementById('cmap'))return;
   const hs=computeHoods(),pct={};hs.forEach(h=>pct[h.name]=h.pct);
   cmap=L.map('cmap',{zoomControl:true,attributionControl:false,scrollWheelZoom:true,minZoom:11,maxZoom:16});
@@ -469,9 +480,12 @@ async function hoodClear(START,loop,hoodSet){
 // focused neighborhood map: streets lit red/green + cyan boundary, then Clear
 let hmap=null,hmapLayer=null,hoodViewName=null;
 function openHoodView(name){const box=(typeof HOODBOX!=='undefined')?HOODBOX.find(h=>h[0]===name):null;if(!box)return;hoodViewName=name;
-  const hs=computeHoods().find(h=>h.name===name);const pct=hs?hs.pct:0;
-  $('hv_title').textContent=emojiFor(name)+' '+name;
-  $('hv_sub').textContent=pct+'% cleared — tap Clear to sweep the rest';
+  const hs=computeHoods().find(h=>h.name===name);const pct=hs?hs.pct:0;const tr=hoodTier(pct),med=hoodMedal(tr);
+  $('hv_title').textContent=emojiFor(name)+' '+(med?med+' ':'')+name;
+  let sub;
+  if(tr===3){sub='🥇 Gold — 100% redlined! ✅';}
+  else{const nm=['🥉 Bronze','🥈 Silver','🥇 Gold'][tr];sub=hoodDisp(pct)+'% · '+(HTHRESH[tr]-pct).toFixed(1)+'% to '+nm+' — tap Clear to sweep it';}
+  $('hv_sub').textContent=sub;
   $('hoodview').classList.add('show');
   setTimeout(()=>{try{
     if(!hmap){hmap=L.map('hmap',{preferCanvas:true,zoomControl:true,attributionControl:false});L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:20}).addTo(hmap);hmapLayer=L.layerGroup().addTo(hmap);}
