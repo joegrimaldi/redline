@@ -78,7 +78,8 @@
  .hood{background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:10px 11px;box-shadow:0 3px 0 var(--line)}
  .hood .hr{display:flex;justify-content:space-between;font-size:16px;margin-bottom:6px}
  .hood .hr .p{color:var(--dim);font-family:var(--pix);font-size:10px} .hood.done .hr .p{color:var(--red)}
- .hood .hr .emo{margin-right:6px;font-size:17px} .hood .hr .emo.bw{filter:grayscale(1);opacity:.6} .hood .hr .emo.lk{filter:grayscale(1);opacity:.35}
+ .hood .hr .emo{margin-right:6px;font-size:17px} .hood .hr .emo.bw{filter:grayscale(1);opacity:.6} .hood .hr .emo.lk{filter:grayscale(1);opacity:.35} .hood .hr .emo.gold{filter:drop-shadow(0 0 4px rgba(255,210,63,.95))}
+ .hood .hr .p .med{margin-right:4px;font-size:13px;vertical-align:-1px} .hood.t3 .hr .p{color:#ffd23f} .hood.t3{border-color:#ffd23f;box-shadow:0 3px 0 #6b5410}
  .hbar{height:9px;background:#0a0713;border:2px solid var(--line);border-radius:0;overflow:hidden}
  .hbar>i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--red) 0 8px,#a3242c 8px 10px)}
  .hood.done .hbar>i{background:var(--red)}
@@ -89,6 +90,8 @@
  .lvlpin .ring i.bw{filter:grayscale(1)} .lvlpin .ring i.lk{filter:grayscale(1);opacity:.4}
  .lvlpin .ring i.red99{background:#3a0d0d;box-shadow:0 0 10px rgba(255,46,46,.95) inset,0 0 8px rgba(255,46,46,.7)}
  .lvlpin .lk2{position:absolute;right:-1px;bottom:15px;font-size:11px;text-shadow:0 1px 2px #000}
+ .lvlpin .medb{position:absolute;top:-4px;right:-4px;font-size:16px;line-height:1;text-shadow:0 1px 2px #000;filter:drop-shadow(0 0 3px rgba(0,0,0,.85));z-index:2}
+ .tierkey{display:flex;gap:14px;justify-content:center;align-items:center;margin:0 0 9px} .tierkey span{font-size:16px;display:inline-flex;align-items:center} .tierkey small{font-family:var(--pix);font-size:8px;color:var(--dim);margin-left:3px}
  .lvlpin .lbl{position:absolute;top:47px;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--pix);font-size:7px;color:#dfe6f1;text-shadow:1px 1px 0 #000,0 0 4px #000}
  .panel{background:var(--panel);border:3px solid var(--line);border-radius:4px;padding:13px;display:flex;flex-direction:column;gap:11px;box-shadow:0 5px 0 var(--line),inset 0 0 0 2px #291f52}
  label{font-family:var(--pix);font-size:8px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
@@ -197,6 +200,7 @@
  </div>
  <div class="section">Medals <span id="bdg_ct"></span></div><div class="badges" id="badges"></div>
  <div class="section">Conquest <span class="ctabs"><button id="ct_map" class="ctab on">Map</button><button id="ct_list" class="ctab">List</button></span></div>
+ <div class="tierkey"><span>🔒<small>&lt;34</small></span><span>🥉<small>34%</small></span><span>🥈<small>67%</small></span><span>🥇<small>100%</small></span></div>
  <div id="cmap"></div>
  <div class="hoods" id="hoods"></div>
  <div class="section">Plan</div>
