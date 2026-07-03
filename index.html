@@ -183,7 +183,7 @@
 </style></head><body class="s-home"><div id="app">
 
 <div id="home">
- <div class="brand"><h1>🟥 REDLINE</h1><div style="display:flex;gap:6px"><a class="upd" href="https://github.com/joegrimaldi/redline/actions/workflows/sync.yml" target="_blank" rel="noopener" style="text-decoration:none;color:var(--grn)">🔄 Sync</a><button id="updateBtn" class="upd">⟳ Update</button></div></div>
+ <div class="brand"><h1>🟥 REDLINE</h1><div style="display:flex;gap:6px"><button id="syncBtn" class="upd">🔄 Sync</button><button id="updateBtn" class="upd">⟳ Update</button></div></div>
  <div class="hero tapviz" data-viz="coverage"><div class="big" id="d_pct">–</div><div class="cap">redlined ›</div><div class="bar"><i id="d_bar" style="width:0%"></i></div></div>
  <div class="lvl tapviz" data-viz="coverage"><div class="badge"><small>LV</small><b id="d_lv">–</b></div><div class="info"><div class="t" id="d_title">–</div><div class="x" id="d_xpsub"></div><div class="xpbar"><i id="d_xpbar" style="width:0%"></i></div></div></div>
  <div class="streakrow tapviz" data-viz="calendar"><span class="fire">🔥</span><div><div class="sb" id="d_streak">–</div><div class="ss" id="d_streaksub"></div></div><div class="cal" id="d_cal"></div></div>
@@ -213,7 +213,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v43</div>
+ <div class="ver" id="ver">REDLINE v44</div>
 </div>
 
 <div id="map"></div>
@@ -568,6 +568,8 @@ function showRecap(){const now=liveIslandPct(),walked=(NAV&&NAV.cum&&NAV.lastIdx
 
 // ---------- update button ----------
 $('updateBtn').onclick=async()=>{$('updateBtn').textContent='…';try{if('serviceWorker'in navigator){const rs=await navigator.serviceWorker.getRegistrations();for(const r of rs)await r.unregister();}if(window.caches){const ks=await caches.keys();for(const k of ks)await caches.delete(k);}}catch(e){}location.replace(location.pathname+'?u='+Date.now());};
+const SYNC_URL='https://joegrimaldi--f51eddc8772111f1ac241607ee4eb77e.web.val.run';
+{const sb=$('syncBtn');if(sb)sb.onclick=async()=>{if(sb.disabled)return;sb.disabled=true;const o=sb.textContent;sb.textContent='⏳ Syncing…';toast('⏳ Pulling your latest Strava walks…');try{const r=await fetch(SYNC_URL,{method:'POST'});const tx=(await r.text()).trim();if(r.ok&&/sync started/i.test(tx)){toast("✅ Sync started — new walks will appear in ~1 min. Tap ⟳ Update then.");}else{toast('⚠️ Sync error: '+tx.slice(0,60));}}catch(e){toast('⚠️ Could not reach sync — check connection.');}setTimeout(()=>{sb.disabled=false;sb.textContent=o;},4000);};}
 
 // ---------- wiring ----------
 $('go').onclick=run;$('nearnew').onclick=nearestNew;$('walk').onclick=walkabout;$('pvback').onclick=()=>showScreen('home');$('startnav').onclick=startNav;$('nav_end').onclick=endNav;
