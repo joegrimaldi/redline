@@ -1,0 +1,39 @@
+name: Redline Strava Sync
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * *'   # ~7-8am ET daily
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pull Strava and rebuild the app
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+        run: |
+          cd build
+          cp ../sw.js ./sw.js
+          python ci_sync.py
+          python build_walklog.py
+          python rebuild_app.py
+          cp ../redline-app/index.html ../index.html
+          cp ../redline-app/sw.js ../sw.js
+      - name: Commit and push
+        run: |
+          git config user.name "redline-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html sw.js
+          if git diff --staged --quiet; then
+            echo "No coverage changes."
+          else
+            git commit -m "Auto-sync Strava $(date -u +%F_%H%M)"
+            git push
+          fi
