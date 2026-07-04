@@ -102,8 +102,26 @@ function renderDash(){try{
   // hoods
   fillHoods(hoods);
 }catch(e){}}
-function fillHoods(list){const hs=(list||computeHoods()).slice().sort((a,b)=>HOODSORT==='left'?((b.totMi-b.mi)-(a.totMi-a.mi)):(b.pct-a.pct));
-  $('hoods').innerHTML=hs.map(h=>{const tr=hoodTier(h.pct);const ec=tr===0?'lk':tr===1?'bw':tr===3?'gold':'';const med=hoodMedal(tr);const left=Math.max(0,h.totMi-h.mi);return `<div class="hood t${tr} ${tr===3?'done':''}" data-name="${h.name}"><div class="hr"><span><span class="emo ${ec}">${emojiFor(h.name)}</span>${h.name}</span><span class="p">${med?`<b class="med">${med}</b>`:''}${hoodDisp(h.pct)}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div><div class="hmi">${HOODSORT==='left'?('<b style="color:#ff8a6b">'+left.toFixed(1)+' mi</b> to go · '+h.mi.toFixed(1)+' / '+h.totMi.toFixed(1)):(h.mi.toFixed(1)+' / '+h.totMi.toFixed(1)+' mi redlined')}</div></div>`;}).join('');}
+let MYSORTPOS=null; // [lat,lon] cached for "Nearest" sort
+function hoodCentroid(name){const h=HOODP&&HOODP.find(x=>x.n===name);if(h&&h.bb)return [(h.bb[0]+h.bb[2])/2,(h.bb[1]+h.bb[3])/2];return null;}
+function sortRef(){return MYSORTPOS||(N[HOME]?[N[HOME][0],N[HOME][1]]:[40.7044,-74.0099]);}
+function hoodDistMi(name){const c=hoodCentroid(name);if(!c)return null;const ref=sortRef();const dy=(c[0]-ref[0])*69,dx=(c[1]-ref[1])*69*Math.cos(ref[0]*toR);return Math.hypot(dy,dx);}
+function fillHoods(list){let hs=(list||computeHoods()).slice();
+  if(HOODSORT==='near')hs.forEach(h=>{const d=hoodDistMi(h.name);h._d=(d==null)?1e9:d;});
+  hs.sort((a,b)=>{
+    if(HOODSORT==='left')return (b.totMi-b.mi)-(a.totMi-a.mi);
+    if(HOODSORT==='az')return a.name.localeCompare(b.name);
+    if(HOODSORT==='near')return a._d-b._d;
+    if(HOODSORT==='close'){const ad=a.pct>=99,bd=b.pct>=99;if(ad!==bd)return ad?1:-1;return (a.totMi-a.mi)-(b.totMi-b.mi);}
+    return b.pct-a.pct;
+  });
+  $('hoods').innerHTML=hs.map(h=>{const tr=hoodTier(h.pct);const ec=tr===0?'lk':tr===1?'bw':tr===3?'gold':'';const med=hoodMedal(tr);const left=Math.max(0,h.totMi-h.mi);
+    const badge=tr===0?'<b class="med lk2">🔒</b>':(med?`<b class="med">${med}</b>`:'');
+    let sub;
+    if(HOODSORT==='near'){const d=(h._d>=1e9)?null:h._d;sub=(d==null?'—':'<b style="color:#37d5f2">~'+d.toFixed(1)+' mi</b> away')+' · '+hoodDisp(h.pct)+'% redlined';}
+    else if(HOODSORT==='left'||HOODSORT==='close')sub='<b style="color:#ff8a6b">'+left.toFixed(1)+' mi</b> to go · '+h.mi.toFixed(1)+' / '+h.totMi.toFixed(1);
+    else sub=h.mi.toFixed(1)+' / '+h.totMi.toFixed(1)+' mi redlined';
+    return `<div class="hood t${tr} ${tr===3?'done':''}" data-name="${h.name}"><div class="hr"><span><span class="emo ${ec}">${emojiFor(h.name)}</span>${h.name}</span><span class="p">${badge}${hoodDisp(h.pct)}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div><div class="hmi">${sub}</div></div>`;}).join('');}
 
 renderDash();
 let cmap=null;
@@ -408,7 +426,8 @@ function levelsHTML(){
   const meter=(ic,lb,val)=>'<div class="tmeter"><div class="tmlabel">'+ic+' '+lb+' — <b>'+Math.round(val)+'%</b></div><div class="tmbar"><i style="width:'+Math.min(100,val)+'%"></i><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
   let h=meter('🟥','Coverage',covPct);
   const _tot=HD.length||1,_gw=100*go/_tot,_sw=100*Math.max(0,si-go)/_tot,_bw=100*Math.max(0,br-si)/_tot;
-  h+='<div class="tmeter"><div class="tmlabel">🏘️ Neighborhoods — <b>'+br+'</b> 🥉  <b>'+si+'</b> 🥈  <b>'+go+'</b> 🥇 <span style="color:var(--dim)">/ '+HD.length+'</span></div><div class="tmbar"><span class="seg sg" style="left:0;width:'+_gw+'%"></span><span class="seg ss" style="left:'+_gw+'%;width:'+_sw+'%"></span><span class="seg sb" style="left:'+(_gw+_sw)+'%;width:'+_bw+'%"></span><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
+  const lk=Math.max(0,HD.length-br);
+  h+='<div class="tmeter"><div class="tmlabel">🏘️ Neighborhoods — <b>'+lk+'</b> 🔒  <b>'+br+'</b> 🥉  <b>'+si+'</b> 🥈  <b>'+go+'</b> 🥇 <span style="color:var(--dim)">/ '+HD.length+'</span></div><div class="tmbar"><span class="seg sg" style="left:0;width:'+_gw+'%"></span><span class="seg ss" style="left:'+_gw+'%;width:'+_sw+'%"></span><span class="seg sb" style="left:'+(_gw+_sw)+'%;width:'+_bw+'%"></span><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
   h+=meter('🛣️','Streets finished',stPct);
   h+='<div class="lad">';
   for(let k=0;k<LEVELS.length;k++){const L=LEVELS[k], mile=(k===2||k===5||k===8), cur=(k===li), done=meets(k);
@@ -428,8 +447,15 @@ $('home').addEventListener('click',e=>{const el=e.target.closest('.tapviz');if(e
 $('viz_close').onclick=()=>$('viz').classList.remove('show');
 $('hoods').addEventListener('click',e=>{const el=e.target.closest('.hood');if(el&&el.dataset.name)openHoodView(el.dataset.name);});
 $('ct_map').onclick=()=>showConquest('map');$('ct_list').onclick=()=>showConquest('list');
-if($('hs_pct'))$('hs_pct').onclick=()=>{HOODSORT='pct';$('hs_pct').classList.add('on');$('hs_left').classList.remove('on');fillHoods();};
-if($('hs_left'))$('hs_left').onclick=()=>{HOODSORT='left';$('hs_left').classList.add('on');$('hs_pct').classList.remove('on');fillHoods();};
+const HSBTN={hs_pct:'pct',hs_left:'left',hs_close:'close',hs_near:'near',hs_az:'az'};
+function setHoodSort(v,btnId){HOODSORT=v;Object.keys(HSBTN).forEach(id=>{const b=$(id);if(b)b.classList.toggle('on',id===btnId);});
+  if(v==='near'){
+    if(navigator.geolocation){toast('📍 Locating you to sort by nearest…',2600);
+      navigator.geolocation.getCurrentPosition(p=>{MYSORTPOS=[p.coords.latitude,p.coords.longitude];fillHoods();dismissToast();},
+        ()=>{MYSORTPOS=null;fillHoods();toast('Sorted from home base — live location unavailable.',3600);},{enableHighAccuracy:true,timeout:8000,maximumAge:60000});
+    }else{MYSORTPOS=null;fillHoods();}
+  }else fillHoods();}
+Object.keys(HSBTN).forEach(id=>{if($(id))$(id).onclick=()=>setHoodSort(HSBTN[id],id);});
 $('hv_close').onclick=()=>$('hoodview').classList.remove('show');
 $('hv_clear').onclick=()=>{$('hoodview').classList.remove('show');if(hoodViewName)neighborhoodRoute(hoodViewName);};
 $('rc_done').onclick=()=>{$('recap').classList.remove('show');showScreen('home');};
