@@ -138,6 +138,9 @@
  .pvstats{display:flex;gap:7px;margin-bottom:11px}
  .pvstats .s{flex:1;background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:9px 4px;text-align:center;box-shadow:0 3px 0 var(--line)}
  .pvstats .s b{display:block;font-family:var(--pix);font-size:13px}.pvstats .s span{font-family:var(--pix);font-size:7px;color:var(--dim);display:block;margin-top:6px}
+ #pv_transit:empty{display:none} .ptransit{background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:9px 11px;margin-bottom:11px;box-shadow:0 3px 0 var(--line)}
+ .trow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:3px 0} .trow .tlbl{font-family:var(--pix);font-size:8px;color:var(--dim);min-width:58px} .trow .tsta{font-size:16px;color:var(--ink);margin-right:2px}
+ .mtab{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;font-family:var(--pix);font-size:9px;font-weight:bold}
  .dirs{background:#0a0713;border:2px solid var(--line);border-radius:3px;max-height:34vh;overflow:auto;margin-bottom:11px;box-shadow:inset 0 0 0 2px #201840}
  .dirs ol{margin:0;padding:8px 8px 12px 30px}.dirs li{padding:7px 4px;font-size:17px;border-bottom:1px solid #201840;line-height:1.3}
  .dirs li .d{color:var(--dim);font-size:15px}.pill{font-family:var(--pix);font-size:7px;background:#0f2417;color:var(--grn);border:1px solid #1f6b3d;border-radius:2px;padding:2px 5px;margin-left:6px;text-transform:uppercase}
@@ -242,7 +245,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v73</div>
+ <div class="ver" id="ver">REDLINE v74</div>
 </div>
 
 <div id="map"></div>
@@ -250,6 +253,7 @@
 <div id="preview">
  <div class="pvhead"><div class="t" id="pv_title">Your route</div><button class="btn ghost" id="pvback" style="width:auto;padding:8px 14px">← Back</button></div>
  <div class="pvstats"><div class="s"><b id="s_dist">–</b><span>Mi</span></div><div class="s"><b id="s_pct">–</b><span>New</span></div><div class="s"><b id="s_time">–</b><span>Time</span></div><div class="s"><b id="s_turns">–</b><span>Turns</span></div></div>
+ <div id="pv_transit"></div>
  <button id="startnav" class="btn go">▶ Start walk</button>
  <div class="handoff" style="margin-top:9px"><a id="navG" target="_blank" rel="noopener">🗺️ Google</a><a id="navA" target="_blank" rel="noopener">🍎 Apple</a></div>
  <div class="section">Route</div><div class="dirs" id="dirs"></div>
@@ -456,6 +460,10 @@ async function resolveStart(){const sm=(document.querySelector('input[name=start
 
 // ---------- preview ----------
 let CUR=null;
+// MTA line bullets (official colors) for the start/end subway stops
+const LINECOLOR={1:'#EE352E',2:'#EE352E',3:'#EE352E',4:'#00933C',5:'#00933C',6:'#00933C',7:'#B933AD',A:'#0039A6',C:'#0039A6',E:'#0039A6',B:'#FF6319',D:'#FF6319',F:'#FF6319',M:'#FF6319',G:'#6CBE45',J:'#996633',Z:'#996633',L:'#A7A9AC',N:'#FCCC0A',Q:'#FCCC0A',R:'#FCCC0A',W:'#FCCC0A',S:'#808183'};
+function lineBadges(routes){if(!routes)return '';return String(routes).split(/[^A-Za-z0-9]+/).filter(Boolean).map(rt=>{const u=rt.toUpperCase(),c=LINECOLOR[u]||'#555',dark='NQRW'.indexOf(u)>=0;return '<span class="mtab" style="background:'+c+';color:'+(dark?'#000':'#fff')+'">'+u+'</span>';}).join('');}
+function transitHTML(tr){const row=(lbl,s)=>s?'<div class="trow"><span class="tlbl">'+lbl+'</span><span class="tsta">'+s[2]+'</span>'+lineBadges(s[3])+'</div>':'';return '<div class="ptransit">'+row('🚇 START',tr.start)+row('🏁 END',tr.end)+'</div>';}
 function showPreview(res,dest,pace){CUR={res,dest,pace};
   if(routeLayer)map.removeLayer(routeLayer);if(routeNewLayer)map.removeLayer(routeNewLayer);if(destMarker)map.removeLayer(destMarker);if(startMarker)map.removeLayer(startMarker);
   routeNewLayer=L.polyline(routeNewSegments(res.ns),{color:'#27e04a',weight:9,opacity:.6,interactive:false}).addTo(map);
@@ -466,6 +474,7 @@ function showPreview(res,dest,pace){CUR={res,dest,pace};
   $('s_dist').textContent=res.totalMi.toFixed(2);$('s_pct').textContent=newPct+'%';$('s_time').textContent=fmtTime(mins);$('s_turns').textContent=Math.max(0,res.legs.length-1);
   $('s_pct').style.color=newPct>=33?'#34d058':'#e8a33b';
   $('pv_title').textContent=(dest.name||'Your route').split(',').slice(0,1)[0];
+  $('pv_transit').innerHTML=dest.transit?transitHTML(dest.transit):'';
   const sLat=startLL[0].toFixed(5),sLng=startLL[1].toFixed(5),dLat=dest.lat.toFixed(5),dLng=dest.lon.toFixed(5);
   const wstr=waypointsFor(res.ns).map(p=>p[0].toFixed(5)+','+p[1].toFixed(5)).join('|');
   $('navG').href='https://www.google.com/maps/dir/?api=1&travelmode=walking&origin='+sLat+','+sLng+'&destination='+dLat+','+dLng+(wstr?'&waypoints='+encodeURIComponent(wstr):'');
@@ -505,8 +514,10 @@ async function neighborhoodRoute(name){
   const endNodes=st.map(s=>nearestNode(s[0],s[1]));
   const pace=parseFloat($('pace').value)||22.37;
   const res=await hoodClear(startNode,endNodes,remaining,allowEdge);
+  startLL=[N[startNode][0],N[startNode][1]];
+  const endSt=(res.endStIdx>=0&&st[res.endStIdx])?st[res.endStIdx]:startS;
   setStatus('');
-  showPreview(res,{lat:N[startNode][0],lon:N[startNode][1],name:'Clear '+name},pace);
+  showPreview(res,{lat:endSt?endSt[0]:N[startNode][0],lon:endSt?endSt[1]:N[startNode][1],name:'Clear '+name,transit:{start:startS,end:endSt}},pace);
   if(res.hoodLeftMi>0.4)setTimeout(()=>toast('🧩 ~'+res.hoodLeftMi.toFixed(1)+' mi of '+name+' sits on disconnected paths — Clear again from there to finish.'),500);
 }
 // Efficient in-neighborhood sweep between subway stops: greedily clear every uncovered block, staying in-hood (soft penalty), then head to the nearest stop.
@@ -522,8 +533,9 @@ async function hoodClear(startNode,endNodes,remaining,inHood){
     routeN.push(best.far);rem.delete(best.i);cur=best.far;
     if(guard%20===0)await new Promise(r=>setTimeout(r));
   }
-  if(endNodes&&endNodes.length){const {dist,prevN,prevE}=dijkstraSoft(cur,inHood,PEN);let en=-1,eb=Infinity;for(const ed of endNodes){if(dist[ed]<eb){eb=dist[ed];en=ed;}}if(en>=0&&isFinite(eb)){const p=pathTo(prevN,prevE,cur,en);if(p)routeN=routeN.concat(p.ns.slice(1));}}
-  const r=finalize(routeN);let left=0;rem.forEach(i=>left+=elen[i]/MI);r.hoodLeftMi=left;return r;
+  let enIdx=-1;
+  if(endNodes&&endNodes.length){const {dist,prevN,prevE}=dijkstraSoft(cur,inHood,PEN);let en=-1,eb=Infinity;for(let k=0;k<endNodes.length;k++){const ed=endNodes[k];if(dist[ed]<eb){eb=dist[ed];en=ed;enIdx=k;}}if(en>=0&&isFinite(eb)){const p=pathTo(prevN,prevE,cur,en);if(p)routeN=routeN.concat(p.ns.slice(1));}}
+  const r=finalize(routeN);let left=0;rem.forEach(i=>left+=elen[i]/MI);r.hoodLeftMi=left;r.endStIdx=enIdx;return r;
 }
 // focused neighborhood map: streets lit red/green + cyan boundary, then Clear
 let hmap=null,hmapLayer=null,hoodViewName=null;
