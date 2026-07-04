@@ -241,7 +241,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v64</div>
+ <div class="ver" id="ver">REDLINE v65</div>
 </div>
 
 <div id="map"></div>
@@ -363,7 +363,7 @@ function renderDash(){try{
   $('d_longest').textContent=STATS.longestMi.toFixed(1)+' mi';$('d_totmi').textContent=Math.round(STATS.totalWalkedMi)+' mi';
   $('d_walks').textContent=STATS.walks;$('d_remain').textContent=Math.round(LT.totalMi-LT.coveredMi)+' mi';
   // level — 9 tiers; 3 proportional criteria (33/66/99% milestones at L3/6/9): coverage% / neighborhoods by medal / streets finished%
-  const covPct=LT.pct, HD=computeHoods(), stPct=streetsFinishedPct();
+  const mi=LT.coveredMi, covPct=LT.pct, HD=computeHoods(), stPct=streetsFinishedPct();
   const hoodsAt=p=>HD.filter(h=>h.pct>=p).length, medal={33:'🥉',66:'🥈',99:'🥇'};
   const meets=k=>covPct>=LEVELS[k][0]&&hoodsAt(LEVELS[k][3])>=LEVELS[k][2]&&stPct>=LEVELS[k][4];
   let li=0;for(let k=0;k<LEVELS.length;k++){if(meets(k))li=k;}
