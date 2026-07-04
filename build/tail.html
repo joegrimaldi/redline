@@ -45,8 +45,9 @@ function buzz(ms){try{if(navigator.vibrate)navigator.vibrate(ms);}catch(e){}}
 let _tt;function toast(t){const el=$('toast');el.textContent=t;el.classList.add('show');clearTimeout(_tt);_tt=setTimeout(()=>el.classList.remove('show'),2200);}
 
 // ---------- dashboard ----------
-// 9 levels; each = [milesReq, title, hoodsBronze+Req, walksReq]. L9 miles = 99% of full network (null sentinel).
-const LEVELS=[[0,'Rookie',0,0],[3,'Wanderer',0,3],[6,'Pathfinder',3,6],[9,'Trailblazer',3,9],[33,'Cartographer',6,33],[66,'Surveyor',6,66],[99,'Redliner',9,99],[333,'City Stalker',9,99],[null,'Manhattan Master',18,99]];
+// 9 levels; each = [coveragePct, title, hoodCountReq, hoodTierPct(33/66/99), streetsFinishedPct]. All proportional — 33/66/99% milestones at L3/6/9.
+// Territory: ⅓(6) Bronze @L3, ⅔(12) Silver @L6, all 18 Gold @L9. Coverage & streets each climb 0→99% across the ladder.
+const LEVELS=[[0,'Rookie',0,33,0],[16,'Wanderer',3,33,16],[33,'Pathfinder',6,33,33],[44,'Trailblazer',6,66,44],[55,'Cartographer',9,66,55],[66,'Surveyor',12,66,66],[77,'Redliner',6,99,77],[88,'City Stalker',12,99,88],[99,'Manhattan Master',18,99,99]];
 const HOODEMOJI={'Financial District':'🏦','Battery Park City':'🔋','Seaport / Civic Center':'⚓','Tribeca':'🎬','Chinatown':'🥟','Lower East Side':'🥯','SoHo / Nolita':'🛍️','West Village':'☕','East Village':'🎸','Chelsea':'🖼️','Flatiron / Gramercy':'📐','Murray Hill / Kips Bay':'🏢','Midtown':'🏙️',"Hell's Kitchen":'🍳','Upper East Side':'🎩','Upper West Side':'🎻','Harlem / Morningside':'🎷','Washington Hts / Inwood':'🌉'};
 function emojiFor(nm){return HOODEMOJI[nm]||'📍';}
 // ---- three-tier discovery: Bronze 33% / Silver 66% / Gold 99% (=complete, rounds to 100) ----
@@ -58,6 +59,8 @@ function hoodDisp(pct){return pct>=99?100:pct;}
 function computeHoods(){if(typeof HOODBOX==='undefined')return STATS.hoods||[];const agg={};HOODBOX.forEach(b=>agg[b[0]]=[0,0,0,0]);
   for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2,L=elen[i]||0;for(const b of HOODBOX){if(b[1]<=mla&&mla<=b[3]&&b[2]<=mlo&&mlo<=b[4]){agg[b[0]][1]++;agg[b[0]][3]+=L;if(E[i][3]===1){agg[b[0]][0]++;agg[b[0]][2]+=L;}break;}}}
   return HOODBOX.map(b=>({name:b[0],done:agg[b[0]][0],tot:agg[b[0]][1],mi:agg[b[0]][2]/MI,totMi:agg[b[0]][3]/MI,pct:agg[b[0]][1]?Math.round(1000*agg[b[0]][0]/agg[b[0]][1])/10:0})).filter(h=>h.tot>=10);}
+// % of named streets fully redlined (every edge of that name covered) — the "streets finished" criterion
+function streetsFinishedPct(){const tot={},dn={};for(let i=0;i<E.length;i++){const nm=NM[E[i][2]];if(!nm||nm==='(unnamed)')continue;if(!(nm in tot)){tot[nm]=0;dn[nm]=0;}tot[nm]++;if(E[i][3]===1)dn[nm]++;}let T=0,F=0;for(const k in tot){T++;if(dn[k]===tot[k])F++;}return T?100*F/T:0;}
 function renderDash(){try{
   const LT=liveTotalsFull();
   $('d_pct').textContent=LT.pct.toFixed(1)+'%';$('d_bar').style.width=Math.min(100,LT.pct)+'%';
@@ -65,15 +68,16 @@ function renderDash(){try{
   $('d_milesred').textContent=LT.coveredMi.toFixed(1);$('d_milesred_sub').textContent='/'+Math.round(LT.totalMi);
   $('d_longest').textContent=STATS.longestMi.toFixed(1)+' mi';$('d_totmi').textContent=Math.round(STATS.totalWalkedMi)+' mi';
   $('d_walks').textContent=STATS.walks;$('d_remain').textContent=Math.round(LT.totalMi-LT.coveredMi)+' mi';
-  // level — 9 tiers, each cleared by 3 criteria: miles redlined / neighborhoods Bronze+ (>=33%) / walks logged
-  const mi=LT.coveredMi, hb=computeHoods().filter(h=>h.pct>=33).length, wk=STATS.walks;
-  const reqMi=k=>LEVELS[k][0]===null?0.99*LT.totalMi:LEVELS[k][0];
-  let li=0;for(let k=0;k<LEVELS.length;k++){if(mi>=reqMi(k)&&hb>=LEVELS[k][2]&&wk>=LEVELS[k][3])li=k;}
+  // level — 9 tiers; 3 proportional criteria (33/66/99% milestones at L3/6/9): coverage% / neighborhoods by medal / streets finished%
+  const covPct=LT.pct, HD=computeHoods(), stPct=streetsFinishedPct();
+  const hoodsAt=p=>HD.filter(h=>h.pct>=p).length, medal={33:'🥉',66:'🥈',99:'🥇'};
+  const meets=k=>covPct>=LEVELS[k][0]&&hoodsAt(LEVELS[k][3])>=LEVELS[k][2]&&stPct>=LEVELS[k][4];
+  let li=0;for(let k=0;k<LEVELS.length;k++){if(meets(k))li=k;}
   $('d_lv').textContent=li+1;$('d_title').textContent=LEVELS[li][1];
   const hasNext=li+1<LEVELS.length;
-  const crow=(ic,lb,cur,req)=>{const ok=cur>=req,p=req>0?Math.min(100,100*cur/req):100;return '<div class="crow'+(ok?' ok':'')+'"><span class="cl">'+ic+' '+lb+'</span><span class="cv">'+(ok?'✓':cur+' / '+req)+'</span><div class="cbar"><i style="width:'+p+'%"></i></div></div>';};
+  const crow=(ic,lb,cur,req,u)=>{u=u||'';const ok=cur>=req,p=req>0?Math.min(100,100*cur/req):100;return '<div class="crow'+(ok?' ok':'')+'"><span class="cl">'+ic+' '+lb+'</span><span class="cv">'+(ok?'✓':cur+u+' / '+req+u)+'</span><div class="cbar"><i style="width:'+p+'%"></i></div></div>';};
   if(hasNext){const nk=li+1;$('d_xpsub').textContent='NEXT → LV'+(nk+1)+' '+LEVELS[nk][1];
-    $('d_crit').innerHTML=crow('🟥','mi redlined',Math.floor(mi),Math.round(reqMi(nk)))+crow('🏘️','hoods 33%+',hb,LEVELS[nk][2])+crow('🚶','walks',wk,LEVELS[nk][3]);
+    $('d_crit').innerHTML=crow('🟥','coverage',Math.round(covPct),LEVELS[nk][0],'%')+crow('🏘️',medal[LEVELS[nk][3]]+' hoods',hoodsAt(LEVELS[nk][3]),LEVELS[nk][2],'')+crow('🛣️','streets done',Math.round(stPct),LEVELS[nk][4],'%');
   }else{$('d_xpsub').textContent='★ MAX — Manhattan Master';$('d_crit').innerHTML='';}
   // streak
   $('d_streak').textContent=STATS.streak+'-day 🔥';
