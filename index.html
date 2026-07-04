@@ -241,7 +241,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v63</div>
+ <div class="ver" id="ver">REDLINE v64</div>
 </div>
 
 <div id="map"></div>
@@ -677,10 +677,10 @@ function levelsHTML(){
   for(let k=0;k<LEVELS.length;k++){const L=LEVELS[k], mile=(k===2||k===5||k===8), cur=(k===li), done=meets(k);
     const cov=covPct>=L[0], hd=hoodsAt(L[3])>=L[2], st=stPct>=L[4];
     const cell=(ok,txt)=>'<span class="lc'+(ok?' ok':'')+'">'+(ok?'✓ ':'')+txt+'</span>';
-    h+='<div class="lrow'+(cur?' cur':'')+(done?' done':'')+(mile?' mile':'')+'"><div class="lnum">'+(mile?'⭐':'')+'<b>'+(k+1)+'</b></div><div class="lbody"><div class="ltitle">'+L[1]+(cur?' <em>← you</em>':'')+(mile?' <span class="mtag">'+medal[k===2?33:k===5?66:99]+' tier</span>':'')+'</div><div class="lcrit">'+cell(cov,'🟥 '+L[0]+'%')+cell(hd,'🏘️ '+L[2]+medal[L[3]])+cell(st,'🛣️ '+L[4]+'%')+'</div></div></div>';}
+    h+='<div class="lrow'+(cur?' cur':'')+(done?' done':'')+(mile?' mile':'')+'"><div class="lnum"><b>'+(k+1)+'</b></div><div class="lbody"><div class="ltitle">'+L[1]+(cur?' <em>← you</em>':'')+(mile?' <span class="mtag">'+medal[k===2?33:k===5?66:99]+' tier</span>':'')+'</div><div class="lcrit">'+cell(cov,'🟥 '+L[0]+'%')+cell(hd,'🏘️ '+L[2]+medal[L[3]])+cell(st,'🛣️ '+L[4]+'%')+'</div></div></div>';}
   h+='</div>';return h;}
 function openViz(kind){$('viz').classList.add('show');const body=$('viz_body');$('viz_cap').innerHTML='';
-  if(kind==='levels'){$('viz_title').textContent='🎖️ Level system';body.innerHTML=levelsHTML();$('viz_cap').textContent='Clear all 3 criteria to level up · ⭐ = 33/66/99% milestone (Bronze/Silver/Gold)';}
+  if(kind==='levels'){$('viz_title').textContent='🎖️ Level system';body.innerHTML=levelsHTML();$('viz_cap').textContent='Clear all 3 criteria to level up · milestones at LV3/6/9 = Bronze/Silver/Gold';}
   else if(kind==='calendar'){$('viz_title').textContent='🔥 Walk calendar';body.innerHTML=calendarHTML();$('viz_cap').textContent='Tap a day for its miles + new ground redlined';wireCal();requestAnimationFrame(()=>{body.scrollTop=body.scrollHeight;});}
   else if(kind==='coverage'){$('viz_title').textContent='🟥 Redlined over time';body.innerHTML=coverageSVG();const done=WL.length?WL[WL.length-1][4]:0;$('viz_cap').innerHTML='<b>'+done.toFixed(0)+' mi</b> of streets redlined since Sep 2025 · '+(100*done/523).toFixed(0)+'% of the ~523-mi grid';}
   else if(kind==='togo'){$('viz_title').textContent='🎯 Finish projection';body.innerHTML=coverageSVG();$('viz_cap').innerHTML=projectionCap();}
