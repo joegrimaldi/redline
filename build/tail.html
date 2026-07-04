@@ -384,7 +384,7 @@ function levelsHTML(){
   const br=hoodsAt(33),si=hoodsAt(66),go=hoodsAt(99);
   const meter=(ic,lb,val)=>'<div class="tmeter"><div class="tmlabel">'+ic+' '+lb+' — <b>'+Math.round(val)+'%</b></div><div class="tmbar"><i style="width:'+Math.min(100,val)+'%"></i><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
   let h=meter('🟥','Coverage',covPct)+meter('🛣️','Streets finished',stPct);
-  h+='<div class="tmeter"><div class="tmlabel">🏘️ Territory — <b>'+br+'</b> 🥉  <b>'+si+'</b> 🥈  <b>'+go+'</b> 🥇 <span style="color:var(--dim)">/ 18</span></div></div>';
+  h+='<div class="tmeter"><div class="tmlabel">🏘️ Territory — <b>'+br+'</b> 🥉  <b>'+si+'</b> 🥈  <b>'+go+'</b> 🥇 <span style="color:var(--dim)">/ '+HD.length+'</span></div></div>';
   h+='<div class="lad">';
   for(let k=0;k<LEVELS.length;k++){const L=LEVELS[k], mile=(k===2||k===5||k===8), cur=(k===li), done=meets(k);
     const cov=covPct>=L[0], hd=hoodsAt(L[3])>=L[2], st=stPct>=L[4];
