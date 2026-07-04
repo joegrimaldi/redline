@@ -251,7 +251,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v76</div>
+ <div class="ver" id="ver">REDLINE v77</div>
 </div>
 
 <div id="map"></div>
@@ -463,7 +463,7 @@ function startHeading(){if(_headingOn)return;function handle(e){let h=null;if(ty
   else{window.addEventListener('deviceorientationabsolute',handle);window.addEventListener('deviceorientation',handle);_headingOn=true;}}
 function meIcon(){return L.divIcon({className:'',html:'<div class="me"><span class="arr"></span><span class="dot"></span></div>',iconSize:[30,30],iconAnchor:[15,15]});}
 
-async function resolveStart(){const sm=(document.querySelector('input[name=start]:checked')||{}).value||'home';
+async function resolveStart(force){const sm=force||(document.querySelector('input[name=start]:checked')||{}).value||'home';
   if(sm==='loc'){setStatus('Getting your location…');try{const pos=await new Promise((rs,rj)=>navigator.geolocation.getCurrentPosition(rs,rj,{enableHighAccuracy:true,timeout:12000,maximumAge:30000}));const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){START=HOME;startLL=[N[HOME][0],N[HOME][1]];setStatus('⚠ Off-grid — using home base.');}else{START=sn;startLL=[pos.coords.latitude,pos.coords.longitude];}}catch(e){START=HOME;startLL=[N[HOME][0],N[HOME][1]];setStatus('⚠ Location unavailable — using home base.');}}
   else{START=HOME;startLL=[N[HOME][0],N[HOME][1]];}}
 
@@ -573,7 +573,7 @@ let umap=null;
 function showUcTab(t){const o=$('uncov');if(t==='map'){o.classList.add('mapview');$('uc_tmap').classList.add('on');$('uc_tlist').classList.remove('on');buildUmap();}else{o.classList.remove('mapview');$('uc_tlist').classList.add('on');$('uc_tmap').classList.remove('on');}}
 function nearestReachable(node,dist){if(isFinite(dist[node]))return node;let bd=Infinity,bn=node;for(let i=0;i<N.length;i++){if(!isFinite(dist[i]))continue;const d=havLL(N[node][0],N[node][1],N[i][0],N[i][1]);if(d<bd){bd=d;bn=i;}}return bn;}
 function routeToUncov(node,nm){$('uncov').classList.remove('show');const pace=parseFloat($('pace').value)||22.37;const {dist}=dijkstra(START);const tgt=nearestReachable(node,dist);const res=directRoute(START,tgt);showPreview(res,{lat:N[node][0],lon:N[node][1],name:nm||'Unexplored path'},pace);}
-async function openUncov(){setStatus('');$('uc_sub').textContent='Locating…';$('uncov').classList.add('show');showUcTab('list');await resolveStart();
+async function openUncov(){setStatus('');$('uc_sub').textContent='Locating…';$('uncov').classList.add('show');showUcTab('list');await resolveStart('loc');
   const {dist}=dijkstra(START);const byName={};
   for(let i=0;i<E.length;i++){if(E[i][3]!==0)continue;const a=E[i][0],b=E[i][1];let dn=Math.min(dist[a],dist[b]);
     if(!isFinite(dn)){const mla=(N[a][0]+N[b][0])/2,mlo=(N[a][1]+N[b][1])/2;dn=havLL(startLL[0],startLL[1],mla,mlo)*1.3;} // park/plaza island → crow-flies estimate
