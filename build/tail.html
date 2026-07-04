@@ -16,8 +16,8 @@ Heap.prototype.pop=function(){const a=this.a,top=a[0],last=a.pop();if(a.length){
 Heap.prototype.size=function(){return this.a.length;};
 function dijkstra(src){const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const v=au[k][0],nd=d+au[k][1];if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=au[k][2];h.push([nd,v]);}}}return {dist,prevN,prevE};}
 function pathTo(prevN,prevE,src,dst){const ns=[dst],es=[];let c=dst;while(c!==src){const p=prevN[c];if(p<0)return null;es.push(prevE[c]);ns.push(p);c=p;}ns.reverse();es.reverse();return {ns,es};}
-// Dijkstra restricted to a set of allowed edges (allowEdge[edgeIdx]===1) — keeps routes inside a neighborhood.
-function dijkstraIn(src,allowEdge){const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const e=au[k][2];if(!allowEdge[e])continue;const v=au[k][0],nd=d+au[k][1];if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}return {dist,prevN,prevE};}
+// Dijkstra that strongly prefers staying inside a neighborhood: out-of-hood edges cost ×pen. Keeps the sweep in-hood while staying connected (so it can route around parks/gaps).
+function dijkstraSoft(src,inHood,pen){const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const e=au[k][2],v=au[k][0],nd=d+au[k][1]*(inHood[e]?1:pen);if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}return {dist,prevN,prevE};}
 function dijkstraW(src){const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const v=au[k][0],e=au[k][2];const cost=au[k][1]*(E[e][3]===0?0.8:1);const nd=d+cost;if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}return {dist,prevN,prevE};}
 function directRoute(s,t){const r=dijkstraW(s);const p=pathTo(r.prevN,r.prevE,s,t);return finalize(p?p.ns:[s]);}
 function perpDist(p,a,b){const k=Math.cos(a[0]*Math.PI/180);const ax=a[1]*k,ay=a[0],bx=b[1]*k,by=b[0],px=p[1]*k,py=p[0];const dx=bx-ax,dy=by-ay,L2=dx*dx+dy*dy;let tt=L2?((px-ax)*dx+(py-ay)*dy)/L2:0;tt=Math.max(0,Math.min(1,tt));const cx=ax+tt*dx,cy=ay+tt*dy;return Math.hypot(px-cx,py-cy);}
@@ -208,16 +208,10 @@ async function neighborhoodRoute(name){
   showPreview(res,{lat:(hd.bb[0]+hd.bb[2])/2,lon:(hd.bb[1]+hd.bb[3])/2,name:'Clear '+name},pace);
   if(res.hoodLeftMi>0.4)setTimeout(()=>toast('🧩 ~'+res.hoodLeftMi.toFixed(1)+' mi of '+name+' sits on disconnected paths — Clear again from there to finish.'),500);
 }
-async function hoodClear(START,loop,remaining,allowEdge){
-  let routeN=[START];
-  const {dist:d0,prevN:pn0,prevE:pe0}=dijkstra(START);
-  let ent=null;
-  for(const i of remaining){const a=E[i][0],b=E[i][1];const dn=Math.min(d0[a],d0[b]);if(!isFinite(dn))continue;if(ent===null||dn<ent.dn)ent={dn,node:(d0[a]<=d0[b]?a:b)};}
-  let cur=START;
-  if(ent){const seg=pathTo(pn0,pe0,START,ent.node);if(seg){routeN=routeN.concat(seg.ns.slice(1));cur=ent.node;}}
-  const rem=new Set(remaining);let guard=0;const CAP=800,entry=cur;
-  while(rem.size>0&&guard++<CAP){
-    const {dist,prevN,prevE}=dijkstraIn(cur,allowEdge);
+async function hoodClear(START,loop,remaining,inHood){
+  const PEN=8;let routeN=[START],cur=START,guard=0;const rem=new Set(remaining),entry=START;
+  while(rem.size>0&&guard++<900){
+    const {dist,prevN,prevE}=dijkstraSoft(cur,inHood,PEN);
     let best=null;
     for(const i of rem){const a=E[i][0],b=E[i][1],da=dist[a],db=dist[b];let near,far,dn;if(da<=db){near=a;far=b;dn=da;}else{near=b;far=a;dn=db;}if(!isFinite(dn))continue;if(best===null||dn<best.dn)best={dn,near,far,i};}
     if(!best)break;
@@ -226,7 +220,7 @@ async function hoodClear(START,loop,remaining,allowEdge){
     routeN.push(best.far);rem.delete(best.i);cur=best.far;
     if(guard%20===0)await new Promise(r=>setTimeout(r));
   }
-  if(loop){const {prevN,prevE}=dijkstraIn(cur,allowEdge);const p=pathTo(prevN,prevE,cur,entry);if(p)routeN=routeN.concat(p.ns.slice(1));}
+  if(loop){const {prevN,prevE}=dijkstraSoft(cur,inHood,PEN);const p=pathTo(prevN,prevE,cur,entry);if(p)routeN=routeN.concat(p.ns.slice(1));}
   const r=finalize(routeN);let left=0;rem.forEach(i=>left+=elen[i]/MI);r.hoodLeftMi=left;return r;
 }
 // focused neighborhood map: streets lit red/green + cyan boundary, then Clear
