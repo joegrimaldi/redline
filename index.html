@@ -51,6 +51,11 @@
  .lvl .info .t{font-family:var(--pix);font-size:11px;color:var(--cyan)} .lvl .info .x{font-size:15px;color:var(--dim);margin-top:3px}
  .xpbar{height:10px;background:#0a0713;border:2px solid var(--line);border-radius:0;overflow:hidden;margin-top:7px}
  .xpbar>i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--pur) 0 7px,#6d3fb0 7px 9px)}
+ .crit{margin-top:8px;display:flex;flex-direction:column;gap:7px}
+ .crow{display:grid;grid-template-columns:1fr auto;gap:3px 8px;align-items:center}
+ .crow .cl{font-size:14px;color:var(--ink)} .crow .cv{font-family:var(--pix);font-size:9px;color:var(--dim)} .crow.ok .cv{color:var(--grn)}
+ .crow .cbar{grid-column:1/3;height:7px;background:#0a0713;border:1px solid var(--line);overflow:hidden}
+ .crow .cbar>i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--pur) 0 7px,#6d3fb0 7px 9px)} .crow.ok .cbar>i{background:var(--grn)}
  .streakrow{display:flex;align-items:center;gap:12px;background:#1a1206;border:2px solid var(--line);border-radius:4px;padding:12px;margin-bottom:11px;box-shadow:0 4px 0 var(--line)}
  .streakrow .fire{font-size:26px} .streakrow .sb{font-family:var(--pix);font-size:12px;color:var(--yel)} .streakrow .ss{font-size:15px;color:var(--dim)}
  .cal{display:flex;gap:3px;margin-left:auto;flex-wrap:wrap;max-width:52%;justify-content:flex-end}
@@ -189,7 +194,7 @@
 <div id="home">
  <div class="brand"><h1>🟥 REDLINE</h1><div style="display:flex;gap:6px"><button id="syncBtn" class="upd">🔄 Sync</button><button id="updateBtn" class="upd">⟳ Update</button></div></div>
  <div class="hero tapviz" data-viz="coverage"><div class="big" id="d_pct">–</div><div class="cap">redlined ›</div><div class="bar"><i id="d_bar" style="width:0%"></i></div></div>
- <div class="lvl tapviz" data-viz="coverage"><div class="badge"><small>LV</small><b id="d_lv">–</b></div><div class="info"><div class="t" id="d_title">–</div><div class="x" id="d_xpsub"></div><div class="xpbar"><i id="d_xpbar" style="width:0%"></i></div></div></div>
+ <div class="lvl tapviz" data-viz="coverage"><div class="badge"><small>LV</small><b id="d_lv">–</b></div><div class="info"><div class="t" id="d_title">–</div><div class="x" id="d_xpsub"></div><div class="crit" id="d_crit"></div></div></div>
  <div class="streakrow tapviz" data-viz="calendar"><span class="fire">🔥</span><div><div class="sb" id="d_streak">–</div><div class="ss" id="d_streaksub"></div></div><div class="cal" id="d_cal"></div></div>
  <div class="grid">
    <div class="card tapviz" data-viz="coverage"><b id="d_milesred">–</b><span>Mi done</span><div class="sub" id="d_milesred_sub"></div></div>
@@ -218,7 +223,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v60</div>
+ <div class="ver" id="ver">REDLINE v61</div>
 </div>
 
 <div id="map"></div>
@@ -316,7 +321,8 @@ function buzz(ms){try{if(navigator.vibrate)navigator.vibrate(ms);}catch(e){}}
 let _tt;function toast(t){const el=$('toast');el.textContent=t;el.classList.add('show');clearTimeout(_tt);_tt=setTimeout(()=>el.classList.remove('show'),2200);}
 
 // ---------- dashboard ----------
-const LEVELS=[[0,'Rookie'],[6,'Wanderer'],[15,'Pathfinder'],[30,'Trailblazer'],[60,'Cartographer'],[90,'Surveyor'],[150,'Redliner'],[250,'City Stalker'],[400,'Street Sovereign'],[525,'Manhattan Master']];
+// 9 levels; each = [milesReq, title, hoodsBronze+Req, walksReq]. L9 miles = 99% of full network (null sentinel).
+const LEVELS=[[0,'Rookie',0,0],[3,'Wanderer',0,3],[6,'Pathfinder',3,6],[9,'Trailblazer',3,9],[33,'Cartographer',6,33],[66,'Surveyor',6,66],[99,'Redliner',9,99],[333,'City Stalker',9,99],[null,'Manhattan Master',18,99]];
 const HOODEMOJI={'Financial District':'🏦','Battery Park City':'🔋','Seaport / Civic Center':'⚓','Tribeca':'🎬','Chinatown':'🥟','Lower East Side':'🥯','SoHo / Nolita':'🛍️','West Village':'☕','East Village':'🎸','Chelsea':'🖼️','Flatiron / Gramercy':'📐','Murray Hill / Kips Bay':'🏢','Midtown':'🏙️',"Hell's Kitchen":'🍳','Upper East Side':'🎩','Upper West Side':'🎻','Harlem / Morningside':'🎷','Washington Hts / Inwood':'🌉'};
 function emojiFor(nm){return HOODEMOJI[nm]||'📍';}
 // ---- three-tier discovery: Bronze 33% / Silver 66% / Gold 99% (=complete, rounds to 100) ----
@@ -335,12 +341,16 @@ function renderDash(){try{
   $('d_milesred').textContent=LT.coveredMi.toFixed(1);$('d_milesred_sub').textContent='/'+Math.round(LT.totalMi);
   $('d_longest').textContent=STATS.longestMi.toFixed(1)+' mi';$('d_totmi').textContent=Math.round(STATS.totalWalkedMi)+' mi';
   $('d_walks').textContent=STATS.walks;$('d_remain').textContent=Math.round(LT.totalMi-LT.coveredMi)+' mi';
-  // level
-  const mi=LT.coveredMi;let li=0;for(let k=0;k<LEVELS.length;k++)if(mi>=LEVELS[k][0])li=k;
-  const cur=LEVELS[li][0],hasNext=li+1<LEVELS.length,next=hasNext?LEVELS[li+1][0]:cur;
+  // level — 9 tiers, each cleared by 3 criteria: miles redlined / neighborhoods Bronze+ (>=33%) / walks logged
+  const mi=LT.coveredMi, hb=computeHoods().filter(h=>h.pct>=33).length, wk=STATS.walks;
+  const reqMi=k=>LEVELS[k][0]===null?0.99*LT.totalMi:LEVELS[k][0];
+  let li=0;for(let k=0;k<LEVELS.length;k++){if(mi>=reqMi(k)&&hb>=LEVELS[k][2]&&wk>=LEVELS[k][3])li=k;}
   $('d_lv').textContent=li+1;$('d_title').textContent=LEVELS[li][1];
-  $('d_xpbar').style.width=(hasNext?Math.min(1,(mi-cur)/(next-cur))*100:100)+'%';
-  $('d_xpsub').textContent=hasNext?((next-mi).toFixed(1)+' mi → LV'+(li+2)):'MAX · legend';
+  const hasNext=li+1<LEVELS.length;
+  const crow=(ic,lb,cur,req)=>{const ok=cur>=req,p=req>0?Math.min(100,100*cur/req):100;return '<div class="crow'+(ok?' ok':'')+'"><span class="cl">'+ic+' '+lb+'</span><span class="cv">'+(ok?'✓':cur+' / '+req)+'</span><div class="cbar"><i style="width:'+p+'%"></i></div></div>';};
+  if(hasNext){const nk=li+1;$('d_xpsub').textContent='NEXT → LV'+(nk+1)+' '+LEVELS[nk][1];
+    $('d_crit').innerHTML=crow('🟥','mi redlined',Math.floor(mi),Math.round(reqMi(nk)))+crow('🏘️','hoods 33%+',hb,LEVELS[nk][2])+crow('🚶','walks',wk,LEVELS[nk][3]);
+  }else{$('d_xpsub').textContent='★ MAX — Manhattan Master';$('d_crit').innerHTML='';}
   // streak
   $('d_streak').textContent=STATS.streak+'-day 🔥';
   $('d_streaksub').textContent=STATS.todayWalked?'✓ today':'go today';
