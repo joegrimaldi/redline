@@ -236,8 +236,11 @@
  <div class="hoods" id="hoods"></div>
  <div class="section">Plan</div>
  <div class="panel">
-   <div class="field"><input type="text" id="addr" placeholder="🔎 Destination — address or place" autocomplete="off"></div>
-   <div class="seg"><label><input type="radio" name="start" value="home" checked><span>🏠 Home</span></label><label><input type="radio" name="start" value="loc"><span>📍 Me</span></label></div>
+   <label style="display:block;margin-bottom:5px">Destination</label>
+   <div class="seg" id="destseg"><label><input type="radio" name="dest" value="home" checked><span>🏠 Home</span></label><label><input type="radio" name="dest" value="custom"><span>🔎 Address</span></label></div>
+   <div class="field" id="addrwrap" style="display:none;margin-top:9px"><input type="text" id="addr" placeholder="Address or place" autocomplete="off"></div>
+   <label style="display:block;margin:11px 0 5px">Start from</label>
+   <div class="seg"><label><input type="radio" name="start" value="loc" checked><span>📍 Me</span></label><label><input type="radio" name="start" value="home"><span>🏠 Home</span></label></div>
    <div class="two"><div class="field"><label>Miles</label><input type="number" id="dist" inputmode="decimal" step="0.1" value="3.33"></div><div class="field"><label>Pace</label><input type="number" id="pace" inputmode="decimal" step="0.1" value="22.37"></div></div>
    <label class="opt"><input type="checkbox" id="loop"> ⟲ Round trip</label>
    <button id="go" class="btn primary">▶ Plan route</button>
