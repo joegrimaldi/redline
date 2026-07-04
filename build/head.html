@@ -138,6 +138,9 @@
  .pvstats{display:flex;gap:7px;margin-bottom:11px}
  .pvstats .s{flex:1;background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:9px 4px;text-align:center;box-shadow:0 3px 0 var(--line)}
  .pvstats .s b{display:block;font-family:var(--pix);font-size:13px}.pvstats .s span{font-family:var(--pix);font-size:7px;color:var(--dim);display:block;margin-top:6px}
+ #pv_transit:empty{display:none} .ptransit{background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:9px 11px;margin-bottom:11px;box-shadow:0 3px 0 var(--line)}
+ .trow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:3px 0} .trow .tlbl{font-family:var(--pix);font-size:8px;color:var(--dim);min-width:58px} .trow .tsta{font-size:16px;color:var(--ink);margin-right:2px}
+ .mtab{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;font-family:var(--pix);font-size:9px;font-weight:bold}
  .dirs{background:#0a0713;border:2px solid var(--line);border-radius:3px;max-height:34vh;overflow:auto;margin-bottom:11px;box-shadow:inset 0 0 0 2px #201840}
  .dirs ol{margin:0;padding:8px 8px 12px 30px}.dirs li{padding:7px 4px;font-size:17px;border-bottom:1px solid #201840;line-height:1.3}
  .dirs li .d{color:var(--dim);font-size:15px}.pill{font-family:var(--pix);font-size:7px;background:#0f2417;color:var(--grn);border:1px solid #1f6b3d;border-radius:2px;padding:2px 5px;margin-left:6px;text-transform:uppercase}
@@ -250,6 +253,7 @@
 <div id="preview">
  <div class="pvhead"><div class="t" id="pv_title">Your route</div><button class="btn ghost" id="pvback" style="width:auto;padding:8px 14px">← Back</button></div>
  <div class="pvstats"><div class="s"><b id="s_dist">–</b><span>Mi</span></div><div class="s"><b id="s_pct">–</b><span>New</span></div><div class="s"><b id="s_time">–</b><span>Time</span></div><div class="s"><b id="s_turns">–</b><span>Turns</span></div></div>
+ <div id="pv_transit"></div>
  <button id="startnav" class="btn go">▶ Start walk</button>
  <div class="handoff" style="margin-top:9px"><a id="navG" target="_blank" rel="noopener">🗺️ Google</a><a id="navA" target="_blank" rel="noopener">🍎 Apple</a></div>
  <div class="section">Route</div><div class="dirs" id="dirs"></div>
