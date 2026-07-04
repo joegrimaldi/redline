@@ -71,7 +71,7 @@
 1	(unnamed)	oenwFrwvbMHWA?GT?@
 1	(unnamed)	agnwFnyvbM?A?B???A
 1	(unnamed)	yfnwFzxvbMCFCH?@BIDGAA
-1	(unnamed)	wfnwF|xvbMAA@????@
+0	(unnamed)	wfnwF|xvbMAA@????@
 1	(unnamed)	afnwF`yvbMABCN@B@K?A@I
 1	(unnamed)	ihnwFh{vbMBKNKR@FEDAIR[CEPIC
 1	(unnamed)	}enwF|xvbM?CAB@?
@@ -1187,7 +1187,7 @@
 0	(unnamed)	}nvwFrhobMAIAAKISMAAA?GBFBTNPL
 0	(unnamed)	mrvwF`yobMBE?A?ACAECA?I?NJ@??@?@
 0	Vanderbilt Avenue	qqvwFjyobMCA
-0	Vanderbilt Avenue	knvwFv{obMGE
+1	Vanderbilt Avenue	knvwFv{obMGE
 0	(unnamed)	eyvwFtrobM?@?@?B@@dBhATN`BfABBBB@F@B@FAD?DABy@hCAB?@?B?@@@@@fBhA@?@???@CbA}Cn@qBDMECCCe@xACDD@CH?@A??@A??@A??@A?A???A?ITENUv@[bAIGADuA}@d@{ABILa@BIJ[MKs@e@yDeCCA
 0	(unnamed)	_vvwFdlobMAAE?E?c@tAg@`B@BHD@C?AA?f@{Ad@}A
 0	(unnamed)	i|vwFrkobM@@@@BA?A@A?A?AAAAAAACJ
@@ -1304,8 +1304,8 @@
 0	(unnamed)	}pzwFbzrbM@?@AFLEBA@A?C@A@AAA??A?ADK@C
 0	East Road	axxwFvsibMyBgB
 0	East Road	}{xwFlpibMAAEC
-0	West 77th Street	kv{wFb}nbMFO
-0	West 77th Street	cv{wFr|nbMz@{@
+1	West 77th Street	kv{wFb}nbMFO
+1	West 77th Street	cv{wFr|nbMz@{@
 0	West 77th Street	gt{wFvznbMPONIFEHCPAJ?H@PDNFNF
 0	(unnamed)	_rzwF`jrbMGCAAABA@QKKXBB?@??RNB@DB?AHWCC?A@A?A@E
 0	(unnamed)	kfzwFdkqbMDDDM@CEEGP
@@ -1349,7 +1349,7 @@
 1	(unnamed)	cuywF|rpbM?@?B?@?@?@A?A?C?A?A@DO@???@@@?
 0	East Drive	cyzwF|~mbMMMIIGKIMKSGMISGQY{@EKIQEKEIGGEEGGGEICICIAIAIAE@I?M@YFI@E?G?I?ICICeA_@MGOEOEaASQEk@OMEQIOI[Q
 0	East Drive	gm{wFdrmbM[Q
-0	East Drive	ou}wFpxkbMK?KAOC
+1	East Drive	ou}wFpxkbMK?KAOC
 0	East Drive	qi}wFjvkbMI?M?MAMCMAGCOEOGOEKAIAM?K?M@O@KBMBOFKFMHMJk@l@IDG@KBI?OA
 0	East Drive	ah}wFdvkbMS@G@E?M@
 0	East Drive	it|wF|albMUMkKcHSKOIOIc@UGCGCIAICMAKAOAS?K@O@
@@ -1362,9 +1362,9 @@
 0	West Drive	ab~wFrylbMLHJJNLJNJLFJHLDLHPFPJ\FPDLBFFHFLJJHJJJJFHFJFJBLDJBL@H?N?J?LAp@E
 0	West Drive	iv}wFbcmbMNAP?H@F@JBHBHBHD
 0	West Drive	ks}wFvcmbMLHJHHJHJHLFLDLDLDNVhAXpA
-0	West Drive	go}wFflmbMDPDNHTJVJT
-0	West Drive	ym}wFlombMJTLRJRLNHLJLb@d@HHRP
-0	West Drive	mi}wFxtmbMNLTPTLTNRJPFPFNDPDN@NBP?N?P?PARCPCNERG`Cu@JCNC
+1	West Drive	go}wFflmbMDPDNHTJVJT
+1	West Drive	ym}wFlombMJTLRJRLNHLJLb@d@HHRP
+1	West Drive	mi}wFxtmbMNLTPTLTNRJPFPFNDPDN@NBP?N?P?PARCPCNERG`Cu@JCNC
 0	West Drive	sy|wFnumbMLAJ?L?H@J@LBNBLF
 0	West Drive	iv|wF`vmbMNFLHPJJHPLXT
 0	West Drive	as|wFlxmbMTTNNNL
@@ -1411,14 +1411,14 @@
 1	(unnamed)	s|ywFfaqbMBKBBPJADADAAC?KICC
 1	(unnamed)	wgzwF~upbMGEGE?C@EF?H@CR
 0	(unnamed)	em{wF|vqbMM^CCEECGCICG?GAGd@R
-0	West 110th Street	sx_xFp|kbMf@O
+1	West 110th Street	sx_xFp|kbMf@O
 0	(unnamed)	avbxF`qgbMvAsEDO
 0	Fort Clinton	qy~wFpxjbM?C??@A@A@A?A@C@AB??C?A?A?AAA?A??AA?AA??AA?AAA???A?A?A@A?A@?@A@AD?@B??B?@?@?@@@?@@B???D@?@?
 0	College Walk	uaaxFrolbMGPABAFCF}@nCe@|Ag@zA{@lCAFCFCHEJ
 0	(unnamed)	sibxF``mbMHo@BKIC@I]OJk@\NBIHBBKDYLHNHETNFETEVGTEROGKh@KAOG
 0	West Drive	{__xFhukbMLDJFJFJHJJPPJNLNJPHPHPHRFRFTDRBTLt@BNDNDLFPFLDJHJHHHJHFJFJDJF
 0	West 110th Street	_v_xFp{kbMHADAF?B?D?DBD@DDHH
-0	West 110th Street	kw_xF`|kbMj@O
+1	West 110th Street	kw_xF`|kbMj@O
 0	(unnamed)	ul`xF`gibMAACAC?A?CBA@?B?D?B@BB@B@@?BA@C@C?E?CAC
 0	(unnamed)	em`xF|bibMAD[U?G?E@C@EBADAB?BBBD@D?DADB@@@AJ
 0	(unnamed)	qm`xFlaibMBEDDCDEE
@@ -1436,8 +1436,8 @@
 0	(unnamed)	mg~wFnkdbMJ?B@?A@@?@B@AFAJDB?D@?DS@?@GAAF]@@@KA?CAC?ABAJEAA@CBA@E@IDAD
 0	(unnamed)	id~wFfidbM@@LB@@HBBCTo@AGsAc@???BRH?Bj@REVA??DEAAHKECL
 0	Nutter's Battery	ea_xFt|jbMA@A?A?A?A?A?AAAAB?B?@A?AAA?A@A?C@CAAAAAA??B?@?@??@@@@@?@@@?B?@AB?BA@
-0	(unnamed)	kk_xFlglbMPEDOLFJCJv@@H]Ua@Y
-0	(unnamed)	{d_xFzrjbMNB@O@GB?@A@?BCBE@A@E?CKE?C?A?AAA?AAA?AAAA?A?AICACJCF?@?B?@?@?@@@?@@@?@@@??ANCA?BKAAB?DHB?F
+1	(unnamed)	kk_xFlglbMPEDOLFJCJv@@H]Ua@Y
+1	(unnamed)	{d_xFzrjbMNB@O@GB?@A@?BCBE@A@E?CKE?C?A?AAA?AAA?AAAA?A?AICACJCF?@?B?@?@?@@@?@@@?@@@??ANCA?BKAAB?DHB?F
 0	(unnamed)	cncxFlplbMk@f@DJKJ_CwE@CHFDBJH`BfDj@g@B@@B
 0	(unnamed)	ikcxFxrlbMCACCc@pAMLCIMLBFKJKK_@`A@BJH@?\}@JKn@nANOg@aAl@iB
 0	(unnamed)	stcxFlhlbMl@bBBFdCdA@CkBgBWSu@q@
@@ -1471,7 +1471,7 @@
 0	West Drive	er~wFnglbMBNNt@RfABRFRDRFPHRHP
 0	West Drive	oo~wFpolbMHPHNHLLPLNJLJJNJNLl@^
 0	West Drive	oj~wFvtlbMLHRLRJZNZNp@Xz@Z
-0	West Drive	sc~wFpxlbMHDJDNJJH
+1	West Drive	sc~wFpxlbMHDJDNJJH
 0	Franz Sigel Stairs	ge`xFrhnbMFOCAIEAAGLBBFDB@
 0	(unnamed)	y``xFp`gbMBMDMFBENEJEC
 0	(unnamed)	om`xFp|lbMAC?EAG@E@E@CBEBABCB?B?D@B@BB@BBD?B@D?DADADABABCBC@C?E?A?A?CACAACAAAC

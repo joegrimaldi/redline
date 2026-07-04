@@ -29,7 +29,7 @@
 0		mz{wFdrmbMvAw@f@cAx@eA
 0		me_xF|}kbM{@iAKg@Dw@Vg@^O
 0	North Woods	wh_xF`gkbM@c@
-0		us~wFdxjbMf@BTc@Im@c@Y]JMb@D`@TT
+1		us~wFdxjbMf@BTc@Im@c@Y]JMb@D`@TT
 0		kyywFlpnbM[I?m@
 0		uuywFfmnbMqA{Ah@kARsA
 0		gxywFjjnbMe@m@eBg@
@@ -42,14 +42,14 @@
 0		}{{wFlymbMl@|ALC
 0		ud|wFhanbM~@Bv@S~@BVV\yADoAGw@
 0		gs{wFdjmbM[Sq@eAUMiBQw@i@Yg@
-0		_j_xFzakbMPe@JiBOeB
+1		_j_xFzakbMPe@JiBOeB
 0		af_xF~~kbMoBS
 0		{j~wFtlkbMPwA
 0		mm~wFllkbMCG
 0		yq~wFphkbM@cAN[pAW|@p@XDp@a@bAoBt@]
 0		gh~wF~akbM_A_@
-0		os~wFpwjbMTDLKAe@WOQBGb@NR
-0		gs~wF`wjbMLBBMWOEJJL
+1		os~wFpwjbMTDLKAe@WOQBGb@NR
+1		gs~wF`wjbMLBBMWOEJJL
 0		cu~wFvvjbMOz@n@?
 0		ct~wFrxjbM\VDRMt@
 0		}s~wFvxjbMDQ
@@ -107,31 +107,31 @@
 0	East 102nd Street	gc~wFb}jbMs@vByAdBSr@OfBUN
 0		czywFvdobMMQ
 0		au}wFtskbMWlA
-0		ev}wF~vkbMJ[
-0		iv}wFfwkbMKZ
-0		iv}wFfwkbMBG
-0		qv}wFxwkbMVF
+1		ev}wF~vkbMJ[
+1		iv}wFfwkbMKZ
+1		iv}wFfwkbMBG
+1		qv}wFxwkbMVF
 0		sq}wFlukbMj@a@h@KbAFfBh@zBGtCvAfK|G
-0		m|}wFxgkbMEM
-0		w}}wFzekbMID
-0		m}}wFvekbMIB
+1		m|}wFxgkbMEM
+1		w}}wFzekbMID
+1		m}}wFvekbMIB
 0		a_~wF~ekbMa@aAgAh@EPAj@\x@RbANL
-0		s|}wFjgkbMOc@
+1		s|}wFjgkbMOc@
 0		wb~wFddkbMGK
-0		{e~wFlakbMJT
+1		{e~wFlakbMJT
 0		kb~wFfekbMKa@
 0		_c~wFxckbMgAk@
-0		kh~wFf_kbMEI
-0		{e~wFlakbMGI
+1		kh~wFf_kbMEI
+1		{e~wFlakbMGI
 0		gm~wFr}jbMRk@
-0		_n~wFtyjbMLH
+1		_n~wFtyjbMLH
 0		ul~wFv|jbMZ@JMB_@m@m@[bA\T
 0		gw}wFjwkbMIK
 0		{w}wFvvkbMHF
-0		gf~wFz`kbMS[o@W
+1		gf~wFz`kbMS[o@W
 0		wn~wFxdkbMKsAv@Yt@Nl@[n@kA
-0		qh~wF|~jbMOoAQQ
-0		cl~wF~zjbMPm@
+1		qh~wF|~jbMOoAQQ
+1		cl~wF~zjbMPm@
 0		sl~wFtzjbM]U
 0		}m~wF|wjbMaA|C
 0		oo~wFf}jbMc@[
@@ -139,9 +139,9 @@
 0		gp~wFn}jbMFS
 0		er~wF`|jbMAVP^XDRO
 0		}q~wFl{jbMa@Y
-0		cu~wFvvjbMXiBP[
-0		wt~wF`ujbMMA
-0		eu~wF~tjbMKA
+1		cu~wFvvjbMXiBP[
+1		wt~wF`ujbMMA
+1		eu~wF~tjbMKA
 0		uy~wFxxjbM@G
 0		qz~wF~yjbMg@N
 0		y{~wFnzjbMOA
@@ -188,21 +188,21 @@
 0	Nell Singer Lilac Walk	ewzwFrhobMl@c@jAkBhCmAt@w@
 0	West 214th Street	comxFlfdbMeBtB
 0		ktkxFdfdbMd@qA
-0	Northwest Central Park Loop	mr~wFrplbMb@~Ad@\
+1	Northwest Central Park Loop	mr~wFrplbMb@~Ad@\
 0		sj~wFxqlbMDf@v@j@r@BP[
 0		we~wFbvlbMYyAWg@
 0		_t}wFh}lbMPaA]_Fc@yBSmBm@iBAoB
-0	North Woods	ys~wFtvlbMdAa@
-0		{x~wFxnlbM?dC
+1	North Woods	ys~wFtvlbMdAa@
+1		{x~wFxnlbM?dC
 0		uv~wFxflbMJE
-0		ut}wFncmbMHpCY~CUv@
-0		os~wFdwlbMIO
-0		e`~wFlxlbMi@Jy@i@ZcBAaA
+1		ut}wFncmbMHpCY~CUv@
+1		os~wFdwlbMIO
+1		e`~wFlxlbMi@Jy@i@ZcBAaA
 0		sj~wFxqlbMc@p@
 0		qm~wFzelbMmCp@
 0		{_~wFjnlbMa@lAq@n@MA
-0		uo~wFxolbMs@vB
-0		ir}wFpimbM]|@cAhA
+1		uo~wFxolbMs@vB
+1		ir}wFpimbM]|@cAhA
 0		aw~wF`glbMm@OKa@QK[q@aAw@YCGMAcAO[YIk@l@k@EAJ
 0		mz}wFfvlbMk@Pq@rB
 0		ql}wFllmbMw@j@
@@ -215,14 +215,14 @@
 0	North Woods	cl_xFbxkbMUv@[`@WfA_@GIa@e@I]YEoAPo@BoARu@
 0		ut~wFx}kbMD]NBPS
 0	Northwest Central Park Loop	wm_xFhtkbME|@N\h@\
-0	North Woods	oi_xFrhlbMVg@j@C
+1	North Woods	oi_xFrhlbMVg@j@C
 0	Northwest Central Park Loop	my~wFrvkbMo@E[[e@?_@[uA_@QL
 0		y`_xFj~jbMPMnALn@Qj@@Gu@i@a@MY
-0	North Woods	il_xFlbkbM_@NOT}BfFUA
+1	North Woods	il_xFlbkbM_@NOT}BfFUA
 0	North Woods	_l~wFjykbM[Ck@cBGiBYkBDaANU`@O
 0		ky~wFl`kbMcA|@Kd@Fv@l@zBFp@GtBM^
-0		mq_xFpalbMW\
-0		}w_xFt}kbMd@HJG
+1		mq_xFpalbMW\
+1		}w_xFt}kbMd@HJG
 0		qa_xFd_lbMBm@Qm@m@uAo@i@Ym@
 0		e__xFryjbM_@Q
 0		im_xF|bkbMBu@t@{B?q@KQ
@@ -232,7 +232,7 @@
 0		ey~wFnjkbMr@?V]B[Oa@sAeBASLWOy@
 0		as~wFb{kbMCJ
 0	Northwest Central Park Loop	qu~wFfclbMd@kB@g@
-0		ws_xFd`lbMe@c@o@gAMaADi@K{@
+1		ws_xFd`lbMe@c@o@gAMaADi@K{@
 0	Northwest Central Park Loop	oi_xF~okbM_@Xs@H
 0		a|~wF|vjbMy@]w@NOTAz@
 0		uo|wFtpmbM[ZGn@Th@f@H^a@Bq@O_@m@K
@@ -273,7 +273,7 @@
 0		gf|wFnjnbMa@uBk@cAu@So@Bk@a@m@Ms@^y@N
 0		qe|wFzhmbMF}@Vm@VcB
 0		yk|wFdcnbM?h@ZjA@z@I`@SN_@U
-0	Northwest Central Park Loop	cf|wFhnnbMEu@
+1	Northwest Central Park Loop	cf|wFhnnbMEu@
 0		_~zwFhkmbMmAE_DaBc@}@UkA
 0	Wallach Walk	im{wF`fmbM`A`B`@V
 0		i{zwFlqmbMc@FUwANcA
@@ -482,8 +482,8 @@
 0		uuaxFjukbMCL
 0		u|`xFvclbMGR
 0		wz`xFbelbMo@c@
-0		{_{wFbmobMs@i@
-0		w~zwFtlobMMNUA
+1		{_{wFbmobMs@i@
+1		w~zwFtlobMMNUA
 0		kkaxFbykbMm@K
 0		gfaxFx{kbMEF
 0		}taxFttkbMAB
@@ -539,17 +539,17 @@
 0	West 215th Street	ylmxFj{cbMIP
 0	West 215th Street	sjmxFtxcbMeAtA
 0	Northwest Central Park Loop	cb~wFbzlbMs@a@UJ_@rAQT
-0		_e_xFjrjbMa@Im@g@
-0		qv}wFxwkbMUM
+1		_e_xFjrjbMa@Im@g@
+1		qv}wFxwkbMUM
 0		{w}wFvvkbMq@gA
-0		yu}wFbvkbMFVOb@
+1		yu}wFbvkbMFVOb@
 0		wizwFfonbMBe@Is@\oALyAC]Sc@
 0		cgkxFlfgbMa@?
 0		krzwFhrnbMd@WFi@Zc@
 0		{uzwF`_nbM_@Fk@~@
 0		kszwFbdobMCm@m@g@
-0		yl}wFftkbMRcARSVu@
-0		el}wF|nkbMERaBL
+1		yl}wFftkbMRcARSVu@
+1		el}wF|nkbMERaBL
 0		mo}wF~okbMIMMDBNRG
 0		mj}wFhqmbMYd@
 0	Strawberry Fields	a`{wFdhobMn@e@f@cApAWVW
@@ -858,19 +858,19 @@
 0	High Line	}zuwFtytbMC@
 0	High Line	ezuwF|ytbMDL
 0		utzwFtqobMs@xA
-0	Northwest Central Park Loop	{o|wF|fnbMgAwA
-0	Northwest Central Park Loop	cr|wFddnbMUE
+1	Northwest Central Park Loop	{o|wF|fnbMgAwA
+1	Northwest Central Park Loop	cr|wFddnbMUE
 0	Northwest Central Park Loop	ms|wF`bnbMM{A
 0		st|wFn}mbM^W
 0		{s|wFd_nbMGf@{@vA[bA
-0		ww_xFjzkbMEH
+1		ww_xFjzkbMEH
 0		qa{wFtiobM]i@g@Qu@o@
 0		_q{wFzrmbMeAX
 0		a~{wFxkmbMp@g@
 0		eb|wFlimbMEk@Hm@
 0		ie|wF|fmbMw@KUX_@@{AeAKi@DU
 0		_k|wFlqmbMW{@cAu@q@C}@^
-0		{`|wF`jnbMf@YP]De@
+1		{`|wF`jnbMf@YP]De@
 0		sy{wFhhnbMk@aC
 0		sy{wFhhnbMV^k@nB
 0		{x{wFhinbMVELm@As@Qa@QM?J
@@ -879,7 +879,7 @@
 0		ot}wFx_mbMa@[
 0		yz~wFh}jbMd@W
 0		uv~wF`bkbM{@oAiAu@
-0		sb_xFzijbME]
+1		sb_xFzijbME]
 0		gu{wFtgmbMs@`@
 0		}s{wFfkmbMTa@|@E
 0	Greywacke Arch	st{wFblmbMT[
@@ -891,7 +891,7 @@
 0		}tzwFlaobMUCw@^Qp@ArAXbA
 0		s{{wFbunbMf@~AjAx@PF^Gp@u@
 0		sk{wF|xnbM?XaAAm@d@
-0		cv{wFtynbMf@jAVJjAe@x@F
+1		cv{wFtynbMf@jAVJjAe@x@F
 0		{t{wFfxnbMGI
 0	Strawberry Fields	wzzwFbdobMXZ@^EZe@~@y@Lu@OCo@
 0		aszwFjlobMvA{AnAiD
@@ -900,7 +900,7 @@
 0		wjzwFdwnbMBeCZwB
 0		elzwFlunbMl@m@
 0		i~ywFz}nbM@i@
-0		ku{wFtwnbMc@k@a@oBo@q@Oy@gAkB}@cAmAA
+1		ku{wFtwnbMc@k@a@oBo@q@Oy@gAkB}@cAmAA
 0		mx{wF`nnbMa@[mCuEwCaD
 0		mt{wF|bnbMMYOC
 0		k|zwF~ynbMSh@HTxAGFO
@@ -963,8 +963,8 @@
 0		iq~wFz{jbMSM
 0		{l~wFd}jbMPFVGRk@Gc@u@k@g@|Af@\
 0		}q~wFl{jbM`A}C
-0		et~wFhsjbMxE~C
-0		c_~wFtcmbMmAV
+1		et~wFhsjbMxE~C
+1		c_~wFtcmbMmAV
 0		oszwFhmobML]
 0		grzwFftobM`AL^KV_@ZcA
 0		mdzwFruobMLF
@@ -995,7 +995,7 @@
 0		or~wFhkkbMo@Y
 0		}xzwFlbnbMTc@
 0		uh{wFf`mbMc@~@aAn@u@tAi@\k@z@a@V
-0	Northwest Central Park Loop	ag|wF|pnbM\sA
+1	Northwest Central Park Loop	ag|wF|pnbM\sA
 0		um~wFh}jbMg@HIP
 0		oyywFzcobMMS
 0		}yywFfcobMMk@
@@ -1023,7 +1023,7 @@
 0		{~`xFdvlbMGEJ_@TNM^KI
 0		wl~wFpmmbMm@_@
 0		an~wFdhmbMoDaC
-0		iu~wFtgmbMq@e@
+1		iu~wFtgmbMq@e@
 0	74th Street Track	of|wFhsqbM]i@y@g@k@CML?d@vBrAVO@a@
 0		gvnxFpldbMXNtAsC
 0		ecoxFnrdbMpAaA|CgA`B{@jAF
@@ -1151,28 +1151,28 @@
 0		gkywFpzobMf@~@
 0		qnywFf}nbMe@z@
 0		yr~wFvwjbMDR
-0		_t~wFzvjbMOB
-0		os~wFpwjbMDO
-0		ir~wFnvjbMNC
-0		kr~wFhwjbMKI
-0		_s~wFjvjbMDO
-0		os~wFtujbMES
-0		qs~wFlvjbMKI
+1		_t~wFzvjbMOB
+1		os~wFpwjbMDO
+1		ir~wFnvjbMNC
+1		kr~wFhwjbMKI
+1		_s~wFjvjbMDO
+1		os~wFtujbMES
+1		qs~wFlvjbMKI
 0		ql~wFn{jbMIE
 0	Crabapple Allée	km~wFhxjbMcA|C
 0		oo~wFf}jbMPJ
-0		co~wF`wjbMBM
+1		co~wF`wjbMBM
 0		ql~wFh|jbMR?FU]]Od@PL
-0		um~wFh}jbM`@T\AZYH_@Co@MSiAu@
-0		{i~wFx{jbMSU
-0		uk~wFt{jbMd@@
+1		um~wFh}jbM`@T\AZYH_@Co@MSiAu@
+1		{i~wFx{jbMSU
+1		uk~wFt{jbMd@@
 0		_l~wFh|jbMRl@
-0		yn~wFdvjbMFM
-0		qr~wFfujbMFS
+1		yn~wFdvjbMFM
+1		qr~wFfujbMFS
 0		ah_xFrdkbM~@d@x@E
-0		ws~wFprjbMDM
-0		_o~wFrvjbMBG
-0		{n~wFjvjbM@E
+1		ws~wFprjbMDM
+1		_o~wFrvjbMBG
+1		{n~wFjvjbM@E
 0	Bridge No. 24	}e|wF`zlbMYS
 0		}f|wFhylbMDB
 0		i{~wFpokbMCI
@@ -1497,7 +1497,7 @@
 0		uzywF|znbMeBp@
 0		qrzwFbvnbMAzB
 0		}pzwFxgobMEB
-0		me{wFhfobMEQ
+1		me{wFhfobMEQ
 0		{tzwFjmnbMEC
 0		}izwFdpnbMuEsA
 0		ojzwFtrnbMuEoA
@@ -1508,7 +1508,7 @@
 0		ytzwFlmnbMAA
 0		suzwF|~nbM_@i@
 0		opzwFtiobMCG
-0		se{wFveobMUWeAQu@kAsAeAi@q@
+1		se{wFveobMUWeAQu@kAsAeAi@q@
 0		spzwFvwnbMK[
 0		stzwF|fobMC[
 0		qkzwFxxnbMs@Uo@C]Rg@Ae@XQRg@|AyAfBUbA
@@ -1551,13 +1551,13 @@
 0		ikywFduobMTa@Hg@Ei@Qa@g@o@cD{A
 0		kgywFjmobMZG
 0		{zywFpfnbMLP
-0	Northwest Central Park Loop	cm|wFhjnbMUIa@eA_@[
-0	Northwest Central Park Loop	sf|wFhlnbMi@g@a@s@QFc@t@[B[K
+1	Northwest Central Park Loop	cm|wFhjnbMUIa@eA_@[
+1	Northwest Central Park Loop	sf|wFhlnbMi@g@a@s@QFc@t@[B[K
 0		ukywFbmnbMIZ
-0		ml|wFbknbMUY
+1		ml|wFbknbMUY
 0		k`ywFvvnbMPi@
 0		_lywF~mnbMGR
-0		if|wFrlnbMII
+1		if|wFrlnbMII
 0		e~{wFtanbMSdB
 0		qkywF~lnbMBLb@XIVk@_@
 0		ol~wFv{kbMKoAw@J
@@ -1565,7 +1565,7 @@
 0		me~wFnvlbMIK
 0		ke~wFzqlbMOE
 0		ce~wFrvlbMIC
-0	Northwest Central Park Loop	_b~wFhzlbMCE
+1	Northwest Central Park Loop	_b~wFhzlbMCE
 0		ce~wF|qlbMGA
 0		k`~wFjflbMLuBQQ{@KZkB
 0		ad~wFlrlbMa@O
@@ -1607,23 +1607,23 @@
 0		}z{wFzbnbMAM
 0		gx{wFxfnbMSNKQ@KLJNIMKL]
 0		iw{wFfbnbMw@fA
-0		yr~wF`ylbMAG
-0	North Woods	g}~wFlolbMCW
-0	North Woods	k}~wFtnlbMN_BKm@m@W_BE_@]Kq@
-0		{r~wFxxlbMSs@
+1		yr~wF`ylbMAG
+1	North Woods	g}~wFlolbMCW
+1	North Woods	k}~wFtnlbMN_BKm@m@W_BE_@]Kq@
+1		{r~wFxxlbMSs@
 0		e|~wFbblbMUG
-0		cw_xFxykbME?
-0		kv_xFv}kbMFK
+1		cw_xFxykbME?
+1		kv_xFv}kbMFK
 0	Northwest Central Park Loop	{t~wFnglbMB_@WWCi@
 0		yx~wFdflbMSa@
-0	North Woods	kg_xFfglbMv@UNQ
-0		oe~wFbbkbMFH
-0		}a~wFx`kbMEE
-0		yb~wFz_kbMCC
-0		cf~wFbakbMMA
-0		sc~wF|~jbML[
-0		cb~wFr`kbMUW
-0		}b~wFv_kbMII
+1	North Woods	kg_xFfglbMv@UNQ
+1		oe~wFbbkbMFH
+1		}a~wFx`kbMEE
+1		yb~wFz_kbMCC
+1		cf~wFbakbMMA
+1		sc~wF|~jbML[
+1		cb~wFr`kbMUW
+1		}b~wFv_kbMII
 0	Huddlestone Arch	m|~wFlnkbMKa@
 0		wo_xF~tkbMUE
 0		m{~wFdpkbMIL
@@ -1641,30 +1641,30 @@
 0		mc_xFrilbMl@h@`AXJ|@F?
 0		_q~wFp`lbMYY@c@e@Na@e@
 0		eb_xFdpkbMXAfAj@P~A
-0		ko_xFh_lbMA[
+1		ko_xFh_lbMA[
 0		s__xFj|jbMBQ
 0		ij_xFjmkbMAA
 0		cg_xF`lkbMCE
-0		_c_xF~ilbMFO
-0		u}~wFvjlbMJQ
+1		_c_xF~ilbMFO
+1		u}~wFvjlbMJQ
 0		sl_xFlpkbMAD
 0		uy~wFrjkbMNC
 0		ep_xFlpkbM@C
 0		ch_xFlmkbMGG
 0		}`_xFj~jbMCA
-0		}d_xFlrjbMAA
+1		}d_xFlrjbMAA
 0		_g_xFdlkbMCC
 0		ks~wFhskbM\a@
-0		es_xFr`lbMQM
+1		es_xFr`lbMQM
 0		ko_xF|jkbM?K
-0		s~~wFbnlbMf@H
+1		s~~wFbnlbMf@H
 0	North Woods	oq~wFd}kbMCC
 0		mp_xFxtkbMAG
 0		e{~wF|pkbM?G
 0		q__xFzllbMI@
 0		ya_xFlklbMCC
 0		eh_xFzdkbMBG
-0		e`_xFrklbMHk@
+1		e`_xFrklbMHk@
 0		o{~wF~tkbM@G
 0		i__xFtmlbMFF
 0		e{~wFdskbM@C
@@ -1674,7 +1674,7 @@
 0		kl_xFnnkbMCI
 0		{m_xFvlkbME?
 0		ih_xF~dkbMBC
-0		kd_xFtqjbMTB
+1		kd_xFtqjbMTB
 0		wv~wFpukbMMV
 0		wg_xFvmkbMGE
 0		_h_xFpmkbMCC
@@ -1698,21 +1698,21 @@
 0		cp_xFhpkbM`A]|@b@
 0		un_xFrrkbMOI@O
 0		kp_xFpskbMAC
-0		wb_xFfhlbMWh@
-0		uq_xFnalbMo@[
-0		gf_xF|qjbMO`@
+1		wb_xFfhlbMWh@
+1		uq_xFnalbMo@[
+1		gf_xF|qjbMO`@
 0	North Woods	ci_xFhgkbMJG
-0		ed_xFxflbME^
+1		ed_xFxflbME^
 0		ez~wFdmkbMi@W
 0		c{~wF`skbMHI
-0		{`_xFdklbMa@aA
+1		{`_xFdklbMa@aA
 0		wi_xFlmkbMQA
 0		un_xFfskbM?Y
 0	North Woods	sq~wF`}kbMOO
-0		wd_xFppjbMLXEb@MA
+1		wd_xFppjbMLXEb@MA
 0		ka_xF|skbMWqBQ]yA_Bo@Qm@JII
 0		i{~wFpskbMBK
-0		s__xFrllbMRq@KG
+1		s__xFrllbMRq@KG
 0	North Woods	_j_xFbgkbMZD
 0		e{~wFtpkbMGO
 0		ux~wFjqkbMv@M]a@KaABeB
@@ -1723,9 +1723,9 @@
 0		ul_xFrpkbME?
 0		{n_xFxskbM[d@
 0	North Woods	as~wF~zkbM\\
-0		oa_xFbjlbMMP?^Q@
+1		oa_xFbjlbMMP?^Q@
 0		ol_xFdnkbMk@m@
-0		gg_xFdglbMDJz@T
+1		gg_xFdglbMDJz@T
 0		g{~wF|pkbMOI
 0		ox~wFtrkbMQJWC
 0		at~wFt}kbMSB
@@ -1760,8 +1760,8 @@
 0		esywF~jobMyA{@cCkC
 0		k}ywFhonbMr@b@
 0		w{ywFlpnbMn@fAd@bB?~@]tA
-0	Northwest Central Park Loop	wv|wFhvmbMe@EkA|Aq@Xc@@eDSqBc@aB}@aAaA
-0		yk}wF~rmbM[lA
+1	Northwest Central Park Loop	wv|wFhvmbMe@EkA|Aq@Xc@@eDSqBc@aB}@aAaA
+1		yk}wF~rmbM[lA
 0		ubywFlqobMMIiA`Aw@Xs@~@EXDnBe@fAVz@VT
 0		aaywFpmobMaAJ
 0	Riverside Walk	_hcxFrtlbMy@Sq@m@
@@ -1779,8 +1779,8 @@
 0	Riverside Park South Bike Path	unzwFn{rbM]c@GYDMmHkF_`@wV
 0	Cherry Walk	egbxFxnmbM`@N
 0	Cherry Walk	wp_xFzkobM{^kUqBaB{IwFmC}BoFaDkByAqKwFeJyF
-1	Hudson River Greenway	}rwwFl}tbMpXnQbTfGpAR
-0	Hudson River Greenway	}wowFzsvbMcEu@}IeAg@QkSeCkScBwGU
+0	Hudson River Greenway	}rwwFl}tbMpXnQbTfGpAR
+1	Hudson River Greenway	}wowFzsvbMcEu@}IeAg@QkSeCkScBwGU
 0		ydnxFfjfbMBK
 0		cdnxF|jfbMUU
 1	Old Slip	ezlwF`subMKH
@@ -1852,7 +1852,7 @@
 0		_e{wF|~pbMi@_@
 1	Park Row	cnnwF|~tbM{AoE
 0	Hudson Boulevard West	{|vwFlmtbM}AuA
-1	Hudson River Park Esplanade	mvqwFzivbMxJb@~VvC
+0	Hudson River Park Esplanade	mvqwFzivbMxJb@~VvC
 0	New Wave Pier	_huwFvbnbMkEkD
 0	East River Esplanade	c|twFrmnbMkBuA
 0	East Midtown Greenway	yawwFjmlbMoH_F
@@ -1900,10 +1900,10 @@
 0		ed|wFx{lbMIS
 0		}}mxFd`dbMQBK^YHAX
 0		e}vwFfhtbMGP
-0	North Woods	qp_xF`jkbMQC
-0	North Woods	ks_xFbmkbMNj@QvAHN
-0		ko_xFl_lbM?C
-0		kj_xFnhlbM@G
+1	North Woods	qp_xF`jkbMQC
+1	North Woods	ks_xFbmkbMNj@QvAHN
+1		ko_xFl_lbM?C
+1		kj_xFnhlbM@G
 0	North Woods	ck_xFdykbMLl@Bz@^z@
 0		{e_xFbvkbMCQk@u@Ke@
 0		ga_xFrtkbM?O
@@ -1927,7 +1927,7 @@
 0		sbaxFbelbMFAUhA
 0		gnmxFbwdbMr@}@EI
 0	Horatio Street	gxswFdytbMA]
-0	North Woods	ij_xFfhlbMXJ
+1	North Woods	ij_xFfhlbMXJ
 0		_h|wF~jjbMoAy@KZUQ
 1	Battery Bikeway	ybmwF|dwbMGj@BnB
 1	Battery Bikeway	ybmwF|dwbMHiB
@@ -2096,8 +2096,8 @@
 0		qm{wFx|nbMPQ
 0		so{wFbpnbM?@
 0	Ramble Stone Arch	cp{wFtonbMNL
-0		ig|wFrnnbMXV
-0		yr|wF~cnbM_ABk@t@
+1		ig|wFrnnbMXV
+1		yr|wF~cnbM_ABk@t@
 0		_k|wFhqmbM{AJ
 0		mj}wFhqmbMRWvEz@jFd@PT
 0		ss}wFbylbM^B
@@ -2253,8 +2253,8 @@
 0		{soxF`nbbMcBbDyAj@
 0		mu_xF|pnbMCA
 0		sv~wF|rmbMPk@
-0		av~wFpqmbMHY
-0		_u~wFjrmbMJY
+1		av~wFpqmbMHY
+1		_u~wFjrmbMJY
 0		qu~wFvsmbMPk@
 0	West 100th Street	co_xFp}nbMPm@
 0		on_xF~{nbMES
@@ -2294,7 +2294,7 @@
 0		ke`xFntnbMj@\
 0		i`axF`cnbMDM
 0		i`axF`cnbM_@O
-0		i__xFpijbMBE
+1		i__xFpijbMBE
 0		k__xFvgjbMCD
 0		y~~wFnhjbMAK
 0		_`_xF~hjbM@E
@@ -2328,9 +2328,9 @@
 0		sabxFfykbMeEzL
 0		wk`xF~clbMe@`@WtA
 0		}~axFlrkbMAgAUm@UEiAV}@a@
-0		{c~wFn}jbMm@rA]V
-0		{t~wFlujbMBB
-0		qt~wFrujbMDD
+1		{c~wFn}jbMm@rA]V
+1		{t~wFlujbMBB
+1		qt~wFrujbMDD
 0		us|wFvalbMpL~Hz@v@Rd@R`B[`FB^
 0		ao|wFlblbMdBhA
 0		en{wF|qmbMOD
@@ -2345,17 +2345,17 @@
 0		{t{wFfxnbMj@HHNlAB
 0		gt{wFvznbMXC
 0		gt{wFvznbMN[
-0	North Woods	{x~wF~rlbMyAe@c@g@Mc@
+1	North Woods	{x~wF~rlbMyAe@c@g@Mc@
 0		k|zwFl_obMm@b@
 0		k`{wFr_obMQo@
-0		kx}wFpgkbMPe@
-0		cs}wFpnkbM\g@\cA
+1		kx}wFpgkbMPe@
+1		cs}wFpnkbM\g@\cA
 0		eb~wFxembMdAcCfAm@
 0	Northwest Central Park Loop	kf~wF||lbMwAWiAo@mAuAy@eB
 0	Northwest Central Park Loop	_f~wFv|lbMKD
-0	Northwest Central Park Loop	u`~wFrambMYiANiB_@u@
+1	Northwest Central Park Loop	u`~wFrambMYiANiB_@u@
 0		ad~wFldmbMFS
-0		yt}wFdjmbM]N
+1		yt}wFdjmbM]N
 0		aqaxF~slbMB@
 0		{paxFbtlbMBB
 0		mvaxF~slbMEQ
@@ -2366,7 +2366,7 @@
 0		y~axFtcmbMfN~IrClDtIvE`FnBfFlC~UpObEbF~E`E|Br@vAJhBK|@h@
 0		y`bxF~bmbM~@T
 0		}q~wFrcmbMlCbB
-0		up~wFf}lbM{AzE
+1		up~wFf}lbM{AzE
 0		qn~wFfimbMkCeB
 0		ik~wFdjmbMu@g@
 0		ko~wFfpmbMd@}A
@@ -2376,7 +2376,7 @@
 0		ms~wFjvmbMw@g@
 0		eu~wFbumbMBIUQoEqC
 0		{v~wFnsmbMFQ
-0		}o~wFhwlbM@L
+1		}o~wFhwlbM@L
 0		sx~wFjumbMsCkB
 0		_daxFlcmbMCA
 0		edaxFhcmbMz@{C
@@ -2386,7 +2386,7 @@
 0		w{|wFpmkbMAD
 0		qg~wFtmjbM?B
 0		}f~wFfnjbM@B
-0		oj}wF`wmbMP]b@B
+1		oj}wF`wmbMP]b@B
 0		wa_xFvgjbMCC
 0		k~{wFlljbMKG
 0		ad|wFjpjbMCC
@@ -2425,9 +2425,9 @@
 0		_l{wFxknbMANRN`@pA
 0		ks{wFbgnbMEm@
 0		ks{wFrdnbMHM
-0	Northwest Central Park Loop	ml}wFrrmbMGE
-0		em}wF|qmbMEb@FPN?L[
-0	Northwest Central Park Loop	em}wF|qmbMs@gAqAgAm@kDs@iA{BFeBo@y@BaAc@g@k@
+1	Northwest Central Park Loop	ml}wFrrmbMGE
+1		em}wF|qmbMEb@FPN?L[
+1	Northwest Central Park Loop	em}wF|qmbMs@gAqAgAm@kDs@iA{BFeBo@y@BaAc@g@k@
 0		c_lxF~}fbMQj@
 0		u_lxFj_gbMCJ
 0		a|kxFdxfbMDPND
@@ -2622,11 +2622,11 @@
 0		{eaxF~klbMH@DQ
 0		efaxFxllbMHY
 0	116th Street Entrance to Riverside Park	}oaxFnombMs@QUV@t@h@rA
-0		c}}wFffkbMCE
-0		ic~wFh_kbMCC
-0		g}}wF`fkbMu@eB_BaA
-0		gc~wFl_kbMAC
-0		mc~wFd_kbMEG
+1		c}}wFffkbMCE
+1		ic~wFh_kbMCC
+1		g}}wF`fkbMu@eB_BaA
+1		gc~wFl_kbMAC
+1		mc~wFd_kbMEG
 0		wkbxFfdlbMvFpD
 0		}fbxFxdlbMh@Dh@O
 0		sdbxFhflbMPFV`@
@@ -2687,7 +2687,7 @@
 0		qt`xF~{mbMQP
 0		cu`xFp|mbMhDlC
 0		an`xFlenbML_@]SK^
-0		ak_xFhyjbMn@Zt@[R_@p@oBNeBp@wBCu@b@iA|Af@lAhA|BdAbBtA~@^
+1		ak_xFhyjbMn@Zt@[R_@p@oBNeBp@wBCu@b@iA|Af@lAhA|BdAbBtA~@^
 0		uz}wFzijbMNc@
 0		}z}wFdhjbMMb@
 0		sovwFxcibMeLl]
@@ -2763,37 +2763,37 @@
 0		ms~wFl{obM_@p@
 0		st~wFf}obMi@Xe@@
 0		cl_xFbqkbMBq@Ka@
-0		sq~wFrulbMi@zB
+1		sq~wFrulbMi@zB
 0		ge_xFjpkbMgA}@GU
 0	North Woods	sz~wFlokbMi@EOY
-0		ao_xFr`lbMsAZ
+1		ao_xFr`lbMsAZ
 0		cf|wFhnnbMtBaAp@eAo@Ec@Si@}@MkCPs@g@gBk@eAqByAeAQ
 0	Giraffe Path	kc`xFjflbMoDyCg@Sm@CkBRo@i@e@N_AQsAT{@?yB_@gAJq@]aEaDsBiCwBkAa@i@
 0		cl~wFxikbMDgB
 0	North Woods	cl_xFbxkbMRV
-0		_s_xFtmkbMsDjL
+1		_s_xFtmkbMsDjL
 0		{s|wFd_nbMC]a@Y
-0	North Woods	iq~wFpslbMI`A
+1	North Woods	iq~wFpslbMI`A
 0		oi_xF~okbMKi@@c@Vm@\SBQY_Ae@y@
-0		ao_xFr`lbMCQ
+1		ao_xFr`lbMCQ
 0	Northwest Central Park Loop	{t~wFnglbMJvAj@dAGrATb@
 0	North Woods	qm~wFdlkbMBO
 0	North Woods	qi_xFj~kbM}@~@qBF
 0	North Woods	_l~wFjykbM?b@e@dC
 0	Northwest Central Park Loop	wg_xFtrkbMQk@e@i@
 0	North Woods	_j_xFbgkbMe@U]B_BxB_@B
-0	North Woods	sj_xFvflbMKg@gBaBYy@
+1	North Woods	sj_xFvflbMKg@gBaBYy@
 0		my~wFrvkbMg@aBOsA
 0	North Woods	kq~wFj}kbMj@O
 0		if|wFrlnbMJmB\k@
 0		em~wFt~kbM?fDu@~FRjAb@t@nAx@hBFl@KpBmAlA[
 0	Wallach Walk	q|ywF~onbM]n@i@AaAs@gAWcAcA
 0	Wallach Walk	oyzwFjumbM_BmBcB{@sAgBUOg@C
-0		cy|wFvwmbMa@xBa@dAS~B
+1		cy|wFvwmbMa@xBa@dAS~B
 0		gezwF|lnbM_@HoAfA_@G
 0	Wallach Walk	iuzwFbymbMqAs@s@cA
 0		i{ywFjmnbM`A[^cA
-0	North Woods	ys~wFtvlbMq@Qa@g@i@Oc@k@
+1	North Woods	ys~wFtvlbMq@Qa@g@i@Oc@k@
 0		_ezwFngnbMu@s@sAY
 0		oyzwFjumbMCoAVUV@
 0	Wallach Walk	s|ywFtgnbMi@a@i@iB
@@ -2971,7 +2971,7 @@
 0		ij}wF~skbMGOLMDNKL
 0		yk}wFbskbM^r@p@DRSE[SKg@Kc@L
 0		ek}wFvpkbM^T]HBLZDAL
-0		}r~wFdtjbMw@T
+1		}r~wFdtjbMw@T
 0		}pjxFhjfbMAD
 0		{njxFzkfbMAI
 0		cojxFb`fbMAC
@@ -3050,8 +3050,8 @@
 0	East River Esplanade	attwFxrnbMCF
 0		saxwFxzlbMCF
 0	Ed Koch Queensboro Bridge Path	saxwFxzlbMp@gCn@_B
-0		}w~wFnhmbMj@BPMTu@Ku@
-0		uu~wFxdmbMEI
+1		}w~wFnhmbMj@BPMTu@Ku@
+1		uu~wFxdmbMEI
 0	Nell Singer Lilac Walk	mwzwF|hobMFI
 0		azzwFd`nbMT]
 0		ihmxFvmdbMVJ@T
@@ -3452,20 +3452,20 @@
 0		md|wFbwlbMW@
 0		ab|wF~~lbMPA
 0		a{zwF`}mbMMN
-0		ah_xFrdkbM}@wAm@H
+1		ah_xFrdkbM}@wAm@H
 0		{ezwF~~obMCj@
 0		}ezwFl}obM@p@
-0		eo_xF``lbMAG
+1		eo_xF``lbMAG
 0		kr~wFpglbMoAA
 0		_t}wFh}lbMWlD
-0		wn}wFbnmbMWZ
-0	Northwest Central Park Loop	ek}wFxsmbMIM
-0	Northwest Central Park Loop	yk}wF~rmbMKG
+1		wn}wFbnmbMWZ
+1	Northwest Central Park Loop	ek}wFxsmbMIM
+1	Northwest Central Park Loop	yk}wF~rmbMKG
 0		qq|wFhzmbMaAlA
-0	Northwest Central Park Loop	yr|wF~cnbMMi@
+1	Northwest Central Park Loop	yr|wF~cnbMMi@
 0		{~{wF`fnbM@e@
 0		ep{wF|xnbMFE
-0		ej{wF`bobMHS
+1		ej{wF`bobMHS
 0		oi{wFt`obMBM
 1		elzwFnspbMPL
 1		_izwFzspbMDO
@@ -3508,8 +3508,8 @@
 0		{vjxFrmbbMKRUIWh@
 1		sj{wFvgobMAA
 1		sj{wFvgobM@C
-0		_j{wFjfobM@G
-0		uj{wFzeobMBE
+1		_j{wFjfobM@G
+1		uj{wFzeobMBE
 1		gk{wFfgobM@@
 1		gk{wFfgobM?C
 0		izzwFtsobM@@
@@ -3891,7 +3891,7 @@
 0		_ydxFp_kbMGN
 0		gydxF``kbMCD
 0		kydxFf`kbMM\fJnIjBn@
-0		mr}wF`imbMjAR
+1		mr}wF`imbMjAR
 1		amzwF~arbM@E
 1	Battery Bikeway	}bmwFzkwbM?aA
 1		gstwFrzubM?B
@@ -4110,7 +4110,7 @@
 0		{rjxFhjdbM_@USJ
 1		qstwFtyubMHX
 0		qz_xFrzmbMEL
-0		yq~wF`rmbMAD
+1		yq~wF`rmbMAD
 0		ak{wFllnbM\lA
 0		mu~wF|kkbMFdAEd@
 0		_l{wFtfnbMQOs@Am@[
@@ -4137,7 +4137,7 @@
 0		mbbxFb{kbMi@HOKE]
 0		qyvwFrptbM?@
 1		e{swFx_vbMI|A
-0		u}nwFzkwbMIE
+1		u}nwFzkwbMIE
 0	Central Park Outer Loop	s}xwFf{nbM@I
 0		qyxwFf|nbMEE
 0		myxwFj{nbMDB
@@ -4195,9 +4195,9 @@
 1	Hudson River Greenway	oxnwFr|vbMRD
 1	Hudson River Greenway	eunwFp}vbMD@
 1	Hudson River Greenway	g|nwFf{vbMNB
-0		_~nwFtkwbMEE
-0		kfowFnkwbMAO
-0		gfowFtkwbMCE
+1		_~nwFtkwbMEE
+1		kfowFnkwbMAO
+1		gfowFtkwbMCE
 0	East Midtown Greenway	wtwwFj_lbMaAoA
 1	Hudson River Greenway	w}nwFvzvbMXF
 0	East Midtown Greenway	wswwFr`lbM_@g@
@@ -4505,7 +4505,7 @@
 0		aotwFpstbMLH
 0		cptwFxrtbMD@
 0		}otwFzrtbMZT
-0		si~wFz{jbM[F
+1		si~wFz{jbM[F
 0		{_axFzzkbMGPe@[GP
 0		u~`xFt{kbMAD
 0		uaaxFn}kbMR}@`AXT\
@@ -4550,7 +4550,7 @@
 0		unoxFrddbMb@h@
 0	Roosevelt Island Greenway	qhzwF~whbMLh@`InIx@zA`AnArBnAvA\DVz@p@d@F
 0		ct~wFrxjbM[c@CW
-0		wt~wFpujbMD@
+1		wt~wFpujbMD@
 0		yo|wFrcmbMCF
 0		}o|wFzcmbM?@
 0		au|wFl}mbMCs@YQSFSj@Cj@Ff@LLNAb@mA
@@ -4680,8 +4680,8 @@
 0	North Woods	qn~wF|}kbM@H
 0	North Woods	wn~wFl}kbM@@
 0	North Woods	_p~wFz|kbMd@N
-0		wu~wFvslbMNM
-0		}v~wFrtlbMd@[
+1		wu~wFvslbMNM
+1		}v~wFrtlbMd@[
 0		_u~wFhqlbM`@[
 0		gu~wFhslbMHkAJQhAP
 1		anzwFtjqbMBK
@@ -4874,28 +4874,28 @@
 0	Central Park Outer Loop	mk_xFdzjbMCH
 0		wj_xFdzjbMFO
 0		ik_xFl{jbMEJ
-0		ii_xF|~jbMPe@d@}C
+1		ii_xF|~jbMPe@d@}C
 0		i|~wFlzjbMQCW]
 0		s}~wFjyjbMQG
-0		ke_xFrsjbMCA
-0		ie_xFfsjbMC?
+1		ke_xFrsjbMCA
+1		ie_xFfsjbMC?
 0	North Woods	un~wFn}kbMBL
 0	North Woods	yn~wFj}kbM@@
 0		{h_xFlwjbMVM?i@^UGk@RS
-0		gi_xFr_kbMD?
-0		gi_xFr_kbMA?
-0		yv_xF~ykbMEC
-0		_w_xFzykbMCA
-0		}v_xFhwkbMVY?c@
-0		cv_xFrvkbMCA
-0		sx_xF`{kbMOL
-0		gx_xFzzkbMC@
-0		kx_xF|zkbMC@
-0		ax_xFvzkbMEB
-0		}w_xFtzkbMC@
-0		ow_xFzykbMCH
-0		sw_xFdzkbMCD
-0		iw_xFxykbME@
+1		gi_xFr_kbMD?
+1		gi_xFr_kbMA?
+1		yv_xF~ykbMEC
+1		_w_xFzykbMCA
+1		}v_xFhwkbMVY?c@
+1		cv_xFrvkbMCA
+1		sx_xF`{kbMOL
+1		gx_xFzzkbMC@
+1		kx_xF|zkbMC@
+1		ax_xFvzkbMEB
+1		}w_xFtzkbMC@
+1		ow_xFzykbMCH
+1		sw_xFdzkbMCD
+1		iw_xFxykbME@
 0		m|_xFb_lbM?F
 0		u{_xFb`lbMHF
 0		g{_xFp}kbMp@@
@@ -4957,13 +4957,13 @@
 1		kf}wFdjobMBG
 1		qe}wFljobMAB
 1		wj}wFrfobMAD
-0		un}wFbpmbM@E
-0	Northwest Central Park Loop	am}wF~qmbMCA
-0	Northwest Central Park Loop	wl}wFjrmbMGG
-0	Northwest Central Park Loop	el}wFvrmbMCA
-0	Northwest Central Park Loop	il}wFtrmbMCA
-0	Northwest Central Park Loop	ul}wFlrmbMAA
-0	Northwest Central Park Loop	_m}wFbrmbMAC
+1		un}wFbpmbM@E
+1	Northwest Central Park Loop	am}wF~qmbMCA
+1	Northwest Central Park Loop	wl}wFjrmbMGG
+1	Northwest Central Park Loop	el}wFvrmbMCA
+1	Northwest Central Park Loop	il}wFtrmbMCA
+1	Northwest Central Park Loop	ul}wFlrmbMAA
+1	Northwest Central Park Loop	_m}wFbrmbMAC
 0		ee{wFrapbMBE
 0		{e{wF`apbM@E
 0		ei{wFr~obM@C
@@ -4993,7 +4993,7 @@
 0		{clxF~sebMAC
 0		c{ywFvhpbMCJ
 0		qzywFtipbMDK
-0		a~}wF`fkbMIF
+1		a~}wF`fkbMIF
 0		k~}wFhfkbMG@
 0		s~}wFjfkbME@
 0		y~}wFlfkbMCE
@@ -5124,7 +5124,7 @@
 0		ueaxFxolbMA@
 0		ahaxFfvlbMIG
 0	Low Library Steps	}gaxFhvlbMCA
-0	North Woods	ij_xFfhlbMIo@
+1	North Woods	ij_xFfhlbMIo@
 0		{n_xFxskbMDQd@B
 0		kp_xFdqkbMDW
 0		gxaxF`pkbMDB
