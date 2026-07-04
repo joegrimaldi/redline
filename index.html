@@ -56,6 +56,24 @@
  .crow .cl{font-size:14px;color:var(--ink)} .crow .cv{font-family:var(--pix);font-size:9px;color:var(--dim)} .crow.ok .cv{color:var(--grn)}
  .crow .cbar{grid-column:1/3;height:7px;background:#0a0713;border:1px solid var(--line);overflow:hidden}
  .crow .cbar>i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--pur) 0 7px,#6d3fb0 7px 9px)} .crow.ok .cbar>i{background:var(--grn)}
+ /* level-system viz */
+ .tmeter{margin:0 0 13px}
+ .tmlabel{font-size:15px;color:var(--ink);margin-bottom:5px} .tmlabel b{color:var(--red)}
+ .tmbar{position:relative;height:14px;background:#0a0713;border:2px solid var(--line);overflow:visible}
+ .tmbar>i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--red) 0 8px,#a3242c 8px 10px)}
+ .tmbar .tk{position:absolute;top:-4px;width:2px;height:20px;background:var(--cyan);opacity:.75}
+ .lad{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+ .lrow{display:flex;gap:10px;align-items:center;background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:9px 10px;box-shadow:0 3px 0 var(--line);opacity:.9}
+ .lrow.done{opacity:1;border-color:#1f6b3d;box-shadow:0 3px 0 #0c2a18}
+ .lrow.cur{opacity:1;border-color:var(--cyan);box-shadow:0 3px 0 #0a3a44,inset 0 0 0 1px var(--cyan)}
+ .lrow.mile{background:#1a1206}
+ .lnum{min-width:34px;text-align:center;font-family:var(--pix);font-size:15px;color:var(--ink)} .lnum b{display:block}
+ .lbody{flex:1;min-width:0}
+ .ltitle{font-family:var(--pix);font-size:10px;color:var(--cyan);margin-bottom:6px}
+ .ltitle em{color:var(--yel);font-style:normal;font-family:var(--term);font-size:15px;margin-left:4px}
+ .mtag{font-family:var(--term);font-size:13px;color:var(--yel);margin-left:4px}
+ .lcrit{display:flex;flex-wrap:wrap;gap:5px 10px}
+ .lc{font-size:14px;color:var(--dim)} .lc.ok{color:var(--grn)}
  .streakrow{display:flex;align-items:center;gap:12px;background:#1a1206;border:2px solid var(--line);border-radius:4px;padding:12px;margin-bottom:11px;box-shadow:0 4px 0 var(--line)}
  .streakrow .fire{font-size:26px} .streakrow .sb{font-family:var(--pix);font-size:12px;color:var(--yel)} .streakrow .ss{font-size:15px;color:var(--dim)}
  .cal{display:flex;gap:3px;margin-left:auto;flex-wrap:wrap;max-width:52%;justify-content:flex-end}
@@ -194,7 +212,7 @@
 <div id="home">
  <div class="brand"><h1>🟥 REDLINE</h1><div style="display:flex;gap:6px"><button id="syncBtn" class="upd">🔄 Sync</button><button id="updateBtn" class="upd">⟳ Update</button></div></div>
  <div class="hero tapviz" data-viz="coverage"><div class="big" id="d_pct">–</div><div class="cap">redlined ›</div><div class="bar"><i id="d_bar" style="width:0%"></i></div></div>
- <div class="lvl tapviz" data-viz="coverage"><div class="badge"><small>LV</small><b id="d_lv">–</b></div><div class="info"><div class="t" id="d_title">–</div><div class="x" id="d_xpsub"></div><div class="crit" id="d_crit"></div></div></div>
+ <div class="lvl tapviz" data-viz="levels"><div class="badge"><small>LV</small><b id="d_lv">–</b></div><div class="info"><div class="t" id="d_title">–</div><div class="x" id="d_xpsub"></div><div class="crit" id="d_crit"></div></div></div>
  <div class="streakrow tapviz" data-viz="calendar"><span class="fire">🔥</span><div><div class="sb" id="d_streak">–</div><div class="ss" id="d_streaksub"></div></div><div class="cal" id="d_cal"></div></div>
  <div class="grid">
    <div class="card tapviz" data-viz="coverage"><b id="d_milesred">–</b><span>Mi done</span><div class="sub" id="d_milesred_sub"></div></div>
@@ -223,7 +241,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v62</div>
+ <div class="ver" id="ver">REDLINE v63</div>
 </div>
 
 <div id="map"></div>
@@ -645,8 +663,25 @@ function lengthSVG(){const b=[0,0,0,0,0,0],lab=['0-2','2-4','4-6','6-8','8-10','
 function projectionCap(){if(WL.length<2)return'';const done=WL[WL.length-1][4],rem=Math.max(0,523-done),cut=Date.now()-56*864e5;let recent=0;WL.forEach(w=>{if(new Date(w[0]).getTime()>=cut)recent+=w[3];});const perWk=recent/8;
   if(perWk<=0.05)return '<b>'+rem.toFixed(0)+' mi</b> of streets to go — break some new ground to project a finish date!';
   const d2=new Date(Date.now()+(rem/perWk)*7*864e5);return '<b>'+rem.toFixed(0)+' mi</b> of streets to go. At your last-8-week pace (~'+perWk.toFixed(1)+' new mi/wk) you clear every street by ~<b style="color:#37d5f2">'+MONTHS[d2.getMonth()]+' '+d2.getFullYear()+'</b>';}
+// full level-system visualization: 3 track meters + the 9-level ladder with per-level criteria & live status
+function levelsHTML(){
+  const LT=liveTotalsFull(), covPct=LT.pct, HD=computeHoods(), stPct=streetsFinishedPct();
+  const hoodsAt=p=>HD.filter(h=>h.pct>=p).length, medal={33:'🥉',66:'🥈',99:'🥇'};
+  const meets=k=>covPct>=LEVELS[k][0]&&hoodsAt(LEVELS[k][3])>=LEVELS[k][2]&&stPct>=LEVELS[k][4];
+  let li=0;for(let k=0;k<LEVELS.length;k++){if(meets(k))li=k;}
+  const br=hoodsAt(33),si=hoodsAt(66),go=hoodsAt(99);
+  const meter=(ic,lb,val)=>'<div class="tmeter"><div class="tmlabel">'+ic+' '+lb+' — <b>'+Math.round(val)+'%</b></div><div class="tmbar"><i style="width:'+Math.min(100,val)+'%"></i><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
+  let h=meter('🟥','Coverage',covPct)+meter('🛣️','Streets finished',stPct);
+  h+='<div class="tmeter"><div class="tmlabel">🏘️ Territory — <b>'+br+'</b> 🥉  <b>'+si+'</b> 🥈  <b>'+go+'</b> 🥇 <span style="color:var(--dim)">/ 18</span></div></div>';
+  h+='<div class="lad">';
+  for(let k=0;k<LEVELS.length;k++){const L=LEVELS[k], mile=(k===2||k===5||k===8), cur=(k===li), done=meets(k);
+    const cov=covPct>=L[0], hd=hoodsAt(L[3])>=L[2], st=stPct>=L[4];
+    const cell=(ok,txt)=>'<span class="lc'+(ok?' ok':'')+'">'+(ok?'✓ ':'')+txt+'</span>';
+    h+='<div class="lrow'+(cur?' cur':'')+(done?' done':'')+(mile?' mile':'')+'"><div class="lnum">'+(mile?'⭐':'')+'<b>'+(k+1)+'</b></div><div class="lbody"><div class="ltitle">'+L[1]+(cur?' <em>← you</em>':'')+(mile?' <span class="mtag">'+medal[k===2?33:k===5?66:99]+' tier</span>':'')+'</div><div class="lcrit">'+cell(cov,'🟥 '+L[0]+'%')+cell(hd,'🏘️ '+L[2]+medal[L[3]])+cell(st,'🛣️ '+L[4]+'%')+'</div></div></div>';}
+  h+='</div>';return h;}
 function openViz(kind){$('viz').classList.add('show');const body=$('viz_body');$('viz_cap').innerHTML='';
-  if(kind==='calendar'){$('viz_title').textContent='🔥 Walk calendar';body.innerHTML=calendarHTML();$('viz_cap').textContent='Tap a day for its miles + new ground redlined';wireCal();requestAnimationFrame(()=>{body.scrollTop=body.scrollHeight;});}
+  if(kind==='levels'){$('viz_title').textContent='🎖️ Level system';body.innerHTML=levelsHTML();$('viz_cap').textContent='Clear all 3 criteria to level up · ⭐ = 33/66/99% milestone (Bronze/Silver/Gold)';}
+  else if(kind==='calendar'){$('viz_title').textContent='🔥 Walk calendar';body.innerHTML=calendarHTML();$('viz_cap').textContent='Tap a day for its miles + new ground redlined';wireCal();requestAnimationFrame(()=>{body.scrollTop=body.scrollHeight;});}
   else if(kind==='coverage'){$('viz_title').textContent='🟥 Redlined over time';body.innerHTML=coverageSVG();const done=WL.length?WL[WL.length-1][4]:0;$('viz_cap').innerHTML='<b>'+done.toFixed(0)+' mi</b> of streets redlined since Sep 2025 · '+(100*done/523).toFixed(0)+'% of the ~523-mi grid';}
   else if(kind==='togo'){$('viz_title').textContent='🎯 Finish projection';body.innerHTML=coverageSVG();$('viz_cap').innerHTML=projectionCap();}
   else if(kind==='walks'){$('viz_title').textContent='🚶 Walks by month';body.innerHTML=barsSVG(monthAgg(),0,'#37d5f2');const tot=WL.reduce((s,w)=>s+w[1],0),avg=WMI.length?WMI.reduce((s,m)=>s+m,0)/WMI.length:0;$('viz_cap').innerHTML='<b>'+tot+'</b> walks · avg <b>'+avg.toFixed(1)+' mi</b> each';}
