@@ -46,9 +46,9 @@ let _tt;function toast(t){const el=$('toast');el.textContent=t;el.classList.add(
 
 // ---------- dashboard ----------
 // 9 levels; each = [coveragePct, title, hoodCountReq, hoodTierPct(33/66/99), streetsFinishedPct]. All proportional — 33/66/99% milestones at L3/6/9.
-// Territory: ⅓(6) Bronze @L3, ⅔(12) Silver @L6, all 18 Gold @L9. Coverage & streets each climb 0→99% across the ladder.
-const LEVELS=[[0,'Rookie',0,33,0],[16,'Wanderer',3,33,16],[33,'Pathfinder',6,33,33],[44,'Trailblazer',6,66,44],[55,'Cartographer',9,66,55],[66,'Surveyor',12,66,66],[77,'Redliner',6,99,77],[88,'City Stalker',12,99,88],[99,'Manhattan Master',18,99,99]];
-const HOODEMOJI={'Financial District':'🏦','Battery Park City':'🔋','Seaport / Civic Center':'⚓','Tribeca':'🎬','Chinatown':'🥟','Lower East Side':'🥯','SoHo / Nolita':'🛍️','West Village':'☕','East Village':'🎸','Chelsea':'🖼️','Flatiron / Gramercy':'📐','Murray Hill / Kips Bay':'🏢','Midtown':'🏙️',"Hell's Kitchen":'🍳','Upper East Side':'🎩','Upper West Side':'🎻','Harlem / Morningside':'🎷','Washington Hts / Inwood':'🌉'};
+// Territory: ⅓(12) Bronze @L3, ⅔(23) Silver @L6, all 35 Gold @L9. Coverage & streets each climb 0→99% across the ladder.
+const LEVELS=[[0,'Rookie',0,33,0],[16,'Wanderer',6,33,16],[33,'Pathfinder',12,33,33],[44,'Trailblazer',12,66,44],[55,'Cartographer',18,66,55],[66,'Surveyor',23,66,66],[77,'Redliner',12,99,77],[88,'City Stalker',24,99,88],[99,'Manhattan Master',35,99,99]];
+const HOODEMOJI={'Financial District':'🏦','Battery Park City':'🔋','Central Park':'🌳','Tribeca':'🎬','SoHo':'🎨','NoHo':'🖤','Nolita':'🛍️','Little Italy':'🍝','Chinatown':'🥟','Two Bridges':'🌉','Civic Center':'🏛️','Lower East Side':'🥯','East Village':'🎸','Greenwich Village':'☕','West Village':'🍷','Chelsea':'🖼️','Flatiron District':'📐','Gramercy':'🌿','Stuyvesant Town':'🏘️','Kips Bay':'🏢','Murray Hill':'🏨','Midtown':'🏙️','Theater District':'🎭',"Hell's Kitchen":'🍳','Upper East Side':'🎩','Upper West Side':'🎻','Morningside Heights':'🎓','Harlem':'🎷','East Harlem':'🎺','Hamilton Heights':'🎼','Washington Heights':'🏰','Inwood':'🌲','Marble Hill':'🪨','Roosevelt Island':'🚡',"Randall's Island":'🏟️'};
 function emojiFor(nm){return HOODEMOJI[nm]||'📍';}
 // ---- three-tier discovery: Bronze 33% / Silver 66% / Gold 99% (=complete, rounds to 100) ----
 const HTHRESH=[33,66,99];
@@ -56,9 +56,15 @@ function hoodTier(pct){return pct>=99?3:pct>=66?2:pct>=33?1:0;}
 function hoodMedal(t){return ['','🥉','🥈','🥇'][t];}
 function hoodTierName(t){return ['Locked','Bronze','Silver','Gold'][t];}
 function hoodDisp(pct){return pct>=99?100:pct;}
-function computeHoods(){if(typeof HOODBOX==='undefined')return STATS.hoods||[];const agg={};HOODBOX.forEach(b=>agg[b[0]]=[0,0,0,0]);
-  for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2,L=elen[i]||0;for(const b of HOODBOX){if(b[1]<=mla&&mla<=b[3]&&b[2]<=mlo&&mlo<=b[4]){agg[b[0]][1]++;agg[b[0]][3]+=L;if(E[i][3]===1){agg[b[0]][0]++;agg[b[0]][2]+=L;}break;}}}
-  return HOODBOX.map(b=>({name:b[0],done:agg[b[0]][0],tot:agg[b[0]][1],mi:agg[b[0]][2]/MI,totMi:agg[b[0]][3]/MI,pct:agg[b[0]][1]?Math.round(1000*agg[b[0]][0]/agg[b[0]][1])/10:0})).filter(h=>h.tot>=10);}
+// ---- real neighborhood polygons (Pediacities), loaded at runtime; point-in-polygon assignment ----
+let HOODP=null;
+function _pipLL(lat,lng,ring){let inside=false;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const yi=ring[i][0],xi=ring[i][1],yj=ring[j][0],xj=ring[j][1];const inter=((yi>lat)!=(yj>lat))&&(lng<(xj-xi)*(lat-yi)/(yj-yi)+xi);if(inter)inside=!inside;}return inside;}
+function ptInHood(lat,lng,h){const b=h.bb;if(lat<b[0]||lat>b[2]||lng<b[1]||lng>b[3])return false;for(const r of h.r)if(_pipLL(lat,lng,r))return true;return false;}
+function hoodOfPt(lat,lng){if(!HOODP)return null;for(const h of HOODP)if(ptInHood(lat,lng,h))return h.n;return null;}
+function hoodByName(nm){return HOODP?HOODP.find(h=>h.n===nm):null;}
+function computeHoods(){if(!HOODP)return STATS.hoods||[];const agg={};HOODP.forEach(h=>agg[h.n]=[0,0,0,0]);
+  for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2,L=elen[i]||0;const nm=hoodOfPt(mla,mlo);if(nm===null)continue;const g=agg[nm];g[1]++;g[3]+=L;if(E[i][3]===1){g[0]++;g[2]+=L;}}
+  return HOODP.map(h=>({name:h.n,done:agg[h.n][0],tot:agg[h.n][1],mi:agg[h.n][2]/MI,totMi:agg[h.n][3]/MI,pct:agg[h.n][1]?Math.round(1000*agg[h.n][0]/agg[h.n][1])/10:0})).filter(h=>h.tot>=10);}
 // % of named streets fully redlined (every edge of that name covered) — the "streets finished" criterion
 function streetsFinishedPct(){const tot={},dn={};for(let i=0;i<E.length;i++){const nm=NM[E[i][2]];if(!nm||nm==='(unnamed)')continue;if(!(nm in tot)){tot[nm]=0;dn[nm]=0;}tot[nm]++;if(E[i][3]===1)dn[nm]++;}let T=0,F=0;for(const k in tot){T++;if(dn[k]===tot[k])F++;}return T?100*F/T:0;}
 function renderDash(){try{
@@ -101,11 +107,11 @@ function pinHTML(name,pct){const emo=emojiFor(name);const tr=hoodTier(pct);
   const med=hoodMedal(tr),medBadge=med?'<span class="medb">'+med+'</span>':'';
   const ring=tr===3?'#ffd23f;box-shadow:0 0 13px rgba(255,210,63,.9)':'conic-gradient(#ff2e2e '+pct+'%, #2a3340 '+pct+'% 100%)';
   return '<div class="lvlpin"><div class="ring" style="background:'+ring+'"><i class="'+icls+'">'+emo+'</i></div>'+lock+medBadge+'<div class="lbl">'+name.split(' / ')[0]+'</div></div>';}
-function buildConquestMap(){if(typeof HOODBOX==='undefined'||!document.getElementById('cmap'))return;
+function buildConquestMap(){if(!HOODP||!document.getElementById('cmap'))return;
   const hs=computeHoods(),pct={};hs.forEach(h=>pct[h.name]=h.pct);
   cmap=L.map('cmap',{zoomControl:true,attributionControl:false,scrollWheelZoom:true,minZoom:11,maxZoom:16});
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:16}).addTo(cmap);
-  const cents=HOODBOX.map(b=>({name:b[0],lat:(b[1]+b[3])/2,lon:(b[2]+b[4])/2,pct:pct[b[0]]||0})).sort((a,b)=>a.lat-b.lat);
+  const cents=HOODP.map(h=>({name:h.n,lat:(h.bb[0]+h.bb[2])/2,lon:(h.bb[1]+h.bb[3])/2,pct:pct[h.n]||0})).sort((a,b)=>a.lat-b.lat);
   L.polyline(cents.map(c=>[c.lat,c.lon]),{color:'#2a3647',weight:3,opacity:.6,dashArray:'3 7'}).addTo(cmap);
   const pts=[];
   cents.forEach(c=>{pts.push([c.lat,c.lon]);
@@ -188,15 +194,15 @@ function nearestNew(){if(!navigator.geolocation){setStatus('Geolocation needed.'
 // ---------- neighborhood clear walk ----------
 function inBox(la,lo,b){return b[1]<=la&&la<=b[3]&&b[2]<=lo&&lo<=b[4];}
 async function neighborhoodRoute(name){
-  const box=(typeof HOODBOX!=='undefined')?HOODBOX.find(h=>h[0]===name):null;if(!box)return;
+  const hd=hoodByName(name);if(!hd)return;
   const hoodSet=new Set();
-  for(let i=0;i<E.length;i++){if(E[i][3]===1)continue;const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;if(inBox(mla,mlo,box))hoodSet.add(i);}
+  for(let i=0;i<E.length;i++){if(E[i][3]===1)continue;const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;if(ptInHood(mla,mlo,hd))hoodSet.add(i);}
   if(hoodSet.size===0){toast('✅ '+name+' is already cleared!');return;}
   setStatus('Mapping a full '+name+' sweep…');await resolveStart();await new Promise(r=>setTimeout(r,30));
   const pace=parseFloat($('pace').value)||22.37,loop=$('loop').checked;
   const res=await hoodClear(START,loop,hoodSet);
   setStatus('');
-  showPreview(res,{lat:(box[1]+box[3])/2,lon:(box[2]+box[4])/2,name:'Clear '+name},pace);
+  showPreview(res,{lat:(hd.bb[0]+hd.bb[2])/2,lon:(hd.bb[1]+hd.bb[3])/2,name:'Clear '+name},pace);
   if(res.hoodLeftMi>2)setTimeout(()=>toast('🗺️ Big zone — ~'+res.hoodLeftMi.toFixed(0)+' mi of '+name+' left after this. Tap Clear again for the rest.'),500);
 }
 // Systematic full-neighborhood sweep: repeatedly walk to the nearest un-walked block,
@@ -218,7 +224,7 @@ async function hoodClear(START,loop,hoodSet){
 }
 // focused neighborhood map: streets lit red/green + cyan boundary, then Clear
 let hmap=null,hmapLayer=null,hoodViewName=null;
-function openHoodView(name){const box=(typeof HOODBOX!=='undefined')?HOODBOX.find(h=>h[0]===name):null;if(!box)return;hoodViewName=name;
+function openHoodView(name){const hd=hoodByName(name);if(!hd)return;hoodViewName=name;
   const hs=computeHoods().find(h=>h.name===name);const pct=hs?hs.pct:0;const tr=hoodTier(pct),med=hoodMedal(tr);
   $('hv_title').textContent=emojiFor(name)+' '+(med?med+' ':'')+name;
   let sub;
@@ -229,10 +235,10 @@ function openHoodView(name){const box=(typeof HOODBOX!=='undefined')?HOODBOX.fin
   setTimeout(()=>{try{
     if(!hmap){hmap=L.map('hmap',{preferCanvas:true,zoomControl:true,attributionControl:false});L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:20}).addTo(hmap);hmapLayer=L.layerGroup().addTo(hmap);}
     hmapLayer.clearLayers();
-    const s=box[1],w=box[2],n=box[3],e=box[4],pad=0.004;
-    for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;if(mla<s-pad||mla>n+pad||mlo<w-pad||mlo>e+pad)continue;const a=N[E[i][0]],b=N[E[i][1]];L.polyline([[a[0],a[1]],[b[0],b[1]]],edgeStyle(E[i][3])).addTo(hmapLayer);}
-    L.rectangle([[s,w],[n,e]],{color:'#37d5f2',weight:3,fill:false,dashArray:'7 6',interactive:false}).addTo(hmapLayer);
-    hmap.invalidateSize();hmap.fitBounds([[s,w],[n,e]],{padding:[18,18]});
+    const bb=hd.bb,pad=0.003;
+    for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;if(mla<bb[0]-pad||mla>bb[2]+pad||mlo<bb[1]-pad||mlo>bb[3]+pad)continue;if(!ptInHood(mla,mlo,hd))continue;const a=N[E[i][0]],b=N[E[i][1]];L.polyline([[a[0],a[1]],[b[0],b[1]]],edgeStyle(E[i][3])).addTo(hmapLayer);}
+    for(const r of hd.r)L.polyline(r.concat([r[0]]),{color:'#37d5f2',weight:3,fill:false,dashArray:'7 6',interactive:false}).addTo(hmapLayer);
+    hmap.invalidateSize();hmap.fitBounds([[bb[0],bb[1]],[bb[2],bb[3]]],{padding:[18,18]});
   }catch(err){}},90);
 }
 
@@ -423,6 +429,8 @@ async function loadPedestrianPaths(){
   try{renderDash();}catch(e){}
   try{if(cmap){cmap.remove();cmap=null;}buildConquestMap();}catch(e){}
 }
+async function loadHoods(){try{const r=await fetch('neighborhoods.json',{cache:'default'});if(!r.ok)return;HOODP=await r.json();try{renderDash();}catch(e){}try{if(cmap){cmap.remove();cmap=null;}buildConquestMap();}catch(e){}}catch(e){}}
+loadHoods();
 loadPedestrianPaths();
 if('serviceWorker' in navigator){let __refreshing=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(__refreshing)return;if(document.body.classList.contains('s-nav')||document.body.classList.contains('s-preview'))return;__refreshing=true;location.reload();});window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(reg=>{reg.update();setInterval(()=>{reg.update();},60000);}).catch(()=>{});});}
 </script></body></html>
