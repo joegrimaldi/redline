@@ -236,8 +236,11 @@
  <div class="hoods" id="hoods"></div>
  <div class="section">Plan</div>
  <div class="panel">
-   <div class="field"><input type="text" id="addr" placeholder="🔎 Destination — address or place" autocomplete="off"></div>
-   <div class="seg"><label><input type="radio" name="start" value="home" checked><span>🏠 Home</span></label><label><input type="radio" name="start" value="loc"><span>📍 Me</span></label></div>
+   <label style="display:block;margin-bottom:5px">Destination</label>
+   <div class="seg" id="destseg"><label><input type="radio" name="dest" value="home" checked><span>🏠 Home</span></label><label><input type="radio" name="dest" value="custom"><span>🔎 Address</span></label></div>
+   <div class="field" id="addrwrap" style="display:none;margin-top:9px"><input type="text" id="addr" placeholder="Address or place" autocomplete="off"></div>
+   <label style="display:block;margin:11px 0 5px">Start from</label>
+   <div class="seg"><label><input type="radio" name="start" value="loc" checked><span>📍 Me</span></label><label><input type="radio" name="start" value="home"><span>🏠 Home</span></label></div>
    <div class="two"><div class="field"><label>Miles</label><input type="number" id="dist" inputmode="decimal" step="0.1" value="3.33"></div><div class="field"><label>Pace</label><input type="number" id="pace" inputmode="decimal" step="0.1" value="22.37"></div></div>
    <label class="opt"><input type="checkbox" id="loop"> ⟲ Round trip</label>
    <button id="go" class="btn primary">▶ Plan route</button>
@@ -248,7 +251,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v75</div>
+ <div class="ver" id="ver">REDLINE v76</div>
 </div>
 
 <div id="map"></div>
@@ -489,10 +492,12 @@ function showPreview(res,dest,pace){CUR={res,dest,pace};
   html+=`<li>🏁 Arrive — <b>${(dest.name||'destination').split(',').slice(0,2).join(',')}</b></li></ol>`;$('dirs').innerHTML=html;
   showScreen('preview');setTimeout(()=>{try{map.invalidateSize();map.fitBounds(routeLayer.getBounds().pad(0.18));}catch(e){}},160);}
 
-async function run(){const addr=$('addr').value.trim();if(!addr){setStatus('Enter a destination.');return;}
+async function run(){const dmode=(document.querySelector('input[name=dest]:checked')||{}).value||'home';
   const target=parseFloat($('dist').value)||3.33,pace=parseFloat($('pace').value)||22.37,loop=$('loop').checked;
   $('go').textContent='Planning…';await resolveStart();
-  let dest;try{dest=await geocode(addr);}catch(e){setStatus('⚠ '+e.message);$('go').textContent='Plan route';return;}
+  let dest;
+  if(dmode==='home'){dest={lat:N[HOME][0],lon:N[HOME][1],name:'Home'};}
+  else{const addr=$('addr').value.trim();if(!addr){setStatus('Enter a destination.');$('go').textContent='Plan route';return;}try{dest=await geocode(addr);}catch(e){setStatus('⚠ '+e.message);$('go').textContent='Plan route';return;}}
   const dnode=nearestNode(dest.lat,dest.lon);
   if(havLL(dest.lat,dest.lon,N[dnode][0],N[dnode][1])>500){setStatus('⚠ Destination outside the Manhattan grid.');$('go').textContent='Plan route';return;}
   await new Promise(r=>setTimeout(r,20));
@@ -653,6 +658,7 @@ const SYNC_URL='https://joegrimaldi--f51eddc8772111f1ac241607ee4eb77e.web.val.ru
 
 // ---------- wiring ----------
 $('go').onclick=run;$('nearnew').onclick=nearestNew;$('walk').onclick=walkabout;$('pvback').onclick=()=>showScreen('home');$('startnav').onclick=startNav;$('nav_end').onclick=endNav;
+document.querySelectorAll('input[name=dest]').forEach(r=>r.addEventListener('change',()=>{const c=(document.querySelector('input[name=dest]:checked')||{}).value==='custom';$('addrwrap').style.display=c?'block':'none';if(c)setTimeout(()=>$('addr').focus(),50);}));
 $('uncovBtn').onclick=openUncov;$('uc_close').onclick=()=>$('uncov').classList.remove('show');$('uc_tlist').onclick=()=>showUcTab('list');$('uc_tmap').onclick=()=>showUcTab('map');
 $('uc_list').addEventListener('click',e=>{const r=e.target.closest('.ucrow');if(r&&r.dataset.node)routeToUncov(parseInt(r.dataset.node),r.dataset.name);});
 function openBadge(i){const b=BADGES[i];if(!b)return;$('bp_emoji').textContent=b[2]?b[0]:'🔒';$('bp_emoji').className='bemoji'+(b[2]?'':' lk');$('bp_name').textContent=b[1];const s=$('bp_stat');if(b[2]){s.textContent='✓ UNLOCKED';s.className='bstat on';}else{s.textContent='🔒 LOCKED';s.className='bstat off';}$('bp_desc').textContent=(b[2]?'':'To unlock: ')+b[3];$('bpop').classList.add('show');buzz(30);}
