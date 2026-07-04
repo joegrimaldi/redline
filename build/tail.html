@@ -8,7 +8,7 @@ const adj=Array.from({length:N.length},()=>[]);
 const elen=new Array(E.length);
 E.forEach((e,i)=>{const L=havNN(e[0],e[1]);elen[i]=L;adj[e[0]].push([e[1],L,i]);adj[e[1]].push([e[0],L,i]);});
 function liveTotalsFull(){let tl=0,cl=0,sd=0;for(let i=0;i<E.length;i++){const L=elen[i]||0;tl+=L;if(E[i][3]===1){cl+=L;sd++;}}return{pct:tl?100*cl/tl:0,coveredMi:cl/MI,totalMi:tl/MI,segsDone:sd,segsTotal:E.length};}
-let PARKSTART=-1,BADGES=[];
+let PARKSTART=-1,BADGES=[],HOODSORT='pct';
 function parkCoveredMi(){let m=0;if(PARKSTART>=0){for(let i=PARKSTART;i<E.length;i++)if(E[i][3]===1)m+=elen[i]||0;}return m/MI;}
 function Heap(){this.a=[];}
 Heap.prototype.push=function(x){const a=this.a;a.push(x);let i=a.length-1;while(i>0){const p=(i-1)>>1;if(a[p][0]<=a[i][0])break;[a[p],a[i]]=[a[i],a[p]];i=p;}};
@@ -99,8 +99,11 @@ function renderDash(){try{
   $('badges').innerHTML=BADGES.map((b,i)=>`<div class="bdg ${b[2]?'on':''}" data-i="${i}" title="${b[1]}"><span class="ic">${b[2]?b[0]:'🔒'}</span></div>`).join('');
   const _bc=$('bdg_ct');if(_bc)_bc.textContent=BADGES.filter(b=>b[2]).length+'/'+BADGES.length;
   // hoods
-  $('hoods').innerHTML=hoods.map(h=>{const tr=hoodTier(h.pct);const ec=tr===0?'lk':tr===1?'bw':tr===3?'gold':'';const med=hoodMedal(tr);return `<div class="hood t${tr} ${tr===3?'done':''}" data-name="${h.name}"><div class="hr"><span><span class="emo ${ec}">${emojiFor(h.name)}</span>${h.name}</span><span class="p">${med?`<b class="med">${med}</b>`:''}${hoodDisp(h.pct)}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div><div class="hmi">${h.mi.toFixed(1)} / ${h.totMi.toFixed(1)} mi redlined</div></div>`;}).join('');
+  fillHoods(hoods);
 }catch(e){}}
+function fillHoods(list){const hs=(list||computeHoods()).slice().sort((a,b)=>HOODSORT==='left'?((b.totMi-b.mi)-(a.totMi-a.mi)):(b.pct-a.pct));
+  $('hoods').innerHTML=hs.map(h=>{const tr=hoodTier(h.pct);const ec=tr===0?'lk':tr===1?'bw':tr===3?'gold':'';const med=hoodMedal(tr);const left=Math.max(0,h.totMi-h.mi);return `<div class="hood t${tr} ${tr===3?'done':''}" data-name="${h.name}"><div class="hr"><span><span class="emo ${ec}">${emojiFor(h.name)}</span>${h.name}</span><span class="p">${med?`<b class="med">${med}</b>`:''}${hoodDisp(h.pct)}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div><div class="hmi">${HOODSORT==='left'?('<b style="color:#ff8a6b">'+left.toFixed(1)+' mi</b> to go · '+h.mi.toFixed(1)+' / '+h.totMi.toFixed(1)):(h.mi.toFixed(1)+' / '+h.totMi.toFixed(1)+' mi redlined')}</div></div>`;}).join('');}
+
 renderDash();
 let cmap=null;
 function pinHTML(name,pct){const emo=emojiFor(name);const tr=hoodTier(pct);
@@ -122,7 +125,7 @@ function buildConquestMap(){if(!HOODP||!document.getElementById('cmap'))return;
   cmap.fitBounds(L.latLngBounds(pts).pad(0.1));
   setTimeout(()=>{try{cmap.invalidateSize();cmap.fitBounds(L.latLngBounds(pts).pad(0.1));}catch(e){}},300);}
 buildConquestMap();
-function showConquest(t){const isMap=t==='map';const cm=$('cmap'),hd=$('hoods');if(cm)cm.style.display=isMap?'block':'none';if(hd)hd.style.display=isMap?'none':'flex';if($('ct_map'))$('ct_map').classList.toggle('on',isMap);if($('ct_list'))$('ct_list').classList.toggle('on',!isMap);if(isMap&&cmap)setTimeout(()=>{try{cmap.invalidateSize();}catch(e){}},60);}
+function showConquest(t){const isMap=t==='map';const cm=$('cmap'),hd=$('hoods');if(cm)cm.style.display=isMap?'block':'none';if(hd)hd.style.display=isMap?'none':'flex';const hso=$('hsort');if(hso)hso.style.display=isMap?'none':'flex';if($('ct_map'))$('ct_map').classList.toggle('on',isMap);if($('ct_list'))$('ct_list').classList.toggle('on',!isMap);if(isMap&&cmap)setTimeout(()=>{try{cmap.invalidateSize();}catch(e){}},60);}
 showConquest('map');
 
 // ---------- map (fog of war) ----------
@@ -399,9 +402,10 @@ function levelsHTML(){
   let li=0;for(let k=0;k<LEVELS.length;k++){if(meets(k))li=k;}
   const br=hoodsAt(33),si=hoodsAt(66),go=hoodsAt(99);
   const meter=(ic,lb,val)=>'<div class="tmeter"><div class="tmlabel">'+ic+' '+lb+' — <b>'+Math.round(val)+'%</b></div><div class="tmbar"><i style="width:'+Math.min(100,val)+'%"></i><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
-  let h=meter('🟥','Coverage',covPct)+meter('🛣️','Streets finished',stPct);
+  let h=meter('🟥','Coverage',covPct);
   const _tot=HD.length||1,_gw=100*go/_tot,_sw=100*Math.max(0,si-go)/_tot,_bw=100*Math.max(0,br-si)/_tot;
   h+='<div class="tmeter"><div class="tmlabel">🏘️ Neighborhoods — <b>'+br+'</b> 🥉  <b>'+si+'</b> 🥈  <b>'+go+'</b> 🥇 <span style="color:var(--dim)">/ '+HD.length+'</span></div><div class="tmbar"><span class="seg sg" style="left:0;width:'+_gw+'%"></span><span class="seg ss" style="left:'+_gw+'%;width:'+_sw+'%"></span><span class="seg sb" style="left:'+(_gw+_sw)+'%;width:'+_bw+'%"></span><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
+  h+=meter('🛣️','Streets finished',stPct);
   h+='<div class="lad">';
   for(let k=0;k<LEVELS.length;k++){const L=LEVELS[k], mile=(k===2||k===5||k===8), cur=(k===li), done=meets(k);
     const cov=covPct>=L[0], hd=hoodsAt(L[3])>=L[2], st=stPct>=L[4];
@@ -409,7 +413,7 @@ function levelsHTML(){
     h+='<div class="lrow'+(cur?' cur':'')+(done?' done':'')+(mile?' mile':'')+'"><div class="lnum"><b>'+(k+1)+'</b></div><div class="lbody"><div class="ltitle">'+L[1]+(cur?' <em>← you</em>':'')+(mile?' <span class="mtag">'+medal[k===2?33:k===5?66:99]+' tier</span>':'')+'</div><div class="lcrit">'+cell(cov,'🟥 '+L[0]+'%')+cell(hd,'🏘️ '+L[2]+medal[L[3]])+cell(st,'🛣️ '+L[4]+'%')+'</div></div></div>';}
   h+='</div>';return h;}
 function openViz(kind){$('viz').classList.add('show');const body=$('viz_body');$('viz_cap').innerHTML='';
-  if(kind==='levels'){$('viz_title').textContent='🎖️ Level system';body.innerHTML=levelsHTML();$('viz_cap').textContent='Clear all 3 criteria to level up · milestones at LV3/6/9 = Bronze/Silver/Gold';}
+  if(kind==='levels'){$('viz_title').textContent='🎖️ Level system';body.innerHTML=levelsHTML();}
   else if(kind==='calendar'){$('viz_title').textContent='🔥 Walk calendar';body.innerHTML=calendarHTML();$('viz_cap').textContent='Tap a day for its miles + new ground redlined';wireCal();requestAnimationFrame(()=>{body.scrollTop=body.scrollHeight;});}
   else if(kind==='coverage'){$('viz_title').textContent='🟥 Redlined over time';body.innerHTML=coverageSVG();const done=WL.length?WL[WL.length-1][4]:0;$('viz_cap').innerHTML='<b>'+done.toFixed(0)+' mi</b> of streets redlined since Sep 2025 · '+(100*done/523).toFixed(0)+'% of the ~523-mi grid';}
   else if(kind==='togo'){$('viz_title').textContent='🎯 Finish projection';body.innerHTML=coverageSVG();$('viz_cap').innerHTML=projectionCap();}
@@ -420,6 +424,8 @@ $('home').addEventListener('click',e=>{const el=e.target.closest('.tapviz');if(e
 $('viz_close').onclick=()=>$('viz').classList.remove('show');
 $('hoods').addEventListener('click',e=>{const el=e.target.closest('.hood');if(el&&el.dataset.name)openHoodView(el.dataset.name);});
 $('ct_map').onclick=()=>showConquest('map');$('ct_list').onclick=()=>showConquest('list');
+if($('hs_pct'))$('hs_pct').onclick=()=>{HOODSORT='pct';$('hs_pct').classList.add('on');$('hs_left').classList.remove('on');fillHoods();};
+if($('hs_left'))$('hs_left').onclick=()=>{HOODSORT='left';$('hs_left').classList.add('on');$('hs_pct').classList.remove('on');fillHoods();};
 $('hv_close').onclick=()=>$('hoodview').classList.remove('show');
 $('hv_clear').onclick=()=>{$('hoodview').classList.remove('show');if(hoodViewName)neighborhoodRoute(hoodViewName);};
 $('rc_done').onclick=()=>{$('recap').classList.remove('show');showScreen('home');};

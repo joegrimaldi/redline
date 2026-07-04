@@ -98,6 +98,8 @@
  .acts{display:flex;gap:8px}
  .acts .act{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:12px 4px;font-size:14px}
  .act .ai{font-size:21px;line-height:1}
+ .hsort{display:flex;align-items:center;gap:7px;margin-bottom:9px} .hsort>span{font-family:var(--pix);font-size:8px;color:var(--dim)}
+ .hsb{background:#0a0713;border:2px solid var(--line);color:#cfd5e2;font-family:var(--pix);font-size:8px;padding:7px 9px;border-radius:2px} .hsb.on{background:var(--cyan);color:#04222b}
  .hoods{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
  .hood{background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:10px 11px;box-shadow:0 3px 0 var(--line)}
  .hood .hr{display:flex;justify-content:space-between;font-size:16px;margin-bottom:6px}
@@ -230,6 +232,7 @@
  <div class="section">Conquest <span class="ctabs"><button id="ct_map" class="ctab on">Map</button><button id="ct_list" class="ctab">List</button></span></div>
  <div class="tierkey"><span>🔒<small>&lt;33</small></span><span>🥉<small>33%</small></span><span>🥈<small>66%</small></span><span>🥇<small>99%</small></span></div>
  <div id="cmap"></div>
+ <div class="hsort" id="hsort" style="display:none"><span>Sort</span><button id="hs_pct" class="hsb on">% done</button><button id="hs_left" class="hsb">Mi to go</button></div>
  <div class="hoods" id="hoods"></div>
  <div class="section">Plan</div>
  <div class="panel">
