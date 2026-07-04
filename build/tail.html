@@ -369,8 +369,25 @@ function lengthSVG(){const b=[0,0,0,0,0,0],lab=['0-2','2-4','4-6','6-8','8-10','
 function projectionCap(){if(WL.length<2)return'';const done=WL[WL.length-1][4],rem=Math.max(0,523-done),cut=Date.now()-56*864e5;let recent=0;WL.forEach(w=>{if(new Date(w[0]).getTime()>=cut)recent+=w[3];});const perWk=recent/8;
   if(perWk<=0.05)return '<b>'+rem.toFixed(0)+' mi</b> of streets to go — break some new ground to project a finish date!';
   const d2=new Date(Date.now()+(rem/perWk)*7*864e5);return '<b>'+rem.toFixed(0)+' mi</b> of streets to go. At your last-8-week pace (~'+perWk.toFixed(1)+' new mi/wk) you clear every street by ~<b style="color:#37d5f2">'+MONTHS[d2.getMonth()]+' '+d2.getFullYear()+'</b>';}
+// full level-system visualization: 3 track meters + the 9-level ladder with per-level criteria & live status
+function levelsHTML(){
+  const LT=liveTotalsFull(), covPct=LT.pct, HD=computeHoods(), stPct=streetsFinishedPct();
+  const hoodsAt=p=>HD.filter(h=>h.pct>=p).length, medal={33:'🥉',66:'🥈',99:'🥇'};
+  const meets=k=>covPct>=LEVELS[k][0]&&hoodsAt(LEVELS[k][3])>=LEVELS[k][2]&&stPct>=LEVELS[k][4];
+  let li=0;for(let k=0;k<LEVELS.length;k++){if(meets(k))li=k;}
+  const br=hoodsAt(33),si=hoodsAt(66),go=hoodsAt(99);
+  const meter=(ic,lb,val)=>'<div class="tmeter"><div class="tmlabel">'+ic+' '+lb+' — <b>'+Math.round(val)+'%</b></div><div class="tmbar"><i style="width:'+Math.min(100,val)+'%"></i><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
+  let h=meter('🟥','Coverage',covPct)+meter('🛣️','Streets finished',stPct);
+  h+='<div class="tmeter"><div class="tmlabel">🏘️ Territory — <b>'+br+'</b> 🥉  <b>'+si+'</b> 🥈  <b>'+go+'</b> 🥇 <span style="color:var(--dim)">/ 18</span></div></div>';
+  h+='<div class="lad">';
+  for(let k=0;k<LEVELS.length;k++){const L=LEVELS[k], mile=(k===2||k===5||k===8), cur=(k===li), done=meets(k);
+    const cov=covPct>=L[0], hd=hoodsAt(L[3])>=L[2], st=stPct>=L[4];
+    const cell=(ok,txt)=>'<span class="lc'+(ok?' ok':'')+'">'+(ok?'✓ ':'')+txt+'</span>';
+    h+='<div class="lrow'+(cur?' cur':'')+(done?' done':'')+(mile?' mile':'')+'"><div class="lnum">'+(mile?'⭐':'')+'<b>'+(k+1)+'</b></div><div class="lbody"><div class="ltitle">'+L[1]+(cur?' <em>← you</em>':'')+(mile?' <span class="mtag">'+medal[k===2?33:k===5?66:99]+' tier</span>':'')+'</div><div class="lcrit">'+cell(cov,'🟥 '+L[0]+'%')+cell(hd,'🏘️ '+L[2]+medal[L[3]])+cell(st,'🛣️ '+L[4]+'%')+'</div></div></div>';}
+  h+='</div>';return h;}
 function openViz(kind){$('viz').classList.add('show');const body=$('viz_body');$('viz_cap').innerHTML='';
-  if(kind==='calendar'){$('viz_title').textContent='🔥 Walk calendar';body.innerHTML=calendarHTML();$('viz_cap').textContent='Tap a day for its miles + new ground redlined';wireCal();requestAnimationFrame(()=>{body.scrollTop=body.scrollHeight;});}
+  if(kind==='levels'){$('viz_title').textContent='🎖️ Level system';body.innerHTML=levelsHTML();$('viz_cap').textContent='Clear all 3 criteria to level up · ⭐ = 33/66/99% milestone (Bronze/Silver/Gold)';}
+  else if(kind==='calendar'){$('viz_title').textContent='🔥 Walk calendar';body.innerHTML=calendarHTML();$('viz_cap').textContent='Tap a day for its miles + new ground redlined';wireCal();requestAnimationFrame(()=>{body.scrollTop=body.scrollHeight;});}
   else if(kind==='coverage'){$('viz_title').textContent='🟥 Redlined over time';body.innerHTML=coverageSVG();const done=WL.length?WL[WL.length-1][4]:0;$('viz_cap').innerHTML='<b>'+done.toFixed(0)+' mi</b> of streets redlined since Sep 2025 · '+(100*done/523).toFixed(0)+'% of the ~523-mi grid';}
   else if(kind==='togo'){$('viz_title').textContent='🎯 Finish projection';body.innerHTML=coverageSVG();$('viz_cap').innerHTML=projectionCap();}
   else if(kind==='walks'){$('viz_title').textContent='🚶 Walks by month';body.innerHTML=barsSVG(monthAgg(),0,'#37d5f2');const tot=WL.reduce((s,w)=>s+w[1],0),avg=WMI.length?WMI.reduce((s,m)=>s+m,0)/WMI.length:0;$('viz_cap').innerHTML='<b>'+tot+'</b> walks · avg <b>'+avg.toFixed(1)+' mi</b> each';}
