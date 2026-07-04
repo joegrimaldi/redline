@@ -447,7 +447,7 @@ $('home').addEventListener('click',e=>{const el=e.target.closest('.tapviz');if(e
 $('viz_close').onclick=()=>$('viz').classList.remove('show');
 $('hoods').addEventListener('click',e=>{const el=e.target.closest('.hood');if(el&&el.dataset.name)openHoodView(el.dataset.name);});
 $('ct_map').onclick=()=>showConquest('map');$('ct_list').onclick=()=>showConquest('list');
-const HSBTN={hs_pct:'pct',hs_left:'left',hs_close:'close',hs_near:'near',hs_az:'az'};
+const HSBTN={hs_pct:'pct',hs_left:'left',hs_close:'close',hs_near:'near'};
 function setHoodSort(v,btnId){HOODSORT=v;Object.keys(HSBTN).forEach(id=>{const b=$(id);if(b)b.classList.toggle('on',id===btnId);});
   if(v==='near'){
     if(navigator.geolocation){toast('📍 Locating you to sort by nearest…',2600);
