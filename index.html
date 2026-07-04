@@ -62,6 +62,7 @@
  .tmbar{position:relative;height:14px;background:#0a0713;border:2px solid var(--line);overflow:visible}
  .tmbar>i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--red) 0 8px,#a3242c 8px 10px)}
  .tmbar .tk{position:absolute;top:-4px;width:2px;height:20px;background:var(--cyan);opacity:.75}
+ .tmbar .seg{position:absolute;top:0;height:100%} .tmbar .sg{background:var(--grn)} .tmbar .ss{background:#b7c0cf} .tmbar .sb{background:#cd7f32}
  .lad{display:flex;flex-direction:column;gap:7px;margin-top:6px}
  .lrow{display:flex;gap:10px;align-items:center;background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:9px 10px;box-shadow:0 3px 0 var(--line);opacity:.9}
  .lrow.done{opacity:1;border-color:#1f6b3d;box-shadow:0 3px 0 #0c2a18}
@@ -241,7 +242,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v68</div>
+ <div class="ver" id="ver">REDLINE v69</div>
 </div>
 
 <div id="map"></div>
@@ -310,6 +311,8 @@ Heap.prototype.pop=function(){const a=this.a,top=a[0],last=a.pop();if(a.length){
 Heap.prototype.size=function(){return this.a.length;};
 function dijkstra(src){const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const v=au[k][0],nd=d+au[k][1];if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=au[k][2];h.push([nd,v]);}}}return {dist,prevN,prevE};}
 function pathTo(prevN,prevE,src,dst){const ns=[dst],es=[];let c=dst;while(c!==src){const p=prevN[c];if(p<0)return null;es.push(prevE[c]);ns.push(p);c=p;}ns.reverse();es.reverse();return {ns,es};}
+// Dijkstra restricted to a set of allowed edges (allowEdge[edgeIdx]===1) — keeps routes inside a neighborhood.
+function dijkstraIn(src,allowEdge){const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const e=au[k][2];if(!allowEdge[e])continue;const v=au[k][0],nd=d+au[k][1];if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}return {dist,prevN,prevE};}
 function dijkstraW(src){const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const v=au[k][0],e=au[k][2];const cost=au[k][1]*(E[e][3]===0?0.8:1);const nd=d+cost;if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}return {dist,prevN,prevE};}
 function directRoute(s,t){const r=dijkstraW(s);const p=pathTo(r.prevN,r.prevE,s,t);return finalize(p?p.ns:[s]);}
 function perpDist(p,a,b){const k=Math.cos(a[0]*Math.PI/180);const ax=a[1]*k,ay=a[0],bx=b[1]*k,by=b[0],px=p[1]*k,py=p[0];const dx=bx-ax,dy=by-ay,L2=dx*dx+dy*dy;let tt=L2?((px-ax)*dx+(py-ay)*dy)/L2:0;tt=Math.max(0,Math.min(1,tt));const cx=ax+tt*dx,cy=ay+tt*dy;return Math.hypot(px-cx,py-cy);}
@@ -386,7 +389,8 @@ function renderDash(){try{
   // badges
   const w=STATS.walks,hoods=computeHoods().sort((a,b)=>b.pct-a.pct),hoodDone=hoods.filter(h=>h.pct>=99).length,hood50=hoods.filter(h=>h.pct>=50).length;
   const pkMi=parkCoveredMi();let uptown=false;for(let i=0;i<E.length;i++){if(E[i][3]===1&&(N[E[i][0]][0]>40.79||N[E[i][1]][0]>40.79)){uptown=true;break;}}
-  BADGES=[['🥾','25-Mile Club',mi>=25,'Redline 25 miles of the pedestrian network.'],['🏙️','50-Mile Club',mi>=50,'Redline 50 miles of the network.'],['💯','Century',mi>=100,'Redline 100 miles of the network.'],['🚶','Regular',w>=25,'Log 25 GPS-tracked walks on Strava.'],['🏃','Devoted',w>=50,'Log 50 tracked walks.'],['🎖️','Centurion',w>=100,'Log 100 tracked walks.'],['📏','Long Hauler',STATS.longestMi>=10,'Finish a single walk of 10+ miles.'],['🔥','On Fire',STATS.streak>=3,'Walk 3 days in a row.'],['⚡','Unstoppable',STATS.streak>=7,'Walk 7 days in a row.'],['🏆','Conqueror',hoodDone>=1,'Get any neighborhood to 100%.'],['🗺️','Cartographer',hood50>=3,'Get 3 neighborhoods past 50%.'],['🌆','Redliner',LT.pct>=20,'Redline 20% of the whole network.'],['🌳','Park Ranger',pkMi>=25,'Redline 25 miles of parks & greenways.'],['🌉','Uptown Bound',uptown,'Redline any block north of 96th St.']];
+  const brz=hoods.filter(h=>h.pct>=33).length,stF=streetsFinishedPct(),cpH=hoods.find(h=>h.name==='Central Park'),cpPct=cpH?cpH.pct:0;
+  BADGES=[['🥾','25-Mile Club',mi>=25,'Redline 25 miles of the pedestrian network.'],['🏙️','50-Mile Club',mi>=50,'Redline 50 miles of the network.'],['💯','Century',mi>=100,'Redline 100 miles of the network.'],['🚶','Regular',w>=25,'Log 25 GPS-tracked walks on Strava.'],['🏃','Devoted',w>=50,'Log 50 tracked walks.'],['🎖️','Centurion',w>=100,'Log 100 tracked walks.'],['📏','Long Hauler',STATS.longestMi>=10,'Finish a single walk of 10+ miles.'],['🔥','On Fire',STATS.streak>=3,'Walk 3 days in a row.'],['⚡','Unstoppable',STATS.streak>=7,'Walk 7 days in a row.'],['🏆','Conqueror',hoodDone>=1,'Get any neighborhood to 100%.'],['🗺️','Cartographer',hood50>=3,'Get 3 neighborhoods past 50%.'],['🌆','Redliner',LT.pct>=20,'Redline 20% of the whole network.'],['🌳','Park Ranger',pkMi>=25,'Redline 25 miles of parks & greenways.'],['🌉','Uptown Bound',uptown,'Redline any block north of 96th St.'],['🌗','Halfway',LT.pct>=50,'Redline 50% of the whole pedestrian network.'],['🏅','Ultramarathon',STATS.longestMi>=15,'Finish a single walk of 15+ miles.'],['🌟','Relentless',STATS.streak>=14,'Walk 14 days in a row.'],['🥇','Gold Rush',hoodDone>=3,'Get 3 neighborhoods to Gold (99%+).'],['🧭','Explorer',brz>=20,'Reach Bronze (33%+) in 20 neighborhoods.'],['🧹','Street Sweeper',stF>=33,'Fully finish a third of all named streets.'],['🎠','Park Life',cpPct>=25,'Redline a quarter of the Central Park paths.']];
   $('badges').innerHTML=BADGES.map((b,i)=>`<div class="bdg ${b[2]?'on':''}" data-i="${i}" title="${b[1]}"><span class="ic">${b[2]?b[0]:'🔒'}</span></div>`).join('');
   const _bc=$('bdg_ct');if(_bc)_bc.textContent=BADGES.filter(b=>b[2]).length+'/'+BADGES.length;
   // hoods
@@ -489,32 +493,36 @@ function nearestNew(){if(!navigator.geolocation){setStatus('Geolocation needed.'
 function inBox(la,lo,b){return b[1]<=la&&la<=b[3]&&b[2]<=lo&&lo<=b[4];}
 async function neighborhoodRoute(name){
   const hd=hoodByName(name);if(!hd)return;
-  const hoodSet=new Set();
-  for(let i=0;i<E.length;i++){if(E[i][3]===1)continue;const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;if(ptInHood(mla,mlo,hd))hoodSet.add(i);}
-  if(hoodSet.size===0){toast('✅ '+name+' is already cleared!');return;}
-  setStatus('Mapping a full '+name+' sweep…');await resolveStart();await new Promise(r=>setTimeout(r,30));
+  const allowEdge=new Uint8Array(E.length);const remaining=new Set();
+  for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;if(!ptInHood(mla,mlo,hd))continue;allowEdge[i]=1;if(E[i][3]===0)remaining.add(i);}
+  if(remaining.size===0){toast('✅ '+name+' is already fully redlined!');return;}
+  setStatus('Mapping the most efficient '+name+' sweep…');await resolveStart();await new Promise(r=>setTimeout(r,30));
   const pace=parseFloat($('pace').value)||22.37,loop=$('loop').checked;
-  const res=await hoodClear(START,loop,hoodSet);
+  const res=await hoodClear(START,loop,remaining,allowEdge);
   setStatus('');
   showPreview(res,{lat:(hd.bb[0]+hd.bb[2])/2,lon:(hd.bb[1]+hd.bb[3])/2,name:'Clear '+name},pace);
-  if(res.hoodLeftMi>2)setTimeout(()=>toast('🗺️ Big zone — ~'+res.hoodLeftMi.toFixed(0)+' mi of '+name+' left after this. Tap Clear again for the rest.'),500);
+  if(res.hoodLeftMi>0.4)setTimeout(()=>toast('🧩 ~'+res.hoodLeftMi.toFixed(1)+' mi of '+name+' sits on disconnected paths — Clear again from there to finish.'),500);
 }
-// Systematic full-neighborhood sweep: repeatedly walk to the nearest un-walked block,
-// covering blocks en route too, until the whole hood is covered (bounded for responsiveness).
-async function hoodClear(START,loop,hoodSet){
-  const remaining=new Set(hoodSet);let routeN=[START],cur=START,guard=0;const CAP=300;
-  while(remaining.size>0&&guard++<CAP){
-    const {dist,prevN,prevE}=dijkstra(cur);
+async function hoodClear(START,loop,remaining,allowEdge){
+  let routeN=[START];
+  const {dist:d0,prevN:pn0,prevE:pe0}=dijkstra(START);
+  let ent=null;
+  for(const i of remaining){const a=E[i][0],b=E[i][1];const dn=Math.min(d0[a],d0[b]);if(!isFinite(dn))continue;if(ent===null||dn<ent.dn)ent={dn,node:(d0[a]<=d0[b]?a:b)};}
+  let cur=START;
+  if(ent){const seg=pathTo(pn0,pe0,START,ent.node);if(seg){routeN=routeN.concat(seg.ns.slice(1));cur=ent.node;}}
+  const rem=new Set(remaining);let guard=0;const CAP=800,entry=cur;
+  while(rem.size>0&&guard++<CAP){
+    const {dist,prevN,prevE}=dijkstraIn(cur,allowEdge);
     let best=null;
-    for(const i of remaining){const a=E[i][0],b=E[i][1],da=dist[a],db=dist[b];let near,far,dn;if(da<=db){near=a;far=b;dn=da;}else{near=b;far=a;dn=db;}if(!isFinite(dn))continue;if(best===null||dn<best.dn)best={dn,near,far,i};}
+    for(const i of rem){const a=E[i][0],b=E[i][1],da=dist[a],db=dist[b];let near,far,dn;if(da<=db){near=a;far=b;dn=da;}else{near=b;far=a;dn=db;}if(!isFinite(dn))continue;if(best===null||dn<best.dn)best={dn,near,far,i};}
     if(!best)break;
     const seg=pathTo(prevN,prevE,cur,best.near);
-    if(seg){routeN=routeN.concat(seg.ns.slice(1));for(const ei of seg.es)remaining.delete(ei);}
-    routeN.push(best.far);remaining.delete(best.i);cur=best.far;
+    if(seg){routeN=routeN.concat(seg.ns.slice(1));for(const ei of seg.es)rem.delete(ei);}
+    routeN.push(best.far);rem.delete(best.i);cur=best.far;
     if(guard%20===0)await new Promise(r=>setTimeout(r));
   }
-  if(loop){const {prevN,prevE}=dijkstra(cur);const p=pathTo(prevN,prevE,cur,START);if(p)routeN=routeN.concat(p.ns.slice(1));}
-  const r=finalize(routeN);let left=0;remaining.forEach(i=>left+=elen[i]/MI);r.hoodLeftMi=left;return r;
+  if(loop){const {prevN,prevE}=dijkstraIn(cur,allowEdge);const p=pathTo(prevN,prevE,cur,entry);if(p)routeN=routeN.concat(p.ns.slice(1));}
+  const r=finalize(routeN);let left=0;rem.forEach(i=>left+=elen[i]/MI);r.hoodLeftMi=left;return r;
 }
 // focused neighborhood map: streets lit red/green + cyan boundary, then Clear
 let hmap=null,hmapLayer=null,hoodViewName=null;
@@ -678,7 +686,8 @@ function levelsHTML(){
   const br=hoodsAt(33),si=hoodsAt(66),go=hoodsAt(99);
   const meter=(ic,lb,val)=>'<div class="tmeter"><div class="tmlabel">'+ic+' '+lb+' — <b>'+Math.round(val)+'%</b></div><div class="tmbar"><i style="width:'+Math.min(100,val)+'%"></i><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
   let h=meter('🟥','Coverage',covPct)+meter('🛣️','Streets finished',stPct);
-  h+='<div class="tmeter"><div class="tmlabel">🏘️ Territory — <b>'+br+'</b> 🥉  <b>'+si+'</b> 🥈  <b>'+go+'</b> 🥇 <span style="color:var(--dim)">/ '+HD.length+'</span></div></div>';
+  const _tot=HD.length||1,_gw=100*go/_tot,_sw=100*Math.max(0,si-go)/_tot,_bw=100*Math.max(0,br-si)/_tot;
+  h+='<div class="tmeter"><div class="tmlabel">🏘️ Neighborhoods — <b>'+br+'</b> 🥉  <b>'+si+'</b> 🥈  <b>'+go+'</b> 🥇 <span style="color:var(--dim)">/ '+HD.length+'</span></div><div class="tmbar"><span class="seg sg" style="left:0;width:'+_gw+'%"></span><span class="seg ss" style="left:'+_gw+'%;width:'+_sw+'%"></span><span class="seg sb" style="left:'+(_gw+_sw)+'%;width:'+_bw+'%"></span><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
   h+='<div class="lad">';
   for(let k=0;k<LEVELS.length;k++){const L=LEVELS[k], mile=(k===2||k===5||k===8), cur=(k===li), done=meets(k);
     const cov=covPct>=L[0], hd=hoodsAt(L[3])>=L[2], st=stPct>=L[4];
