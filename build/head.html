@@ -208,6 +208,14 @@
  #viz_body{flex:1;overflow:auto;-webkit-overflow-scrolling:touch}
  #viz svg{width:100%;height:auto;display:block;margin:4px 0}
  #viz_cap{min-height:20px;margin-top:8px}
+ .vtabs{display:flex;gap:5px;margin-bottom:10px}
+ .vtab{flex:1 1 0;min-width:0;white-space:nowrap;background:#0a0713;border:2px solid var(--line);color:#cfd5e2;font-family:var(--pix);font-size:7px;padding:6px 3px;border-radius:2px;text-align:center;cursor:pointer}
+ .vtab.on{background:var(--red);color:#fff;border-color:#000}
+ .rbars{display:flex;flex-direction:column;gap:14px;padding:8px 2px}
+ .rbl{display:flex;align-items:baseline;gap:6px;margin-bottom:5px}
+ .rbl b{font-family:var(--pix);font-size:9px;color:#fff} .rbl span{font-family:VT323;font-size:14px;color:var(--dim);flex:1} .rbl em{font-family:var(--pix);font-size:11px;color:var(--red);font-style:normal}
+ .rtrack{height:16px;background:#1a1330;border:2px solid #000;border-radius:2px;overflow:hidden} .rtrack i{display:block;height:100%;background:var(--red)}
+ .rmi{font-family:VT323;font-size:13px;color:var(--dim);margin-top:3px}
  .vmonth{margin:4px 0 14px}
  .vmlabel{font-family:var(--pix);font-size:9px;color:var(--cyan);margin:6px 2px 6px}
  .calg{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;max-width:360px}

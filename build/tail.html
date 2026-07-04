@@ -435,11 +435,29 @@ function levelsHTML(){
     const cell=(ok,txt)=>'<span class="lc'+(ok?' ok':'')+'">'+(ok?'✓ ':'')+txt+'</span>';
     h+='<div class="lrow'+(cur?' cur':'')+(done?' done':'')+(mile?' mile':'')+'"><div class="lnum"><b>'+(k+1)+'</b></div><div class="lbody"><div class="ltitle">'+L[1]+(cur?' <em>← you</em>':'')+(mile?' <span class="mtag">'+medal[k===2?33:k===5?66:99]+' tier</span>':'')+'</div><div class="lcrit">'+cell(cov,'🟥 '+L[0]+'%')+cell(hd,'🏘️ '+L[2]+medal[L[3]])+cell(st,'🛣️ '+L[4]+'%')+'</div></div></div>';}
   h+='</div>';return h;}
+// ---- coverage drilldowns: 3 views of the hero "% redlined" metric ----
+function regionBands(){
+  const bands=[['Downtown','FiDi → 14th St',0,40.737],['Midtown','14th → 59th',40.737,40.767],
+    ['Upper Manhattan','59th → 110th',40.767,40.800],['Harlem & north','above 110th',40.800,99]];
+  const agg=bands.map(()=>[0,0]);
+  for(let i=0;i<E.length;i++){const la=(N[E[i][0]][0]+N[E[i][1]][0])/2,L=(elen[i]||0)/MI;
+    for(let b=0;b<bands.length;b++){if(la>=bands[b][2]&&la<bands[b][3]){agg[b][1]+=L;if(E[i][3]===1)agg[b][0]+=L;break;}}}
+  return bands.map((b,i)=>({name:b[0],sub:b[1],mi:agg[i][0],tot:agg[i][1],pct:agg[i][1]?100*agg[i][0]/agg[i][1]:0}));}
+function regionBarsHTML(){const R=regionBands();
+  return '<div class="rbars">'+R.map(r=>'<div class="rbar"><div class="rbl"><b>'+r.name+'</b><span>'+r.sub+'</span><em>'+Math.round(r.pct)+'%</em></div><div class="rtrack"><i style="width:'+Math.min(100,r.pct).toFixed(1)+'%"></i></div><div class="rmi">'+r.mi.toFixed(0)+' / '+r.tot.toFixed(0)+' mi redlined</div></div>').join('')+'</div>';}
+let COVTAB='time';
+function covTabBar(){const T=[['time','📈 Over time'],['area','🗺️ By area'],['pace','🎯 Pace']];
+  return '<div class="vtabs">'+T.map(t=>'<button class="vtab'+(t[0]===COVTAB?' on':'')+'" data-ct="'+t[0]+'">'+t[1]+'</button>').join('')+'</div>';}
+function renderCovTab(){const body=$('viz_body');let cap='';
+  if(COVTAB==='time'){body.innerHTML=covTabBar()+coverageSVG();const done=WL.length?WL[WL.length-1][4]:0;cap='<b>'+done.toFixed(0)+' mi</b> redlined since '+(WL[0]?WL[0][0].slice(0,7):'')+' · '+(100*done/523).toFixed(0)+'% of the ~523-mi grid';}
+  else if(COVTAB==='area'){body.innerHTML=covTabBar()+regionBarsHTML();const R=regionBands(),top=R.slice().sort((a,b)=>b.pct-a.pct)[0],bot=R.slice().sort((a,b)=>a.pct-b.pct)[0];cap='Nearly all your coverage is <b style="color:#ff2e2e">'+(top?top.name:'')+'</b> ('+Math.round(top?top.pct:0)+'%) — <b>'+(bot?bot.name:'')+'</b> is the open frontier ('+Math.round(bot?bot.pct:0)+'%)';}
+  else{body.innerHTML=covTabBar()+barsSVG(monthAgg(),2,'#ff2e2e');cap=projectionCap();}
+  $('viz_cap').innerHTML=cap;
+  body.querySelectorAll('.vtab').forEach(b=>b.onclick=()=>{COVTAB=b.dataset.ct;renderCovTab();});}
 function openViz(kind){$('viz').classList.add('show');const body=$('viz_body');$('viz_cap').innerHTML='';
   if(kind==='levels'){$('viz_title').textContent='🎖️ Level system';body.innerHTML=levelsHTML();}
   else if(kind==='calendar'){$('viz_title').textContent='🔥 Walk calendar';body.innerHTML=calendarHTML();$('viz_cap').textContent='Tap a day for its miles + new ground redlined';wireCal();requestAnimationFrame(()=>{body.scrollTop=body.scrollHeight;});}
-  else if(kind==='coverage'){$('viz_title').textContent='🟥 Redlined over time';body.innerHTML=coverageSVG();const done=WL.length?WL[WL.length-1][4]:0;$('viz_cap').innerHTML='<b>'+done.toFixed(0)+' mi</b> of streets redlined since Sep 2025 · '+(100*done/523).toFixed(0)+'% of the ~523-mi grid';}
-  else if(kind==='togo'){$('viz_title').textContent='🎯 Finish projection';body.innerHTML=coverageSVG();$('viz_cap').innerHTML=projectionCap();}
+  else if(kind==='coverage'||kind==='togo'){$('viz_title').textContent='🟥 Coverage';COVTAB=(kind==='togo')?'pace':'time';renderCovTab();}
   else if(kind==='walks'){$('viz_title').textContent='🚶 Walks by month';body.innerHTML=barsSVG(monthAgg(),0,'#37d5f2');const tot=WL.reduce((s,w)=>s+w[1],0),avg=WMI.length?WMI.reduce((s,m)=>s+m,0)/WMI.length:0;$('viz_cap').innerHTML='<b>'+tot+'</b> walks · avg <b>'+avg.toFixed(1)+' mi</b> each';}
   else if(kind==='length'){$('viz_title').textContent='📏 Walk lengths';body.innerHTML=lengthSVG();const lg=WMI.length?Math.max(...WMI):0;$('viz_cap').innerHTML='Longest <b>'+lg.toFixed(1)+' mi</b> · '+WMI.length+' walks · miles per walk';}
 }
