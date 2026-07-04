@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Redline rebuild driver — run from the redline-build/ folder.
+"""Redline rebuild driver â run from the redline-build/ folder.
 Inputs (same folder): ways.json, waytype.json, tags.json, polys_life.txt, head.html, tail.html, sw.js
 Outputs: graph.json (here) + ../redline-app/index.html + ../redline-app/sw.js (cache version bumped)
 Prints stats incl. % of island redlined. Re-fetching OSM is NOT needed (streets are static)."""
@@ -47,6 +47,37 @@ off=[(dx,dy) for dx in(-2,-1,0,1,2) for dy in(-2,-1,0,1,2) if (dx*dx+dy*dy)*100<
 def cov(x,y):
     cx,cy=int(x//CELL),int(y//CELL)
     return any((cx+dx,cy+dy) in visited for dx,dy in off)
+
+# ---- recompute park / plaza / greenway path coverage from the same visited cells ----
+# parks.txt & plazas.txt live at repo root; each line: covered<TAB>name<TAB>encodedPolyline (Google precision 5)
+def path_cov(pts):
+    if len(pts)<2: return 0
+    pp=[proj(a,b) for a,b in pts]; ns=0; nc=0
+    for (x1,y1),(x2,y2) in zip(pp,pp[1:]):
+        d=math.hypot(x2-x1,y2-y1)
+        if d>400: continue
+        st=max(1,int(d/8))
+        for k in range(st+1):
+            t=k/st; ns+=1
+            if cov(x1+(x2-x1)*t,y1+(y2-y1)*t): nc+=1
+    return 1 if (ns and nc/ns>=0.5) else 0
+for _pf in ('../parks.txt','../plazas.txt'):
+    _p=P(_pf)
+    if not os.path.exists(_p): continue
+    _out=[]; _nc=0; _tot=0
+    for line in open(_p):
+        line=line.rstrip('\n')
+        if not line.strip(): continue
+        parts=line.split('\t')
+        if len(parts)<3: _out.append(line); continue
+        _tot+=1
+        try: c=path_cov(decode(parts[2]))
+        except Exception: c=int(parts[0] or 0)
+        _nc+=c
+        _out.append('%d\t%s\t%s'%(c,parts[1],parts[2]))
+    open(_p,'w').write('\n'.join(_out)+'\n')
+    print('%s: %d/%d paths covered'%(_pf,_nc,_tot))
+
 
 ways=json.load(open(P('ways.json'))); wtype=json.load(open(P('waytype.json')))
 tags={str(e['id']):e.get('tags',{}).get('name','') for e in json.load(open(P('tags.json')))['elements']}
@@ -160,7 +191,7 @@ m=re.search(r"redline-v(\d+)",sw); v=int(m.group(1))+1 if m else 8
 # assemble public index.html (address-stripped, version-stamped)
 head=open(P('head.html')).read(); tail=open(P('tail.html')).read()
 idx=head+'const G='+json.dumps({'nodes':nodes,'names':names,'edges':edges,'home':home},separators=(',',':'))+';\nconst STATS='+json.dumps(STATS)+';\nconst HOODBOX='+json.dumps([[h[0],h[1],h[2],h[3],h[4]] for h in HOODS])+';\nconst WALKLOG='+json.dumps(WALKLOG)+';\nconst WALKMI='+json.dumps(WALKMI)+';\n'+tail
-for a,b in [('82 Beaver St','Start (home)'),('🏠 82 Beaver','🏠 Home'),('using 82 Beaver','using home base'),('__VER__','v%d'%v)]:
+for a,b in [('82 Beaver St','Start (home)'),('ð  82 Beaver','ð  Home'),('using 82 Beaver','using home base'),('__VER__','v%d'%v)]:
     idx=idx.replace(a,b)
 os.makedirs(APP,exist_ok=True)
 open(os.path.join(APP,'index.html'),'w').write(idx)
