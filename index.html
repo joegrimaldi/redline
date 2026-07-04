@@ -218,7 +218,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v58</div>
+ <div class="ver" id="ver">REDLINE v59</div>
 </div>
 
 <div id="map"></div>
@@ -669,5 +669,5 @@ async function loadPedestrianPaths(){
   try{if(cmap){cmap.remove();cmap=null;}buildConquestMap();}catch(e){}
 }
 loadPedestrianPaths();
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+if('serviceWorker' in navigator){let __refreshing=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(__refreshing)return;if(document.body.classList.contains('s-nav')||document.body.classList.contains('s-preview'))return;__refreshing=true;location.reload();});window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(reg=>{reg.update();setInterval(()=>{reg.update();},60000);}).catch(()=>{});});}
 </script></body></html>
