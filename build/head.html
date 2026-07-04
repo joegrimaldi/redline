@@ -56,6 +56,24 @@
  .crow .cl{font-size:14px;color:var(--ink)} .crow .cv{font-family:var(--pix);font-size:9px;color:var(--dim)} .crow.ok .cv{color:var(--grn)}
  .crow .cbar{grid-column:1/3;height:7px;background:#0a0713;border:1px solid var(--line);overflow:hidden}
  .crow .cbar>i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--pur) 0 7px,#6d3fb0 7px 9px)} .crow.ok .cbar>i{background:var(--grn)}
+ /* level-system viz */
+ .tmeter{margin:0 0 13px}
+ .tmlabel{font-size:15px;color:var(--ink);margin-bottom:5px} .tmlabel b{color:var(--red)}
+ .tmbar{position:relative;height:14px;background:#0a0713;border:2px solid var(--line);overflow:visible}
+ .tmbar>i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--red) 0 8px,#a3242c 8px 10px)}
+ .tmbar .tk{position:absolute;top:-4px;width:2px;height:20px;background:var(--cyan);opacity:.75}
+ .lad{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+ .lrow{display:flex;gap:10px;align-items:center;background:var(--panel);border:2px solid var(--line);border-radius:3px;padding:9px 10px;box-shadow:0 3px 0 var(--line);opacity:.9}
+ .lrow.done{opacity:1;border-color:#1f6b3d;box-shadow:0 3px 0 #0c2a18}
+ .lrow.cur{opacity:1;border-color:var(--cyan);box-shadow:0 3px 0 #0a3a44,inset 0 0 0 1px var(--cyan)}
+ .lrow.mile{background:#1a1206}
+ .lnum{min-width:34px;text-align:center;font-family:var(--pix);font-size:15px;color:var(--ink)} .lnum b{display:block}
+ .lbody{flex:1;min-width:0}
+ .ltitle{font-family:var(--pix);font-size:10px;color:var(--cyan);margin-bottom:6px}
+ .ltitle em{color:var(--yel);font-style:normal;font-family:var(--term);font-size:15px;margin-left:4px}
+ .mtag{font-family:var(--term);font-size:13px;color:var(--yel);margin-left:4px}
+ .lcrit{display:flex;flex-wrap:wrap;gap:5px 10px}
+ .lc{font-size:14px;color:var(--dim)} .lc.ok{color:var(--grn)}
  .streakrow{display:flex;align-items:center;gap:12px;background:#1a1206;border:2px solid var(--line);border-radius:4px;padding:12px;margin-bottom:11px;box-shadow:0 4px 0 var(--line)}
  .streakrow .fire{font-size:26px} .streakrow .sb{font-family:var(--pix);font-size:12px;color:var(--yel)} .streakrow .ss{font-size:15px;color:var(--dim)}
  .cal{display:flex;gap:3px;margin-left:auto;flex-wrap:wrap;max-width:52%;justify-content:flex-end}
@@ -194,7 +212,7 @@
 <div id="home">
  <div class="brand"><h1>🟥 REDLINE</h1><div style="display:flex;gap:6px"><button id="syncBtn" class="upd">🔄 Sync</button><button id="updateBtn" class="upd">⟳ Update</button></div></div>
  <div class="hero tapviz" data-viz="coverage"><div class="big" id="d_pct">–</div><div class="cap">redlined ›</div><div class="bar"><i id="d_bar" style="width:0%"></i></div></div>
- <div class="lvl tapviz" data-viz="coverage"><div class="badge"><small>LV</small><b id="d_lv">–</b></div><div class="info"><div class="t" id="d_title">–</div><div class="x" id="d_xpsub"></div><div class="crit" id="d_crit"></div></div></div>
+ <div class="lvl tapviz" data-viz="levels"><div class="badge"><small>LV</small><b id="d_lv">–</b></div><div class="info"><div class="t" id="d_title">–</div><div class="x" id="d_xpsub"></div><div class="crit" id="d_crit"></div></div></div>
  <div class="streakrow tapviz" data-viz="calendar"><span class="fire">🔥</span><div><div class="sb" id="d_streak">–</div><div class="ss" id="d_streaksub"></div></div><div class="cal" id="d_cal"></div></div>
  <div class="grid">
    <div class="card tapviz" data-viz="coverage"><b id="d_milesred">–</b><span>Mi done</span><div class="sub" id="d_milesred_sub"></div></div>
