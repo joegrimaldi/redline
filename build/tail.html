@@ -198,18 +198,25 @@ function nearestNew(){if(!navigator.geolocation){setStatus('Geolocation needed.'
 function inBox(la,lo,b){return b[1]<=la&&la<=b[3]&&b[2]<=lo&&lo<=b[4];}
 async function neighborhoodRoute(name){
   const hd=hoodByName(name);if(!hd)return;
+  // isolate to edges INSIDE this neighborhood; sweep starts/ends at MTA subway stops (begin near the work, end at nearest stop to the finish)
   const allowEdge=new Uint8Array(E.length);const remaining=new Set();
   for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;if(!ptInHood(mla,mlo,hd))continue;allowEdge[i]=1;if(E[i][3]===0)remaining.add(i);}
   if(remaining.size===0){toast('✅ '+name+' is already fully redlined!');return;}
-  setStatus('Mapping the most efficient '+name+' sweep…');await resolveStart();await new Promise(r=>setTimeout(r,30));
-  const pace=parseFloat($('pace').value)||22.37,loop=$('loop').checked;
-  const res=await hoodClear(START,loop,remaining,allowEdge);
+  setStatus('Mapping the most efficient '+name+' sweep…');await new Promise(r=>setTimeout(r,30));
+  const st=(hd.st&&hd.st.length)?hd.st:(hd.s?[hd.s]:[]);
+  let uLat=0,uLon=0,uc=0;remaining.forEach(i=>{uLat+=(N[E[i][0]][0]+N[E[i][1]][0])/2;uLon+=(N[E[i][0]][1]+N[E[i][1]][1])/2;uc++;});uLat/=uc;uLon/=uc;
+  let startS=null,bd=Infinity;for(const s of st){const d=(s[0]-uLat)**2+(s[1]-uLon)**2;if(d<bd){bd=d;startS=s;}}
+  const startNode=startS?nearestNode(startS[0],startS[1]):nearestNode(uLat,uLon);
+  const endNodes=st.map(s=>nearestNode(s[0],s[1]));
+  const pace=parseFloat($('pace').value)||22.37;
+  const res=await hoodClear(startNode,endNodes,remaining,allowEdge);
   setStatus('');
-  showPreview(res,{lat:(hd.bb[0]+hd.bb[2])/2,lon:(hd.bb[1]+hd.bb[3])/2,name:'Clear '+name},pace);
+  showPreview(res,{lat:N[startNode][0],lon:N[startNode][1],name:'Clear '+name},pace);
   if(res.hoodLeftMi>0.4)setTimeout(()=>toast('🧩 ~'+res.hoodLeftMi.toFixed(1)+' mi of '+name+' sits on disconnected paths — Clear again from there to finish.'),500);
 }
-async function hoodClear(START,loop,remaining,inHood){
-  const PEN=8;let routeN=[START],cur=START,guard=0;const rem=new Set(remaining),entry=START;
+// Efficient in-neighborhood sweep between subway stops: greedily clear every uncovered block, staying in-hood (soft penalty), then head to the nearest stop.
+async function hoodClear(startNode,endNodes,remaining,inHood){
+  const PEN=8;let routeN=[startNode],cur=startNode,guard=0;const rem=new Set(remaining);
   while(rem.size>0&&guard++<900){
     const {dist,prevN,prevE}=dijkstraSoft(cur,inHood,PEN);
     let best=null;
@@ -220,7 +227,7 @@ async function hoodClear(START,loop,remaining,inHood){
     routeN.push(best.far);rem.delete(best.i);cur=best.far;
     if(guard%20===0)await new Promise(r=>setTimeout(r));
   }
-  if(loop){const {prevN,prevE}=dijkstraSoft(cur,inHood,PEN);const p=pathTo(prevN,prevE,cur,entry);if(p)routeN=routeN.concat(p.ns.slice(1));}
+  if(endNodes&&endNodes.length){const {dist,prevN,prevE}=dijkstraSoft(cur,inHood,PEN);let en=-1,eb=Infinity;for(const ed of endNodes){if(dist[ed]<eb){eb=dist[ed];en=ed;}}if(en>=0&&isFinite(eb)){const p=pathTo(prevN,prevE,cur,en);if(p)routeN=routeN.concat(p.ns.slice(1));}}
   const r=finalize(routeN);let left=0;rem.forEach(i=>left+=elen[i]/MI);r.hoodLeftMi=left;return r;
 }
 // focused neighborhood map: streets lit red/green + cyan boundary, then Clear
