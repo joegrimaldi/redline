@@ -1,5 +1,5 @@
 // Redline Router service worker — app-shell offline cache
-const CACHE = 'redline-v85';
+const CACHE = 'redline-v86';
 const SHELL = [
   './',
   './index.html',
