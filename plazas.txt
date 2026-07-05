@@ -1413,10 +1413,10 @@
 0	(unnamed)	em{wF|vqbMM^CCEECGCICG?GAGd@R
 1	West 110th Street	sx_xFp|kbMf@O
 0	(unnamed)	avbxF`qgbMvAsEDO
-0	Fort Clinton	qy~wFpxjbM?C??@A@A@A?A@C@AB??C?A?A?AAA?A??AA?AA??AA?AAA???A?A?A@A?A@?@A@AD?@B??B?@?@?@@@?@@B???D@?@?
+1	Fort Clinton	qy~wFpxjbM?C??@A@A@A?A@C@AB??C?A?A?AAA?A??AA?AA??AA?AAA???A?A?A@A?A@?@A@AD?@B??B?@?@?@@@?@@B???D@?@?
 0	College Walk	uaaxFrolbMGPABAFCF}@nCe@|Ag@zA{@lCAFCFCHEJ
 0	(unnamed)	sibxF``mbMHo@BKIC@I]OJk@\NBIHBBKDYLHNHETNFETEVGTEROGKh@KAOG
-0	West Drive	{__xFhukbMLDJFJFJHJJPPJNLNJPHPHPHRFRFTDRBTLt@BNDNDLFPFLDJHJHHHJHFJFJDJF
+1	West Drive	{__xFhukbMLDJFJFJHJJPPJNLNJPHPHPHRFRFTDRBTLt@BNDNDLFPFLDJHJHHHJHFJFJDJF
 0	West 110th Street	_v_xFp{kbMHADAF?B?D?DBD@DDHH
 1	West 110th Street	kw_xF`|kbMj@O
 0	(unnamed)	ul`xF`gibMAACAC?A?CBA@?B?D?B@BB@B@@?BA@C@C?E?CAC
@@ -1435,15 +1435,15 @@
 0	(unnamed)	uh~wFbodbMTHB@G`@B@NcAECHq@MG@CB?@KC?@ARFAFJB@?@@]vBJDCPk@S@EME@CF]
 0	(unnamed)	mg~wFnkdbMJ?B@?A@@?@B@AFAJDB?D@?DS@?@GAAF]@@@KA?CAC?ABAJEAA@CBA@E@IDAD
 0	(unnamed)	id~wFfidbM@@LB@@HBBCTo@AGsAc@???BRH?Bj@REVA??DEAAHKECL
-0	Nutter's Battery	ea_xFt|jbMA@A?A?A?A?A?AAAAB?B?@A?AAA?A@A?C@CAAAAAA??B?@?@??@@@@@?@@@?B?@AB?BA@
+1	Nutter's Battery	ea_xFt|jbMA@A?A?A?A?A?AAAAB?B?@A?AAA?A@A?C@CAAAAAA??B?@?@??@@@@@?@@@?B?@AB?BA@
 1	(unnamed)	kk_xFlglbMPEDOLFJCJv@@H]Ua@Y
 1	(unnamed)	{d_xFzrjbMNB@O@GB?@A@?BCBE@A@E?CKE?C?A?AAA?AAA?AAAA?A?AICACJCF?@?B?@?@?@@@?@@@?@@@??ANCA?BKAAB?DHB?F
 0	(unnamed)	cncxFlplbMk@f@DJKJ_CwE@CHFDBJH`BfDj@g@B@@B
 0	(unnamed)	ikcxFxrlbMCACCc@pAMLCIMLBFKJKK_@`A@BJH@?\}@JKn@nANOg@aAl@iB
 0	(unnamed)	stcxFlhlbMl@bBBFdCdA@CkBgBWSu@q@
-0	East Drive	{h_xFrekbM_@GMAM?K?K?E@G@GBIDGFKHKJGHOPEFSVILINGLA@GJGPIP
-0	East Drive	o|~wFvmkbMGDGB
-0	West Drive	mv~wFtclbMh@N
+1	East Drive	{h_xFrekbM_@GMAM?K?K?E@G@GBIDGFKHKJGHOPEFSVILINGLA@GJGPIP
+1	East Drive	o|~wFvmkbMGDGB
+1	West Drive	mv~wFtclbMh@N
 0	Reunion Plaza	aoaxF|cmbMMIBKDBFDCJ
 0	Revson Plaza	ofaxFbmlbMB@nAx@DD@AHWFS@CCA@C@EgAs@CCGC????CF??AAABGRIVA@
 0	(unnamed)	qu~wFbsfbMq@_AE@ABECDKEGk@hBBBB@@@BBFDFDBGDO@@BIPm@j@\
@@ -1452,12 +1452,12 @@
 0	(unnamed)	s{_xFlkgbMBGTw@B_@@YFQbA}Bf@iA`@aAHU
 0	The Plaza	mbcxFjblbMn@`@Ne@HWo@c@Y~@
 0	East Drive	_}~wF`nkbMM@G?G?IAICICGGIGIIKKaAiAKMMMOOQMUOUO
-0	East Drive	me_xFngkbMWOQKQIQGMGGAIC
-0	East Drive	gy~wFd`kbMEGEEGCGEICGAGAI?G?I@IBGBIFGFGHGHEJENCJANAN?N@N@NBNDPDNFLDNJNHPBBDHHNDHBJBJ@H?J?J?LCJAJCFEJEHEHEDGB
-0	East Drive	mx~wFxakbMAEGQCICGGI
-0	East Drive	wq~wF|hkbM[G[IKEMGKGOMMOQQKQMQMYKWK]GW
-0	East Drive	wp~wFdikbM_@G
-0	East Drive	cl~wF`jkbMKAG?OCoBU
+1	East Drive	me_xFngkbMWOQKQIQGMGGAIC
+1	East Drive	gy~wFd`kbMEGEEGCGEICGAGAI?G?I@IBGBIFGFGHGHEJENCJANAN?N@N@NBNDPDNFLDNJNHPBBDHHNDHBJBJ@H?J?J?LCJAJCFEJEHEHEDGB
+1	East Drive	mx~wFxakbMAEGQCICGGI
+1	East Drive	wq~wF|hkbM[G[IKEMGKGOMMOQQKQMQMYKWK]GW
+1	East Drive	wp~wFdikbM_@G
+1	East Drive	cl~wF`jkbMKAG?OCoBU
 0	East Drive	yj~wF`jkbMO@M?KA
 0	East Drive	mi~wFtikbMWFC?OB
 0	East Drive	}g~wFnikbMK@O@S@
@@ -1466,8 +1466,8 @@
 0	West Drive	yp_xFnkkbMKTITGNEPGTCPETETCVCNAHATCTARATAj@AJALANCNCLCLCNCFAH?JAH?H@H@J@F@FBFBHDHBHDHHHFHFFHHHFHDHDJBJBD@B?H@H?H?FAHABAFCFCFCFGFGFGFIBIDIDK@KBMRsA@MBI@GDGDIFIFIDEDEFEFEFCHAHCFAH?F?TB
 0	West Drive	cg_xFpvkbMJ?H?H?HAHAHCJCJEHE
 0	West Drive	cd_xFxukbMJGHEJCLC
-0	West Drive	sb_xFbukbMJCJ?J?F?J?H@HBJB
-0	West Drive	cu~wFddlbMJDHDDBFDFFHJFHHJFNFLDJ
+1	West Drive	sb_xFbukbMJCJ?J?F?J?H@HBJB
+1	West Drive	cu~wFddlbMJDHDDBFDFFHJFHHJFNFLDJ
 0	West Drive	er~wFnglbMBNNt@RfABRFRDRFPHRHP
 0	West Drive	oo~wFpolbMHPHNHLLPLNJLJJNJNLl@^
 0	West Drive	oj~wFvtlbMLHRLRJZNZNp@Xz@Z
@@ -1476,7 +1476,7 @@
 0	(unnamed)	y``xFp`gbMBMDMFBENEJEC
 0	(unnamed)	om`xFp|lbMAC?EAG@E@E@CBEBABCB?B?D@B@BB@BBD?B@D?DADADABABCBC@C?E?A?A?CACAACAAAC
 0	(unnamed)	gu`xFvzmbMB@@@BB?@?BAB??A@CBA@EBC@C?C?E?E?E?E?EAEAGAGCGCEAGCECGCGEKEGCECA?C?AAC@A?A?C@C?A@A@CBA@C@A@A?C?AA???A@A@C?CBA@C@A@ABA@CB?BAD?D@D@DBHDFBHDFBFBFBFBDBD@B@D@D@D?D@B?D@B?BAD?BA@ABC?A@C?A?C?A
-0	(unnamed)	uk_xFlzjbMB@FDB@@?@A?CAC?AIECCA?A@A@?@?B@@
+1	(unnamed)	uk_xFlzjbMB@FDB@@?@A?CAC?AIECCA?A@A@?@?B@@
 0	(unnamed)	yy}wFxpnbMJHPk@?ADKKIEJCCCFABELADAFB@AF
 0	(unnamed)	kz`xFl|ibMXR@?_AvCWQJ[WQ@C@@BBDDFBB@D?BCBCDKDOFQHUDQ?EAEACAC@G
 0	(unnamed)	_}`xFt`jbMKI|@uC`@VAFAAECECCCEAE@CBADGNIXITELAD@H@DABKZ
