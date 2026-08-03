@@ -680,7 +680,7 @@
 0	East 71st Street Pedestrian Bridge	g_ywFhtjbM|@v@
 0	East 71st Street Pedestrian Bridge	y|xwFjvjbMOI
 0	East 71st Street Pedestrian Bridge	}~xwFdyjbMp@iB
-0	City Hall Park Greenway	yznwFhlubM|@}B^g@LaAt@kBh@G
+1	City Hall Park Greenway	yznwFhlubM|@}B^g@LaAt@kBh@G
 0		cpfxF~onbMHwAlCaNLSd@EbBpAtAnB~ABfAf@xA\
 0	East River Esplanade	uwtwFlpnbMmCyA
 0	Riverside Walk	{ucxFjglbMoF{DUi@Cw@IQwCsBuEkFyLqLsGuF_@Sk@Hg@jAkAv@
