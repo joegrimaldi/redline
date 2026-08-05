@@ -7,7 +7,7 @@
 0	Extra Place	}_qwFrnrbMIEkAg@
 1	Sullivan Street	_vpwFzcubMNJDDlBxABBPN
 1	Fulton Street	cmmwFnvtbMCJADA@mA|@SPMJQJKFm@`@
-0	Canal Street	i~nwFf`rbMu@zCCX
+1	Canal Street	i~nwFf`rbMu@zCCX
 1	Coenties Slip	uzlwFxbvbMGFA?EF{@~@A@A?CB
 1	Front Street	mpmwFrytbMM[AE{@yBCEACCG
 1	Front Street	mqmwFjztbMNXz@xA??
@@ -27,7 +27,7 @@
 0	Rivington Street	mipwFxmrbMCJCNGVSbAG^
 1	Beekman Street	eymwFtxtbMKHmAbAUP
 1	Spruce Street	odnwFhrtbMzA|B?B?@?BOTYf@g@|@MR[l@
-0	Stanton Street	crpwF|nrbMHc@ZyADOBM
+1	Stanton Street	crpwF|nrbMHc@ZyADOBM
 1	Pearl Street	qymwF~xtbM@DBDRh@b@jA@BDL
 1	Burling Slip	ckmwFrytbMGHABqB`C
 0	Gouverneur Street	oxnwFh~pbMOBG@aBJC?M@
@@ -42,14 +42,14 @@
 1	North End Way	ueowFv~vbMlBZD@B@h@\
 0	(unnamed)	_bpwFb}obMELA@ABA?AA@C?CDMDB
 0	(unnamed)	ccpwFf_pbMBM?A@A??B@?@?@?@CJEA
-0	(unnamed)	cgpwFxmpbM?CBMKECJAD?@@B@@B@H@CE
+1	(unnamed)	cgpwFxmpbM?CBMKECJAD?@@B@@B@H@CE
 0	(unnamed)	{}owFpoobMA@?D?@AH?AB?@?@@@@?B@E@G?C?C?AA?CCA?A@
 0	(unnamed)	}~owFttobMAHCHFDBIBGIG
 0	(unnamed)	{~owFhtobMJB@G@KKCAHAH
-0	Hester Street	snowFl{rbMERCLKf@G\CLA@AFADGV
+1	Hester Street	snowFl{rbMERCLKf@G\CLA@AFADGV
 0	East 11th Street	_eqwFjdobMj@gBb@sAl@oB
 1	(unnamed)	mmowFxbubMFD@@LHb@\J?ZVB@@@BB
-0	Broome Street	g}owFpyrbMDS?A
+1	Broome Street	g}owFpyrbMDS?A
 1	Franklin Street	o}owFlmubMDm@
 1	Cooper Square	cxqwF~krbMjB\PBHA
 0	Gould Plaza	{|qwF~jsbMTRBEBCB?D?B@BB@B@D?FAD?@FFn@aBZVB@@A@CDBHQAA?@E@GE?I??AD}@s@BE?AIDGG?G?AA?ELEDQd@@@ADM\CAMZ
@@ -64,7 +64,7 @@
 0	(unnamed)	kiowFzesbMNG@IDIBGDGFEFEFCBADAF?H?F@LBAIAAA?EAEAEAA?E?E@E?A@E@??GBE@GDCDEDCDCDCDBQBEDGBCDCDCBA?EC@GBGDCDCBA@CFADABK^?B?@@?@?
 1	(unnamed)	ktpwFv|qbMpElACHB?FBJDDB@MbEbB?@AHFBB@@GBG@K@ECAECCD?@eEaB@KCAKEGACAAFqEmAA?A?A@A?A@?B?B?@BB@?
 0	(unnamed)	mvowF`uqbM[MCADST}@Ty@DODONk@^gAFIB@g@jCCJCJ?@i@pC
-0	Division Street	y`owFrhrbM@l@DbA
+1	Division Street	y`owFrhrbM@l@DbA
 1	(unnamed)	wdnwFrvvbMGE@EBB@F
 1	(unnamed)	cenwFtvvbMEEBE@@BIAA@A@A@A?A@C?A?A@ABGEEA@AA?AAACAA?A?A??CEC???A?@?A\RCF@BJL??BB?@A@CCMPAGFSAAIPADCF
 1	(unnamed)	qhnwFz{vbMECGCHS@C@C??ABA@?ACCAA??LYVo@Pe@J[HO@@AJACGNCD@@O^CBCBGX@DEJ?EGNKP@BAD?@??@ADCFWB@@?GTNIJMD]@C@?DA?BA@CDCJAB@?BKDG?A@B@@??LGPWCOF?@HNW@ABCPW@A@C????B@@Bm@`AILEJEPCF??AABKDKAGCFABC?A?KDKNGP?BK?QJCJ??AHCF
@@ -705,11 +705,11 @@
 0	(unnamed)	}{nwFffqbM?E?A@A@?B@\@?@???@??_@BA???A?A??A
 0	(unnamed)	u|nwF~eqbMEAA??A@C?A??B@B????@?D??????A?
 0	(unnamed)	e{nwFneqbM@GIAK?C??B@@@@B?L@@???
-0	(unnamed)	yaowFlcqbM@E??@?JF@@@@@B?B?@CCQK
-0	(unnamed)	kaowFrbqbMFDAI?AA?ECCCAF???@FB
-0	(unnamed)	qaowF`bqbMB@LF?????A?C?C??AAGC?@A@A??@A?A?
-0	(unnamed)	s_owFncqbMADA???KGAAAAAC?EBBPJ
-0	(unnamed)	kdowFj`qbMB@LHAD?@AAMGAA?A?C@A
+1	(unnamed)	yaowFlcqbM@E??@?JF@@@@@B?B?@CCQK
+1	(unnamed)	kaowFrbqbMFDAI?AA?ECCCAF???@FB
+1	(unnamed)	qaowF`bqbMB@LF?????A?C?C??AAGC?@A@A??@A?A?
+1	(unnamed)	s_owFncqbMADA???KGAAAAAC?EBBPJ
+1	(unnamed)	kdowFj`qbMB@LHAD?@AAMGAA?A?C@A
 1	(unnamed)	{ylwFpcvbMC@G[AGCECGCG?A?A?EDH@@BD@F@DH`@
 1	(unnamed)	m|lwFz~ubMIMIK@B?B?@BDDD?@@?D@
 1	(unnamed)	e`mwF|{ubM???DDE??@A@?@@B?@BDH@K?A?ACACAC?C?C?A@CB
@@ -877,8 +877,8 @@
 1	(unnamed)	azowFdcubMBDB@h@P@?@????A?AA?YUCACAQAFB?@@??@A???A?EA
 0	(unnamed)	ohowFvfsbMFEFGLI\QZQ@DCJEHEHEFEDGDIDG@G?K?IAEC
 0	(unnamed)	}eowFddsbMy@Xc@R@IDIBGDGFEFEFCBADAF?H?F@LB@B
-0	(unnamed)	kiowFzesbMGDA??ALk@?A@EBCBCBAA@CFADABK^?B?@@?@?
-0	(unnamed)	ojowFdjsbMA?C?A?KGAA?A?ABEBIFMHMHOHGLMPKVOGFGDONMNKRMPGJCH?DAB?@@@?@??@@@?
+1	(unnamed)	kiowFzesbMGDA??ALk@?A@EBCBCBAA@CFADABK^?B?@@?@?
+1	(unnamed)	ojowFdjsbMA?C?A?KGAA?A?ABEBIFMHMHOHGLMPKVOGFGDONMNKRMPGJCH?DAB?@@@?@??@@@?
 0	(unnamed)	chowFt_sbMBB@??A@A@C?A??ECA??@A@AB??@@
 0	(unnamed)	eeowFnasbM@@@?ADG@E@EBG@C?EAAACACAC?A@A@?B?@E?K??C@A@A@A@C?CACACACEABKBC@A@?@C?AAA?A?CACB?@?@?B@B@BB@DGB?@A@@JB?@INFNFDB?BCBA?E?E?C@C@ABB?B@DABABAFABA@A?A
 1	(unnamed)	_lowFzksbMBM@E@?????@??@??ADCLA????@AA???A??
@@ -894,7 +894,7 @@
 1	(unnamed)	gunwFlzsbM@C@C?E?CACAA?C??AEID@DBA@?@@@B?B?B?BAB??@@
 1	Confucius Plaza	y~nwFbpsbMB?@A@@?@Bb@AB?@C@A?A?AAECCCCECEAA?A@??AB?BABCBE@E
 1	(unnamed)	__owFzjsbMH?@??@@@A@AB?@HhCEMCG?CAEGuB
-0	Confucius Plaza Courtyard	q_owFfksbMAQAg@A??CM@A?C@G@EDCDAFAF?HC??@?B?B@B@@@BB@D@B?F?B?B^@?@?Ac@LA
+1	Confucius Plaza Courtyard	q_owFfksbMAQAg@A??CM@A?C@G@EDCDAFAF?HC??@?B?B@B@@@BB@D@B?F?B?B^@?@?Ac@LA
 1	(unnamed)	i_owFnctbMBG@GA@?CA?A??@A@A?@J@??@
 1	(unnamed)	aaowFbatbM@AF??D?B?@E@ACAA?E
 1	(unnamed)	edowFz{tbMBCl@d@Tm@Xs@]YBINJABTNQb@CACFBBENEJECCFBBM\u@k@
@@ -926,7 +926,7 @@
 1	(unnamed)	cxnwFn~rbM?CBABA?BBl@?B??ABA?A@aBLC??AAA?A?A?AACBADCB@GB?Dl@E@A@?n@EAQ?A?AAU
 1	(unnamed)	w~nwF`bsbM?@?@@?@???@?jAi@@A?A??@A?CEBA@eAd@C@C@
 0	(unnamed)	s|nwF~}rbMBABAAAAAA?AAA?C@A?}@b@A@A??B?@?@?BBCdAe@
-0	(unnamed)	__owFv}rbMAG??@A??@?VC@??@???@A?IDGBC@A@A??A?A
+1	(unnamed)	__owFv}rbMAG??@A??@?VC@??@???@A?IDGBC@A@A??A?A
 1	(unnamed)	{tnwFfsrbMJ?DA?AAAAAA@E?A?CD
 1	(unnamed)	qtnwFlsrbM?F@H@??A@C?A?A?C?AAAA?A?
 1	(unnamed)	qwnwFtsrbMCEA?I@C?A@@B?@BANA
