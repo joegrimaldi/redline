@@ -263,7 +263,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v614</div>
+ <div class="ver" id="ver">REDLINE v615</div>
 </div>
 
 <div id="map"></div>
@@ -869,5 +869,35 @@ function drawLights(){
   }catch(e){}
 }
 (function(){try{if(typeof buildConquestMap==='function'){var _o=buildConquestMap;buildConquestMap=function(){var r=_o.apply(this,arguments);try{drawLights();}catch(e){}return r;};}drawLights();}catch(e){}})();
+
+
+/* ---- Consolidated Sync: pull data, then auto-refresh when the fresh build is live ---- */
+(function(){
+  var ub=document.getElementById('updateBtn'); if(ub)ub.style.display='none';
+  var sb=document.getElementById('syncBtn'); if(!sb)return;
+  function pv(t){var m=(t||'').match(/redline-v(\d+)/);return m?+m[1]:0;}
+  sb.onclick=async function(){
+    if(sb.dataset.busy)return; sb.dataset.busy='1';
+    var base=0;
+    try{base=pv(await (await fetch('sw.js?cb='+Date.now(),{cache:'no-store'})).text());}catch(e){}
+    sb.textContent='⏳ Syncing…';
+    if(typeof toast==='function')toast('⏳ Pulling your latest Strava walks… the app refreshes itself when ready (~1-2 min).',0);
+    var started=false;
+    try{var r=await fetch(SYNC_URL,{method:'POST'});var tx=(await r.text()).trim();started=r.ok&&/sync started/i.test(tx);}catch(e){}
+    if(!started){ if(typeof toast==='function')toast('⚠️ Could not reach sync - check your connection.',4000); sb.textContent='🔄 Sync'; sb.dataset.busy=''; return; }
+    var t0=Date.now();
+    async function poll(){
+      var v=0; try{v=pv(await (await fetch('sw.js?cb='+Date.now(),{cache:'no-store'})).text());}catch(e){}
+      if(v>base){
+        sb.textContent='✅ Updating…';
+        try{var ks=await caches.keys(); await Promise.all(ks.map(function(k){return caches.delete(k);}));}catch(e){}
+        location.reload(); return;
+      }
+      if(Date.now()-t0<210000){ setTimeout(poll,5000); }
+      else{ if(typeof toast==='function')toast('Sync is taking longer than usual; it will appear on your next open.',5000); sb.textContent='🔄 Sync'; sb.dataset.busy=''; }
+    }
+    setTimeout(poll,20000);
+  };
+})();
 
 </script></body></html>
