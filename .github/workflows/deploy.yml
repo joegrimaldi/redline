@@ -1,5 +1,11 @@
-name: Redline Strava Sync
+name: Redline Build & Deploy
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'build/head.html'
+      - 'build/tail.html'
+      - 'build/rebuild_app.py'
   workflow_dispatch:
 permissions:
   contents: write
@@ -7,23 +13,17 @@ concurrency:
   group: redline-pages
   cancel-in-progress: false
 jobs:
-  sync:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Pull Strava and rebuild the app
-        env:
-          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
-          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
-          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+      - name: Rebuild app from build/ sources
         run: |
           cd build
           cp ../sw.js ./sw.js
-          python ci_sync.py
-          python build_walklog.py
           python rebuild_app.py
           cp ../redline-app/index.html ../index.html
           cp ../redline-app/sw.js ../sw.js
@@ -33,8 +33,8 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add index.html sw.js parks.txt plazas.txt
           if git diff --staged --quiet; then
-            echo "No coverage changes."
+            echo "No build changes."
           else
-            git commit -m "Auto-sync Strava $(date -u +%F_%H%M)"
+            git commit -m "Auto-build from source $(date -u +%F_%H%M)"
             git push
           fi
