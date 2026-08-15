@@ -1,3 +1,4 @@
+// [build] auto-deploys from build/head.html+tail.html via .github/workflows/deploy.yml on push
 // ---------- graph ----------
 const N=G.nodes, E=G.edges, NM=G.names, HOME=G.home;
 const R=6371000, toR=Math.PI/180, MI=1609.344, PACE=22.37;
@@ -16,7 +17,7 @@ Heap.prototype.pop=function(){const a=this.a,top=a[0],last=a.pop();if(a.length){
 Heap.prototype.size=function(){return this.a.length;};
 function dijkstra(src){const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const v=au[k][0],nd=d+au[k][1];if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=au[k][2];h.push([nd,v]);}}}return {dist,prevN,prevE};}
 function pathTo(prevN,prevE,src,dst){const ns=[dst],es=[];let c=dst;while(c!==src){const p=prevN[c];if(p<0)return null;es.push(prevE[c]);ns.push(p);c=p;}ns.reverse();es.reverse();return {ns,es};}
-// Dijkstra that strongly prefers staying inside a neighborhood: out-of-hood edges cost ×pen. Keeps the sweep in-hood while staying connected (so it can route around parks/gaps).
+// Dijkstra that strongly prefers staying inside a neighborhood: out-of-hood edges cost Ãpen. Keeps the sweep in-hood while staying connected (so it can route around parks/gaps).
 function dijkstraSoft(src,inHood,pen){const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const e=au[k][2],v=au[k][0],nd=d+au[k][1]*(inHood[e]?1:pen);if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}return {dist,prevN,prevE};}
 function dijkstraW(src){const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const v=au[k][0],e=au[k][2];const cost=au[k][1]*(E[e][3]===0?0.8:1);const nd=d+cost;if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}return {dist,prevN,prevE};}
 function directRoute(s,t){const r=dijkstraW(s);const p=pathTo(r.prevN,r.prevE,s,t);return finalize(p?p.ns:[s]);}
@@ -44,19 +45,19 @@ function setStatus(t){$('status').textContent=t;}
 function fmtTime(min){const h=Math.floor(min/60),m=Math.round(min%60);return h?`${h}h ${m}m`:`${m} min`;}
 function fmtDist(m){return m<300?Math.round(m/3.048)*10+' ft':(m/MI).toFixed(2)+' mi';}
 function buzz(ms){try{if(navigator.vibrate)navigator.vibrate(ms);}catch(e){}}
-let _tt;function toast(t,ms){const el=$('toast');el.innerHTML='';const s=document.createElement('span');s.className='tmsg';s.textContent=t;const b=document.createElement('button');b.className='tx';b.setAttribute('aria-label','Dismiss');b.textContent='✕';b.onclick=dismissToast;el.appendChild(s);el.appendChild(b);el.classList.add('show');clearTimeout(_tt);if(ms&&ms>0)_tt=setTimeout(()=>el.classList.remove('show'),ms);}
+let _tt;function toast(t,ms){const el=$('toast');el.innerHTML='';const s=document.createElement('span');s.className='tmsg';s.textContent=t;const b=document.createElement('button');b.className='tx';b.setAttribute('aria-label','Dismiss');b.textContent='â';b.onclick=dismissToast;el.appendChild(s);el.appendChild(b);el.classList.add('show');clearTimeout(_tt);if(ms&&ms>0)_tt=setTimeout(()=>el.classList.remove('show'),ms);}
 function dismissToast(){clearTimeout(_tt);$('toast').classList.remove('show');}
 
 // ---------- dashboard ----------
-// 9 levels; each = [coveragePct, title, hoodCountReq, hoodTierPct(33/66/99), streetsFinishedPct]. All proportional — 33/66/99% milestones at L3/6/9.
-// Territory: ⅓(12) Bronze @L3, ⅔(23) Silver @L6, all 35 Gold @L9. Coverage & streets each climb 0→99% across the ladder.
+// 9 levels; each = [coveragePct, title, hoodCountReq, hoodTierPct(33/66/99), streetsFinishedPct]. All proportional â 33/66/99% milestones at L3/6/9.
+// Territory: â(12) Bronze @L3, â(23) Silver @L6, all 35 Gold @L9. Coverage & streets each climb 0â99% across the ladder.
 const LEVELS=[[0,'Rookie',0,33,0],[16,'Wanderer',6,33,16],[33,'Pathfinder',12,33,33],[44,'Trailblazer',12,66,44],[55,'Cartographer',18,66,55],[66,'Surveyor',23,66,66],[77,'Redliner',12,99,77],[88,'City Stalker',24,99,88],[99,'Manhattan Master',35,99,99]];
-const HOODEMOJI={'Financial District':'🏦','Battery Park City':'🔋','Central Park':'🌳','Tribeca':'🎬','SoHo':'🎨','NoHo':'🖤','Nolita':'🛍️','Little Italy':'🍝','Chinatown':'🥟','Two Bridges':'🌉','Civic Center':'🏛️','Lower East Side':'🥯','East Village':'🎸','Greenwich Village':'☕','West Village':'🍷','Chelsea':'🖼️','Flatiron District':'📐','Gramercy':'🌿','Stuyvesant Town':'🏘️','Kips Bay':'🏢','Murray Hill':'🏨','Midtown':'🏙️','Theater District':'🎭',"Hell's Kitchen":'🍳','Upper East Side':'🎩','Upper West Side':'🎻','Morningside Heights':'🎓','Harlem':'🎷','East Harlem':'🎺','Hamilton Heights':'🎼','Washington Heights':'🏰','Inwood':'🌲','Marble Hill':'🪨','Roosevelt Island':'🚡',"Randall's Island":'🏟️'};
-function emojiFor(nm){return HOODEMOJI[nm]||'📍';}
+const HOODEMOJI={'Financial District':'ð¦','Battery Park City':'ð','Central Park':'ð³','Tribeca':'ð¬','SoHo':'ð¨','NoHo':'ð¤','Nolita':'ðï¸','Little Italy':'ð','Chinatown':'ð¥','Two Bridges':'ð','Civic Center':'ðï¸','Lower East Side':'ð¥¯','East Village':'ð¸','Greenwich Village':'â','West Village':'ð·','Chelsea':'ð¼ï¸','Flatiron District':'ð','Gramercy':'ð¿','Stuyvesant Town':'ðï¸','Kips Bay':'ð¢','Murray Hill':'ð¨','Midtown':'ðï¸','Theater District':'ð­',"Hell's Kitchen":'ð³','Upper East Side':'ð©','Upper West Side':'ð»','Morningside Heights':'ð','Harlem':'ð·','East Harlem':'ðº','Hamilton Heights':'ð¼','Washington Heights':'ð°','Inwood':'ð²','Marble Hill':'ðª¨','Roosevelt Island':'ð¡',"Randall's Island":'ðï¸'};
+function emojiFor(nm){return HOODEMOJI[nm]||'ð';}
 // ---- three-tier discovery: Bronze 33% / Silver 66% / Gold 99% (=complete, rounds to 100) ----
 const HTHRESH=[33,66,99];
 function hoodTier(pct){return pct>=99?3:pct>=66?2:pct>=33?1:0;}
-function hoodMedal(t){return ['','🥉','🥈','🥇'][t];}
+function hoodMedal(t){return ['','ð¥','ð¥','ð¥'][t];}
 function hoodTierName(t){return ['Locked','Bronze','Silver','Gold'][t];}
 function hoodDisp(pct){return pct>=99?100:pct;}
 // ---- real neighborhood polygons (Pediacities), loaded at runtime; point-in-polygon assignment ----
@@ -68,7 +69,7 @@ function hoodByName(nm){return HOODP?HOODP.find(h=>h.n===nm):null;}
 function computeHoods(){if(!HOODP)return STATS.hoods||[];const agg={};HOODP.forEach(h=>agg[h.n]=[0,0,0,0]);
   for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2,L=elen[i]||0;const nm=hoodOfPt(mla,mlo);if(nm===null)continue;const g=agg[nm];g[1]++;g[3]+=L;if(E[i][3]===1){g[0]++;g[2]+=L;}}
   return HOODP.map(h=>({name:h.n,done:agg[h.n][0],tot:agg[h.n][1],mi:agg[h.n][2]/MI,totMi:agg[h.n][3]/MI,pct:agg[h.n][1]?Math.round(1000*agg[h.n][0]/agg[h.n][1])/10:0})).filter(h=>h.tot>=10);}
-// % of named streets fully redlined (every edge of that name covered) — the "streets finished" criterion
+// % of named streets fully redlined (every edge of that name covered) â the "streets finished" criterion
 function streetsFinishedPct(){const tot={},dn={};for(let i=0;i<E.length;i++){const nm=NM[E[i][2]];if(!nm||nm==='(unnamed)')continue;if(!(nm in tot)){tot[nm]=0;dn[nm]=0;}tot[nm]++;if(E[i][3]===1)dn[nm]++;}let T=0,F=0;for(const k in tot){T++;if(dn[k]===tot[k])F++;}return T?100*F/T:0;}
 function renderDash(){try{
   const LT=liveTotalsFull();
@@ -77,27 +78,27 @@ function renderDash(){try{
   $('d_milesred').textContent=LT.coveredMi.toFixed(1);$('d_milesred_sub').textContent='/'+Math.round(LT.totalMi);
   $('d_longest').textContent=STATS.longestMi.toFixed(1)+' mi';$('d_totmi').textContent=Math.round(STATS.totalWalkedMi)+' mi';
   $('d_walks').textContent=STATS.walks;$('d_remain').textContent=Math.round(LT.totalMi-LT.coveredMi)+' mi';
-  // level — 9 tiers; 3 proportional criteria (33/66/99% milestones at L3/6/9): coverage% / neighborhoods by medal / streets finished%
+  // level â 9 tiers; 3 proportional criteria (33/66/99% milestones at L3/6/9): coverage% / neighborhoods by medal / streets finished%
   const mi=LT.coveredMi, covPct=LT.pct, HD=computeHoods(), stPct=streetsFinishedPct();
-  const hoodsAt=p=>HD.filter(h=>h.pct>=p).length, medal={33:'🥉',66:'🥈',99:'🥇'};
+  const hoodsAt=p=>HD.filter(h=>h.pct>=p).length, medal={33:'ð¥',66:'ð¥',99:'ð¥'};
   const meets=k=>covPct>=LEVELS[k][0]&&hoodsAt(LEVELS[k][3])>=LEVELS[k][2]&&stPct>=LEVELS[k][4];
   let li=0;for(let k=0;k<LEVELS.length;k++){if(meets(k))li=k;}
   $('d_lv').textContent=li+1;$('d_title').textContent=LEVELS[li][1];
   const hasNext=li+1<LEVELS.length;
-  const crow=(ic,lb,cur,req,u)=>{u=u||'';const ok=cur>=req,p=req>0?Math.min(100,100*cur/req):100;return '<div class="crow'+(ok?' ok':'')+'"><span class="cl">'+ic+' '+lb+'</span><span class="cv">'+(ok?'✓':cur+u+' / '+req+u)+'</span><div class="cbar"><i style="width:'+p+'%"></i></div></div>';};
-  if(hasNext){const nk=li+1;$('d_xpsub').textContent='NEXT → LV'+(nk+1)+' '+LEVELS[nk][1];
-    $('d_crit').innerHTML=crow('🟥','coverage',Math.round(covPct),LEVELS[nk][0],'%')+crow('🏘️',medal[LEVELS[nk][3]]+' hoods',hoodsAt(LEVELS[nk][3]),LEVELS[nk][2],'')+crow('🛣️','streets done',Math.round(stPct),LEVELS[nk][4],'%');
-  }else{$('d_xpsub').textContent='★ MAX — Manhattan Master';$('d_crit').innerHTML='';}
+  const crow=(ic,lb,cur,req,u)=>{u=u||'';const ok=cur>=req,p=req>0?Math.min(100,100*cur/req):100;return '<div class="crow'+(ok?' ok':'')+'"><span class="cl">'+ic+' '+lb+'</span><span class="cv">'+(ok?'â':cur+u+' / '+req+u)+'</span><div class="cbar"><i style="width:'+p+'%"></i></div></div>';};
+  if(hasNext){const nk=li+1;$('d_xpsub').textContent='NEXT â LV'+(nk+1)+' '+LEVELS[nk][1];
+    $('d_crit').innerHTML=crow('ð¥','coverage',Math.round(covPct),LEVELS[nk][0],'%')+crow('ðï¸',medal[LEVELS[nk][3]]+' hoods',hoodsAt(LEVELS[nk][3]),LEVELS[nk][2],'')+crow('ð£ï¸','streets done',Math.round(stPct),LEVELS[nk][4],'%');
+  }else{$('d_xpsub').textContent='â MAX â Manhattan Master';$('d_crit').innerHTML='';}
   // streak
-  $('d_streak').textContent=STATS.streak+'-day 🔥';
-  $('d_streaksub').textContent=STATS.todayWalked?'✓ today':'go today';
+  $('d_streak').textContent=STATS.streak+'-day ð¥';
+  $('d_streaksub').textContent=STATS.todayWalked?'â today':'go today';
   $('d_cal').innerHTML=(STATS.cal||[]).map(v=>`<i class="${v?'on':''}"></i>`).join('');
   // badges
   const w=STATS.walks,hoods=computeHoods().sort((a,b)=>b.pct-a.pct),hoodDone=hoods.filter(h=>h.pct>=99).length,hood50=hoods.filter(h=>h.pct>=50).length;
   const pkMi=parkCoveredMi();let uptown=false;for(let i=0;i<E.length;i++){if(E[i][3]===1&&(N[E[i][0]][0]>40.79||N[E[i][1]][0]>40.79)){uptown=true;break;}}
   const brz=hoods.filter(h=>h.pct>=33).length,stF=streetsFinishedPct(),cpH=hoods.find(h=>h.name==='Central Park'),cpPct=cpH?cpH.pct:0;
-  BADGES=[['🥾','25-Mile Club',mi>=25,'Redline 25 miles of the pedestrian network.'],['🏙️','50-Mile Club',mi>=50,'Redline 50 miles of the network.'],['💯','Century',mi>=100,'Redline 100 miles of the network.'],['🚶','Regular',w>=25,'Log 25 GPS-tracked walks on Strava.'],['🏃','Devoted',w>=50,'Log 50 tracked walks.'],['🎖️','Centurion',w>=100,'Log 100 tracked walks.'],['📏','Long Hauler',STATS.longestMi>=10,'Finish a single walk of 10+ miles.'],['🔥','On Fire',STATS.streak>=3,'Walk 3 days in a row.'],['⚡','Unstoppable',STATS.streak>=7,'Walk 7 days in a row.'],['🏆','Conqueror',hoodDone>=1,'Get any neighborhood to 100%.'],['🗺️','Cartographer',hood50>=3,'Get 3 neighborhoods past 50%.'],['🌆','Redliner',LT.pct>=20,'Redline 20% of the whole network.'],['🌳','Park Ranger',pkMi>=25,'Redline 25 miles of parks & greenways.'],['🌉','Uptown Bound',uptown,'Redline any block north of 96th St.'],['🌗','Halfway',LT.pct>=50,'Redline 50% of the whole pedestrian network.'],['🏅','Ultramarathon',STATS.longestMi>=15,'Finish a single walk of 15+ miles.'],['🌟','Relentless',STATS.streak>=14,'Walk 14 days in a row.'],['🥇','Gold Rush',hoodDone>=3,'Get 3 neighborhoods to Gold (99%+).'],['🧭','Explorer',brz>=20,'Reach Bronze (33%+) in 20 neighborhoods.'],['🧹','Street Sweeper',stF>=33,'Fully finish a third of all named streets.'],['🎠','Park Life',cpPct>=25,'Redline a quarter of the Central Park paths.']];
-  $('badges').innerHTML=BADGES.map((b,i)=>`<div class="bdg ${b[2]?'on':''}" data-i="${i}" title="${b[1]}"><span class="ic">${b[2]?b[0]:'🔒'}</span></div>`).join('');
+  BADGES=[['ð¥¾','25-Mile Club',mi>=25,'Redline 25 miles of the pedestrian network.'],['ðï¸','50-Mile Club',mi>=50,'Redline 50 miles of the network.'],['ð¯','Century',mi>=100,'Redline 100 miles of the network.'],['ð¶','Regular',w>=25,'Log 25 GPS-tracked walks on Strava.'],['ð','Devoted',w>=50,'Log 50 tracked walks.'],['ðï¸','Centurion',w>=100,'Log 100 tracked walks.'],['ð','Long Hauler',STATS.longestMi>=10,'Finish a single walk of 10+ miles.'],['ð¥','On Fire',STATS.streak>=3,'Walk 3 days in a row.'],['â¡','Unstoppable',STATS.streak>=7,'Walk 7 days in a row.'],['ð','Conqueror',hoodDone>=1,'Get any neighborhood to 100%.'],['ðºï¸','Cartographer',hood50>=3,'Get 3 neighborhoods past 50%.'],['ð','Redliner',LT.pct>=20,'Redline 20% of the whole network.'],['ð³','Park Ranger',pkMi>=25,'Redline 25 miles of parks & greenways.'],['ð','Uptown Bound',uptown,'Redline any block north of 96th St.'],['ð','Halfway',LT.pct>=50,'Redline 50% of the whole pedestrian network.'],['ð','Ultramarathon',STATS.longestMi>=15,'Finish a single walk of 15+ miles.'],['ð','Relentless',STATS.streak>=14,'Walk 14 days in a row.'],['ð¥','Gold Rush',hoodDone>=3,'Get 3 neighborhoods to Gold (99%+).'],['ð§­','Explorer',brz>=20,'Reach Bronze (33%+) in 20 neighborhoods.'],['ð§¹','Street Sweeper',stF>=33,'Fully finish a third of all named streets.'],['ð ','Park Life',cpPct>=25,'Redline a quarter of the Central Park paths.']];
+  $('badges').innerHTML=BADGES.map((b,i)=>`<div class="bdg ${b[2]?'on':''}" data-i="${i}" title="${b[1]}"><span class="ic">${b[2]?b[0]:'ð'}</span></div>`).join('');
   const _bc=$('bdg_ct');if(_bc)_bc.textContent=BADGES.filter(b=>b[2]).length+'/'+BADGES.length;
   // hoods
   fillHoods(hoods);
@@ -116,10 +117,10 @@ function fillHoods(list){let hs=(list||computeHoods()).slice();
     return b.pct-a.pct;
   });
   $('hoods').innerHTML=hs.map(h=>{const tr=hoodTier(h.pct);const ec=tr===0?'lk':tr===1?'bw':tr===3?'gold':'';const med=hoodMedal(tr);const left=Math.max(0,h.totMi-h.mi);
-    const badge=tr===0?'<b class="med lk2">🔒</b>':(med?`<b class="med">${med}</b>`:'');
+    const badge=tr===0?'<b class="med lk2">ð</b>':(med?`<b class="med">${med}</b>`:'');
     let sub;
-    if(HOODSORT==='near'){const d=(h._d>=1e9)?null:h._d;sub=(d==null?'—':'<b style="color:#37d5f2">~'+d.toFixed(1)+' mi</b> away')+' · '+hoodDisp(h.pct)+'% redlined';}
-    else if(HOODSORT==='left'||HOODSORT==='close')sub='<b style="color:#ff8a6b">'+left.toFixed(1)+' mi</b> to go · '+h.mi.toFixed(1)+' / '+h.totMi.toFixed(1);
+    if(HOODSORT==='near'){const d=(h._d>=1e9)?null:h._d;sub=(d==null?'â':'<b style="color:#37d5f2">~'+d.toFixed(1)+' mi</b> away')+' Â· '+hoodDisp(h.pct)+'% redlined';}
+    else if(HOODSORT==='left'||HOODSORT==='close')sub='<b style="color:#ff8a6b">'+left.toFixed(1)+' mi</b> to go Â· '+h.mi.toFixed(1)+' / '+h.totMi.toFixed(1);
     else sub=h.mi.toFixed(1)+' / '+h.totMi.toFixed(1)+' mi redlined';
     return `<div class="hood t${tr} ${tr===3?'done':''}" data-name="${h.name}"><div class="hr"><span><span class="emo ${ec}">${emojiFor(h.name)}</span>${h.name}</span><span class="p">${badge}${hoodDisp(h.pct)}%</span></div><div class="hbar"><i style="width:${h.pct}%"></i></div><div class="hmi">${sub}</div></div>`;}).join('');}
 
@@ -128,7 +129,7 @@ let cmap=null;
 function pinHTML(name,pct){const emo=emojiFor(name);const tr=hoodTier(pct);
   // tier: locked(0) / bronze(1,>=33) / silver(2,>=66) / gold(3,>=99 complete)
   let icls='',lock='';
-  if(tr===0){icls='lk';lock='<span class="lk2">🔒</span>';}else if(tr===1){icls='bw';}else{icls='';}
+  if(tr===0){icls='lk';lock='<span class="lk2">ð</span>';}else if(tr===1){icls='bw';}else{icls='';}
   const med=hoodMedal(tr),medBadge=med?'<span class="medb">'+med+'</span>':'';
   const ring=tr===3?'#ffd23f;box-shadow:0 0 13px rgba(255,210,63,.9)':'conic-gradient(#ff2e2e '+pct+'%, #2a3340 '+pct+'% 100%)';
   return '<div class="lvlpin"><div class="ring" style="background:'+ring+'"><i class="'+icls+'">'+emo+'</i></div>'+lock+medBadge+'<div class="lbl">'+name.split(' / ')[0]+'</div></div>';}
@@ -149,7 +150,7 @@ showConquest('map');
 
 // ---------- map (fog of war) ----------
 let map=L.map('map',{preferCanvas:true,zoomControl:false}).setView([N[HOME][0],N[HOME][1]],13);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OSM © CARTO',maxZoom:20}).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'Â© OSM Â© CARTO',maxZoom:20}).addTo(map);
 // redline theme: covered = bright red, uncovered = very visible green
 function edgeStyle(c){return c?{color:'#ff2e2e',weight:1.5,opacity:.78,interactive:false}:{color:'#27e04a',weight:2,opacity:.95,interactive:false};}
 function routeNewSegments(ns){const segs=[];for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);if(ei>=0&&E[ei][3]===0)segs.push([[N[ns[i]][0],N[ns[i]][1]],[N[ns[i+1]][0],N[ns[i+1]][1]]]);}return segs;}
@@ -168,7 +169,7 @@ let lastHeading=0,_lastRot=0,headingUp=true,voiceOn=true,wakeLock=null,walkedLay
 function setHeading(h){lastHeading=h;if(meMarker){const el=meMarker.getElement();if(el){const m=el.querySelector('.me');if(m)m.style.transform='rotate('+h+'deg)';}}
   if(headingUp&&document.body.classList.contains('s-nav')&&Math.abs(((h-_lastRot+540)%360)-180)>3){_lastRot=h;$('map').style.transform='rotate('+(-h)+'deg) scale(1.42)';}}
 function speak(t){if(!voiceOn||!window.speechSynthesis)return;try{window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.rate=1.05;window.speechSynthesis.speak(u);}catch(e){}}
-function maneuverGlyph(t){if(/U-turn/.test(t))return'⟲';if(/left/.test(t))return'↰';if(/right/.test(t))return'↱';return'↑';}
+function maneuverGlyph(t){if(/U-turn/.test(t))return'â²';if(/left/.test(t))return'â°';if(/right/.test(t))return'â±';return'â';}
 async function acquireWake(){try{if('wakeLock'in navigator)wakeLock=await navigator.wakeLock.request('screen');}catch(e){}}
 function releaseWake(){try{if(wakeLock){wakeLock.release();wakeLock=null;}}catch(e){}}
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&navWatch!=null&&!wakeLock)acquireWake();});
@@ -178,7 +179,7 @@ function startHeading(){if(_headingOn)return;function handle(e){let h=null;if(ty
 function meIcon(){return L.divIcon({className:'',html:'<div class="me"><span class="arr"></span><span class="dot"></span></div>',iconSize:[30,30],iconAnchor:[15,15]});}
 
 async function resolveStart(force){const sm=force||(document.querySelector('input[name=start]:checked')||{}).value||'home';
-  if(sm==='loc'){setStatus('Getting your location…');try{const pos=await new Promise((rs,rj)=>navigator.geolocation.getCurrentPosition(rs,rj,{enableHighAccuracy:true,timeout:12000,maximumAge:30000}));const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){START=HOME;startLL=[N[HOME][0],N[HOME][1]];setStatus('⚠ Off-grid — using 82 Beaver.');}else{START=sn;startLL=[pos.coords.latitude,pos.coords.longitude];}}catch(e){START=HOME;startLL=[N[HOME][0],N[HOME][1]];setStatus('⚠ Location unavailable — using 82 Beaver.');}}
+  if(sm==='loc'){setStatus('Getting your locationâ¦');try{const pos=await new Promise((rs,rj)=>navigator.geolocation.getCurrentPosition(rs,rj,{enableHighAccuracy:true,timeout:12000,maximumAge:30000}));const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){START=HOME;startLL=[N[HOME][0],N[HOME][1]];setStatus('â  Off-grid â using 82 Beaver.');}else{START=sn;startLL=[pos.coords.latitude,pos.coords.longitude];}}catch(e){START=HOME;startLL=[N[HOME][0],N[HOME][1]];setStatus('â  Location unavailable â using 82 Beaver.');}}
   else{START=HOME;startLL=[N[HOME][0],N[HOME][1]];}}
 
 // ---------- preview ----------
@@ -186,7 +187,7 @@ let CUR=null;
 // MTA line bullets (official colors) for the start/end subway stops
 const LINECOLOR={1:'#EE352E',2:'#EE352E',3:'#EE352E',4:'#00933C',5:'#00933C',6:'#00933C',7:'#B933AD',A:'#0039A6',C:'#0039A6',E:'#0039A6',B:'#FF6319',D:'#FF6319',F:'#FF6319',M:'#FF6319',G:'#6CBE45',J:'#996633',Z:'#996633',L:'#A7A9AC',N:'#FCCC0A',Q:'#FCCC0A',R:'#FCCC0A',W:'#FCCC0A',S:'#808183'};
 function lineBadges(routes){if(!routes)return '';return String(routes).split(/[^A-Za-z0-9]+/).filter(Boolean).map(rt=>{const u=rt.toUpperCase(),c=LINECOLOR[u]||'#555',dark='NQRW'.indexOf(u)>=0;return '<span class="mtab" style="background:'+c+';color:'+(dark?'#000':'#fff')+'">'+u+'</span>';}).join('');}
-function transitHTML(tr){const row=(lbl,s)=>s?'<div class="trow"><span class="tlbl">'+lbl+'</span><span class="tsta">'+s[2]+'</span>'+lineBadges(s[3])+'</div>':'';return '<div class="ptransit">'+row('🚇 START',tr.start)+row('🏁 END',tr.end)+'</div>';}
+function transitHTML(tr){const row=(lbl,s)=>s?'<div class="trow"><span class="tlbl">'+lbl+'</span><span class="tsta">'+s[2]+'</span>'+lineBadges(s[3])+'</div>':'';return '<div class="ptransit">'+row('ð START',tr.start)+row('ð END',tr.end)+'</div>';}
 function showPreview(res,dest,pace){CUR={res,dest,pace};
   if(routeLayer)map.removeLayer(routeLayer);if(routeNewLayer)map.removeLayer(routeNewLayer);if(destMarker)map.removeLayer(destMarker);if(startMarker)map.removeLayer(startMarker);
   routeNewLayer=L.polyline(routeNewSegments(res.ns),{color:'#27e04a',weight:9,opacity:.6,interactive:false}).addTo(map);
@@ -202,26 +203,26 @@ function showPreview(res,dest,pace){CUR={res,dest,pace};
   const wstr=waypointsFor(res.ns).map(p=>p[0].toFixed(5)+','+p[1].toFixed(5)).join('|');
   $('navG').href='https://www.google.com/maps/dir/?api=1&travelmode=walking&origin='+sLat+','+sLng+'&destination='+dLat+','+dLng+(wstr?'&waypoints='+encodeURIComponent(wstr):'');
   $('navA').href='https://maps.apple.com/?dirflg=w&saddr='+sLat+','+sLng+'&daddr='+dLat+','+dLng;
-  let html='<ol>';let cum=0;res.legs.forEach((lg,i)=>{let turn;if(i===0)turn='Head '+compass(bearing(lg.a,lg.b));else{const pb=bearing(res.legs[i-1].a,res.legs[i-1].b),cb=bearing(lg.a,lg.b);turn=turnWord(((cb-pb+540)%360)-180);}cum+=lg.len/MI;html+=`<li>${turn} on <b>${lg.name}</b>${lg.nw?'<span class="pill">new</span>':''}<br><span class="d">${(lg.len/MI).toFixed(2)} mi · ${cum.toFixed(2)} total</span></li>`;});
-  html+=`<li>🏁 Arrive — <b>${(dest.name||'destination').split(',').slice(0,2).join(',')}</b></li></ol>`;$('dirs').innerHTML=html;
+  let html='<ol>';let cum=0;res.legs.forEach((lg,i)=>{let turn;if(i===0)turn='Head '+compass(bearing(lg.a,lg.b));else{const pb=bearing(res.legs[i-1].a,res.legs[i-1].b),cb=bearing(lg.a,lg.b);turn=turnWord(((cb-pb+540)%360)-180);}cum+=lg.len/MI;html+=`<li>${turn} on <b>${lg.name}</b>${lg.nw?'<span class="pill">new</span>':''}<br><span class="d">${(lg.len/MI).toFixed(2)} mi Â· ${cum.toFixed(2)} total</span></li>`;});
+  html+=`<li>ð Arrive â <b>${(dest.name||'destination').split(',').slice(0,2).join(',')}</b></li></ol>`;$('dirs').innerHTML=html;
   showScreen('preview');setTimeout(()=>{try{map.invalidateSize();map.fitBounds(routeLayer.getBounds().pad(0.18));}catch(e){}},160);}
 
 async function run(){const dmode=(document.querySelector('input[name=dest]:checked')||{}).value||'home';
   const target=parseFloat($('dist').value)||3.33,pace=PACE,loop=$('loop').checked;
-  $('go').textContent='Planning…';await resolveStart();
+  $('go').textContent='Planningâ¦';await resolveStart();
   let dest;
   if(dmode==='home'){dest={lat:N[HOME][0],lon:N[HOME][1],name:'Home'};}
-  else{const addr=$('addr').value.trim();if(!addr){setStatus('Enter a destination.');$('go').textContent='Plan route';return;}try{dest=await geocode(addr);}catch(e){setStatus('⚠ '+e.message);$('go').textContent='Plan route';return;}}
+  else{const addr=$('addr').value.trim();if(!addr){setStatus('Enter a destination.');$('go').textContent='Plan route';return;}try{dest=await geocode(addr);}catch(e){setStatus('â  '+e.message);$('go').textContent='Plan route';return;}}
   const dnode=nearestNode(dest.lat,dest.lon);
-  if(havLL(dest.lat,dest.lon,N[dnode][0],N[dnode][1])>500){setStatus('⚠ Destination outside the Manhattan grid.');$('go').textContent='Plan route';return;}
+  if(havLL(dest.lat,dest.lon,N[dnode][0],N[dnode][1])>500){setStatus('â  Destination outside the Manhattan grid.');$('go').textContent='Plan route';return;}
   await new Promise(r=>setTimeout(r,20));
   function buildRoute(B){if(loop){const t1=greedy(START,dnode,Math.max(dijkstra(dnode).dist[START],B*0.5));const t2=greedy(dnode,START,Math.max(0.1,B-t1.totalMi*MI));return finalize(t1.ns.concat(t2.ns.slice(1)));}return greedy(START,dnode,B);}
   const pctOf=r=>(r.totalMi>0?r.newMi/r.totalMi:0);const MINNEW=1/3;let res=buildRoute(target*MI);
   if(pctOf(res)<MINNEW){const capMi=Math.min(Math.max(target*2,res.totalMi+3),target+6);let att=0;for(let d=target+0.5;d<=capMi+1e-6;d+=0.5){if(++att>9)break;const r2=buildRoute(d*MI);if(pctOf(r2)>pctOf(res))res=r2;if(pctOf(res)>=MINNEW)break;}}
   $('go').textContent='Plan route';setStatus('');showPreview(res,dest,pace);}
 
-function nearestNew(){if(!navigator.geolocation){setStatus('Geolocation needed.');return;}setStatus('Finding your location…');
-  navigator.geolocation.getCurrentPosition(function(pos){const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){setStatus('⚠ Off the Manhattan grid.');return;}START=sn;startLL=[pos.coords.latitude,pos.coords.longitude];setStatus('Finding nearest unexplored ground…');const {dist}=dijkstra(sn);let best=-1,bd=Infinity,bt=-1;for(let i=0;i<E.length;i++){if(E[i][3]!==0)continue;const a=E[i][0],b=E[i][1];let dn=Math.min(dist[a],dist[b]);if(!isFinite(dn)){const mla=(N[a][0]+N[b][0])/2,mlo=(N[a][1]+N[b][1])/2;dn=havLL(startLL[0],startLL[1],mla,mlo)*1.3;}if(dn<bd){bd=dn;best=i;bt=(dist[a]<=dist[b])?a:b;}}if(best<0){setStatus('No unexplored ground found.');return;}const pace=PACE;const tgt=nearestReachable(bt,dist);const res=directRoute(sn,tgt);setStatus('');showPreview(res,{lat:N[bt][0],lon:N[bt][1],name:(NM[E[best][2]]||'nearest unexplored path')},pace);},function(e){setStatus('⚠ Location needed: '+(e.message||e.code));},{enableHighAccuracy:true,timeout:12000});}
+function nearestNew(){if(!navigator.geolocation){setStatus('Geolocation needed.');return;}setStatus('Finding your locationâ¦');
+  navigator.geolocation.getCurrentPosition(function(pos){const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){setStatus('â  Off the Manhattan grid.');return;}START=sn;startLL=[pos.coords.latitude,pos.coords.longitude];setStatus('Finding nearest unexplored groundâ¦');const {dist}=dijkstra(sn);let best=-1,bd=Infinity,bt=-1;for(let i=0;i<E.length;i++){if(E[i][3]!==0)continue;const a=E[i][0],b=E[i][1];let dn=Math.min(dist[a],dist[b]);if(!isFinite(dn)){const mla=(N[a][0]+N[b][0])/2,mlo=(N[a][1]+N[b][1])/2;dn=havLL(startLL[0],startLL[1],mla,mlo)*1.3;}if(dn<bd){bd=dn;best=i;bt=(dist[a]<=dist[b])?a:b;}}if(best<0){setStatus('No unexplored ground found.');return;}const pace=PACE;const tgt=nearestReachable(bt,dist);const res=directRoute(sn,tgt);setStatus('');showPreview(res,{lat:N[bt][0],lon:N[bt][1],name:(NM[E[best][2]]||'nearest unexplored path')},pace);},function(e){setStatus('â  Location needed: '+(e.message||e.code));},{enableHighAccuracy:true,timeout:12000});}
 
 // ---------- neighborhood clear walk ----------
 function inBox(la,lo,b){return b[1]<=la&&la<=b[3]&&b[2]<=lo&&lo<=b[4];}
@@ -230,8 +231,8 @@ async function neighborhoodRoute(name){
   // isolate to edges INSIDE this neighborhood; sweep starts/ends at MTA subway stops (begin near the work, end at nearest stop to the finish)
   const allowEdge=new Uint8Array(E.length);const remaining=new Set();
   for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;if(!ptInHood(mla,mlo,hd))continue;allowEdge[i]=1;if(E[i][3]===0)remaining.add(i);}
-  if(remaining.size===0){toast('✅ '+name+' is already fully redlined!');return;}
-  setStatus('Mapping the most efficient '+name+' sweep…');await new Promise(r=>setTimeout(r,30));
+  if(remaining.size===0){toast('â '+name+' is already fully redlined!');return;}
+  setStatus('Mapping the most efficient '+name+' sweepâ¦');await new Promise(r=>setTimeout(r,30));
   const st=(hd.st&&hd.st.length)?hd.st:(hd.s?[hd.s]:[]);
   let uLat=0,uLon=0,uc=0;remaining.forEach(i=>{uLat+=(N[E[i][0]][0]+N[E[i][1]][0])/2;uLon+=(N[E[i][0]][1]+N[E[i][1]][1])/2;uc++;});uLat/=uc;uLon/=uc;
   let startS=null,bd=Infinity;for(const s of st){const d=(s[0]-uLat)**2+(s[1]-uLon)**2;if(d<bd){bd=d;startS=s;}}
@@ -243,7 +244,7 @@ async function neighborhoodRoute(name){
   const endSt=(res.endStIdx>=0&&st[res.endStIdx])?st[res.endStIdx]:startS;
   setStatus('');
   showPreview(res,{lat:endSt?endSt[0]:N[startNode][0],lon:endSt?endSt[1]:N[startNode][1],name:'Clear '+name,transit:{start:startS,end:endSt}},pace);
-  if(res.hoodLeftMi>0.4)setTimeout(()=>toast('🧩 ~'+res.hoodLeftMi.toFixed(1)+' mi of '+name+' sits on disconnected paths — Clear again from there to finish.'),500);
+  if(res.hoodLeftMi>0.4)setTimeout(()=>toast('ð§© ~'+res.hoodLeftMi.toFixed(1)+' mi of '+name+' sits on disconnected paths â Clear again from there to finish.'),500);
 }
 // Efficient in-neighborhood sweep between subway stops: greedily clear every uncovered block, staying in-hood (soft penalty), then head to the nearest stop.
 async function hoodClear(startNode,endNodes,remaining,inHood){
@@ -268,8 +269,8 @@ function openHoodView(name){const hd=hoodByName(name);if(!hd)return;hoodViewName
   const hs=computeHoods().find(h=>h.name===name);const pct=hs?hs.pct:0;const tr=hoodTier(pct),med=hoodMedal(tr);
   $('hv_title').textContent=emojiFor(name)+' '+(med?med+' ':'')+name;
   let sub;
-  if(tr===3){sub='🥇 Gold — 100% redlined! ✅';}
-  else{const nm=['🥉 Bronze','🥈 Silver','🥇 Gold'][tr];sub=hoodDisp(pct)+'% · '+(HTHRESH[tr]-pct).toFixed(1)+'% to '+nm+' — tap Clear to sweep it';}
+  if(tr===3){sub='ð¥ Gold â 100% redlined! â';}
+  else{const nm=['ð¥ Bronze','ð¥ Silver','ð¥ Gold'][tr];sub=hoodDisp(pct)+'% Â· '+(HTHRESH[tr]-pct).toFixed(1)+'% to '+nm+' â tap Clear to sweep it';}
   $('hv_sub').textContent=sub;
   $('hoodview').classList.add('show');
   setTimeout(()=>{try{
@@ -287,14 +288,14 @@ let umap=null;
 function showUcTab(t){const o=$('uncov');if(t==='map'){o.classList.add('mapview');$('uc_tmap').classList.add('on');$('uc_tlist').classList.remove('on');buildUmap();}else{o.classList.remove('mapview');$('uc_tlist').classList.add('on');$('uc_tmap').classList.remove('on');}}
 function nearestReachable(node,dist){if(isFinite(dist[node]))return node;let bd=Infinity,bn=node;for(let i=0;i<N.length;i++){if(!isFinite(dist[i]))continue;const d=havLL(N[node][0],N[node][1],N[i][0],N[i][1]);if(d<bd){bd=d;bn=i;}}return bn;}
 function routeToUncov(node,nm){$('uncov').classList.remove('show');const pace=PACE;const {dist}=dijkstra(START);const tgt=nearestReachable(node,dist);const res=directRoute(START,tgt);showPreview(res,{lat:N[node][0],lon:N[node][1],name:nm||'Unexplored path'},pace);}
-async function openUncov(){setStatus('');$('uc_sub').textContent='Locating…';$('uncov').classList.add('show');showUcTab('list');await resolveStart('loc');
+async function openUncov(){setStatus('');$('uc_sub').textContent='Locatingâ¦';$('uncov').classList.add('show');showUcTab('list');await resolveStart('loc');
   const {dist}=dijkstra(START);const byName={};
   for(let i=0;i<E.length;i++){if(E[i][3]!==0)continue;const a=E[i][0],b=E[i][1];let dn=Math.min(dist[a],dist[b]);
-    if(!isFinite(dn)){const mla=(N[a][0]+N[b][0])/2,mlo=(N[a][1]+N[b][1])/2;dn=havLL(startLL[0],startLL[1],mla,mlo)*1.3;} // park/plaza island → crow-flies estimate
+    if(!isFinite(dn)){const mla=(N[a][0]+N[b][0])/2,mlo=(N[a][1]+N[b][1])/2;dn=havLL(startLL[0],startLL[1],mla,mlo)*1.3;} // park/plaza island â crow-flies estimate
     const node=(dist[a]<=dist[b])?a:b;const nm=NM[E[i][2]]||'(unnamed path)';if(!byName[nm]||dn<byName[nm].dn)byName[nm]={dn,node,nm};}
   const arr=Object.values(byName).sort((x,y)=>x.dn-y.dn).slice(0,80);
-  $('uc_sub').textContent=arr.length+' nearest unexplored streets & paths · tap to plan a route';
-  $('uc_list').innerHTML=arr.map(o=>`<div class="ucrow" data-node="${o.node}" data-name="${o.nm.replace(/"/g,'&quot;')}"><span>${o.nm}</span><b>${(o.dn/MI).toFixed(2)} mi</b></div>`).join('')||'<div class="ucsub">🎉 Nothing left — fully redlined!</div>';}
+  $('uc_sub').textContent=arr.length+' nearest unexplored streets & paths Â· tap to plan a route';
+  $('uc_list').innerHTML=arr.map(o=>`<div class="ucrow" data-node="${o.node}" data-name="${o.nm.replace(/"/g,'&quot;')}"><span>${o.nm}</span><b>${(o.dn/MI).toFixed(2)} mi</b></div>`).join('')||'<div class="ucsub">ð Nothing left â fully redlined!</div>';}
 function buildUmap(){if(umap){setTimeout(()=>{try{umap.invalidateSize();umap.setView(startLL,14);}catch(e){}},120);return;}
   umap=L.map('umap',{preferCanvas:true,zoomControl:true,attributionControl:false}).setView(startLL,14);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:20}).addTo(umap);
@@ -312,12 +313,12 @@ function buildNavSteps(res){const ns=res.ns;const names=[];for(let i=0;i+1<ns.le
   return {ns,names,cum,steps,total:cum[cum.length-1],first:'Head '+compass(bearing(ns[0],ns[1]))+' on '+names[0]};}
 function nearestRouteIdx(la,lo){const ns=NAV.ns;let bi=0,bd=Infinity;for(let i=0;i<ns.length;i++){const d=havLL(la,lo,N[ns[i]][0],N[ns[i]][1]);if(d<bd){bd=d;bi=i;}}return bi;}
 function checkNewCover(la,lo){let any=false,lastNm='';for(let i=0;i<E.length;i++){if(E[i][3]===1)continue;const a=E[i][0],b=E[i][1];if(segDistM(la,lo,N[a][0],N[a][1],N[b][0],N[b][1])<18){E[i][3]=1;edgeLines[i].setStyle(edgeStyle(1));newSegs.add(i);newMi+=elen[i]/MI;any=true;lastNm=NM[E[i][2]]||'a street';}}
-  if(any){toast('🟢 New street! '+lastNm,3300);buzz(70);$('nav_new').textContent='+'+newMi.toFixed(2)+' new mi · '+newSegs.size+' blocks unlocked';}}
+  if(any){toast('ð¢ New street! '+lastNm,3300);buzz(70);$('nav_new').textContent='+'+newMi.toFixed(2)+' new mi Â· '+newSegs.size+' blocks unlocked';}}
 function startNav(){if(!CUR)return;if(!navigator.geolocation){alert('Location not available on this device.');return;}
   NAV=buildNavSteps(CUR.res);newSegs=new Set();newMi=0;navStartPct=liveIslandPct();_annF=new Set();_annN=new Set();smLL=null;
-  showScreen('nav');startHeading();acquireWake();headingUp=true;$('rotBtn').classList.add('on');$('rotBtn').textContent='🧭';
+  showScreen('nav');startHeading();acquireWake();headingUp=true;$('rotBtn').classList.add('on');$('rotBtn').textContent='ð§­';
   if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}walkedLayer=L.polyline([],{color:'#ff2e2e',weight:6,opacity:.95}).addTo(map);
-  $('nav_arrow').textContent='↑';$('nav_inst').textContent=NAV.first;$('nav_dist').textContent='';$('nav_new').textContent='';$('nav_prog').textContent='0.00 / '+(NAV.total/MI).toFixed(2)+' mi';
+  $('nav_arrow').textContent='â';$('nav_inst').textContent=NAV.first;$('nav_dist').textContent='';$('nav_new').textContent='';$('nav_prog').textContent='0.00 / '+(NAV.total/MI).toFixed(2)+' mi';
   speak(NAV.first);let first=true;
   navWatch=navigator.geolocation.watchPosition(function(p){
     let la=p.coords.latitude,lo=p.coords.longitude;const acc=p.coords.accuracy||20;
@@ -331,22 +332,22 @@ function startNav(){if(!CUR)return;if(!navigator.geolocation){alert('Location no
     if(walkedLayer)walkedLayer.setLatLngs(NAV.ns.slice(0,ni+1).map(i=>[N[i][0],N[i][1]]));
     if(routeLayer)routeLayer.setLatLngs(NAV.ns.slice(ni).map(i=>[N[i][0],N[i][1]]));
     if(routeNewLayer)routeNewLayer.setLatLngs(routeNewSegments(NAV.ns.slice(ni)));
-    if(off>45){$('navtop').classList.add('off');$('nav_arrow').textContent='↩';$('nav_inst').textContent='Off route — back to the blue line';$('nav_dist').textContent=fmtDist(off)+' off';const n=Date.now();if(n-_offBuzz>6000){buzz([60,60,60]);_offBuzz=n;}}
+    if(off>45){$('navtop').classList.add('off');$('nav_arrow').textContent='â©';$('nav_inst').textContent='Off route â back to the blue line';$('nav_dist').textContent=fmtDist(off)+' off';const n=Date.now();if(n-_offBuzz>6000){buzz([60,60,60]);_offBuzz=n;}}
     else{$('navtop').classList.remove('off');const up=NAV.steps.find(s=>s.idx>ni);const dDest=havLL(la,lo,N[NAV.ns[NAV.ns.length-1]][0],N[NAV.ns[NAV.ns.length-1]][1]);
       if(up){const dT=havLL(la,lo,N[NAV.ns[up.idx]][0],N[NAV.ns[up.idx]][1]);$('nav_arrow').textContent=maneuverGlyph(up.text);$('nav_inst').textContent=up.text;$('nav_dist').textContent='in '+fmtDist(dT);
         if(dT<90&&!_annF.has(up.idx)){_annF.add(up.idx);speak('In '+fmtDist(dT)+', '+up.text);}
         if(dT<25&&!_annN.has(up.idx)){_annN.add(up.idx);speak(up.text);buzz(80);}}
-      else if(dDest<30){$('nav_arrow').textContent='🏁';$('nav_inst').textContent='Arrived — nice work!';$('nav_dist').textContent='';if(!_annN.has(-1)){_annN.add(-1);speak('You have arrived. Nice work!');buzz([100,60,100]);}}
-      else{$('nav_arrow').textContent='↑';$('nav_inst').textContent='Continue to destination';$('nav_dist').textContent=fmtDist(dDest)+' to go';}}
+      else if(dDest<30){$('nav_arrow').textContent='ð';$('nav_inst').textContent='Arrived â nice work!';$('nav_dist').textContent='';if(!_annN.has(-1)){_annN.add(-1);speak('You have arrived. Nice work!');buzz([100,60,100]);}}
+      else{$('nav_arrow').textContent='â';$('nav_inst').textContent='Continue to destination';$('nav_dist').textContent=fmtDist(dDest)+' to go';}}
     const walked=NAV.cum[ni]||0,remMi=(NAV.total-walked)/MI,pace=CUR.pace||22.37;
-    $('nav_prog').textContent=(walked/MI).toFixed(2)+' / '+(NAV.total/MI).toFixed(2)+' mi · ~'+Math.max(0,Math.round(remMi*pace))+' min left';
-  },function(e){$('nav_inst').textContent='⚠ Location error';$('nav_dist').textContent=(e.message||e.code)+' — grant permission';},{enableHighAccuracy:true,maximumAge:1000,timeout:20000});}
+    $('nav_prog').textContent=(walked/MI).toFixed(2)+' / '+(NAV.total/MI).toFixed(2)+' mi Â· ~'+Math.max(0,Math.round(remMi*pace))+' min left';
+  },function(e){$('nav_inst').textContent='â  Location error';$('nav_dist').textContent=(e.message||e.code)+' â grant permission';},{enableHighAccuracy:true,maximumAge:1000,timeout:20000});}
 function endNav(){if(navWatch!=null){navigator.geolocation.clearWatch(navWatch);navWatch=null;}releaseWake();if(window.speechSynthesis)window.speechSynthesis.cancel();$('map').style.transform='';if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}if(routeNewLayer){map.removeLayer(routeNewLayer);routeNewLayer=null;}showRecap();}
 function walkabout(){if(!navigator.geolocation){alert('Location not available on this device.');return;}
   NAV=null;newSegs=new Set();newMi=0;navStartPct=liveIslandPct();smLL=null;
   if(routeLayer){map.removeLayer(routeLayer);routeLayer=null;}if(routeNewLayer){map.removeLayer(routeNewLayer);routeNewLayer=null;}if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}
-  showScreen('nav');startHeading();acquireWake();headingUp=true;$('rotBtn').classList.add('on');$('rotBtn').textContent='🧭';
-  $('nav_arrow').textContent='🚶';$('nav_inst').textContent='Walkabout — wander freely';$('nav_dist').textContent='new streets light up as you walk';$('nav_new').textContent='';$('nav_prog').textContent='';
+  showScreen('nav');startHeading();acquireWake();headingUp=true;$('rotBtn').classList.add('on');$('rotBtn').textContent='ð§­';
+  $('nav_arrow').textContent='ð¶';$('nav_inst').textContent='Walkabout â wander freely';$('nav_dist').textContent='new streets light up as you walk';$('nav_new').textContent='';$('nav_prog').textContent='';
   speak('Walkabout. New streets light up as you walk.');let first=true;
   navWatch=navigator.geolocation.watchPosition(function(p){
     let la=p.coords.latitude,lo=p.coords.longitude;const acc=p.coords.accuracy||20;
@@ -356,26 +357,26 @@ function walkabout(){if(!navigator.geolocation){alert('Location not available on
     if(typeof p.coords.heading==='number'&&!isNaN(p.coords.heading)&&p.coords.speed>0.3)setHeading(p.coords.heading);
     if(first){map.setView(ll,17);first=false;}else map.panTo(ll,{animate:true});
     checkNewCover(la,lo);
-    $('nav_prog').textContent='+'+newMi.toFixed(2)+' new mi · '+newSegs.size+' blocks · island '+liveIslandPct().toFixed(1)+'%';
-  },function(e){$('nav_inst').textContent='⚠ Location error';$('nav_dist').textContent=(e.message||e.code)+' — grant permission';},{enableHighAccuracy:true,maximumAge:1000,timeout:20000});}
+    $('nav_prog').textContent='+'+newMi.toFixed(2)+' new mi Â· '+newSegs.size+' blocks Â· island '+liveIslandPct().toFixed(1)+'%';
+  },function(e){$('nav_inst').textContent='â  Location error';$('nav_dist').textContent=(e.message||e.code)+' â grant permission';},{enableHighAccuracy:true,maximumAge:1000,timeout:20000});}
 function showRecap(){const now=liveIslandPct(),walked=(NAV&&NAV.cum&&NAV.lastIdx)?0:0;
-  $('rc_sub').textContent=newSegs.size>0?'You revealed new territory':'No new streets this time — still counts!';
-  const rows=[['New streets cleared',newSegs.size+' blocks',true],['New miles redlined',newMi.toFixed(2)+' mi',true],['Island redlined',navStartPct.toFixed(1)+'% → '+now.toFixed(1)+'%',now>navStartPct],['XP earned','+'+Math.round(newMi*10)+' XP',newMi>0],['Streak',STATS.streak+' days 🔥',true]];
+  $('rc_sub').textContent=newSegs.size>0?'You revealed new territory':'No new streets this time â still counts!';
+  const rows=[['New streets cleared',newSegs.size+' blocks',true],['New miles redlined',newMi.toFixed(2)+' mi',true],['Island redlined',navStartPct.toFixed(1)+'% â '+now.toFixed(1)+'%',now>navStartPct],['XP earned','+'+Math.round(newMi*10)+' XP',newMi>0],['Streak',STATS.streak+' days ð¥',true]];
   $('rc_body').innerHTML=rows.map(r=>`<div class="rrow"><span>${r[0]}</span><b class="${r[2]?'g':''}">${r[1]}</b></div>`).join('');
   $('d_pct').textContent=now.toFixed(1)+'%';$('d_bar').style.width=Math.min(100,now)+'%';
   $('recap').classList.add('show');if(newSegs.size>0)buzz([100,60,100]);}
 
 // ---------- update button ----------
-$('updateBtn').onclick=async()=>{$('updateBtn').textContent='…';try{if('serviceWorker'in navigator){const rs=await navigator.serviceWorker.getRegistrations();for(const r of rs)await r.unregister();}if(window.caches){const ks=await caches.keys();for(const k of ks)await caches.delete(k);}}catch(e){}location.replace(location.pathname+'?u='+Date.now());};
+$('updateBtn').onclick=async()=>{$('updateBtn').textContent='â¦';try{if('serviceWorker'in navigator){const rs=await navigator.serviceWorker.getRegistrations();for(const r of rs)await r.unregister();}if(window.caches){const ks=await caches.keys();for(const k of ks)await caches.delete(k);}}catch(e){}location.replace(location.pathname+'?u='+Date.now());};
 const SYNC_URL='https://joegrimaldi--f51eddc8772111f1ac241607ee4eb77e.web.val.run';
-{const sb=$('syncBtn');if(sb)sb.onclick=async()=>{if(sb.disabled)return;sb.disabled=true;const o=sb.textContent;sb.textContent='⏳ Syncing…';toast('⏳ Pulling your latest Strava walks…');try{const r=await fetch(SYNC_URL,{method:'POST'});const tx=(await r.text()).trim();if(r.ok&&/sync started/i.test(tx)){toast("✅ Sync started — new walks will appear in ~1 min. Tap ⟳ Update then.");}else{toast('⚠️ Sync error: '+tx.slice(0,60));}}catch(e){toast('⚠️ Could not reach sync — check connection.');}setTimeout(()=>{sb.disabled=false;sb.textContent=o;},4000);};}
+{const sb=$('syncBtn');if(sb)sb.onclick=async()=>{if(sb.disabled)return;sb.disabled=true;const o=sb.textContent;sb.textContent='â³ Syncingâ¦';toast('â³ Pulling your latest Strava walksâ¦');try{const r=await fetch(SYNC_URL,{method:'POST'});const tx=(await r.text()).trim();if(r.ok&&/sync started/i.test(tx)){toast("â Sync started â new walks will appear in ~1 min. Tap â³ Update then.");}else{toast('â ï¸ Sync error: '+tx.slice(0,60));}}catch(e){toast('â ï¸ Could not reach sync â check connection.');}setTimeout(()=>{sb.disabled=false;sb.textContent=o;},4000);};}
 
 // ---------- wiring ----------
 $('go').onclick=run;$('nearnew').onclick=nearestNew;$('walk').onclick=walkabout;$('pvback').onclick=()=>showScreen('home');$('startnav').onclick=startNav;$('nav_end').onclick=endNav;
 document.querySelectorAll('input[name=dest]').forEach(r=>r.addEventListener('change',()=>{const c=(document.querySelector('input[name=dest]:checked')||{}).value==='custom';$('addrwrap').style.display=c?'block':'none';if(c)setTimeout(()=>$('addr').focus(),50);}));
 $('uncovBtn').onclick=openUncov;$('uc_close').onclick=()=>$('uncov').classList.remove('show');$('uc_tlist').onclick=()=>showUcTab('list');$('uc_tmap').onclick=()=>showUcTab('map');
 $('uc_list').addEventListener('click',e=>{const r=e.target.closest('.ucrow');if(r&&r.dataset.node)routeToUncov(parseInt(r.dataset.node),r.dataset.name);});
-function openBadge(i){const b=BADGES[i];if(!b)return;$('bp_emoji').textContent=b[2]?b[0]:'🔒';$('bp_emoji').className='bemoji'+(b[2]?'':' lk');$('bp_name').textContent=b[1];const s=$('bp_stat');if(b[2]){s.textContent='✓ UNLOCKED';s.className='bstat on';}else{s.textContent='🔒 LOCKED';s.className='bstat off';}$('bp_desc').textContent=(b[2]?'':'To unlock: ')+b[3];$('bpop').classList.add('show');buzz(30);}
+function openBadge(i){const b=BADGES[i];if(!b)return;$('bp_emoji').textContent=b[2]?b[0]:'ð';$('bp_emoji').className='bemoji'+(b[2]?'':' lk');$('bp_name').textContent=b[1];const s=$('bp_stat');if(b[2]){s.textContent='â UNLOCKED';s.className='bstat on';}else{s.textContent='ð LOCKED';s.className='bstat off';}$('bp_desc').textContent=(b[2]?'':'To unlock: ')+b[3];$('bpop').classList.add('show');buzz(30);}
 $('badges').addEventListener('click',e=>{const el=e.target.closest('.bdg');if(el&&el.dataset.i!=null)openBadge(+el.dataset.i);});
 $('bpop').onclick=()=>$('bpop').classList.remove('show');
 // ---------- stat visualizations ----------
@@ -396,7 +397,7 @@ function calendarHTML(){if(!WL.length)return'<div class="ucsub">No walk data yet
   return html;}
 function wireCal(){const by={};WL.forEach(w=>by[w[0]]={n:w[1],tot:w[2],nw:w[3]});
   $('viz_body').querySelectorAll('.cd[data-k]').forEach(c=>c.onclick=()=>{$('viz_body').querySelectorAll('.cd.sel').forEach(x=>x.classList.remove('sel'));c.classList.add('sel');const r=by[c.dataset.k],dt=new Date(c.dataset.k+'T00:00:00'),ds=MONTHS[dt.getMonth()]+' '+dt.getDate()+', '+dt.getFullYear();
-    $('viz_cap').innerHTML=r?('<b>'+ds+'</b> — '+r.tot.toFixed(1)+' mi walked · <b style="color:#ff5b5b">+'+r.nw.toFixed(1)+' new redlined</b>'+(r.n>1?' · '+r.n+' walks':'')):('<b>'+ds+'</b> — rest day');});}
+    $('viz_cap').innerHTML=r?('<b>'+ds+'</b> â '+r.tot.toFixed(1)+' mi walked Â· <b style="color:#ff5b5b">+'+r.nw.toFixed(1)+' new redlined</b>'+(r.n>1?' Â· '+r.n+' walks':'')):('<b>'+ds+'</b> â rest day');});}
 function coverageSVG(){if(!WL.length)return'';const W=360,H=210,ml=30,mr=10,mt=14,mb=22,iw=W-ml-mr,ih=H-mt-mb;
   const t0=new Date(WL[0][0]).getTime(),t1=Date.now(),maxY=(WL[WL.length-1][4]*1.05)||1;
   const X=d=>ml+iw*(new Date(d).getTime()-t0)/(t1-t0),Y=v=>mt+ih*(1-v/maxY);
@@ -414,71 +415,71 @@ function lengthSVG(){const b=[0,0,0,0,0,0],lab=['0-2','2-4','4-6','6-8','8-10','
   let bars='';b.forEach((v,i)=>{const h=ih*v/maxV,x=ml+gap*i+(gap-bw)/2,y=mt+ih-h;bars+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="#ff7a3b" stroke="#000"/><text x="'+(x+bw/2).toFixed(1)+'" y="'+(y-3).toFixed(1)+'" fill="#cfd5e2" font-family="VT323" font-size="12" text-anchor="middle">'+(v||'')+'</text><text x="'+(x+bw/2).toFixed(1)+'" y="'+(H-12)+'" fill="#9d96cc" font-family="VT323" font-size="11" text-anchor="middle">'+lab[i]+'</text>';});
   return '<svg viewBox="0 0 '+W+' '+H+'"><line x1="'+ml+'" y1="'+(mt+ih)+'" x2="'+(W-mr)+'" y2="'+(mt+ih)+'" stroke="#241a44"/>'+bars+'</svg>';}
 function projectionCap(){if(WL.length<2)return'';const done=WL[WL.length-1][4],rem=Math.max(0,523-done),cut=Date.now()-56*864e5;let recent=0;WL.forEach(w=>{if(new Date(w[0]).getTime()>=cut)recent+=w[3];});const perWk=recent/8;
-  if(perWk<=0.05)return '<b>'+rem.toFixed(0)+' mi</b> of streets to go — break some new ground to project a finish date!';
+  if(perWk<=0.05)return '<b>'+rem.toFixed(0)+' mi</b> of streets to go â break some new ground to project a finish date!';
   const d2=new Date(Date.now()+(rem/perWk)*7*864e5);return '<b>'+rem.toFixed(0)+' mi</b> of streets to go. At your last-8-week pace (~'+perWk.toFixed(1)+' new mi/wk) you clear every street by ~<b style="color:#37d5f2">'+MONTHS[d2.getMonth()]+' '+d2.getFullYear()+'</b>';}
 // full level-system visualization: 3 track meters + the 9-level ladder with per-level criteria & live status
 function levelsHTML(){
   const LT=liveTotalsFull(), covPct=LT.pct, HD=computeHoods(), stPct=streetsFinishedPct();
-  const hoodsAt=p=>HD.filter(h=>h.pct>=p).length, medal={33:'🥉',66:'🥈',99:'🥇'};
+  const hoodsAt=p=>HD.filter(h=>h.pct>=p).length, medal={33:'ð¥',66:'ð¥',99:'ð¥'};
   const meets=k=>covPct>=LEVELS[k][0]&&hoodsAt(LEVELS[k][3])>=LEVELS[k][2]&&stPct>=LEVELS[k][4];
   let li=0;for(let k=0;k<LEVELS.length;k++){if(meets(k))li=k;}
   const br=hoodsAt(33),si=hoodsAt(66),go=hoodsAt(99);
-  const meter=(ic,lb,val)=>'<div class="tmeter"><div class="tmlabel">'+ic+' '+lb+' — <b>'+Math.round(val)+'%</b></div><div class="tmbar"><i style="width:'+Math.min(100,val)+'%"></i><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
-  let h=meter('🟥','Coverage',covPct);
+  const meter=(ic,lb,val)=>'<div class="tmeter"><div class="tmlabel">'+ic+' '+lb+' â <b>'+Math.round(val)+'%</b></div><div class="tmbar"><i style="width:'+Math.min(100,val)+'%"></i><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
+  let h=meter('ð¥','Coverage',covPct);
   const _tot=HD.length||1,_gw=100*go/_tot,_sw=100*Math.max(0,si-go)/_tot,_bw=100*Math.max(0,br-si)/_tot;
   const lk=Math.max(0,HD.length-br);
-  h+='<div class="tmeter"><div class="tmlabel">🏘️ Neighborhoods — <b>'+lk+'</b> 🔒  <b>'+br+'</b> 🥉  <b>'+si+'</b> 🥈  <b>'+go+'</b> 🥇 <span style="color:var(--dim)">/ '+HD.length+'</span></div><div class="tmbar"><span class="seg sg" style="left:0;width:'+_gw+'%"></span><span class="seg ss" style="left:'+_gw+'%;width:'+_sw+'%"></span><span class="seg sb" style="left:'+(_gw+_sw)+'%;width:'+_bw+'%"></span><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
-  h+=meter('🛣️','Streets finished',stPct);
+  h+='<div class="tmeter"><div class="tmlabel">ðï¸ Neighborhoods â <b>'+lk+'</b> ð  <b>'+br+'</b> ð¥  <b>'+si+'</b> ð¥  <b>'+go+'</b> ð¥ <span style="color:var(--dim)">/ '+HD.length+'</span></div><div class="tmbar"><span class="seg sg" style="left:0;width:'+_gw+'%"></span><span class="seg ss" style="left:'+_gw+'%;width:'+_sw+'%"></span><span class="seg sb" style="left:'+(_gw+_sw)+'%;width:'+_bw+'%"></span><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
+  h+=meter('ð£ï¸','Streets finished',stPct);
   h+='<div class="lad">';
   for(let k=0;k<LEVELS.length;k++){const L=LEVELS[k], mile=(k===2||k===5||k===8), cur=(k===li), done=meets(k);
     const cov=covPct>=L[0], hd=hoodsAt(L[3])>=L[2], st=stPct>=L[4];
-    const cell=(ok,txt)=>'<span class="lc'+(ok?' ok':'')+'">'+(ok?'✓ ':'')+txt+'</span>';
-    h+='<div class="lrow'+(cur?' cur':'')+(done?' done':'')+(mile?' mile':'')+'"><div class="lnum"><b>'+(k+1)+'</b></div><div class="lbody"><div class="ltitle">'+L[1]+(cur?' <em>← you</em>':'')+(mile?' <span class="mtag">'+medal[k===2?33:k===5?66:99]+' tier</span>':'')+'</div><div class="lcrit">'+cell(cov,'🟥 '+L[0]+'%')+cell(hd,'🏘️ '+L[2]+medal[L[3]])+cell(st,'🛣️ '+L[4]+'%')+'</div></div></div>';}
+    const cell=(ok,txt)=>'<span class="lc'+(ok?' ok':'')+'">'+(ok?'â ':'')+txt+'</span>';
+    h+='<div class="lrow'+(cur?' cur':'')+(done?' done':'')+(mile?' mile':'')+'"><div class="lnum"><b>'+(k+1)+'</b></div><div class="lbody"><div class="ltitle">'+L[1]+(cur?' <em>â you</em>':'')+(mile?' <span class="mtag">'+medal[k===2?33:k===5?66:99]+' tier</span>':'')+'</div><div class="lcrit">'+cell(cov,'ð¥ '+L[0]+'%')+cell(hd,'ðï¸ '+L[2]+medal[L[3]])+cell(st,'ð£ï¸ '+L[4]+'%')+'</div></div></div>';}
   h+='</div>';return h;}
-// ================= STAT DRILLDOWNS: 6 metrics × 3 retro data-viz =================
+// ================= STAT DRILLDOWNS: 6 metrics Ã 3 retro data-viz =================
 function LTf(){return liveTotalsFull();}
 function gridSVG(maxY,ml,mt,ih,W,mr){let g='';for(let k=0;k<=4;k++){const yy=mt+ih*k/4;g+='<line x1="'+ml+'" y1="'+yy+'" x2="'+(W-mr)+'" y2="'+yy+'" stroke="#241a44"/><text x="2" y="'+(yy+4)+'" fill="#9d96cc" font-family="VT323" font-size="12">'+Math.round(maxY*(1-k/4))+'</text>';}return g;}
 function seriesSVG(series,color,fill){if(!series.length)return '<div class="ucsub">No data yet.</div>';const W=360,H=210,ml=34,mr=10,mt=14,mb=14,iw=W-ml-mr,ih=H-mt-mb;const xs=series.map(s=>s[0]),t0=Math.min.apply(null,xs),t1=Math.max.apply(null,xs);const maxY=Math.max.apply(null,series.map(s=>s[1]).concat(1))*1.05;const X=t=>ml+iw*(t-t0)/((t1-t0)||1),Y=v=>mt+ih*(1-v/maxY);const pts=series.map(s=>[X(s[0]),Y(s[1])]);const line='M'+pts.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' L');let area='';if(fill)area='<path d="'+line+' L'+pts[pts.length-1][0].toFixed(1)+' '+(mt+ih)+' L'+ml+' '+(mt+ih)+' Z" fill="'+fill+'"/>';const last=pts[pts.length-1];return '<svg viewBox="0 0 '+W+' '+H+'">'+gridSVG(maxY,ml,mt,ih,W,mr)+area+'<path d="'+line+'" fill="none" stroke="'+color+'" stroke-width="2.5"/><circle cx="'+last[0].toFixed(1)+'" cy="'+last[1].toFixed(1)+'" r="4" fill="'+color+'"/></svg>';}
 function catBarsSVG(labels,values,color,fmt){const W=360,H=200,ml=22,mr=8,mt=18,mb=30,iw=W-ml-mr,ih=H-mt-mb,n=values.length||1,gap=iw/n,bw=Math.min(gap*0.7,40),maxV=Math.max.apply(null,values.concat(1));let bars='';values.forEach((v,i)=>{const hh=ih*v/maxV,x=ml+gap*i+(gap-bw)/2,y=mt+ih-hh;bars+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+Math.max(0,hh).toFixed(1)+'" fill="'+color+'" stroke="#000"/><text x="'+(x+bw/2).toFixed(1)+'" y="'+(y-3).toFixed(1)+'" fill="#cfd5e2" font-family="VT323" font-size="12" text-anchor="middle">'+(fmt?fmt(v):(v||''))+'</text><text x="'+(x+bw/2).toFixed(1)+'" y="'+(H-10)+'" fill="#9d96cc" font-family="VT323" font-size="10" text-anchor="middle">'+labels[i]+'</text>';});return '<svg viewBox="0 0 '+W+' '+H+'"><line x1="'+ml+'" y1="'+(mt+ih)+'" x2="'+(W-mr)+'" y2="'+(mt+ih)+'" stroke="#241a44"/>'+bars+'</svg>';}
 function hbarsHTML(rows){return '<div class="rbars">'+rows.map(r=>'<div class="rbar"><div class="rbl"><b>'+r.name+'</b><span>'+(r.sub||'')+'</span><em>'+r.tag+'</em></div><div class="rtrack"><i style="width:'+Math.min(100,r.pct).toFixed(1)+'%"></i></div><div class="rmi">'+r.right+'</div></div>').join('')+'</div>';}
 function gaugeSVG(frac,big,sub){const W=360,H=190,cx=180,cy=150,r=96;frac=Math.max(0,Math.min(1,frac));function pt(a){return [cx+r*Math.cos(a),cy-r*Math.sin(a)];}const p0=pt(Math.PI),p1=pt(0),pf=pt(Math.PI*(1-frac));const bg='M'+p0[0].toFixed(1)+' '+p0[1].toFixed(1)+' A'+r+' '+r+' 0 0 1 '+p1[0].toFixed(1)+' '+p1[1].toFixed(1);const fg='M'+p0[0].toFixed(1)+' '+p0[1].toFixed(1)+' A'+r+' '+r+' 0 0 1 '+pf[0].toFixed(1)+' '+pf[1].toFixed(1);return '<svg viewBox="0 0 '+W+' '+H+'"><path d="'+bg+'" fill="none" stroke="#241a44" stroke-width="18"/><path d="'+fg+'" fill="none" stroke="#ff2e2e" stroke-width="18" stroke-linecap="round"/><text x="'+cx+'" y="'+(cy-8)+'" fill="#fff" font-family="Press Start 2P" font-size="22" text-anchor="middle">'+big+'</text><text x="'+cx+'" y="'+(cy+16)+'" fill="#9d96cc" font-family="VT323" font-size="16" text-anchor="middle">'+sub+'</text></svg>';}
-function splitBarHTML(aL,aV,bL,bV,aC,bC){const t=(aV+bV)||1,ap=100*aV/t;return '<div style="padding:26px 4px 8px"><div style="display:flex;height:30px;border:3px solid #000;border-radius:3px;overflow:hidden;box-shadow:0 3px 0 #000"><div style="width:'+ap.toFixed(1)+'%;background:'+aC+'"></div><div style="width:'+(100-ap).toFixed(1)+'%;background:'+bC+'"></div></div><div class="rmi" style="margin-top:12px;font-size:15px"><span style="color:'+aC+'">■</span> '+aL+' <b>'+aV.toFixed(0)+' mi</b> ('+Math.round(ap)+'%)</div><div class="rmi" style="font-size:15px"><span style="color:'+bC+'">■</span> '+bL+' <b>'+bV.toFixed(0)+' mi</b> ('+Math.round(100-ap)+'%)</div></div>';}
-function regionBands(){const bands=[['Downtown','FiDi → 14th',0,40.737],['Midtown','14th → 59th',40.737,40.767],['Upper Manhattan','59th → 110th',40.767,40.800],['Harlem & north','above 110th',40.800,99]];const agg=bands.map(()=>[0,0,0,0]);for(let i=0;i<E.length;i++){const la=(N[E[i][0]][0]+N[E[i][1]][0])/2,L=(elen[i]||0)/MI;for(let b=0;b<bands.length;b++){if(la>=bands[b][2]&&la<bands[b][3]){agg[b][1]+=L;agg[b][3]++;if(E[i][3]===1){agg[b][0]+=L;agg[b][2]++;}break;}}}return bands.map((b,i)=>({name:b[0],sub:b[1],mi:agg[i][0],tot:agg[i][1],seg:agg[i][2],segTot:agg[i][3],pct:agg[i][1]?100*agg[i][0]/agg[i][1]:0}));}
+function splitBarHTML(aL,aV,bL,bV,aC,bC){const t=(aV+bV)||1,ap=100*aV/t;return '<div style="padding:26px 4px 8px"><div style="display:flex;height:30px;border:3px solid #000;border-radius:3px;overflow:hidden;box-shadow:0 3px 0 #000"><div style="width:'+ap.toFixed(1)+'%;background:'+aC+'"></div><div style="width:'+(100-ap).toFixed(1)+'%;background:'+bC+'"></div></div><div class="rmi" style="margin-top:12px;font-size:15px"><span style="color:'+aC+'">â </span> '+aL+' <b>'+aV.toFixed(0)+' mi</b> ('+Math.round(ap)+'%)</div><div class="rmi" style="font-size:15px"><span style="color:'+bC+'">â </span> '+bL+' <b>'+bV.toFixed(0)+' mi</b> ('+Math.round(100-ap)+'%)</div></div>';}
+function regionBands(){const bands=[['Downtown','FiDi â 14th',0,40.737],['Midtown','14th â 59th',40.737,40.767],['Upper Manhattan','59th â 110th',40.767,40.800],['Harlem & north','above 110th',40.800,99]];const agg=bands.map(()=>[0,0,0,0]);for(let i=0;i<E.length;i++){const la=(N[E[i][0]][0]+N[E[i][1]][0])/2,L=(elen[i]||0)/MI;for(let b=0;b<bands.length;b++){if(la>=bands[b][2]&&la<bands[b][3]){agg[b][1]+=L;agg[b][3]++;if(E[i][3]===1){agg[b][0]+=L;agg[b][2]++;}break;}}}return bands.map((b,i)=>({name:b[0],sub:b[1],mi:agg[i][0],tot:agg[i][1],seg:agg[i][2],segTot:agg[i][3],pct:agg[i][1]?100*agg[i][0]/agg[i][1]:0}));}
 function monthLabels(entries){return entries.map(e=>e[0].slice(5));}
 function wkAgg(){const d=[0,0,0,0,0,0,0];WL.forEach(w=>{d[new Date(w[0]+'T00:00:00').getDay()]+=w[1];});return d;}
 function cumSeries(vi){let c=0;return WL.map(w=>{c+=w[vi];return [Date.parse(w[0]),c];});}
 function segLenBuckets(){const ed=[[0,50],[50,100],[100,200],[200,400],[400,1e9]],lab=['<50m','50-100','100-200','200-400','400m+'];const dn=ed.map(()=>0),tt=ed.map(()=>0);for(let i=0;i<E.length;i++){const L=elen[i]||0;for(let b=0;b<ed.length;b++){if(L>=ed[b][0]&&L<ed[b][1]){tt[b]++;if(E[i][3]===1)dn[b]++;break;}}}return {lab,dn,tt};}
 let VIZTAB={};
 function metricViz(kind){const M={
-  done:{t:'💯 Miles redlined',tabs:[
-    ['time','📈 Over time',()=>({html:coverageSVG(),cap:'<b>'+(WL.length?WL[WL.length-1][4]:0).toFixed(0)+' mi</b> redlined since '+(WL[0]?WL[0][0].slice(0,7):'')+' · '+Math.round(LTf().pct)+'% of the network'})],
-    ['area','🗺️ By area',()=>{const R=regionBands(),tp=R.slice().sort((a,b)=>b.pct-a.pct)[0];return {html:hbarsHTML(R.map(r=>({name:r.name,sub:r.sub,pct:r.pct,tag:Math.round(r.pct)+'%',right:r.mi.toFixed(0)+' / '+r.tot.toFixed(0)+' mi'}))),cap:'Most redlined: <b style="color:#ff2e2e">'+(tp?tp.name:'')+'</b> ('+Math.round(tp?tp.pct:0)+'%)'};}],
-    ['rate','📊 New / mo',()=>{const m=monthAgg();return {html:catBarsSVG(monthLabels(m),m.map(e=>e[1][2]),'#ff2e2e',v=>v?v.toFixed(1):''),cap:'New miles of ground redlined each month'};}],
+  done:{t:'ð¯ Miles redlined',tabs:[
+    ['time','ð Over time',()=>({html:coverageSVG(),cap:'<b>'+(WL.length?WL[WL.length-1][4]:0).toFixed(0)+' mi</b> redlined since '+(WL[0]?WL[0][0].slice(0,7):'')+' Â· '+Math.round(LTf().pct)+'% of the network'})],
+    ['area','ðºï¸ By area',()=>{const R=regionBands(),tp=R.slice().sort((a,b)=>b.pct-a.pct)[0];return {html:hbarsHTML(R.map(r=>({name:r.name,sub:r.sub,pct:r.pct,tag:Math.round(r.pct)+'%',right:r.mi.toFixed(0)+' / '+r.tot.toFixed(0)+' mi'}))),cap:'Most redlined: <b style="color:#ff2e2e">'+(tp?tp.name:'')+'</b> ('+Math.round(tp?tp.pct:0)+'%)'};}],
+    ['rate','ð New / mo',()=>{const m=monthAgg();return {html:catBarsSVG(monthLabels(m),m.map(e=>e[1][2]),'#ff2e2e',v=>v?v.toFixed(1):''),cap:'New miles of ground redlined each month'};}],
   ]},
-  togo:{t:'🎯 Miles to go',tabs:[
-    ['area','🗺️ Where',()=>{const R=regionBands().map(r=>({name:r.name,sub:r.sub,left:r.tot-r.mi,pct:r.tot?100*(r.tot-r.mi)/r.tot:0})).sort((a,b)=>b.left-a.left);return {html:hbarsHTML(R.map(r=>({name:r.name,sub:r.sub,pct:r.pct,tag:Math.round(r.pct)+'% left',right:r.left.toFixed(0)+' mi to go'}))),cap:'<b>'+R[0].name+'</b> has the most ground left (~'+R[0].left.toFixed(0)+' mi)'};}],
-    ['burn','📉 Burn-down',()=>{const TOT=LTf().totalMi;return {html:seriesSVG(WL.map(w=>[Date.parse(w[0]),Math.max(0,TOT-w[4])]),'#ffb02e'),cap:'Miles remaining over time — trending toward zero'};}],
-    ['proj','🏁 Finish',()=>{const LT=LTf();return {html:gaugeSVG(LT.coveredMi/LT.totalMi,Math.round(LT.pct)+'%',Math.round(LT.totalMi-LT.coveredMi)+' mi to go'),cap:projectionCap()};}],
+  togo:{t:'ð¯ Miles to go',tabs:[
+    ['area','ðºï¸ Where',()=>{const R=regionBands().map(r=>({name:r.name,sub:r.sub,left:r.tot-r.mi,pct:r.tot?100*(r.tot-r.mi)/r.tot:0})).sort((a,b)=>b.left-a.left);return {html:hbarsHTML(R.map(r=>({name:r.name,sub:r.sub,pct:r.pct,tag:Math.round(r.pct)+'% left',right:r.left.toFixed(0)+' mi to go'}))),cap:'<b>'+R[0].name+'</b> has the most ground left (~'+R[0].left.toFixed(0)+' mi)'};}],
+    ['burn','ð Burn-down',()=>{const TOT=LTf().totalMi;return {html:seriesSVG(WL.map(w=>[Date.parse(w[0]),Math.max(0,TOT-w[4])]),'#ffb02e'),cap:'Miles remaining over time â trending toward zero'};}],
+    ['proj','ð Finish',()=>{const LT=LTf();return {html:gaugeSVG(LT.coveredMi/LT.totalMi,Math.round(LT.pct)+'%',Math.round(LT.totalMi-LT.coveredMi)+' mi to go'),cap:projectionCap()};}],
   ]},
-  seg:{t:'🧩 Segments',tabs:[
-    ['done','🎯 Done',()=>{const LT=LTf();return {html:gaugeSVG(LT.segsDone/LT.segsTotal,LT.segsDone.toLocaleString(),'/ '+LT.segsTotal.toLocaleString()+' blocks'),cap:'<b>'+Math.round(100*LT.segsDone/LT.segsTotal)+'%</b> of all street blocks redlined'};}],
-    ['len','📐 By length',()=>{const b=segLenBuckets();return {html:hbarsHTML(b.lab.map((l,i)=>({name:l,sub:'',pct:b.tt[i]?100*b.dn[i]/b.tt[i]:0,tag:(b.tt[i]?Math.round(100*b.dn[i]/b.tt[i]):0)+'%',right:b.dn[i]+' / '+b.tt[i]+' blocks'}))),cap:'Completion by block length — the short ones go fast'};}],
-    ['area','🗺️ By area',()=>{const R=regionBands();return {html:hbarsHTML(R.map(r=>({name:r.name,sub:r.sub,pct:r.segTot?100*r.seg/r.segTot:0,tag:Math.round(r.segTot?100*r.seg/r.segTot:0)+'%',right:r.seg+' / '+r.segTot+' blocks'}))),cap:'Blocks completed by part of the island'};}],
+  seg:{t:'ð§© Segments',tabs:[
+    ['done','ð¯ Done',()=>{const LT=LTf();return {html:gaugeSVG(LT.segsDone/LT.segsTotal,LT.segsDone.toLocaleString(),'/ '+LT.segsTotal.toLocaleString()+' blocks'),cap:'<b>'+Math.round(100*LT.segsDone/LT.segsTotal)+'%</b> of all street blocks redlined'};}],
+    ['len','ð By length',()=>{const b=segLenBuckets();return {html:hbarsHTML(b.lab.map((l,i)=>({name:l,sub:'',pct:b.tt[i]?100*b.dn[i]/b.tt[i]:0,tag:(b.tt[i]?Math.round(100*b.dn[i]/b.tt[i]):0)+'%',right:b.dn[i]+' / '+b.tt[i]+' blocks'}))),cap:'Completion by block length â the short ones go fast'};}],
+    ['area','ðºï¸ By area',()=>{const R=regionBands();return {html:hbarsHTML(R.map(r=>({name:r.name,sub:r.sub,pct:r.segTot?100*r.seg/r.segTot:0,tag:Math.round(r.segTot?100*r.seg/r.segTot:0)+'%',right:r.seg+' / '+r.segTot+' blocks'}))),cap:'Blocks completed by part of the island'};}],
   ]},
-  walks:{t:'🚶 Walks',tabs:[
-    ['month','🗓️ By month',()=>{const m=monthAgg();return {html:catBarsSVG(monthLabels(m),m.map(e=>e[1][0]),'#37d5f2'),cap:'<b>'+WL.reduce((s,w)=>s+w[1],0)+'</b> walks logged in total'};}],
-    ['dow','📅 By weekday',()=>{const d=wkAgg();return {html:catBarsSVG(['S','M','T','W','T','F','S'],d,'#37d5f2'),cap:'Which days you walk most'};}],
-    ['cum','📈 Cumulative',()=>({html:seriesSVG(cumSeries(1),'#37d5f2','rgba(55,213,242,.18)'),cap:'Total walks accumulated over time'})],
+  walks:{t:'ð¶ Walks',tabs:[
+    ['month','ðï¸ By month',()=>{const m=monthAgg();return {html:catBarsSVG(monthLabels(m),m.map(e=>e[1][0]),'#37d5f2'),cap:'<b>'+WL.reduce((s,w)=>s+w[1],0)+'</b> walks logged in total'};}],
+    ['dow','ð By weekday',()=>{const d=wkAgg();return {html:catBarsSVG(['S','M','T','W','T','F','S'],d,'#37d5f2'),cap:'Which days you walk most'};}],
+    ['cum','ð Cumulative',()=>({html:seriesSVG(cumSeries(1),'#37d5f2','rgba(55,213,242,.18)'),cap:'Total walks accumulated over time'})],
   ]},
-  longest:{t:'🏆 Longest walk',tabs:[
-    ['hist','📏 Spread',()=>({html:lengthSVG(),cap:'Longest <b>'+(WMI.length?Math.max.apply(null,WMI):0).toFixed(1)+' mi</b> · distribution of all walk lengths'})],
-    ['top','🥇 Top 10',()=>{const t=WMI.slice().sort((a,b)=>b-a).slice(0,10);return {html:catBarsSVG(t.map((_,i)=>'#'+(i+1)),t,'#ffd23f',v=>v.toFixed(1)),cap:'Your ten longest walks (miles)'};}],
-    ['pr','📈 Records',()=>{let m=0;const s=WMI.map((v,i)=>{m=Math.max(m,v);return [i,m];});return {html:seriesSVG(s,'#ffd23f'),cap:'Personal-best distance as it climbed, walk by walk'};}],
+  longest:{t:'ð Longest walk',tabs:[
+    ['hist','ð Spread',()=>({html:lengthSVG(),cap:'Longest <b>'+(WMI.length?Math.max.apply(null,WMI):0).toFixed(1)+' mi</b> Â· distribution of all walk lengths'})],
+    ['top','ð¥ Top 10',()=>{const t=WMI.slice().sort((a,b)=>b-a).slice(0,10);return {html:catBarsSVG(t.map((_,i)=>'#'+(i+1)),t,'#ffd23f',v=>v.toFixed(1)),cap:'Your ten longest walks (miles)'};}],
+    ['pr','ð Records',()=>{let m=0;const s=WMI.map((v,i)=>{m=Math.max(m,v);return [i,m];});return {html:seriesSVG(s,'#ffd23f'),cap:'Personal-best distance as it climbed, walk by walk'};}],
   ]},
-  total:{t:'🏆 Total miles',tabs:[
-    ['cum','📈 Over time',()=>({html:seriesSVG(cumSeries(2),'#b06cff','rgba(176,108,255,.18)'),cap:'<b>'+Math.round(STATS.totalWalkedMi)+' mi</b> walked in total since '+(WL[0]?WL[0][0].slice(0,7):'')})],
-    ['month','🗓️ By month',()=>{const m=monthAgg();return {html:catBarsSVG(monthLabels(m),m.map(e=>e[1][1]),'#b06cff',v=>v?v.toFixed(0):''),cap:'Miles walked each month'};}],
-    ['split','♻️ New vs repeat',()=>{const nw=WL.reduce((s,w)=>s+w[3],0),tw=WL.reduce((s,w)=>s+w[2],0);return {html:splitBarHTML('New ground',nw,'Re-walked',Math.max(0,tw-nw),'#ff2e2e','#5b5580'),cap:'How much of your walking broke new ground'};}],
+  total:{t:'ð Total miles',tabs:[
+    ['cum','ð Over time',()=>({html:seriesSVG(cumSeries(2),'#b06cff','rgba(176,108,255,.18)'),cap:'<b>'+Math.round(STATS.totalWalkedMi)+' mi</b> walked in total since '+(WL[0]?WL[0][0].slice(0,7):'')})],
+    ['month','ðï¸ By month',()=>{const m=monthAgg();return {html:catBarsSVG(monthLabels(m),m.map(e=>e[1][1]),'#b06cff',v=>v?v.toFixed(0):''),cap:'Miles walked each month'};}],
+    ['split','â»ï¸ New vs repeat',()=>{const nw=WL.reduce((s,w)=>s+w[3],0),tw=WL.reduce((s,w)=>s+w[2],0);return {html:splitBarHTML('New ground',nw,'Re-walked',Math.max(0,tw-nw),'#ff2e2e','#5b5580'),cap:'How much of your walking broke new ground'};}],
   ]},
  };return M[kind];}
 function renderVizTab(kind){const cfg=metricViz(kind);const cur=VIZTAB[kind]||cfg.tabs[0][0];VIZTAB[kind]=cur;const body=$('viz_body');
@@ -487,8 +488,8 @@ function renderVizTab(kind){const cfg=metricViz(kind);const cur=VIZTAB[kind]||cf
   body.innerHTML=bar+out.html;$('viz_cap').innerHTML=out.cap||'';
   body.querySelectorAll('.vtab').forEach(b=>b.onclick=()=>{VIZTAB[kind]=b.dataset.ct;renderVizTab(kind);});}
 function openViz(kind){$('viz').classList.add('show');const body=$('viz_body');$('viz_cap').innerHTML='';
-  if(kind==='levels'){$('viz_title').textContent='🎖️ Level system';body.innerHTML=levelsHTML();return;}
-  if(kind==='calendar'){$('viz_title').textContent='🔥 Walk calendar';body.innerHTML=calendarHTML();$('viz_cap').textContent='Tap a day for its miles + new ground redlined';wireCal();requestAnimationFrame(()=>{body.scrollTop=body.scrollHeight;});return;}
+  if(kind==='levels'){$('viz_title').textContent='ðï¸ Level system';body.innerHTML=levelsHTML();return;}
+  if(kind==='calendar'){$('viz_title').textContent='ð¥ Walk calendar';body.innerHTML=calendarHTML();$('viz_cap').textContent='Tap a day for its miles + new ground redlined';wireCal();requestAnimationFrame(()=>{body.scrollTop=body.scrollHeight;});return;}
   if(kind==='coverage')kind='done';if(kind==='length')kind='longest';
   const cfg=metricViz(kind);if(!cfg)return;
   $('viz_title').textContent=cfg.t;renderVizTab(kind);}
@@ -499,9 +500,9 @@ $('ct_map').onclick=()=>showConquest('map');$('ct_list').onclick=()=>showConques
 const HSBTN={hs_pct:'pct',hs_left:'left',hs_close:'close',hs_near:'near'};
 function setHoodSort(v,btnId){HOODSORT=v;Object.keys(HSBTN).forEach(id=>{const b=$(id);if(b)b.classList.toggle('on',id===btnId);});
   if(v==='near'){
-    if(navigator.geolocation){toast('📍 Locating you to sort by nearest…',2600);
+    if(navigator.geolocation){toast('ð Locating you to sort by nearestâ¦',2600);
       navigator.geolocation.getCurrentPosition(p=>{MYSORTPOS=[p.coords.latitude,p.coords.longitude];fillHoods();dismissToast();},
-        ()=>{MYSORTPOS=null;fillHoods();toast('Sorted from home base — live location unavailable.',3600);},{enableHighAccuracy:true,timeout:8000,maximumAge:60000});
+        ()=>{MYSORTPOS=null;fillHoods();toast('Sorted from home base â live location unavailable.',3600);},{enableHighAccuracy:true,timeout:8000,maximumAge:60000});
     }else{MYSORTPOS=null;fillHoods();}
   }else fillHoods();}
 Object.keys(HSBTN).forEach(id=>{if($(id))$(id).onclick=()=>setHoodSort(HSBTN[id],id);});
@@ -509,8 +510,8 @@ $('hv_close').onclick=()=>$('hoodview').classList.remove('show');
 $('hv_clear').onclick=()=>{$('hoodview').classList.remove('show');if(hoodViewName)neighborhoodRoute(hoodViewName);};
 $('rc_done').onclick=()=>{$('recap').classList.remove('show');showScreen('home');};
 $('recenter').onclick=()=>{if(NAV)NAV.follow=true;if(meMarker)map.panTo(meMarker.getLatLng(),{animate:true});};
-$('rotBtn').onclick=()=>{headingUp=!headingUp;$('rotBtn').textContent=headingUp?'🧭':'⬆';$('rotBtn').classList.toggle('on',headingUp);if(!headingUp)$('map').style.transform='';else{_lastRot=999;setHeading(lastHeading);}setTimeout(()=>{try{map.invalidateSize()}catch(e){}},60);};
-$('muteBtn').onclick=()=>{voiceOn=!voiceOn;$('muteBtn').textContent=voiceOn?'🔊':'🔇';$('muteBtn').classList.toggle('on',voiceOn);if(!voiceOn&&window.speechSynthesis)window.speechSynthesis.cancel();};
+$('rotBtn').onclick=()=>{headingUp=!headingUp;$('rotBtn').textContent=headingUp?'ð§­':'â¬';$('rotBtn').classList.toggle('on',headingUp);if(!headingUp)$('map').style.transform='';else{_lastRot=999;setHeading(lastHeading);}setTimeout(()=>{try{map.invalidateSize()}catch(e){}},60);};
+$('muteBtn').onclick=()=>{voiceOn=!voiceOn;$('muteBtn').textContent=voiceOn?'ð':'ð';$('muteBtn').classList.toggle('on',voiceOn);if(!voiceOn&&window.speechSynthesis)window.speechSynthesis.cancel();};
 map.on('dragstart',()=>{if(NAV){NAV.follow=false;clearTimeout(_recenterT);_recenterT=setTimeout(()=>{if(NAV){NAV.follow=true;if(meMarker)map.panTo(meMarker.getLatLng(),{animate:true});}},8000);}});
 // ---------- pedestrian layer: parks + plazas loaded at runtime ----------
 const _nameIdx=new Map();NM.forEach((n,i)=>_nameIdx.set(n,i));
