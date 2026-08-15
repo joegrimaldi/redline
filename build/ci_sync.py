@@ -3,6 +3,21 @@
 -> write polys_life.txt, strava_meta.tsv, walk_dates.txt (in this build/ dir).
 Env: STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET, STRAVA_REFRESH_TOKEN."""
 import os, json, urllib.request, urllib.parse, sys
+def _chunk(v):
+    v = ~(v << 1) if v < 0 else (v << 1)
+    s = ''
+    while v >= 0x20:
+        s += chr((0x20 | (v & 0x1f)) + 63)
+        v >>= 5
+    s += chr(v + 63)
+    return s
+def encode_polyline(pts):
+    out = ''; plat = 0; plng = 0
+    for lat, lng in pts:
+        ilat = int(round(lat * 1e5)); ilng = int(round(lng * 1e5))
+        out += _chunk(ilat - plat) + _chunk(ilng - plng)
+        plat, plng = ilat, ilng
+    return out
 
 CID = os.environ['STRAVA_CLIENT_ID']
 SEC = os.environ['STRAVA_CLIENT_SECRET']
@@ -45,6 +60,13 @@ for a in acts:
     if not pl:
         continue
     wid = str(a['id'])
+    try:
+        _s = get('https://www.strava.com/api/v3/activities/%s/streams?keys=latlng&key_by_type=true' % wid, AT)
+        _pts = (_s.get('latlng') or {}).get('data') or []
+        if len(_pts) >= 2:
+            pl = encode_polyline(_pts)
+    except Exception:
+        pass
     d = (a.get('start_date_local') or a.get('start_date') or '')[:10]
     dist = a.get('distance', 0) or 0
     if not d:
