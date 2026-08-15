@@ -241,7 +241,7 @@
 0		yk|wFfcmbMIGY\m@xCyA`DOlA@dAQv@
 0		kb~wFvalbMSdCBv@Pp@z@nAPrA
 0	Wallach Walk	g_zwFhcnbMuBkD{DmAaBuA
-0	West 77th Street	yv{wF|}nbMLY
+1	West 77th Street	yv{wF|}nbMLY
 0		s{{wFbunbMi@P}@GWZ
 0	Fort Tryon Park	kvkxFrsfbMi@o@
 0	Fort Tryon Park	cvkxFdtfbMGQ
@@ -550,7 +550,7 @@
 0		kszwFbdobMCm@m@g@
 1		yl}wFftkbMRcARSVu@
 1		el}wF|nkbMERaBL
-0		mo}wF~okbMIMMDBNRG
+1		mo}wF~okbMIMMDBNRG
 0		mj}wFhqmbMYd@
 0	Strawberry Fields	a`{wFdhobMn@e@f@cApAWVW
 0		oeaxFtslbMg@]ITqAdEf@Z
@@ -598,7 +598,7 @@
 1		sl}wFdtpbMJNHKGOMJ
 1		{m~wFn|obMfDjDfEzClMzFrFdD
 1		kn~wFh}obMxC|C|EnDjMxFtF|C
-0		sx}wFbmpbM\p@tAhA|BtAx@X@`@
+1		sx}wFbmpbM\p@tAhA|BtAx@X@`@
 1		wz~wFdnobMCp@Np@lFtEvAvD
 1		eo~wFz|obMLNNALSAWMMQ@KR@T
 0		oj~wFbuobMcAR_BCsG_Cc@N
@@ -889,7 +889,7 @@
 0		grzwFftobMi@g@q@I
 0		_dzwFzuobMYs@u@i@
 0		}tzwFlaobMUCw@^Qp@ArAXbA
-0		s{{wFbunbMf@~AjAx@PF^Gp@u@
+1		s{{wFbunbMf@~AjAx@PF^Gp@u@
 0		sk{wF|xnbM?XaAAm@d@
 1		cv{wFtynbMf@jAVJjAe@x@F
 0		{t{wFfxnbMGI
@@ -1716,7 +1716,7 @@
 1	North Woods	_j_xFbgkbMZD
 1		e{~wFtpkbMGO
 1		ux~wFjqkbMv@M]a@KaABeB
-1		c__xFrklbMV?T[
+0		c__xFrklbMV?T[
 1		kh_xFdmkbMi@@
 1		g`_xF|}jbMRq@
 1		mo_xFl~kbM?o@
@@ -1779,7 +1779,7 @@
 0	Riverside Park South Bike Path	unzwFn{rbM]c@GYDMmHkF_`@wV
 0	Cherry Walk	egbxFxnmbM`@N
 0	Cherry Walk	wp_xFzkobM{^kUqBaB{IwFmC}BoFaDkByAqKwFeJyF
-0	Hudson River Greenway	}rwwFl}tbMpXnQbTfGpAR
+1	Hudson River Greenway	}rwwFl}tbMpXnQbTfGpAR
 1	Hudson River Greenway	}wowFzsvbMcEu@}IeAg@QkSeCkScBwGU
 0		ydnxFfjfbMBK
 0		cdnxF|jfbMUU
@@ -2350,7 +2350,7 @@
 0		k`{wFr_obMQo@
 1		kx}wFpgkbMPe@
 1		cs}wFpnkbM\g@\cA
-0		eb~wFxembMdAcCfAm@
+1		eb~wFxembMdAcCfAm@
 0	Northwest Central Park Loop	kf~wF||lbMwAWiAo@mAuAy@eB
 0	Northwest Central Park Loop	_f~wFv|lbMKD
 1	Northwest Central Park Loop	u`~wFrambMYiANiB_@u@
@@ -2947,7 +2947,7 @@
 0		_i{wF|hqbMGE
 1		ch{wFjpqbMCF
 1		ug{wFtoqbMCJ
-0		wi{wFvjqbMa@J
+1		wi{wFvjqbMa@J
 0		ssnxFpnebMmA_EMy@^aBT[
 1		ylzwFlvpbM@E
 0		yuuwFdzubMm@v@cAnC
@@ -3187,7 +3187,7 @@
 1		entwFt|ubMBY
 1		_ntwFn{ubM?I
 1		{mtwFlzubM@I
-0	West 15th Street	astwF|xubM?L
+1	West 15th Street	astwF|xubM?L
 1		estwFbzubM?F
 1		istwFd{ubM?D
 1		{mtwFl}ubMDO
@@ -3381,8 +3381,8 @@
 1		eg|wFdjobM?A
 1		_j|wFffobM@I
 1		kj|wFpeobMEH
-0		if{wFbbpbMBE
-0		qe{wFrbpbMCC
+1		if{wFbbpbMBE
+1		qe{wFrbpbMCC
 0		ua{wFnepbMCA
 0		kb{wF|dpbMBB
 0		ua{wFnepbM@E
@@ -3390,7 +3390,7 @@
 0		sa{wFncpbME@
 0		ib{wFvdpbMAD
 0	Moynihan Connector	ylvwF`_tbMtBrA
-0		ay{wFv`qbMAD
+1		ay{wFv`qbMAD
 1		o|{wFvhqbM@[
 1		s{{wFbjqbMB@
 1		m|{wFzgqbMHT
@@ -3473,7 +3473,7 @@
 1		mxzwF~spbMDM
 1		m}zwFxspbMDM
 1		g~zwFhspbMEN
-0		yb{wF~qpbMAD
+1		yb{wF~qpbMAD
 0	West 65th Street	ka{wFj`rbMRq@
 0		qxywFxcpbMc@cB
 0		cz{wFtzjbMCA
@@ -3531,22 +3531,22 @@
 1		qn{wFzdobM@C
 1		go{wFjdobM@C
 1		go{wFjdobM@@
-0		sd}wF|`pbMCD
-0		sd}wF|`pbMEA
-0		ge}wFn`pbMC?
-0		ke}wFn`pbMAD
-0		_f}wFzapbMAD
-0		af}wF`bpbMB@
-0		me}wFnbpbMB@
-0		ge}wFjbpbMAD
-0		or}wF~xobMBB
-0		mq}wFvyobMDB
-0		iq}wFzyobM@E
-0		up}wFlxobM@E
-0		sp}wFfxobMCA
-0		or}wF~xobMBE
-0		{q}wFrwobM@G
-0		yq}wFjwobMB@
+1		sd}wF|`pbMCD
+1		sd}wF|`pbMEA
+1		ge}wFn`pbMC?
+1		ke}wFn`pbMAD
+1		_f}wFzapbMAD
+1		af}wF`bpbMB@
+1		me}wFnbpbMB@
+1		ge}wFjbpbMAD
+1		or}wF~xobMBB
+1		mq}wFvyobMDB
+1		iq}wFzyobM@E
+1		up}wFlxobM@E
+1		sp}wFfxobMCA
+1		or}wF~xobMBE
+1		{q}wFrwobM@G
+1		yq}wFjwobMB@
 0		gd~wF~|obMEB
 1		uq|wFj}pbMBB
 1		cq|wF|}pbM@B
@@ -4050,7 +4050,7 @@
 1		os{wFlppbMAL
 1		ev{wFtopbMzB`@
 1		or{wFdqpbM{B]
-0		}i|wFv~obM@E
+1		}i|wFv~obM@E
 0		yxvwFrptbM??
 0		m}vwFxhtbMAD
 0		o}vwFxktbMPS
@@ -4085,7 +4085,7 @@
 0		czvwFhitbMDA
 1		yvvwF~atbMEE
 1		covwFdhtbMTP
-0		wnvwFpitbMNe@
+1		wnvwFpitbMNe@
 1		gnvwFjhtbM@C
 1		_nvwF`jtbMNe@
 1		omvwFzhtbM?A
@@ -4964,8 +4964,8 @@
 1	Northwest Central Park Loop	il}wFtrmbMCA
 1	Northwest Central Park Loop	ul}wFlrmbMAA
 1	Northwest Central Park Loop	_m}wFbrmbMAC
-0		ee{wFrapbMBE
-0		{e{wF`apbM@E
+1		ee{wFrapbMBE
+1		{e{wF`apbM@E
 0		ei{wFr~obM@C
 0		auuwFpsubM@K
 0	West 22nd Street	usuwFvqubMLC
