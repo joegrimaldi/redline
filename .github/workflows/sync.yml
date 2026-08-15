@@ -4,9 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'build/head.html'
-      - 'build/tail.html'
-      - 'build/rebuild_app.py'
+      - 'build/**.html'
+      - 'build/**.py'
 permissions:
   contents: write
 concurrency:
