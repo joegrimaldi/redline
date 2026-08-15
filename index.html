@@ -263,7 +263,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v612</div>
+ <div class="ver" id="ver">REDLINE v613</div>
 </div>
 
 <div id="map"></div>
@@ -852,4 +852,22 @@ async function loadHoods(){try{const r=await fetch('neighborhoods.json',{cache:'
 loadHoods();
 loadPedestrianPaths();
 if('serviceWorker' in navigator){let __refreshing=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(__refreshing)return;if(document.body.classList.contains('s-nav')||document.body.classList.contains('s-preview'))return;__refreshing=true;location.reload();});window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(reg=>{reg.update();setInterval(()=>{reg.update();},60000);}).catch(()=>{});});}
+
+/* ---- Lights: glowing red street network on the conquest map ---- */
+let _lightsLG=null;
+function drawLights(){
+  try{
+    if(typeof cmap==='undefined'||!cmap||typeof E==='undefined'||!E.length)return;
+    if(_lightsLG){cmap.removeLayer(_lightsLG);_lightsLG=null;}
+    var g=L.layerGroup();
+    for(var i=0;i<E.length;i++){
+      if(E[i][3]!==1)continue;
+      var a=E[i][0],b=E[i][1];
+      L.polyline([[N[a][0],N[a][1]],[N[b][0],N[b][1]]],{color:'#ff2e2e',weight:2,opacity:0.9,lineCap:'round',interactive:false}).addTo(g);
+    }
+    g.addTo(cmap);_lightsLG=g;
+  }catch(e){}
+}
+(function(){try{if(typeof buildConquestMap==='function'){var _o=buildConquestMap;buildConquestMap=function(){var r=_o.apply(this,arguments);try{drawLights();}catch(e){}return r;};}drawLights();}catch(e){}})();
+
 </script></body></html>
