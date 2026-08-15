@@ -263,7 +263,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v619</div>
+ <div class="ver" id="ver">REDLINE v620</div>
 </div>
 
 <div id="map"></div>
@@ -930,6 +930,35 @@ function drawLights(){
   }
   try{var he=document.getElementById('hoods');if(he&&!he.__bn){he.__bn=1;he.addEventListener('click',function(e){var row=e.target.closest('.bnrow');if(row&&row.dataset.bn&&typeof openHoodView==='function'){e.stopPropagation();openHoodView(row.dataset.bn);}},true);}}catch(e){}
   try{fillHoods();}catch(e){}
+})();
+
+
+/* ---- Live coach: efficiency readout + backtrack cue (visual + haptic only, never audio) ---- */
+(function(){
+ var c={active:false,watchId:null,total:0,last:null,startUncov:null,lastNewMi:0,lastNewTime:0};
+ function hav(a,b,x,y){var tR=Math.PI/180,dA=(x-a)*tR,dO=(y-b)*tR,s=Math.sin(dA/2)*Math.sin(dA/2)+Math.cos(a*tR)*Math.cos(x*tR)*Math.sin(dO/2)*Math.sin(dO/2);return 6371000*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s));}
+ function bearing(a,b,x,y){var tR=Math.PI/180;var dO=(y-b)*tR;var yy=Math.sin(dO)*Math.cos(x*tR);var xx=Math.cos(a*tR)*Math.sin(x*tR)-Math.sin(a*tR)*Math.cos(x*tR)*Math.cos(dO);return (Math.atan2(yy,xx)*180/Math.PI+360)%360;}
+ function arw(deg){return ['↑','↗','→','↘','↓','↙','←','↖'][Math.round(deg/45)%8];}
+ function css(){ if(document.getElementById('coachCss'))return; var s=document.createElement('style');s.id='coachCss';
+  s.textContent='.coachhud{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 92px);transform:translateX(-50%);z-index:1500;background:rgba(10,20,14,.94);border:2px solid #000;border-radius:5px;padding:8px 13px;box-shadow:0 4px 0 #000;font-family:var(--term);color:#eafff2;text-align:center;pointer-events:none;min-width:190px;display:none}'
+   +'.coacheff{font-family:var(--pix);font-size:12px}.coacheff b{font-size:16px}'
+   +'.coachsub{font-size:13px;color:#9fb0c8;margin-top:3px}'
+   +'.coachback{margin-top:6px;font-family:var(--pix);font-size:8px;color:var(--yel);border-top:2px solid #241a44;padding-top:6px;line-height:1.5}';
+  document.head.appendChild(s); }
+ function hud(){ var d=document.getElementById('coachHud'); if(!d){d=document.createElement('div');d.id='coachHud';d.className='coachhud';document.body.appendChild(d);} return d; }
+ function newMi(){ var m=0; if(c.startUncov)for(var k=0;k<c.startUncov.length;k++){var i=c.startUncov[k];if(E[i][3]===1)m+=elen[i];} return m/1609.344; }
+ function nearestUncov(la,lo){var bd=1e18,bm=null;for(var i=0;i<E.length;i++){if(E[i][3]!==0)continue;var mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;var dy=mla-la,dx=(mlo-lo)*0.75,dd=dy*dy+dx*dx;if(dd<bd){bd=dd;bm=[mla,mlo];}}if(!bm)return null;return {b:bearing(la,lo,bm[0],bm[1]),mi:hav(la,lo,bm[0],bm[1])/1609.344};}
+ function render(){ var d=hud(); var nm=newMi(),tm=c.total/1609.344; var eff=tm>0.02?Math.min(100,Math.round(100*nm/tm)):100; var col=eff>=70?'var(--grn)':eff>=40?'var(--yel)':'var(--red)';
+  var back=''; if((Date.now()-c.lastNewTime)>25000 && tm>0.06 && c.last){var nu=nearestUncov(c.last[0],c.last[1]); if(nu)back='<div class="coachback">'+arw(nu.b)+' NEW GROUND '+(nu.mi<0.1?Math.round(nu.mi*5280)+' FT':nu.mi.toFixed(1)+' MI')+' '+arw(nu.b)+'</div>';}
+  d.innerHTML='<div class="coacheff" style="color:'+col+'"><b>'+eff+'%</b> new ground</div><div class="coachsub">'+nm.toFixed(2)+' new mi / '+tm.toFixed(2)+' mi walked</div>'+back;
+ }
+ function onPos(la,lo){ if(c.last){var d=hav(c.last[0],c.last[1],la,lo); if(d>=4&&d<120)c.total+=d;} c.last=[la,lo]; var nm=newMi(); if(nm>c.lastNewMi+0.004){c.lastNewMi=nm;c.lastNewTime=Date.now(); if(navigator.vibrate){try{navigator.vibrate(26);}catch(e){}}} render(); }
+ function start(){ if(c.active)return; try{ css(); c.active=true;c.total=0;c.last=null;c.lastNewMi=0;c.lastNewTime=Date.now();c.startUncov=[];for(var i=0;i<E.length;i++)if(E[i][3]===0)c.startUncov.push(i); hud().style.display='block'; render(); if(navigator.geolocation)c.watchId=navigator.geolocation.watchPosition(function(p){onPos(p.coords.latitude,p.coords.longitude);},function(){},{enableHighAccuracy:true,maximumAge:2000,timeout:15000}); }catch(e){c.active=false;} }
+ function stop(){ try{ c.active=false; if(c.watchId!=null&&navigator.geolocation)navigator.geolocation.clearWatch(c.watchId); c.watchId=null; var d=document.getElementById('coachHud'); if(d)d.style.display='none'; }catch(e){} }
+ try{ var was=document.body.classList.contains('s-nav'); new MutationObserver(function(){ var nav=document.body.classList.contains('s-nav'); if(nav&&!was){was=true;start();} else if(!nav&&was){was=false;stop();} }).observe(document.body,{attributes:true,attributeFilter:['class']}); if(was)start(); }catch(e){}
+ try{ if(typeof startNav==='function'&&!startNav.__coach){var _sn=startNav;startNav=function(){var r=_sn.apply(this,arguments);start();return r;};startNav.__coach=1;} }catch(e){}
+ try{ if(typeof walkabout==='function'&&!walkabout.__coach){var _wa=walkabout;walkabout=function(){var r=_wa.apply(this,arguments);start();return r;};walkabout.__coach=1;} }catch(e){}
+ try{ if(typeof endNav==='function'&&!endNav.__coach){var _en=endNav;endNav=function(){stop();return _en.apply(this,arguments);};endNav.__coach=1;} }catch(e){}
 })();
 
 </script></body></html>
