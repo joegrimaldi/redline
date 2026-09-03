@@ -228,7 +228,7 @@
 </style></head><body class="s-home"><div id="app">
 
 <div id="home">
- <div class="brand"><h1>🟥 REDLINE</h1><div style="display:flex;gap:6px"><button id="syncBtn" class="upd">🔄 Sync</button><button id="updateBtn" class="upd">⟳ Update</button></div></div>
+ <div class="brand"><h1>🔴 REDLINE</h1><div style="display:flex;gap:6px"><button id="syncBtn" class="upd">🔄 Sync</button><button id="updateBtn" class="upd">⟳ Update</button></div></div>
  <div class="hero tapviz" data-viz="coverage"><div class="big" id="d_pct">–</div><div class="cap">redlined ›</div><div class="bar"><i id="d_bar" style="width:0%"></i></div></div>
  <div class="lvl tapviz" data-viz="levels"><div class="badge"><small>LV</small><b id="d_lv">–</b></div><div class="info"><div class="t" id="d_title">–</div><div class="x" id="d_xpsub"></div><div class="crit" id="d_crit"></div></div></div>
  <div class="streakrow tapviz" data-viz="calendar"><span class="fire">🔥</span><div><div class="sb" id="d_streak">–</div><div class="ss" id="d_streaksub"></div></div><div class="cal" id="d_cal"></div></div>
@@ -263,7 +263,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v762</div>
+ <div class="ver" id="ver">REDLINE v763</div>
 </div>
 
 <div id="map"></div>
@@ -403,7 +403,7 @@ function renderDash(){try{
   const hasNext=li+1<LEVELS.length;
   const crow=(ic,lb,cur,req,u)=>{u=u||'';const ok=cur>=req,p=req>0?Math.min(100,100*cur/req):100;return '<div class="crow'+(ok?' ok':'')+'"><span class="cl">'+ic+' '+lb+'</span><span class="cv">'+(ok?'✓':cur+u+' / '+req+u)+'</span><div class="cbar"><i style="width:'+p+'%"></i></div></div>';};
   if(hasNext){const nk=li+1;$('d_xpsub').textContent='NEXT → LV'+(nk+1)+' '+LEVELS[nk][1];
-    $('d_crit').innerHTML=crow('🟥','coverage',Math.round(covPct),LEVELS[nk][0],'%')+crow('🏘️',medal[LEVELS[nk][3]]+' hoods',hoodsAt(LEVELS[nk][3]),LEVELS[nk][2],'')+crow('🛣️','streets done',Math.round(stPct),LEVELS[nk][4],'%');
+    $('d_crit').innerHTML=crow('🔴','coverage',Math.round(covPct),LEVELS[nk][0],'%')+crow('🏘️',medal[LEVELS[nk][3]]+' hoods',hoodsAt(LEVELS[nk][3]),LEVELS[nk][2],'')+crow('🛣️','streets done',Math.round(stPct),LEVELS[nk][4],'%');
   }else{$('d_xpsub').textContent='★ MAX — Manhattan Master';$('d_crit').innerHTML='';}
   // streak
   $('d_streak').textContent=STATS.streak+'-day 🔥';
@@ -741,7 +741,7 @@ function levelsHTML(){
   let li=0;for(let k=0;k<LEVELS.length;k++){if(meets(k))li=k;}
   const br=hoodsAt(33),si=hoodsAt(66),go=hoodsAt(99);
   const meter=(ic,lb,val)=>'<div class="tmeter"><div class="tmlabel">'+ic+' '+lb+' — <b>'+Math.round(val)+'%</b></div><div class="tmbar"><i style="width:'+Math.min(100,val)+'%"></i><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
-  let h=meter('🟥','Coverage',covPct);
+  let h=meter('🔴','Coverage',covPct);
   const _tot=HD.length||1,_gw=100*go/_tot,_sw=100*Math.max(0,si-go)/_tot,_bw=100*Math.max(0,br-si)/_tot;
   const lk=Math.max(0,HD.length-br);
   h+='<div class="tmeter"><div class="tmlabel">🏘️ Neighborhoods — <b>'+lk+'</b> 🔒  <b>'+br+'</b> 🥉  <b>'+si+'</b> 🥈  <b>'+go+'</b> 🥇 <span style="color:var(--dim)">/ '+HD.length+'</span></div><div class="tmbar"><span class="seg sg" style="left:0;width:'+_gw+'%"></span><span class="seg ss" style="left:'+_gw+'%;width:'+_sw+'%"></span><span class="seg sb" style="left:'+(_gw+_sw)+'%;width:'+_bw+'%"></span><span class="tk" style="left:33%"></span><span class="tk" style="left:66%"></span><span class="tk" style="left:99%"></span></div></div>';
@@ -750,7 +750,7 @@ function levelsHTML(){
   for(let k=0;k<LEVELS.length;k++){const L=LEVELS[k], mile=(k===2||k===5||k===8), cur=(k===li), done=meets(k);
     const cov=covPct>=L[0], hd=hoodsAt(L[3])>=L[2], st=stPct>=L[4];
     const cell=(ok,txt)=>'<span class="lc'+(ok?' ok':'')+'">'+(ok?'✓ ':'')+txt+'</span>';
-    h+='<div class="lrow'+(cur?' cur':'')+(done?' done':'')+(mile?' mile':'')+'"><div class="lnum"><b>'+(k+1)+'</b></div><div class="lbody"><div class="ltitle">'+L[1]+(cur?' <em>← you</em>':'')+(mile?' <span class="mtag">'+medal[k===2?33:k===5?66:99]+' tier</span>':'')+'</div><div class="lcrit">'+cell(cov,'🟥 '+L[0]+'%')+cell(hd,'🏘️ '+L[2]+medal[L[3]])+cell(st,'🛣️ '+L[4]+'%')+'</div></div></div>';}
+    h+='<div class="lrow'+(cur?' cur':'')+(done?' done':'')+(mile?' mile':'')+'"><div class="lnum"><b>'+(k+1)+'</b></div><div class="lbody"><div class="ltitle">'+L[1]+(cur?' <em>← you</em>':'')+(mile?' <span class="mtag">'+medal[k===2?33:k===5?66:99]+' tier</span>':'')+'</div><div class="lcrit">'+cell(cov,'🔴 '+L[0]+'%')+cell(hd,'🏘️ '+L[2]+medal[L[3]])+cell(st,'🛣️ '+L[4]+'%')+'</div></div></div>';}
   h+='</div>';return h;}
 // ================= STAT DRILLDOWNS: 6 metrics × 3 retro data-viz =================
 function LTf(){return liveTotalsFull();}
