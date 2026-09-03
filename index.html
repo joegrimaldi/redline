@@ -36,7 +36,10 @@
  body.s-nav #map{display:block;inset:0}
  body.s-nav #navtop,body.s-nav #navbot{display:block} body.s-nav #navctl{display:flex}
  .brand{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
- .brand h1{margin:0;font-family:var(--pix);font-size:17px;color:var(--red);letter-spacing:1px;text-shadow:3px 3px 0 #000,0 0 12px rgba(255,59,71,.55)}
+ .brand h1{margin:0;display:flex;align-items:center;gap:9px;font-family:var(--pix);font-size:17px;letter-spacing:3px;background:linear-gradient(180deg,#ff6b73 0%,var(--red) 55%,#c81e2a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--red);filter:drop-shadow(3px 3px 0 #000) drop-shadow(0 0 12px rgba(255,59,71,.55))}
+ .brand h1 .beacon{width:13px;height:13px;flex:0 0 auto;border-radius:50%;background:var(--red);border:2px solid #000;box-shadow:0 0 0 0 rgba(255,59,71,.65);animation:beacon 2s ease-out infinite}
+ @keyframes beacon{0%{box-shadow:0 0 0 0 rgba(255,59,71,.65);opacity:1}70%{box-shadow:0 0 0 9px rgba(255,59,71,0);opacity:.82}100%{box-shadow:0 0 0 0 rgba(255,59,71,0);opacity:1}}
+ @media (prefers-reduced-motion:reduce){.brand h1 .beacon{animation:none}}
  .brand .upd{background:var(--panel);border:2px solid var(--line);color:var(--cyan);font-family:var(--pix);font-size:8px;padding:9px 10px;border-radius:3px;box-shadow:0 3px 0 var(--line)}
  .brand .upd:active{transform:translateY(3px);box-shadow:0 0 0 var(--line)}
  .hero{background:linear-gradient(135deg,#1a1240,#100a24);border:3px solid var(--line);border-radius:4px;padding:20px 16px;text-align:center;margin-bottom:12px;box-shadow:0 6px 0 var(--line),inset 0 0 0 2px #2c2258}
@@ -228,7 +231,7 @@
 </style></head><body class="s-home"><div id="app">
 
 <div id="home">
- <div class="brand"><h1>🔴 REDLINE</h1><div style="display:flex;gap:6px"><button id="syncBtn" class="upd">🔄 Sync</button><button id="updateBtn" class="upd">⟳ Update</button></div></div>
+ <div class="brand"><h1><i class="beacon" aria-hidden="true"></i>REDLINE</h1><div style="display:flex;gap:6px"><button id="syncBtn" class="upd">🔄 Sync</button><button id="updateBtn" class="upd">⟳ Update</button></div></div>
  <div class="hero tapviz" data-viz="coverage"><div class="big" id="d_pct">–</div><div class="cap">redlined ›</div><div class="bar"><i id="d_bar" style="width:0%"></i></div></div>
  <div class="lvl tapviz" data-viz="levels"><div class="badge"><small>LV</small><b id="d_lv">–</b></div><div class="info"><div class="t" id="d_title">–</div><div class="x" id="d_xpsub"></div><div class="crit" id="d_crit"></div></div></div>
  <div class="streakrow tapviz" data-viz="calendar"><span class="fire">🔥</span><div><div class="sb" id="d_streak">–</div><div class="ss" id="d_streaksub"></div></div><div class="cal" id="d_cal"></div></div>
@@ -263,7 +266,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v765</div>
+ <div class="ver" id="ver">REDLINE v766</div>
 </div>
 
 <div id="map"></div>
