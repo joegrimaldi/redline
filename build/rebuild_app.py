@@ -187,12 +187,20 @@ except Exception: pass
 
 # compute the next sw cache version first, so we can stamp it into the page
 sw=open(P('sw.js')).read()
-m=re.search(r"redline-v(\d+)",sw); v=int(m.group(1))+1 if m else 8
+m=re.search(r"redline-v(\d+)",sw); cur=int(m.group(1)) if m else 7; v=cur+1
 # assemble public index.html (address-stripped, version-stamped)
 head=open(P('head.html')).read(); tail=open(P('tail.html')).read()
 idx=head+'const G='+json.dumps({'nodes':nodes,'names':names,'edges':edges,'home':home},separators=(',',':'))+';\nconst STATS='+json.dumps(STATS)+';\nconst HOODBOX='+json.dumps([[h[0],h[1],h[2],h[3],h[4]] for h in HOODS])+';\nconst WALKLOG='+json.dumps(WALKLOG)+';\nconst WALKMI='+json.dumps(WALKMI)+';\n'+tail
-for a,b in [('82 Beaver St','Start (home)'),('ð  82 Beaver','ð  Home'),('using 82 Beaver','using home base'),('__VER__','v%d'%v)]:
+for a,b in [('82 Beaver St','Start (home)'),('ð  82 Beaver','ð  Home'),('using 82 Beaver','using home base')]:
     idx=idx.replace(a,b)
+# Only bump the version when the page actually changed. A rebuild with no new
+# coverage keeps the old stamp, so sync.yml sees an empty diff and skips the
+# commit + Pages redeploy (a relay hit with nothing new used to commit anyway).
+prev=os.path.normpath(os.path.join(HERE,'..','index.html'))
+try:
+    if open(prev).read()==idx.replace('__VER__','v%d'%cur): v=cur
+except Exception: pass
+idx=idx.replace('__VER__','v%d'%v)
 os.makedirs(APP,exist_ok=True)
 open(os.path.join(APP,'index.html'),'w').write(idx)
 # write sw with bumped cache version
