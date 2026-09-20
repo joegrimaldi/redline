@@ -266,7 +266,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v856</div>
+ <div class="ver" id="ver">REDLINE v857</div>
 </div>
 
 <div id="map"></div>
@@ -959,7 +959,9 @@ function drawLights(){
     if(!started){ if(typeof toast==='function')toast('⚠️ Could not reach sync - check your connection.',4000); sb.textContent='🔄 Sync'; sb.dataset.busy=''; return; }
     var t0=Date.now(), API='https://api.github.com/repos/joegrimaldi/redline', lastChk=0, run=null;
     function done(msg){ if(typeof toast==='function')toast(msg,6000); sb.textContent='🔄 Sync'; sb.dataset.busy=''; }
-    async function gh(path){ return (await fetch(API+path,{cache:'no-store'})).json(); }
+    // GitHub's API sends max-age=60, and a repeat of the same URL kept returning the run as in_progress
+    // long after it finished; a fresh query string each time is what actually bypasses that.
+    async function gh(path){ return (await fetch(API+path+(path.indexOf('?')>=0?'&':'?')+'_='+Date.now(),{cache:'no-store'})).json(); }
     // A sync with no new walks no longer commits (rebuild keeps the old version), so a version bump
     // can't be the only signal. Every 18s ask GitHub (public repo, no token) whether our run finished
     // and whether it pushed anything: 'nochange' | 'committed' | 'failed' | null (not done / unknown).
