@@ -218,7 +218,7 @@ function pinHTML(name,pct){const emo=emojiFor(name);const tr=hoodTier(pct);
 function buildConquestMap(){if(!HOODP||!document.getElementById('cmap'))return;
   const hs=computeHoods(),pct={};hs.forEach(h=>pct[h.name]=h.pct);
   cmap=L.map('cmap',{zoomControl:true,attributionControl:false,scrollWheelZoom:true,minZoom:11,maxZoom:16});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:16}).addTo(cmap);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:16,maxZoom:16}).addTo(cmap);
   const cents=HOODP.map(h=>({name:h.n,lat:(h.bb[0]+h.bb[2])/2,lon:(h.bb[1]+h.bb[3])/2,pct:pct[h.n]||0})).sort((a,b)=>a.lat-b.lat);
   L.polyline(cents.map(c=>[c.lat,c.lon]),{color:'#2a3647',weight:3,opacity:.6,dashArray:'3 7'}).addTo(cmap);
   const pts=[];
@@ -232,7 +232,7 @@ showConquest('map');
 
 // ---------- map (fog of war) ----------
 let map=L.map('map',{preferCanvas:true,zoomControl:false}).setView([N[HOME][0],N[HOME][1]],13);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OSM © CARTO',maxZoom:20}).addTo(map);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:16,attribution:'© Esri © OSM',maxZoom:20}).addTo(map);
 // redline theme: covered = bright red, uncovered = very visible green
 function edgeStyle(c){return c?{color:'#ff2e2e',weight:1.5,opacity:.78,interactive:false}:{color:'#27e04a',weight:2,opacity:.95,interactive:false};}
 function routeNewSegments(ns){const segs=[];for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);if(ei>=0&&E[ei][3]===0)segs.push([[N[ns[i]][0],N[ns[i]][1]],[N[ns[i+1]][0],N[ns[i+1]][1]]]);}return segs;}
@@ -342,7 +342,7 @@ function openHoodView(name){const hd=hoodByName(name);if(!hd)return;hoodViewName
   $('hv_sub').textContent=sub;
   $('hoodview').classList.add('show');
   setTimeout(()=>{try{
-    if(!hmap){hmap=L.map('hmap',{preferCanvas:true,zoomControl:true,attributionControl:false});L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:20}).addTo(hmap);hmapLayer=L.layerGroup().addTo(hmap);}
+    if(!hmap){hmap=L.map('hmap',{preferCanvas:true,zoomControl:true,attributionControl:false});L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:16,maxZoom:20}).addTo(hmap);hmapLayer=L.layerGroup().addTo(hmap);}
     hmapLayer.clearLayers();
     const bb=hd.bb,pad=0.003;
     for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;if(mla<bb[0]-pad||mla>bb[2]+pad||mlo<bb[1]-pad||mlo>bb[3]+pad)continue;if(!ptInHood(mla,mlo,hd))continue;const a=N[E[i][0]],b=N[E[i][1]];L.polyline([[a[0],a[1]],[b[0],b[1]]],edgeStyle(E[i][3])).addTo(hmapLayer);}
@@ -366,7 +366,7 @@ async function openUncov(){setStatus('');$('uc_sub').textContent='Locating…';$
   $('uc_list').innerHTML=arr.map(o=>`<div class="ucrow" data-node="${o.node}" data-name="${o.nm.replace(/"/g,'&quot;')}"><span>${o.nm}</span><b>${(o.dn/MI).toFixed(2)} mi</b></div>`).join('')||'<div class="ucsub">🎉 Nothing left — fully redlined!</div>';}
 function buildUmap(){if(umap){setTimeout(()=>{try{umap.invalidateSize();umap.setView(startLL,14);}catch(e){}},120);return;}
   umap=L.map('umap',{preferCanvas:true,zoomControl:true,attributionControl:false}).setView(startLL,14);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:20}).addTo(umap);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:16,maxZoom:20}).addTo(umap);
   const segs=[];for(let i=0;i<E.length;i++){if(E[i][3]===0){const a=N[E[i][0]],b=N[E[i][1]];segs.push([[a[0],a[1]],[b[0],b[1]]]);}}
   L.polyline(segs,{color:'#27e04a',weight:2,opacity:.92,interactive:false}).addTo(umap);
   L.circleMarker(startLL,{radius:6,color:'#fff',fillColor:'#ffd23f',fillOpacity:1,weight:2}).addTo(umap);
