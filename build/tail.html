@@ -24,13 +24,96 @@ function perpDist(p,a,b){const k=Math.cos(a[0]*Math.PI/180);const ax=a[1]*k,ay=a
 function rdp(pts,eps){if(pts.length<3)return pts.slice();let dmax=0,idx=0;for(let i=1;i<pts.length-1;i++){const d=perpDist(pts[i],pts[0],pts[pts.length-1]);if(d>dmax){dmax=d;idx=i;}}if(dmax>eps){const l=rdp(pts.slice(0,idx+1),eps),r=rdp(pts.slice(idx),eps);return l.slice(0,-1).concat(r);}return [pts[0],pts[pts.length-1]];}
 function waypointsFor(ns){const MAXSTOPS=9,MAXW=MAXSTOPS-2;const poly=ns.map(n=>[N[n][0],N[n][1]]);let eps=0.0003,simp=rdp(poly,eps);while(simp.length>MAXSTOPS&&eps<0.02){eps*=1.5;simp=rdp(poly,eps);}let tps=simp.slice(1,-1);if(tps.length>MAXW){const st=tps.length/MAXW,s=[];for(let i=0;i<MAXW;i++)s.push(tps[Math.floor(i*st)]);tps=s;}return tps;}
 function nearestNode(la,lo){let best=-1,bd=Infinity;for(let i=0;i<N.length;i++){const dla=(N[i][0]-la),dlo=(N[i][1]-lo)*0.758;const d=dla*dla+dlo*dlo;if(d<bd){bd=d;best=i;}}return best;}
-function greedy(s,t,B,allow){const dDest=dijkstra(t).dist, base=dDest[s];let routeN=[s],total=0,cur=s;const collected=new Set();const tol=0.18*MI;
-  if(B<=base*1.02){const {prevN,prevE}=dijkstra(s);const p=pathTo(prevN,prevE,s,t);return finalize(p?p.ns:[s]);}
-  for(let it=0;it<70;it++){const {dist,prevN,prevE}=dijkstra(cur);let best=null;
-    for(let i=0;i<E.length;i++){if(E[i][3]===1||collected.has(i))continue;if(allow&&!allow(i))continue;const a=E[i][0],b=E[i][1],da=dist[a],db=dist[b];let near,far,dn;if(da<db){near=a;far=b;dn=da;}else{near=b;far=a;dn=db;}if(!isFinite(dn))continue;if(total+dn+elen[i]+dDest[far]>B+tol)continue;if(best===null||dn<best.dn)best={dn,near,far,i};}
-    if(!best)break;const seg=pathTo(prevN,prevE,cur,best.near);if(seg){for(const ei of seg.es){if(E[ei][3]===0)collected.add(ei);}routeN=routeN.concat(seg.ns.slice(1));total+=dist[best.near];}
-    routeN.push(best.far);total+=elen[best.i];collected.add(best.i);cur=best.far;if(total+dDest[cur]>=B-tol)break;}
-  const {prevN,prevE}=dijkstra(cur);const p=pathTo(prevN,prevE,cur,t);if(p)routeN=routeN.concat(p.ns.slice(1));return finalize(routeN);}
+// ---------- route planner: uncovered street RUNS, hard distance budget ----------
+// A "run" is a stretch of uncovered blocks on one street that can be walked end to end without
+// turning. The planner picks the run with the best new-ground-per-detour and walks all of it, so
+// routes come out as long straight legs with few turns. Slivers under STUB_M are not chased on a
+// planned walk (they still count if the approach path crosses them); Clear-neighborhood mode does
+// chase them, last. The budget is hard: a route lands within TOL of the target instead of being
+// stretched to hit a coverage ratio (it lands a little under the target rather than over).
+const STUB_M=96, TURN_M=90, TOL=0.09;
+// Never route onto these, even as a connector: highways, tunnels, bridges that leave the island,
+// and off-island paths that leaked into the park data (NJ waterfront, Roosevelt Island, Queens).
+const NOROUTE_RE=/\b(FDR Drive|Harlem River Drive|Henry Hudson Parkway|West Side Highway|Expressway|Tunnel)\b|Hoboken|Newport|Roosevelt Island|Queens Plaza|Randalls|Wards Island|Pulaski|^(Manhattan|Brooklyn|Williamsburg|Washington|Madison Avenue|Willis Avenue|Third Avenue|145th Street|Macombs Dam|University Heights|(Ed Koch )?Queensboro|Triborough|RFK|Robert F\.? Kennedy|George Washington|Alexander Hamilton|High|Broadway) Bridge\b/i;
+let ROUTE_OK=null;
+function routeOK(){if(!ROUTE_OK||ROUTE_OK.length!==E.length){ROUTE_OK=new Uint8Array(E.length);for(let i=0;i<E.length;i++)ROUTE_OK[i]=NOROUTE_RE.test(NM[E[i][2]]||'')?0:1;}return ROUTE_OK;}
+// Dijkstra from one or more sources. opts.w: prefer uncovered streets (x0.8, for the final leg only —
+// budget math always uses real meters). opts.inHood + opts.pen: out-of-hood edges cost x pen.
+function dijkstraMulti(srcs,opts){opts=opts||{};const inHood=opts.inHood||null,pen=opts.pen||1,w=!!opts.w,RO=routeOK();
+  const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);const h=new Heap();
+  for(const s of srcs){if(s>=0){dist[s]=0;h.push([0,s]);}}
+  while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];
+    for(let k=0;k<au.length;k++){const e=au[k][2],v=au[k][0];if(!RO[e])continue;let c=au[k][1];if(w&&E[e][3]===0)c*=0.8;if(inHood&&!inHood[e])c*=pen;const nd=d+c;
+      if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}
+  return {dist,prevN,prevE};}
+function pathLen(es){let L=0;for(const ei of es)L+=elen[ei];return L;}
+// Group uncovered edges into runs: same street name, chained through nodes where exactly one
+// uncovered same-name edge continues. allow (Uint8Array) restricts to a neighborhood; skip (Set)
+// drops edges already walked earlier in this route.
+function buildRuns(allow,skip){const seen=new Uint8Array(E.length);const runs=[];
+  const RO=routeOK();const ok=e=>E[e][3]===0&&RO[e]&&!seen[e]&&!(skip&&skip.has(e))&&!(allow&&!allow[e]);
+  function nextEdge(node,fromE,nm){const au=adj[node];let found=-1,cnt=0;for(let k=0;k<au.length;k++){const e=au[k][2];if(e===fromE||E[e][2]!==nm||!ok(e))continue;cnt++;found=e;}return cnt===1?found:-1;}
+  for(let i=0;i<E.length;i++){if(!ok(i))continue;seen[i]=1;const nm=E[i][2];const es=[i],ns=[E[i][0],E[i][1]];let len=elen[i];
+    let cur=ns[ns.length-1],last=i;
+    for(let g=0;g<400;g++){const e=nextEdge(cur,last,nm);if(e<0)break;const nxt=E[e][0]===cur?E[e][1]:E[e][0];if(ns.indexOf(nxt)>=0)break;seen[e]=1;es.push(e);ns.push(nxt);len+=elen[e];last=e;cur=nxt;}
+    cur=ns[0];last=i;
+    for(let g=0;g<400;g++){const e=nextEdge(cur,last,nm);if(e<0)break;const nxt=E[e][0]===cur?E[e][1]:E[e][0];if(ns.indexOf(nxt)>=0)break;seen[e]=1;es.unshift(e);ns.unshift(nxt);len+=elen[e];last=e;cur=nxt;}
+    runs.push(mkRun(es,ns));}
+  return runs;}
+// a sliver is a short run that dead-ends (forces an out-and-back); short through-blocks are fine
+function mkRun(es,ns){const RO=routeOK();const cum=[0];for(const e of es)cum.push(cum[cum.length-1]+elen[e]);const len=cum[cum.length-1];
+  const deg=n=>{let d=0;for(const a of adj[n])if(RO[a[2]])d++;return d;};
+  return {es,ns,cum,len,done:false,stub:len<STUB_M&&(deg(ns[0])<=1||deg(ns[ns.length-1])<=1)};}
+// planRoute(s, ends, B, opts) -> finalize() result (+ endIdx, leftMi in hood mode).
+//   ends: node(s) the walk may finish at (one destination, or every subway stop of a hood)
+//   B: budget in meters, hard: lands in [B-TOL*B, B], final leg may run TOL/3 over for new ground
+//   opts.allow / opts.inHood / opts.pen: neighborhood mode   opts.skip: edges walked already
+//   opts.stubs: chase slivers too (Clear mode)
+// The first run chosen decides most of the walk, so try the best three openings and keep the one
+// that yields the most new ground (ties: fewer turns).
+async function planRoute(s,ends,B,opts){opts=opts||{};const tried=[];let best=null;
+  for(let k=0;k<3;k++){const r=await planCore(s,ends,B,opts,tried);if(!r)break;if(r.first>=0)tried.push(r.first);
+    if(best===null||r.newMi>best.newMi+1e-6||(Math.abs(r.newMi-best.newMi)<=1e-6&&r.legs.length<best.legs.length))best=r;if(r.first<0)break;}
+  return best;}
+async function planCore(s,ends,B,opts,exclFirst){ends=Array.isArray(ends)?ends:[ends];
+  const allow=opts.allow||null,hood=opts.inHood?{inHood:opts.inHood,pen:opts.pen||8}:null,tol=TOL*B;
+  const D=dijkstraMulti(ends,null).dist;            // real meters from any node to the nearest finish
+  const runs=buildRuns(allow,opts.skip);const used=new Set(opts.skip||[]);
+  let routeN=[s],total=0,cur=s,first=-1;
+  for(let it=0;it<90;it++){
+    const {dist,prevN,prevE}=dijkstraMulti([cur],hood);
+    let best=null;
+    // enter each run at its node nearest to us and walk to either end (so a run we are standing
+    // in the middle of is walked from here, not from its far end); the unwalked remainder becomes its own run
+    for(let ri=0;ri<runs.length;ri++){const r=runs[ri];if(r.done||(!opts.stubs&&r.stub)||(it===0&&exclFirst.indexOf(r.es[0])>=0))continue;
+      let j=-1,dn=Infinity;for(let m=0;m<r.ns.length;m++){const d=dist[r.ns[m]];if(d<dn){dn=d;j=m;}}
+      if(!isFinite(dn))continue;const last=r.ns.length-1;
+      for(let k=0;k<2;k++){const fwd=k===0,len=fwd?r.len-r.cum[j]:r.cum[j];if(len<=0)continue;const ext=fwd?r.ns[last]:r.ns[0];
+        if(total+dn+len+D[ext]>B)continue;
+        const sc=(dn+TURN_M)/len;if(best===null||sc<best.sc)best={sc,r,j,fwd,len,ext,ent:r.ns[j]};}}
+    if(!best)break;
+    const seg=pathTo(prevN,prevE,cur,best.ent);
+    if(seg){total+=pathLen(seg.es);for(const ei of seg.es)used.add(ei);routeN=routeN.concat(seg.ns.slice(1));}
+    const r=best.r,j=best.j;let ns,es,rest=null;
+    if(best.fwd){ns=r.ns.slice(j);es=r.es.slice(j);if(j>0)rest=mkRun(r.es.slice(0,j),r.ns.slice(0,j+1));}
+    else{ns=r.ns.slice(0,j+1).reverse();es=r.es.slice(0,j);if(j<r.ns.length-1)rest=mkRun(r.es.slice(j),r.ns.slice(j));}
+    if(first<0)first=r.es[0];
+    routeN=routeN.concat(ns.slice(1));total+=best.len;r.done=true;for(const ei of es)used.add(ei);cur=best.ext;
+    if(rest){rest.stub=false;runs.push(rest);}
+    for(const o of runs){if(!o.done&&o.es.every(e=>used.has(e)))o.done=true;}
+    if(total+D[cur]>=B-tol)break;
+    if(it%9===8)await new Promise(res=>setTimeout(res));}
+  // final leg: nearest finish, preferring uncovered streets when that still fits the budget
+  let endIdx=-1,fin=null;
+  for(const w of [true,false]){const {dist,prevN,prevE}=dijkstraMulti([cur],Object.assign({w},hood||{}));let bi=-1,bd=Infinity;
+    for(let k=0;k<ends.length;k++){if(dist[ends[k]]<bd){bd=dist[ends[k]];bi=k;}}
+    if(bi<0)break;const p=pathTo(prevN,prevE,cur,ends[bi]);if(!p)break;
+    if(!w||total+pathLen(p.es)<=B+tol/3){fin=p;endIdx=bi;break;}}
+  if(fin)routeN=routeN.concat(fin.ns.slice(1));
+  const res=finalize(routeN);res.endIdx=endIdx;res.first=first;
+  if(allow){const RO=routeOK();let left=0;for(let i=0;i<E.length;i++){if(allow[i]&&RO[i]&&E[i][3]===0&&!used.has(i))left+=elen[i];}res.leftMi=left/MI;}
+  return res;}
+function routeEdges(ns){const es=[];for(let i=0;i+1<ns.length;i++){const e=edgeBetween(ns[i],ns[i+1]);if(e>=0)es.push(e);}return es;}
 function edgeBetween(a,b){const au=adj[a];for(let k=0;k<au.length;k++)if(au[k][0]===b)return au[k][2];return -1;}
 function finalize(ns){const legs=[];let total=0;const newSet=new Set();
   for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);if(ei<0)continue;const L=elen[ei];total+=L;const nm=NM[E[ei][2]]||'(unnamed)';const nw=E[ei][3]===0;if(nw)newSet.add(ei);
@@ -215,9 +298,9 @@ async function run(){const dmode=(document.querySelector('input[name=dest]:check
   const dnode=nearestNode(dest.lat,dest.lon);
   if(havLL(dest.lat,dest.lon,N[dnode][0],N[dnode][1])>500){setStatus('⚠ Destination outside the Manhattan grid.');$('go').textContent='Plan route';return;}
   await new Promise(r=>setTimeout(r,20));
-  function buildRoute(B){if(loop){const t1=greedy(START,dnode,Math.max(dijkstra(dnode).dist[START],B*0.5));const t2=greedy(dnode,START,Math.max(0.1,B-t1.totalMi*MI));return finalize(t1.ns.concat(t2.ns.slice(1)));}return greedy(START,dnode,B);}
-  const pctOf=r=>(r.totalMi>0?r.newMi/r.totalMi:0);const MINNEW=1/3;let res=buildRoute(target*MI);
-  if(pctOf(res)<MINNEW){const capMi=Math.min(Math.max(target*2,res.totalMi+3),target+6);let att=0;for(let d=target+0.5;d<=capMi+1e-6;d+=0.5){if(++att>9)break;const r2=buildRoute(d*MI);if(pctOf(r2)>pctOf(res))res=r2;if(pctOf(res)>=MINNEW)break;}}
+  // round trip from A back to A is one loop with the whole budget; A->B->A is two halves
+  async function buildRoute(B){if(loop&&START!==dnode){const t1=await planRoute(START,dnode,Math.max(dijkstra(dnode).dist[START],B*0.5));const t2=await planRoute(dnode,START,Math.max(0.1*MI,B-t1.totalMi*MI),{skip:new Set(routeEdges(t1.ns))});return finalize(t1.ns.concat(t2.ns.slice(1)));}return planRoute(START,loop?START:dnode,B);}
+  const res=await buildRoute(target*MI);   // hard budget: no silent stretching to chase a coverage ratio
   $('go').textContent='Plan route';setStatus('');showPreview(res,dest,pace);}
 
 function nearestNew(){if(!navigator.geolocation){setStatus('Geolocation needed.');return;}setStatus('Finding your location…');
@@ -238,29 +321,15 @@ async function neighborhoodRoute(name){
   const startNode=startS?nearestNode(startS[0],startS[1]):nearestNode(uLat,uLon);
   const endNodes=st.map(s=>nearestNode(s[0],s[1]));
   const pace=PACE;
-  const res=await hoodClear(startNode,endNodes,remaining,allowEdge);
+  const B=(parseFloat($('dist').value)||3.33)*MI;   // Clear a walk-length chunk, not the whole neighborhood
+  const {dist:d0}=dijkstraMulti([startNode],null);let unreach=0;remaining.forEach(i=>{if(!isFinite(d0[E[i][0]])&&!isFinite(d0[E[i][1]]))unreach+=elen[i]/MI;});
+  const res=await planRoute(startNode,endNodes.length?endNodes:[startNode],B,{allow:allowEdge,inHood:allowEdge,pen:8,stubs:true});
+  if(res.newMi<0.05){setStatus('');toast('🧩 Nothing routable left in '+name+(unreach>0.05?' — the remaining '+unreach.toFixed(1)+' mi is on park/plaza paths the router can\'t reach yet.':'.'));return;}
   startLL=[N[startNode][0],N[startNode][1]];
-  const endSt=(res.endStIdx>=0&&st[res.endStIdx])?st[res.endStIdx]:startS;
+  const endSt=(res.endIdx>=0&&st[res.endIdx])?st[res.endIdx]:startS;
   setStatus('');
   showPreview(res,{lat:endSt?endSt[0]:N[startNode][0],lon:endSt?endSt[1]:N[startNode][1],name:'Clear '+name,transit:{start:startS,end:endSt}},pace);
-  if(res.hoodLeftMi>0.4)setTimeout(()=>toast('🧩 ~'+res.hoodLeftMi.toFixed(1)+' mi of '+name+' sits on disconnected paths — Clear again from there to finish.'),500);
-}
-// Efficient in-neighborhood sweep between subway stops: greedily clear every uncovered block, staying in-hood (soft penalty), then head to the nearest stop.
-async function hoodClear(startNode,endNodes,remaining,inHood){
-  const PEN=8;let routeN=[startNode],cur=startNode,guard=0;const rem=new Set(remaining);
-  while(rem.size>0&&guard++<900){
-    const {dist,prevN,prevE}=dijkstraSoft(cur,inHood,PEN);
-    let best=null;
-    for(const i of rem){const a=E[i][0],b=E[i][1],da=dist[a],db=dist[b];let near,far,dn;if(da<=db){near=a;far=b;dn=da;}else{near=b;far=a;dn=db;}if(!isFinite(dn))continue;if(best===null||dn<best.dn)best={dn,near,far,i};}
-    if(!best)break;
-    const seg=pathTo(prevN,prevE,cur,best.near);
-    if(seg){routeN=routeN.concat(seg.ns.slice(1));for(const ei of seg.es)rem.delete(ei);}
-    routeN.push(best.far);rem.delete(best.i);cur=best.far;
-    if(guard%20===0)await new Promise(r=>setTimeout(r));
-  }
-  let enIdx=-1;
-  if(endNodes&&endNodes.length){const {dist,prevN,prevE}=dijkstraSoft(cur,inHood,PEN);let en=-1,eb=Infinity;for(let k=0;k<endNodes.length;k++){const ed=endNodes[k];if(dist[ed]<eb){eb=dist[ed];en=ed;enIdx=k;}}if(en>=0&&isFinite(eb)){const p=pathTo(prevN,prevE,cur,en);if(p)routeN=routeN.concat(p.ns.slice(1));}}
-  const r=finalize(routeN);let left=0;rem.forEach(i=>left+=elen[i]/MI);r.hoodLeftMi=left;r.endStIdx=enIdx;return r;
+  if(res.leftMi>0.4)setTimeout(()=>toast('🧩 ~'+res.leftMi.toFixed(1)+' mi of '+name+' still to go after this walk — Clear again to continue.'+(unreach>0.3?' ('+unreach.toFixed(1)+' mi of it is on park/plaza paths the router can\'t reach yet.)':'')),500);
 }
 // focused neighborhood map: streets lit red/green + cyan boundary, then Clear
 let hmap=null,hmapLayer=null,hoodViewName=null;
