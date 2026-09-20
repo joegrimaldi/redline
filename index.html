@@ -266,7 +266,7 @@
    </div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v851</div>
+ <div class="ver" id="ver">REDLINE v852</div>
 </div>
 
 <div id="map"></div>
@@ -888,7 +888,22 @@ function drawLights(){
     var started=false;
     try{var r=await fetch(SYNC_URL,{method:'POST'});var tx=(await r.text()).trim();started=r.ok&&/sync started/i.test(tx);}catch(e){}
     if(!started){ if(typeof toast==='function')toast('⚠️ Could not reach sync - check your connection.',4000); sb.textContent='🔄 Sync'; sb.dataset.busy=''; return; }
-    var t0=Date.now();
+    var t0=Date.now(), API='https://api.github.com/repos/joegrimaldi/redline', lastChk=0, run=null;
+    function done(msg){ if(typeof toast==='function')toast(msg,6000); sb.textContent='🔄 Sync'; sb.dataset.busy=''; }
+    async function gh(path){ return (await fetch(API+path,{cache:'no-store'})).json(); }
+    // A sync with no new walks no longer commits (rebuild keeps the old version), so a version bump
+    // can't be the only signal. Every 18s ask GitHub (public repo, no token) whether our run finished
+    // and whether it pushed anything: 'nochange' | 'committed' | 'failed' | null (not done / unknown).
+    async function outcome(){
+      if(Date.now()-lastChk<18000) return null; lastChk=Date.now();
+      try{
+        if(!run||run.status!=='completed'){ var j=await gh('/actions/workflows/sync.yml/runs?per_page=3'); run=(j.workflow_runs||[]).filter(function(r){return Date.parse(r.created_at)>=t0-90000;})[0]||null; }
+        if(!run||run.status!=='completed') return null;
+        if(run.conclusion!=='success') return 'failed';
+        var head=(await gh('/commits/main')).sha;
+        return head===run.head_sha?'nochange':'committed';
+      }catch(e){ return null; }
+    }
     async function poll(){
       var v=0; try{v=pv(await (await fetch('sw.js?cb='+Date.now(),{cache:'no-store'})).text());}catch(e){}
       if(v>base){
@@ -896,8 +911,11 @@ function drawLights(){
         try{var ks=await caches.keys(); await Promise.all(ks.map(function(k){return caches.delete(k);}));}catch(e){}
         location.reload(); return;
       }
+      var o=await outcome();
+      if(o==='nochange'){ done('✅ Up to date — no new walks since the last sync.'); return; }
+      if(o==='failed'){ done('⚠️ Sync failed on GitHub — try again in a bit.'); return; }
       if(Date.now()-t0<210000){ setTimeout(poll,5000); }
-      else{ if(typeof toast==='function')toast('Sync is taking longer than usual; it will appear on your next open.',5000); sb.textContent='🔄 Sync'; sb.dataset.busy=''; }
+      else done('Sync is taking longer than usual; it will appear on your next open.');
     }
     setTimeout(poll,20000);
   };
