@@ -20,9 +20,10 @@ function nearestNode(la,lo){let best=-1,bd=Infinity;for(let i=0;i<N.length;i++){
 // A "run" is a stretch of uncovered blocks on one street that can be walked end to end without
 // turning. Walkabout always heads for the best run from wherever you are (see nextLeg below).
 const STUB_M=96, TURN_M=90;
-// Never route onto these, even as a connector: highways, tunnels, bridges that leave the island,
-// and off-island paths that leaked into the park data (NJ waterfront, Roosevelt Island, Queens).
-const NOROUTE_RE=/\b(FDR Drive|Harlem River Drive|Henry Hudson Parkway|West Side Highway|Expressway|Tunnel)\b|Hoboken|Newport|Roosevelt Island|Queens Plaza|Randalls|Wards Island|Pulaski|^(Manhattan|Brooklyn|Williamsburg|Washington|Madison Avenue|Willis Avenue|Third Avenue|145th Street|Macombs Dam|University Heights|(Ed Koch )?Queensboro|Triborough|RFK|Robert F\.? Kennedy|George Washington|Alexander Hamilton|High|Broadway) Bridge\b/i;
+// Never route onto these, even as a connector: highways, tunnels, bridges that leave the borough.
+// (The build applies the same list plus a geometry mask, so little of this should still be in the data;
+// Roosevelt, Governors and Randall's Islands and Marble Hill are part of Manhattan and stay in.)
+const NOROUTE_RE=/\b(FDR Drive|Harlem River Drive|Henry Hudson Parkway|West Side Highway|Expressway|Tunnel)\b|Hoboken|Newport|Roosevelt Island Bridge|Queens Plaza|Pulaski|^(Manhattan|Brooklyn|Williamsburg|Washington|Madison Avenue|Willis Avenue|Third Avenue|145th Street|Macombs Dam|University Heights|(Ed Koch )?Queensboro|Triborough|RFK|Robert F\.? Kennedy|George Washington|Alexander Hamilton|High) Bridge\b/i;
 let ROUTE_OK=null;
 function routeOK(){if(!ROUTE_OK||ROUTE_OK.length!==E.length){ROUTE_OK=new Uint8Array(E.length);for(let i=0;i<E.length;i++)ROUTE_OK[i]=NOROUTE_RE.test(NM[E[i][2]]||'')?0:1;}return ROUTE_OK;}
 // Dijkstra from one or more sources. opts.w: prefer uncovered streets (x0.8, for the final leg only —
