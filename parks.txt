@@ -4,7 +4,6 @@
 0		unkxFjedbMUACHJDMb@
 1	Great Hill Oval	{b_xF`~kbMWMg@?]RGVC~@TxBNl@XPn@ANKXc@Ju@S_Cg@o@
 0	West 63rd Street	enzwF~jqbM}BvH
-0	Arlington Avenue	ugoxF|ycbMHkA
 1		_|uwF|zubMTsA
 0	Hudson River Park Esplanade	c{swFtcvbM|a@~AN[NCXNFTxPp@
 1	Hudson River Park Esplanade	ifvwFtyubM~EG~@NjAn@dAw@|ANDeARq@
@@ -16,14 +15,12 @@
 0	Terrace Drive	ga{wF`jobMKu@i@q@{CyBg@w@
 0		gy}wFnzkbMaBs@oAyAiBsAk@{Ac@m@_CcAuCS@~EfAbCCZ[^
 0		g{}wFd_lbM`@aB\s@
-0	Hoboken Newport Walkway – Hudson River Waterfront Walkway	w|~wFjxrbMu@bFa@`B
 0		cnywF`_pbMnCzA
 0		}iywFvapbMo@d@a@dBu@xAUhC
 0		y|xwFb~nbMCY
 0		}|xwFh}nbMBG
 0		mcywFnmobMCM
 0		mcywFzkobMf@Il@u@X}@TcB`AiALa@Oi@Ng@AW
-1	Brooklyn Bridge Promenade	{snwFv`ubMLBv@eA
 0		yfmxF|vfbMu@A{A]eAi@{JuCcIaDQ@
 0		sdnxFrifbMXgA
 0		mz{wFdrmbMvAw@f@cAx@eA
@@ -98,8 +95,6 @@
 0	Playmates Arch	kxywF~dobMYd@
 0		kwywFh`obMj@X~@vAx@C
 0		iv~wFrflbMX@RX
-0	Ed Koch Queensboro Bridge Path	{zvwFhcjbMs^`hAa@v@sA|D
-0	Ed Koch Queensboro Bridge Path	e~wwF`tlbMmAxDS^KA
 0	West 67th Street	ki{wFb{qbMBI
 0		}x`xFzymbM[Q]@
 0		qfdxFrokbMYfA]|E
@@ -158,8 +153,6 @@
 1		sp~wFv{jbMAVO?AWR?
 1	Battery Park City Greenway	ixowFtuvbMi@xHLb@g@pIdUbC
 1	East River Greenway	qolwFfhvbM}AcJoDgHSQ
-0	Queens Plaza Greenway	mhvwFlwhbMnByF
-0	West 230th Street	qooxFt{bbMSfAGCe@|AIBCX
 0		oajxFbuebMgEcC}@iAqAs@mA{AkAo@Wy@y@C_@XUA_DqBsIc@OJQKAQ
 0		gujxFn|fbM@Z^`@
 0		_sjxFjyfbM[ECPJN
@@ -173,16 +166,9 @@
 0		a{jxFdzdbM[PLz@OtA
 0		esjxFnzfbMp@d@
 0		etjxFl~fbMLRCT
-0	Tunnel Street	eqjxFhkfbMJFyEdQ
 0		{jcxFfqlbMQn@
 0		wtbxFxrkbMc@oAe@[ITGE
 0		kfexFlakbMpAHTUAT
-0		skexFvlnbMgAnE[E
-0		meoxFn}dbMTW
-0		_eoxFf~dbMTU
-0		udoxFz|dbMOY
-0		ugoxFt{dbMTN
-0		_goxFd|dbMl@b@P\
 1		ko_xFvlkbMGGFq@
 0		emzwFnoobMQeG@wD`@aCFwAr@qB
 0	Nell Singer Lilac Walk	ewzwFrhobMl@c@jAkBhCmAt@w@
@@ -320,8 +306,6 @@
 0	East 78th Street Pedestrian Bridge	q{ywF|fjbMlAsD
 0	East 78th Street Pedestrian Bridge	_vywFdajbMgAaA[dA
 0	East 51st Street Esplanade	g~vwF|slbMfBdBlEhD
-1	Brooklyn Bridge Promenade	uqnwFt~tbMm@Xy@A
-1	Brooklyn Bridge Promenade	usnwFr_ubMEb@
 1		w|swFfvubMH@
 0		ojywFpfobMUf@]N
 0		wgywFn}nbM^E`@TZOr@\t@sAl@a@Ne@
@@ -405,8 +389,6 @@
 0	East 37th Street	o_uwF|jnbM]hA
 0		{xzwFxbnbMjEV
 0		ki{wFf`obMg@kAuA_AC_@S[
-0		waoxFhbdbMxAkA
-0		q{oxF|lbbM`B?j@Mp@Xd@C
 0		m`}wFhcqbMTT
 0		m`}wFhcqbMm@y@i@Q
 0		y~|wFhdqbMLc@
@@ -419,9 +401,6 @@
 0		{q_xFvhobMqAJ
 0		uqywFzeobMf@a@?y@V_AMM
 0		oa{wFn}mbM|@^`C]
-0		asexFlynbMLE
-0		krexFvxnbMx@B
-0		srexFfynbMHW
 0		gumxFdzebMGdA
 0		wcnxFhzebMJc@
 0		{{lxFz`fbM]d@q@nCg@Fa@K[OKU
@@ -535,7 +514,6 @@
 0		sinxFt{bbMJ_@
 0		ginxFtzbbMQO
 0		yinxFdzbbMIE
-0		qykxFlfcbM[c@
 0	West 215th Street	ylmxFj{cbMIP
 0	West 215th Street	sjmxFtxcbMeAtA
 0	Northwest Central Park Loop	cb~wFbzlbMs@a@UJ_@rAQT
@@ -565,9 +543,6 @@
 0		_saxFrqlbMHW
 0		uuaxFbtlbMQKEF
 0		qgaxF`zlbMNJ
-0	Hoboken Newport Walkway – Hudson River Waterfront Walkway	wg_xFfurbMJ[PKRaATIxBxAT`@tBt@Pd@
-0	Hoboken Newport Walkway – Hudson River Waterfront Walkway	g{fxFnknbMqAcBjBsKV_@x@KhEhBdBIn@ZRKZH
-0	Hoboken Newport Walkway – Hudson River Waterfront Walkway	skexFvlnbMhBr@Op@jAl@Qt@JFXIb@w@rAl@`@Dh@wBHGn@VxOtI[bCVd@\Bd@k@v@MxB`@bDxBzGjDzBtB
 0		oj_xFvbobM[@WV
 0		gb_xFfdobMIR
 1		gb_xFfdobMHO
@@ -681,12 +656,10 @@
 0	East 71st Street Pedestrian Bridge	y|xwFjvjbMOI
 0	East 71st Street Pedestrian Bridge	}~xwFdyjbMp@iB
 1	City Hall Park Greenway	yznwFhlubM|@}B^g@LaAt@kBh@G
-0		cpfxF~onbMHwAlCaNLSd@EbBpAtAnB~ABfAf@xA\
 0	East River Esplanade	uwtwFlpnbMmCyA
 0	Riverside Walk	{ucxFjglbMoF{DUi@Cw@IQwCsBuEkFyLqLsGuF_@Sk@Hg@jAkAv@
 1	Old Slip	uylwFnrubMOP
 1	Battery Bikeway	_tlwF|xvbMC{C|A]x@a@Xo@
-0	Ed Koch Queensboro Bridge Path	udvwF|nhbMDVOj@
 0		{stwFltnbMH[
 0		eavwFlyubMk@`EmAzDm@OvCmJ
 0		cdvwFh_vbMv@S
@@ -694,34 +667,8 @@
 0		igdxF|pkbMy@e@aAqA
 0		uszwFxmnbMc@K
 0		erzwFhnnbMh@N
-0		qmvwF~bibMCC
-0	Bradley Terrace	mfoxFfxdbMOUHKi@cA
-0		wpoxF~mdbM]\y@XYE
-0		cpoxFnodbMNE
-0		uqoxF|ndbM^dC
-0		knoxFpqdbMH`E
-0		_qoxFnmdbMZ~@Bz@Kh@_@\k@Ka@i@OaAAy@
-0		kqoxFrsdbMWZKl@HrAj@n@b@RXAVq@CeA_@gAa@]a@A
-0		wroxFfsdbMLt@
-0		apoxF|qdbMHdAIL
-0		_uoxFxfdbM_@P
-0		ivoxF`hdbMaAy@
-0		awoxFvfdbMGL
-0		eqoxFjjdbMgAj@cA@e@]Um@k@m@k@[Ce@FO
-0		ivoxFredbMHv@Oj@Rz@Zh@
-0		_toxFxkdbMb@w@D]
-0		cvoxFrgdbM_Ay@
-0		{voxFpbdbMQVb@hAlA|@nA~A
-0		{poxF|idbMIL
-0		{uoxFrjdbMQP
-0		_qoxFnbdbMFO`ArA
-0		qmoxF|edbM|DpF
 0		sgoxFnmdbMpQd[
 0		aunxFtiebMl@zC
-0		kloxFbadbMUj@
-0		amoxFnbdbMM`@
-0		umoxFj`dbMBd@
-0		qmoxFpadbMMh@
 0		mszwFjhobMe@m@YB
 0	Riverside Park South Esplanade	wz{wFl}qbMS?wEqC
 0		_gdxFdqkbMhAbAh@Rp@?
@@ -804,32 +751,11 @@
 1	Ravine Rustic Bridge	ku~wFd~kbMI@
 1		m{~wFdpkbM@C
 1	High Line	__twFnvubMd@H?Qh@A
-0		i{jxFlsbbMTyA
-0		u{jxFrsbbMUWWE
-0		ybkxFj_cbMkAbF
-0		eekxFnfcbMEN
-0		qbkxFv~bbMDW
-0	Old Croton Aqueduct Walk	syjxF~lbbMl@d@`EhBzAvAER
 0		s~}wFncpbMUj@i@Eg@Q{F{DWJOZ
 0		ydlxFtofbMs@[e@u@{AsA]K
 0		cblxFjwfbMv@p@XFb@KDs@Y{A?s@Lg@l@_A
 0	Overlook Path	mklxFbjfbMJW
 0		aklxFjifbMPb@
-0		g~jxFlrbbMN`A^j@
-0		c_kxFfrbbMAaA
-0		evjxFhwbbMHO@y@WYoAg@
-0		qvjxFdtbbMVs@
-0		_zjxFrubbMJk@QI
-0		y{jxFzvbbMn@X
-0		syjxFfvbbMIFYpA
-0		cxjxFjecbMXN
-0		c}jxFdncbMVDKIN]
-0		s|jxFnmcbMiAo@?I\C
-0		}_kxF~rcbM?m@s@]
-0		}`kxFvqcbM@W
-0		q`kxFdqcbMBKj@GC`@fAJB]
-0		i}jxF|kcbMTR
-0		myjxF~gcbMh@T
 0		on_xF~{nbMNA
 0		_|{wFrcnbMEc@
 0		gr{wF|`nbMY@Yd@
@@ -1000,12 +926,6 @@
 0		oyywFzcobMMS
 0		}yywFfcobMMk@
 0		e~zwFdvmbMeC_Bg@mAQmB
-0		_adxFnjobMiAo@QP
-0		mbdxFpjobMRS
-0		mbdxFvgobMHY
-0		madxFjhobMFY
-0		ybdxFnkobMGV
-0		gddxFpjobMGT
 0	High Line	uxuwF~ztbMnAdAdB|@~N~JV?z@h@
 0		iutwF`nubMP?
 0		u`bxFz|kbMc@lAo@bAq@pD
@@ -1025,10 +945,6 @@
 0		an~wFdhmbMoDaC
 1		iu~wFtgmbMq@e@
 0	74th Street Track	of|wFhsqbM]i@y@g@k@CML?d@vBrAVO@a@
-0		gvnxFpldbMXNtAsC
-0		ecoxFnrdbMpAaA|CgA`B{@jAF
-0		kakxFdbdbMKh@D`@z@x@pBlAvAnB|A~@jBl@dACh@b@
-0	Ed Koch Queensboro Bridge Path	_evwF`qhbMwAlE
 0		}{cxFhdlbMPg@
 0		}hzwFfsobMMp@G@
 0		qjzwFruobMHB
@@ -1048,10 +964,6 @@
 0		mfbxFrbmbMr@TvBK
 0	East River Esplanade	astwFzsnbMETp@TnDn@
 0	East 71st Street Pedestrian Bridge	m~xwFtwjbMFFU~@
-0		mvjxFhndbMZi@`@_B
-0		szjxFvjdbMLmFkEoAYj@
-0		ozjxF`idbMg@B
-0		cpjxFrodbMCJ
 0		afkxFdegbMDi@iDoA
 0		odlxFjtfbMc@o@eAi@mB[
 0	Overlook Path	eplxFzofbMCZ
@@ -1137,11 +1049,9 @@
 1		uvuwF|yubMJOASMEMb@
 1		gwuwF|{ubM?eA
 0	Riverside Walk	kc|wFhxqbMs@U
-0	Hudson River Waterfront Walkway	gg}wF~_tbMb@NrGpE`HjF|ExCpCdCu@zBzJhHgAfDbGfEPVbE~BnHbG}AzEvElD|B~AhAsCZQfAVv@l@n@?~A_ETSZCnBnAf@MzA`ADZTHnBdFl@hAa@rAjAvBpAdA@He@t@LZlA^t@AzBtAl@r@?^|@n@ZC\eAhNdJM^`@VJBp@]vDXj@C|A{@xAv@vAhB
 0		sf{wFdnqbMvA}E
 0		_f{wFb}pbMMG
 0		m~zwFvfqbMHfA
-0		qooxFbldbMF\
 0		qvywFhdpbMMv@
 0		qvywFhdpbMN[z@c@
 0	Wien Walk	i}xwF`ynbM}ByAwD_@sGiE
@@ -1197,11 +1107,6 @@
 0		_vuwFhfvbMu@sB
 0		uwuwFzavbMfAQ
 0		q~uwF|xubMHtDrElAEnFH@f@Dn@eM
-0		qmoxFvwbbMS^
-0		mmoxFnwbbMC?
-0		qmoxFnwbbMDD
-0		kmoxFpwbbMAA
-0		kmoxFpwbbM?B
 1		qtlwFlsvbMLR
 0		{u~wFjwmbMZcA
 0		{u~wFjwmbMfCbB
@@ -1773,7 +1678,6 @@
 0		_mcxFfolbMwAnAmBuD
 0		atcxFfjlbMZx@
 0		ascxFxklbMCF
-1	Brooklyn Bridge Promenade	uqnwFt~tbMf@s@
 1	Battery Bikeway	sylwFj_wbMr@GZQt@mA
 1	Battery Bikeway	scmwFvmwbMPEBu@
 0	Riverside Park South Bike Path	unzwFn{rbM]c@GYDMmHkF_`@wV
@@ -1784,12 +1688,10 @@
 0		ydnxFfjfbMBK
 0		cdnxF|jfbMUU
 1	Old Slip	ezlwF`subMKH
-0	Pulaski Bridge	wntwF~tjbMmAU_@X
 0		udaxFt|lbMg@`B
 0		{eaxFp_mbMHF
 0		ecaxFn`mbM_Aq@
 1	Battery Bikeway	u~lwFt~vbMVV`ATfAW
-0	Pulaski Bridge	ertwFbujbMMV
 0	6½ Avenue	{{xwF~_pbM`Al@
 0	6½ Avenue	q|xwFd_pbMTX
 0	6½ Avenue	yyxwFlapbMb@V
@@ -1804,7 +1706,6 @@
 0		istwFj`ubM\TuAfE
 0		{utwFj`ubMd@Z
 0		}stwFj_ubM[Uk@dB\T
-0		i}vwFncjbMDI
 1	West 29th Street	uvvwFhpubMEV
 0		_ekxFzzgbMEN
 1	Hudson Street	}xpwFdtubMCC
@@ -1817,8 +1718,6 @@
 0		ekkxFz}dbMVk@Z?pBkBt@Iz@L
 0		q|jxFtydbMMGWF
 0		c~jxFl|dbMQv@Lf@p@JTO
-0		meexFhrnbMMGBK
-0		_gexF`snbMECCNmAu@
 0		am`xFr}lbMAD
 0		ch`xFrvlbMFO
 0	Hudson River Greenway	ib}wFx_qbM}@aAwAy@{BK
@@ -1857,23 +1756,11 @@
 0	East River Esplanade	c|twFrmnbMkBuA
 0	East Midtown Greenway	yawwFjmlbMoH_F
 0	Central Park Outer Loop	ks|wF`albMtBrA
-0		opdxFnfobMxAoF
-0		eydxFr_obMtFxCf@b@
-0		qwdxFzvnbMT{@
-0		qudxF`{nbMv@}C
-0		evdxFptnbMKLOC?]
-0		{tdxFhbobMK[
-0		wvdxFdaobMBO
-0		gwdxFz`obMBM
-0		cxdxFj`obM@G
-0		axdxFb`obMGC
-0		ixdxF~_obM@G
 0	High Line	omvwFvotbMnAUv@NdGzD
 0		shdxF|ykbM[BSr@
 0		gkaxFtsmbMJ[
 0		a~vwFhjtbMK^@j@
 0		gr{wF|`nbMt@@
-0		meexFlenbMcBxG
 0		q`{wFlsnbMQ?WS
 0		mq{wFpqnbMBC
 0		}~{wF|`nbMIY_E_CiA}@K^
@@ -1915,9 +1802,6 @@
 0		}}`xFjylbM@C
 0		w~`xF~tlbMw@i@
 0		{}`xFfylbMBI
-0		}t~wFl_sbMTJ
-0		yp~wF`bsbMBo@
-0		gb_xF`csbMv@a@
 1	East River Greenway	m}lwFjnubMwK}R
 0	Dyckman Street	ujkxFbdebMl@GxAy@
 0		ieaxFhilbMc@YVy@x@f@Xy@
@@ -2125,12 +2009,6 @@
 0	Hudson Boulevard West	_cwwFhgtbM^\
 0		cbwwFzetbMFPZ@\f@
 0		ibwwF|ctbMCL
-0	Center Boulevard	}stwF|glbMsAo@YUAW
-0	Center Boulevard	_stwFjhlbM]M
-0	Center Boulevard	wotwFfilbMgB[
-0	Center Boulevard	kntwFrilbMk@K
-0	Hoboken Newport Walkway- Hudson River Waterfront Walkway	wg_xFfurbMN\HfAX`Aa@dBRj@f@\
-0	Hoboken Newport Walkway- Hudson River Waterfront Walkway	ma_xFlasbM|@b@
 0		i~vwF`ltbMNm@b@SBSI[
 0		i~vwF`ltbMXG
 0		g|vwF|ktbM[q@
@@ -2138,37 +2016,6 @@
 0		guxwFlfkbMWQKZ[U
 1	Battery Park City Greenway	eznwFlhwbMfG~@JJ
 1	Battery Park City Greenway	qqnwFxjwbMa@zE
-0		egkxFhqcbMiBkD
-0		cikxFrrcbMg@sCMuCa@wAAc@
-0		elkxF`ecbMUdA
-0		}lkxFhhcbM[p@
-0		{lkxFfgcbMA`@
-0		}lkxFvgcbMl@vBj@dE
-0		cjkxFtqcbMDf@
-0		cikxFrrcbMVdA
-0		m{dxFdqnbMQp@
-0		k|dxF|snbMFW
-0		{{dxFzrnbMAHIEJC
-0		s`fxF~unbMf@qC^eAnAoH
-0		{}exFzlnbMQw@k@i@oAVm@p@c@R{@B{@_@
-0		e`fxFvtnbMc@C?V
-0		s}exFzknbMUE
-0		i}exFpjnbMOy@i@c@{@Ni@lA
-0		gafxFbjnbMSM
-0		}|exFjinbMOB
-0		wgfxFnlnbMs@jE
-0		cifxFbrnbMpC|@fBP
-0		qafxFzhnbMEw@Ui@OOm@Aw@HOL_@bBY\
-0		udfxFvfnbMViB
-0		gffxFtenbMu@i@{@mAq@wB
-0		ghfxFdlnbMPs@Om@BY
-0		sjfxFz_nbMe@F
-0		__fxFtgnbMY{AQKkA`@
-0		k~exFfonbMGO
-0		o~cxF~cobM_@pB
-0		ajdxFd~nbM@^
-0		gmdxFp_obMk@|AB^
-0		yiexF|qnbM_By@
 0		qlaxF|elbMDB
 0		ulaxFxelbMBB
 0		}taxF~wkbM?@
@@ -2250,7 +2097,6 @@
 0		ojkxFnvfbM]Nk@An@pA
 0	Fort George Hill	_{jxFbbfbMw@]eAsB_A}@qDiAa@[yB_EyAsA_CaAuAOy@F
 0		uvkxFnmebMGq@
-0		{soxF`nbbMcBbDyAj@
 0		mu_xF|pnbMCA
 0		sv~wF|rmbMPk@
 1		av~wFpqmbMHY
@@ -2525,8 +2371,6 @@
 1		c_}wF|spbM?|@[n@
 0		sh}wFpopbMbAT
 0		a|zwFr{pbM}B{A
-0	Ed Koch Queensboro Bridge Path	wgvwFnwhbMcRxj@
-1	Brooklyn Bridge Promenade	mpnwF`}tbM~NcS
 0		}l_xFntmbMnE}NLH
 0		cg_xFt{lbMrFlD
 0		qa_xF`fmbMbBmF
@@ -2645,9 +2489,6 @@
 1		qwzwFj{qbMEP
 1		awzwFz|qbM\G
 0		qxzwFbarbMTsA
-0		skexFnvnbMIG
-0		}kexFfvnbMH?
-0		skexFfvnbM?F
 0		skuwFp_tbMt@L
 0		gjuwFz_tbMDe@
 0		kkuwFr_tbMDi@
@@ -2660,7 +2501,6 @@
 0		oszwF|wqbMrDbC
 0		wlzwFlpqbMeDhKnAx@d@wA
 0		ejzwF|mqbMk@jB
-0	Hudson River Waterfront Walkway	wtxwFdexbM|BiGzF|D
 0	North Bridge	{mtwFl}ubM_AvCf@\
 0		sntwFbcvbMzAh@TAFQ
 0		ek~wFjambMkDtK
@@ -2690,12 +2530,7 @@
 1		ak_xFhyjbMn@Zt@[R_@p@oBNeBp@wBCu@b@iA|Af@lAhA|BdAbBtA~@^
 0		uz}wFzijbMNc@
 0		}z}wFdhjbMMb@
-0		sovwFxcibMeLl]
-0		umvwFzbibMMG
-0	Queens Plaza Greenway	}dvwFrohbMLc@
 0		okywFxlnbMEH
-0	Hudson River Waterfront Walkway	_hxwFncxbMlBtA
-0	Hudson River Waterfront Walkway	uhxwF~bxbMLH
 0		w}~wFtqlbMTa@~Ae@r@e@JYN}CNm@JG
 0		ox_xFt}kbMP?
 0		mfzwFh~obMiAg@[@IL
@@ -2801,8 +2636,6 @@
 0		g|ywFj`obM@L[z@
 0	Wallach Walk	{szwFjymbMm@G
 0		kdzwFtfnbMJM
-0	Hudson River Waterfront Walkway	ktxwFfrwbML`AKnA]p@i@d@
-0		wm_xF`dsbM~DyM
 0	East 78th Street Pedestrian Bridge	a|ywF`gjbMNC
 0		kvzwFxdrbMBE
 0		kvzwFxdrbM?PRD
@@ -2829,9 +2662,6 @@
 0		st`xFnwlbMr@d@FO
 0		mt`xF~vlbMt@d@
 0		_s`xFtxlbMEL
-0		_tjxFj{cbMm@UiBG
-0		g{jxFhwcbMEd@eAUC`@
-0		i|jxF~vcbMEb@
 0		}xvwF|otbM{AwA
 0		qrvwFtntbMsBvG
 0		ixvwFzutbMp@I
@@ -3007,10 +2837,6 @@
 0	54th Street Pedestrian Bridge	{_wwFvtlbMHb@L?
 0		qj_xFt_obM?U^q@
 0		yi_xF|aobMAX
-0		sakxF|gcbMyDmBfAqE
-0		{`kxFvecbMIcBe@gA[Sq@A_@ZG\Dj@N\XVf@H`@INQJ}@
-0		{_kxF|bcbMkAr@
-0		}ekxF|`cbMEC
 1	Fulton Street	innwFtdvbMFM
 0		afkxF|kgbM[rAML
 0		kfkxFxlgbMKE
@@ -3022,10 +2848,6 @@
 0		eikxFljgbMId@D@
 0		gjzwFvdnbMMJIQNMFR
 0	Strawberry Fields	w~zwFxhobMi@SS@SR
-0		a{vwFlejbMHQ
-0		y|vwFfbjbMI\
-0		unvwFrbibM]d@
-0		akwwF~tibMGN
 0		uozwFbzjbMSM
 0	South Bridge	ijtwFtbvbMp@uB
 0		yjtwFxcvbMNc@
@@ -3038,18 +2860,14 @@
 0		cktwF~dvbMEHJB@X
 0		ejtwFlevbMWg@
 0		kmtwF`gvbMMe@SEWL?MRKCIWLQ`@D@
-0		iotwFlfvbMEHIE
 0		entwFhdvbMA^IB
 0		gntwFhevbM?D
-0	Ed Koch Queensboro Bridge Path	q~wwFpslbM?e@
-1	Brooklyn Bridge Bicycle Path	mpnwFr|tbMmApAe@Be@O
 1	Centre Street	}xnwFj{tbMw@k@
 0		qlywFv_mbMJA
 0		elywFt_mbMTw@
 0	East River Esplanade	gttwFdsnbMd@T
 0	East River Esplanade	attwFxrnbMCF
 0		saxwFxzlbMCF
-0	Ed Koch Queensboro Bridge Path	saxwFxzlbMp@gCn@_B
 1		}w~wFnhmbMj@BPMTu@Ku@
 1		uu~wFxdmbMEI
 0	Nell Singer Lilac Walk	mwzwF|hobMFI
@@ -3086,8 +2904,6 @@
 0		ik{wFd`rbMTs@
 0		}j{wFf_rbMOI
 0		sj{wFr`rbMXq@
-0	Hudson River Waterfront Walkway	qvxwFpywbM]`@
-0	Hudson River Waterfront Walkway	evxwFddxbMl@^
 0		gklxFfwfbMPF
 0		iukxFb|fbMB?
 0		wtkxFd|fbMJ?
@@ -3349,7 +3165,6 @@
 0		qutwFddvbMFyB_@CIp@
 0		{utwFh`vbM?E
 0		ivtwFf`vbMGG@]n@FI`@
-1	Brooklyn Bridge Bicycle Path	q`nwFthtbM{N|R
 0	Cherry Walk	egbxFxnmbMcAs@aAeAe@EkA_Au@UiEaCiCiBmEuDiEmE
 0	Cherry Walk	cfbxFhombMQQO@
 0		a`ywFxnlbMDD
@@ -3505,7 +3320,6 @@
 0		y|lxFl|dbMA@
 0		{|lxFn|dbMC@
 0		_}lxFp|dbMSL
-0		{vjxFrmbbMKRUIWh@
 1		sj{wFvgobMAA
 1		sj{wFvgobM@C
 1		_j{wFjfobM@G
@@ -3667,12 +3481,6 @@
 0		u_cxFvqlbMBh@JPn@X
 0		{_cxFjalbMeBkA
 0		}icxFjclbMbBfA
-0		{~kxFxlbbMWq@
-0		q_lxFpjbbMAE
-0	West 230th Street	ymoxFbwbbMm@pB
-0		kmoxFnwbbM@C
-0		u}jxFl~bbMp@^
-0		}fkxF|{bbM?SUO
 0		g_}wFp`qbM?F
 0		sw|wF~jqbMBM
 0		}~|wFpdqbMBG
@@ -3936,15 +3744,6 @@
 1	East River Greenway	sxlwFhsubMSM
 1	East River Greenway	_ylwFfsubMJ@
 1	Old Slip	qzlwFjsubMGD
-0		ooexFzvnbMBI
-0		koexFpvnbMTu@
-0		ioexFlvnbMz@M
-0		unexFztnbMh@P
-0		mmexF~unbM@Q
-0		snexFvtnbMBI
-0		unexFztnbM@C
-0		kmexFlunbMHJKD
-0		_mexFdvnbMCG
 0	Hudson River Greenway	u|qwFjgvbMsKo@sCCsE]_N_@yAQkHW{HR{@KqC{@_DcBwHiA
 1	Hudson River Greenway	{wtwFtyubM`Hv@
 1	Hudson River Greenway	a|twFhyubMr@N
@@ -4105,9 +3904,6 @@
 0		{mywFxnpbMJA
 0		{mywFxnpbMUW
 0		anywFdopbMDK
-0		wrjxFrqdbMKw@v@gC
-0		aqjxFpodbMg@w@
-0		{rjxFhjdbM_@USJ
 1		qstwFtyubMHX
 0		qz_xFrzmbMEL
 1		yq~wF`rmbMAD
@@ -4161,7 +3957,6 @@
 0		mt|wFhwmbM@a@
 1	Park Row	aqnwFhxtbMo@gA
 1	Park Row	qrnwF`vtbMCC
-1	Brooklyn Bridge Promenade	annwFbztbM]d@
 1	Hudson River Greenway	s|nwFb{vbMJB
 1	Hudson River Greenway	}|nwF~zvbMHB
 1	Hudson River Greenway	sdowF|xvbMx@`@
@@ -4299,8 +4094,6 @@
 0		cc_xFdeobM?C
 0		}b_xFpdobMDU
 0		yb_xFfeobMAB
-0	Queens Plaza Greenway	{mvwFrcibMpA_E
-0	Queens Plaza Greenway	ikvwFr}hbMJ[
 0		}a_xF~fobMGS
 0		_c_xFxhobMNC
 0		m~~wFhiobMMj@Al@Pf@PPR?h@_@
@@ -4357,13 +4150,6 @@
 0		w~}wFzepbM?G
 0		c_~wFhfpbMBG
 0		__~wF`fpbMBA
-0		mzjxFnobbMDq@Iy@
-0	Old Croton Aqueduct Walk	syjxF~lbbM][
-0		}zjxF`kbbMG_@
-0	Old Croton Aqueduct Walk	qzjxFblbbMKa@
-0	Old Croton Aqueduct Walk	}zjxF`kbbMMO
-0		_}jxF`nbbMVCdAq@
-0		{yjxF|lbbMQPYI?YTG
 0		itkxFvxfbMgAs@q@HKG
 0		sskxFlzfbM?E
 0		sskxFfzfbMI?
@@ -4439,8 +4225,6 @@
 0		k~~wFxxmbM@C
 0		e~~wF|ymbMBB
 0		o~~wFtymbMHF
-0		intwFdilbMQ_@
-0		{ntwFdhlbM[X
 0		i~~wFpxmbMPLM\
 0		{~~wFhymbMMd@
 0		s}_xF~ambM_@U@[MN
@@ -4539,7 +4323,6 @@
 0		au`xFb{mbM@D
 1	Greenwich Street	{vnwFnlvbMVE
 1	Greenwich Street	cvnwFhlvbMRG
-0	1st Avenue Tunnel	svuwFngnbMsSaN
 0		qiaxFrbmbM@GSf@P_@
 0		wiaxFpbmbMD@
 0		}maxFplmbMN_@Mh@AI
@@ -4547,7 +4330,6 @@
 0		ai_xFhambMMKLJ
 0		km_xFf~lbMIMHL
 0		gn_xFr}lbMKKJJ
-0		unoxFrddbMb@h@
 0	Roosevelt Island Greenway	qhzwF~whbMLh@`InIx@zA`AnArBnAvA\DVz@p@d@F
 1		ct~wFrxjbM[c@CW
 1		wt~wFpujbMD@
@@ -4561,14 +4343,9 @@
 0		yrywFjmnbM?OME@Md@Hb@qA
 1		co_xFxqkbM?O
 1		co_xFxqkbMB?
-0	1st Avenue Tunnel	yquwFfknbMyCwB
-0	1st Avenue Tunnel	gkvwFlxmbMkD{B
 0		e{uwF~wubMBK
 1		w|swFfvubMBM
 1		w|swF|jubM@}A
-0	Ed Koch Queensboro Bridge Path	}dvwFrohbML@
-0	Queens Plaza Greenway	odvwFnnhbMFU
-0	Queens Plaza Greenway	gdvwFxmhbM@E
 1		_tnwF~`ubMgAsA
 0	Wallach Walk	e|ywFbonbMKZ
 0	Wallach Walk	i{ywFjmnbM[v@
@@ -4618,8 +4395,6 @@
 1	West 24th Street	q~uwFrxubMAI
 0		a{uwFrwubMBK
 0	John Finley Walk	sbxwFpokbMxDrE
-0		qrcxFdmobMa@i@
-0	Hoboken Newport Walkway – Hudson River Waterfront Walkway	sscxFzkobMpAd@GT
 0		gl{wFz`nbMgA_@@]
 0		}_rwFnfvbMO}@
 0		{orwFrcvbMYo@
@@ -4901,9 +4676,6 @@
 0		g{_xFp}kbMp@@
 0		u{_xFp}kbMJ?
 0		i{_xFp}kbM@?
-0	Rainey Park Esplanade	qbywFlnhbMhADNGDS
-0	Queens Plaza Greenway	}jvwFv|hbM|@iC
-0	Queens Plaza Greenway	_ivwFlxhbMP_@
 0		m}axFlbmbM@C
 0		}_ywFhepbMCF
 0		{~xwFlfpbM@E
@@ -4937,13 +4709,7 @@
 1		ym{wF`spbMAH
 0		kmzwFfpobMDW
 0		{i_xFvbobM?@
-0		{soxF`nbbMDE
-0		qloxFfsbbM@F
-0		ymoxFbwbbMBI
 1		ck{wFbtpbM?C
-0		mykxFh_cbMBB
-0		czkxFt~bbM@I
-0		czkxFn~bbMBD
 0		uf`xFz}jbMBG
 0		uwkxFzmebMDA
 0		kg`xFj}jbMDO
@@ -5000,8 +4766,6 @@
 0		}~}wFffkbMAA
 0		__~wFdfkbMAE
 0		winxFzmbbMCB
-0		ceoxFhzcbM?E
-0		ogoxF~zcbMAC
 0	West 20th Street	ekuwFzuubM?E
 0	West 20th Street	gkuwFdvubM?A
 1		aauwFvwubM@E
@@ -5072,18 +4836,12 @@
 0		yj|wFhrmbME[
 0		{~xwFnwlbMDB
 0		kzxwFp~kbMCD
-0		u~jxFfobbMRA
-0		u~jxFbnbbMBC
-0		asjxFpsbbM?E
 0		khkxFrpebMRV
 0		_rkxF~lebMb@yAAa@
 0		ke{wFrlrbMGK
 0		se{wFflrbMAA
 0		_f{wFxkrbMCI
 0		s}nxFpicbMJQJJ
-0		yrjxFp}cbMA]XC@`@Y?
-0		arjxFr}cbMFHPIHd@
-0		}rjxFd}cbM]B
 0		gucxFpsjbMaBjF
 0		}{cxFrxjbMIG
 0		g|cxFjxjbMCA
@@ -5094,16 +4852,10 @@
 0		oh~wFdwjbM?A
 0		oh~wFdwjbMD@
 0		ih~wFfwjbMEC
-0		szjxFrpbbM@I
-0		}dkxFzjcbMZfBPF
 0	New Wave Pier	mbuwFpgnbMMI
 0	East River Esplanade	ccuwFxgnbM_@_@
-0		qgkxF~dcbMg@S
-0		mgkxFndcbMMl@
 0		gozwFpknbMHQ
 0		}kzwF~cnbM^N
-0		s_lxFfkbbMN?
-0		k_lxFfkbbM?E
 0		q{jxFl|dbM^I^r@LA
 0		yakxF|xdbM~A?Zb@
 0		miaxF`plbMHF
@@ -5145,13 +4897,6 @@
 0		ki`xFp~lbMEC
 0		qi`xFl~lbMAA
 0		}naxFb_mbMM`@
-0		wiexFvqnbMd@oB
-0		shexF~mnbMDQ
-0		_hexFnmnbMFQ
-0		kgexFtpnbMDQ
-0		kgexFtpnbMAB
-0		ihexFjnnbMH[
-0		shexF~mnbMAD
 0		cn`xF`bnbMDB
 0		{}`xF|wmbMA@
 0		}}`xF~wmbMHD
@@ -5188,7 +4933,6 @@
 0		gjtwFrjtbM@C
 0		{jtwF~itbMCF
 1		_tnwF~`ubMC@
-1	Brooklyn Bridge Bicycle Path	gunwFx~tbM]U
 1	Centre Street	uvnwF|}tbMLL
 1	Centre Street	evnwFb~tbMOE
 1		gvnwFj~tbM@G
@@ -5237,7 +4981,6 @@
 0		snzwFh~kbM@C
 0		qw~wFnhlbM_@Nu@|A
 0		cmpwFheobMXL
-0	Williamsburg Bridge Bike Path	}qnwFxumbMeT`eAFP
 0	East River Esplanade	{vtwFjpnbMdAn@R\
 0	East River Esplanade	w`twFnwnbMkBYKSoFs@KdA
 0	East River Esplanade	uwtwFlpnbMmCyA
@@ -5252,8 +4995,6 @@
 0		}|owFdgobMF`@
 0	East 20th Street Cycleway	msrwFrbobMBp@GR
 0	East River Esplanade	cgswF`dobM`BC
-0	South 5th Street	_onwF~gmbMl@iC
-0	South 5th Street	qmnwFtcmbMBQ
 0	East River Esplanade	mjrwFf~nbMxCyCtBaDhCaB~BYpEj@
 0	East 20th Street Cycleway	krrwF~`obM[`@
 0	East River Esplanade	gttwFdsnbMd@T
@@ -5267,7 +5008,6 @@
 0	East River Esplanade	q`twFdwnbMEH
 0	East River Esplanade	y_twFbwnbMW@
 0	East River Esplanade	ykswFjcobMZG
-0	Williamsburg Bridge Bike Path	ghnwF`slbM}Hf`@Fn@
 0	East River Esplanade	uwtwFlpnbMXA
 0	East 20th Street Cycleway	qsrwFxdobMgLj^?b@
 0	East River Esplanade	ibswF|dobMfAQ
