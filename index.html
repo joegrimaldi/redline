@@ -233,6 +233,12 @@
 <div id="home">
  <div class="brand"><h1><i class="beacon" aria-hidden="true"></i>REDLINE</h1><div style="display:flex;gap:6px"><button id="syncBtn" class="upd">🔄 Sync</button><button id="updateBtn" class="upd">⟳ Update</button></div></div>
  <div class="hero tapviz" data-viz="coverage"><div class="big" id="d_pct">–</div><div class="cap">redlined ›</div><div class="bar"><i id="d_bar" style="width:0%"></i></div></div>
+ <div class="section">Walk</div>
+ <div class="panel">
+   <button id="walk" class="btn primary">🚶 Walkabout</button>
+   <div style="font-family:var(--term);font-size:13px;color:var(--dim);line-height:1.45">Streets light up as you walk. It keeps pointing you at the nearest fresh ground — end whenever you like.</div>
+   <div id="status"></div>
+ </div>
  <div class="lvl tapviz" data-viz="levels"><div class="badge"><small>LV</small><b id="d_lv">–</b></div><div class="info"><div class="t" id="d_title">–</div><div class="x" id="d_xpsub"></div><div class="crit" id="d_crit"></div></div></div>
  <div class="streakrow tapviz" data-viz="calendar"><span class="fire">🔥</span><div><div class="sb" id="d_streak">–</div><div class="ss" id="d_streaksub"></div></div><div class="cal" id="d_cal"></div></div>
  <div class="grid">
@@ -249,13 +255,7 @@
  <div id="cmap"></div>
  <div class="hsort" id="hsort" style="display:none"><button id="hs_pct" class="hsb on">% done</button><button id="hs_left" class="hsb">Mi to go</button><button id="hs_close" class="hsb">Almost done</button><button id="hs_near" class="hsb">Nearest</button></div>
  <div class="hoods" id="hoods"></div>
- <div class="section">Walk</div>
- <div class="panel">
-   <button id="walk" class="btn primary">🚶 Walkabout</button>
-   <div style="font-family:var(--term);font-size:13px;color:var(--dim);line-height:1.45">Streets light up as you walk. It keeps pointing you at the nearest fresh ground — end whenever you like.</div>
-   <div id="status"></div>
- </div>
- <div class="ver" id="ver">REDLINE v860</div>
+ <div class="ver" id="ver">REDLINE v861</div>
 </div>
 
 <div id="map"></div>
@@ -540,7 +540,7 @@ function openHoodView(name){const hd=hoodByName(name);if(!hd)return;hoodViewName
 
 
 // ---------- guided navigation + juice (visual + haptic only, never audio) ----------
-let navWatch=null, NAV=null, newSegs=new Set(), newMi=0, navStartPct=0, _offBuzz=0, CHAIN=false, walkMi=0, legsDone=0, _offN=0, _doneT=0;
+let navWatch=null, NAV=null, newSegs=new Set(), newMi=0, navStartPct=0, _offBuzz=0, CHAIN=false, walkMi=0, legsDone=0, _offT=0, _doneT=0;
 function buildNavSteps(res){const ns=res.ns;const names=[];for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);names.push(ei>=0?(NM[E[ei][2]]||'street'):'street');}
   const cum=[0];for(let i=0;i+1<ns.length;i++)cum.push(cum[i]+havNN(ns[i],ns[i+1]));
   const steps=[];for(let i=1;i+1<ns.length;i++){if(names[i]!==names[i-1]){const pb=bearing(ns[i-1],ns[i]),cb=bearing(ns[i],ns[i+1]);steps.push({idx:i,text:turnWord(((cb-pb+540)%360)-180)+' onto '+names[i]});}}
@@ -560,7 +560,7 @@ function drawRoute(res){if(routeLayer)map.removeLayer(routeLayer);if(routeNewLay
   routeNewLayer=L.polyline(routeNewSegments(res.ns),{color:'#27e04a',weight:9,opacity:.6,interactive:false}).addTo(map);
   routeLayer=L.polyline(res.ns.map(i=>[N[i][0],N[i][1]]),{color:'#ffd60a',weight:5,opacity:0.97,interactive:false}).addTo(map);}
 function legLine(res){return res.freshName+' · '+res.newMi.toFixed(2)+' mi fresh'+(res.approachMi>0.05?' · '+res.approachMi.toFixed(2)+' mi away':'');}
-function setLeg(res){NAV=buildNavSteps(res);_annN=new Set();_offN=0;drawRoute(res);if(walkedLayer)walkedLayer.setLatLngs([]);
+function setLeg(res){NAV=buildNavSteps(res);_annN=new Set();_offT=0;drawRoute(res);if(walkedLayer)walkedLayer.setLatLngs([]);
   $('navtop').classList.remove('off');$('nav_arrow').textContent='↑';$('nav_inst').textContent=NAV.first;$('nav_dist').textContent='';}
 // Pick the next stretch from where you are standing. completed=true when the previous one was walked to its end.
 function advanceLeg(la,lo,completed){const sn=nearestWalkNode(la,lo);const leg=sn>=0?nextLeg(sn):null;if(completed)legsDone++;
@@ -586,13 +586,13 @@ function startNav(chain){if(!CUR)return;if(!navigator.geolocation){setStatus('Lo
     if(walkedLayer)walkedLayer.setLatLngs(NAV.ns.slice(0,ni+1).map(i=>[N[i][0],N[i][1]]));
     if(routeLayer)routeLayer.setLatLngs(NAV.ns.slice(ni).map(i=>[N[i][0],N[i][1]]));
     if(routeNewLayer)routeNewLayer.setLatLngs(routeNewSegments(NAV.ns.slice(ni)));
-    if(off>45){_offN++;
-      if(CHAIN&&_offN>=3&&off>60){advanceLeg(la,lo,false);}   // you went your own way: plan from here, don't nag
+    if(off>45){if(!_offT)_offT=Date.now();
+      if(CHAIN&&off>60&&Date.now()-_offT>27000){advanceLeg(la,lo,false);}   // 27 s off the line = you went your own way: plan from here, don't nag (3 s would be GPS noise)
       else{$('navtop').classList.add('off');$('nav_arrow').textContent='↩';$('nav_inst').textContent='Off the line — rejoin, or keep going and it re-plans';$('nav_dist').textContent=fmtDist(off)+' off';const n=Date.now();if(n-_offBuzz>6000){buzz([60,60,60]);_offBuzz=n;}}}
-    else{_offN=0;$('navtop').classList.remove('off');const up=NAV.steps.find(s=>s.idx>ni);const dDest=havLL(la,lo,N[NAV.ns[NAV.ns.length-1]][0],N[NAV.ns[NAV.ns.length-1]][1]);
+    else{_offT=0;$('navtop').classList.remove('off');const up=NAV.steps.find(s=>s.idx>ni);const dDest=havLL(la,lo,N[NAV.ns[NAV.ns.length-1]][0],N[NAV.ns[NAV.ns.length-1]][1]);
       if(up){const dT=havLL(la,lo,N[NAV.ns[up.idx]][0],N[NAV.ns[up.idx]][1]);$('nav_arrow').textContent=maneuverGlyph(up.text);$('nav_inst').textContent=up.text;$('nav_dist').textContent='in '+fmtDist(dT);
         if(dT<25&&!_annN.has(up.idx)){_annN.add(up.idx);buzz(80);}}
-      else if(dDest<30){if(CHAIN)advanceLeg(la,lo,true);else{$('nav_arrow').textContent='🏁';$('nav_inst').textContent='Arrived — nice work!';$('nav_dist').textContent='';if(!_annN.has(-1)){_annN.add(-1);buzz([100,60,100]);}}}
+      else if(dDest<30||ni>=NAV.ns.length-1){if(CHAIN)advanceLeg(la,lo,true);else{$('nav_arrow').textContent='🏁';$('nav_inst').textContent='Arrived — nice work!';$('nav_dist').textContent='';if(!_annN.has(-1)){_annN.add(-1);buzz([100,60,100]);}}}
       else{$('nav_arrow').textContent='↑';$('nav_inst').textContent='Continue on '+NAV.names[NAV.names.length-1];$('nav_dist').textContent=fmtDist(dDest)+' to the end';}}
     $('nav_prog').textContent=prog+' · '+legLine(CUR.res);
   },function(e){$('nav_inst').textContent='⚠ Location error';$('nav_dist').textContent=(e.message||e.code)+' — grant permission';},{enableHighAccuracy:true,maximumAge:1000,timeout:20000});}
