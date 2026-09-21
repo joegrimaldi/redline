@@ -956,14 +956,12 @@
 0	Vanderbilt Avenue	snvwFp{obM}AeA
 0	Shubert Alley	oowwF|rqbMIGeBkAKG
 0	Milligan Place	gaswFtzsbMABKZOH
-0	Queensboro Bridge Outer Roadway	_}wwF~tlbMrB{F
 1	Broadway	gxuwFbxqbMF@tBZHBB?
 1	Broadway	mtwwFpgqbM|Ap@JD
 0	Park Avenue	qkvwFvxobMJFNHFDDFFFFFFDHDJDNF
 1	9th Avenue	ojtwFvaubMJHjBnARJ
 1	Broadway	grswFjerbMHDpBZHD
 1	Broadway	{wtwFl~qbMP@xBTN@
-0	Ed Koch Queensboro Bridge Outer Roadway	kywwFbmlbMr^}gA
 0	News Corp. Plaza	grwwFhqpbM@CH[iAu@KGKZu@bCJFBBNJb@wAt@f@Pi@
 0	(unnamed)	ygvwFrilbMHH
 1	(unnamed)	}~swFxuubM?D@??B?RA@M?GG@C?CD??CB??ED??EB?
@@ -1234,7 +1232,6 @@
 1	(unnamed)	uaswFborbMCJCFBFBAB@n@h@PCf@`@@B@B?BBKBI?@A?A?A?AAy@o@QBSQGKIO
 0	McGraw-Hill Park	{|wwFnwpbMBGDK|AbAELADUOQMA@u@g@
 0	(unnamed)	qavwFpvobMEJ??A????@???@ABAB??A??@???@@?ABABA????@A?@@?@ABAB??A????@???@ABAB????A@???@@?ABADAA?@??A@@??@EJABAA?CBEAE?E@E@C@EDCBK?E@C?CBC@AB??C@AAC@C?C@A@ABABB
-0	Queensboro Bridge Outer Roadway	y~wwFjylbMBGt@cC
 0	50th Street Commons	ulwwF~dobMEL@@BAB?B@@@@B@BFBFSEEC@CACAACAC?CCACJ
 0	(unnamed)	uxtwFpnobM^TBH
 1	Broadway	yxuwF~wqbMD@
