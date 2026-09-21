@@ -48,45 +48,16 @@ def cov(x,y):
     cx,cy=int(x//CELL),int(y//CELL)
     return any((cx+dx,cy+dy) in visited for dx,dy in off)
 
-# ---- recompute park / plaza / greenway path coverage from the same visited cells ----
-# parks.txt & plazas.txt live at repo root; each line: covered<TAB>name<TAB>encodedPolyline (Google precision 5)
-def path_cov(pts):
-    if len(pts)<2: return 0
-    pp=[proj(a,b) for a,b in pts]; ns=0; nc=0
-    for (x1,y1),(x2,y2) in zip(pp,pp[1:]):
-        d=math.hypot(x2-x1,y2-y1)
-        if d>400: continue
-        st=max(1,int(d/8))
-        for k in range(st+1):
-            t=k/st; ns+=1
-            if cov(x1+(x2-x1)*t,y1+(y2-y1)*t): nc+=1
-    return 1 if (ns and nc/ns>=0.5) else 0
-for _pf in ('../parks.txt','../plazas.txt'):
-    _p=P(_pf)
-    if not os.path.exists(_p): continue
-    _out=[]; _nc=0; _tot=0
-    for line in open(_p):
-        line=line.rstrip('\n')
-        if not line.strip(): continue
-        parts=line.split('\t')
-        if len(parts)<3: _out.append(line); continue
-        _tot+=1
-        try: c=path_cov(decode(parts[2]))
-        except Exception: c=int(parts[0] or 0)
-        _nc+=c
-        _out.append('%d\t%s\t%s'%(c,parts[1],parts[2]))
-    open(_p,'w').write('\n'.join(_out)+'\n')
-    print('%s: %d/%d paths covered'%(_pf,_nc,_tot))
-
-
 ways=json.load(open(P('ways.json'))); wtype=json.load(open(P('waytype.json')))
 tags={str(e['id']):e.get('tags',{}).get('name','') for e in json.load(open(P('tags.json')))['elements']}
 EXCL={'motorway','trunk','pedestrian'}
 def k6(p): return (round(p['lat'],6),round(p['lon'],6))
 import collections
 freq=collections.Counter(); inc=[]
+from island_mask import IslandMask, NOROUTE
 for wid,g in ways.items():
     if wtype.get(str(wid),'?') in EXCL or len(g)<2: continue
+    if NOROUTE.search(tags.get(str(wid),'') or ''): continue   # bridges off the island, highways, tunnels: not walkable, not counted
     inc.append((wid,g))
     for p in g: freq[k6(p)]+=1
 isnode=set()
@@ -127,6 +98,42 @@ hx,hy=proj(40.70435,-74.00985)
 home=min(range(len(nodes)),key=lambda i:(nodes[i][1]*MLON-hx)**2+(nodes[i][0]*MLAT-hy)**2)
 json.dump({'nodes':nodes,'names':names,'edges':edges,'home':home}, open(P('graph.json'),'w'), separators=(',',':'))
 
+# ---- recompute park / plaza / greenway path coverage from the same visited cells ----
+# parks.txt & plazas.txt live at repo root; each line: covered<TAB>name<TAB>encodedPolyline (Google precision 5)
+def path_cov(pts):
+    if len(pts)<2: return 0
+    pp=[proj(a,b) for a,b in pts]; ns=0; nc=0
+    for (x1,y1),(x2,y2) in zip(pp,pp[1:]):
+        d=math.hypot(x2-x1,y2-y1)
+        if d>400: continue
+        st=max(1,int(d/8))
+        for k in range(st+1):
+            t=k/st; ns+=1
+            if cov(x1+(x2-x1)*t,y1+(y2-y1)*t): nc+=1
+    return 1 if (ns and nc/ns>=0.5) else 0
+MASK=IslandMask(P('../neighborhoods.json'),[(n[0],n[1]) for n in nodes])
+for _pf in ('../parks.txt','../plazas.txt'):
+    _p=P(_pf)
+    if not os.path.exists(_p): continue
+    _out=[]; _nc=0; _tot=0
+    for line in open(_p):
+        line=line.rstrip('\n')
+        if not line.strip(): continue
+        parts=line.split('\t')
+        if len(parts)<3: _out.append(line); continue
+        try: _pts=decode(parts[2])
+        except Exception: _pts=[]
+        if _pts and not MASK.keep_path(parts[1],_pts): continue   # NJ / Queens / Bronx / bridge paths leave the denominator
+        _tot+=1
+        try: c=path_cov(_pts)
+        except Exception: c=int(parts[0] or 0)
+        _nc+=c
+        _out.append('%d\t%s\t%s'%(c,parts[1],parts[2]))
+    open(_p,'w').write('\n'.join(_out)+'\n')
+    print('%s: %d/%d paths covered'%(_pf,_nc,_tot))
+
+
+
 # island % redlined (edge-length weighted)
 def el(a,b):
     return math.hypot((nodes[b][1]-nodes[a][1])*MLON,(nodes[b][0]-nodes[a][0])*MLAT)
@@ -143,7 +150,8 @@ HOODS=[('Battery Park City',40.700,-74.022,40.720,-74.013),('Financial District'
  ('Flatiron / Gramercy',40.733,-73.999,40.745,-73.978),('Murray Hill / Kips Bay',40.743,-73.984,40.756,-73.970),
  ('Midtown',40.752,-74.002,40.766,-73.972),("Hell's Kitchen",40.756,-74.004,40.773,-73.986),
  ('Upper East Side',40.760,-73.972,40.792,-73.946),('Upper West Side',40.770,-73.992,40.802,-73.956),
- ('Harlem / Morningside',40.792,-73.968,40.835,-73.930),('Washington Hts / Inwood',40.835,-73.948,40.882,-73.902)]
+ ('Harlem / Morningside',40.792,-73.968,40.835,-73.930),('Washington Hts / Inwood',40.835,-73.948,40.882,-73.902),
+ ('Roosevelt Island',40.749,-73.962,40.773,-73.940),('Governors Island',40.679,-74.028,40.696,-74.008)]
 hagg={h[0]:[0,0] for h in HOODS}  # name -> [doneSeg, totSeg]
 for e in edges:
     mla=(nodes[e[0]][0]+nodes[e[1]][0])/2; mlo=(nodes[e[0]][1]+nodes[e[1]][1])/2
