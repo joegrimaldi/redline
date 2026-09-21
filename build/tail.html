@@ -14,24 +14,12 @@ function Heap(){this.a=[];}
 Heap.prototype.push=function(x){const a=this.a;a.push(x);let i=a.length-1;while(i>0){const p=(i-1)>>1;if(a[p][0]<=a[i][0])break;[a[p],a[i]]=[a[i],a[p]];i=p;}};
 Heap.prototype.pop=function(){const a=this.a,top=a[0],last=a.pop();if(a.length){a[0]=last;let i=0;for(;;){let l=2*i+1,r=l+1,s=i;if(l<a.length&&a[l][0]<a[s][0])s=l;if(r<a.length&&a[r][0]<a[s][0])s=r;if(s===i)break;[a[s],a[i]]=[a[i],a[s]];i=s;}}return top;};
 Heap.prototype.size=function(){return this.a.length;};
-function dijkstra(src){const RO=routeOK();const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){if(!RO[au[k][2]])continue;const v=au[k][0],nd=d+au[k][1];if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=au[k][2];h.push([nd,v]);}}}return {dist,prevN,prevE};}
 function pathTo(prevN,prevE,src,dst){const ns=[dst],es=[];let c=dst;while(c!==src){const p=prevN[c];if(p<0)return null;es.push(prevE[c]);ns.push(p);c=p;}ns.reverse();es.reverse();return {ns,es};}
-// Dijkstra that strongly prefers staying inside a neighborhood: out-of-hood edges cost ×pen. Keeps the sweep in-hood while staying connected (so it can route around parks/gaps).
-function dijkstraSoft(src,inHood,pen){const RO=routeOK();const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const e=au[k][2],v=au[k][0];if(!RO[e])continue;const nd=d+au[k][1]*(inHood[e]?1:pen);if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}return {dist,prevN,prevE};}
-function dijkstraW(src){const RO=routeOK();const dist=new Float64Array(N.length).fill(Infinity),prevN=new Int32Array(N.length).fill(-1),prevE=new Int32Array(N.length).fill(-1);dist[src]=0;const h=new Heap();h.push([0,src]);while(h.size()){const [d,u]=h.pop();if(d>dist[u])continue;const au=adj[u];for(let k=0;k<au.length;k++){const v=au[k][0],e=au[k][2];if(!RO[e])continue;const cost=au[k][1]*(E[e][3]===0?0.8:1);const nd=d+cost;if(nd<dist[v]){dist[v]=nd;prevN[v]=u;prevE[v]=e;h.push([nd,v]);}}}return {dist,prevN,prevE};}
-function directRoute(s,t){const r=dijkstraW(s);const p=pathTo(r.prevN,r.prevE,s,t);return finalize(p?p.ns:[s]);}
-function perpDist(p,a,b){const k=Math.cos(a[0]*Math.PI/180);const ax=a[1]*k,ay=a[0],bx=b[1]*k,by=b[0],px=p[1]*k,py=p[0];const dx=bx-ax,dy=by-ay,L2=dx*dx+dy*dy;let tt=L2?((px-ax)*dx+(py-ay)*dy)/L2:0;tt=Math.max(0,Math.min(1,tt));const cx=ax+tt*dx,cy=ay+tt*dy;return Math.hypot(px-cx,py-cy);}
-function rdp(pts,eps){if(pts.length<3)return pts.slice();let dmax=0,idx=0;for(let i=1;i<pts.length-1;i++){const d=perpDist(pts[i],pts[0],pts[pts.length-1]);if(d>dmax){dmax=d;idx=i;}}if(dmax>eps){const l=rdp(pts.slice(0,idx+1),eps),r=rdp(pts.slice(idx),eps);return l.slice(0,-1).concat(r);}return [pts[0],pts[pts.length-1]];}
-function waypointsFor(ns){const MAXSTOPS=9,MAXW=MAXSTOPS-2;const poly=ns.map(n=>[N[n][0],N[n][1]]);let eps=0.0003,simp=rdp(poly,eps);while(simp.length>MAXSTOPS&&eps<0.02){eps*=1.5;simp=rdp(poly,eps);}let tps=simp.slice(1,-1);if(tps.length>MAXW){const st=tps.length/MAXW,s=[];for(let i=0;i<MAXW;i++)s.push(tps[Math.floor(i*st)]);tps=s;}return tps;}
 function nearestNode(la,lo){let best=-1,bd=Infinity;for(let i=0;i<N.length;i++){const dla=(N[i][0]-la),dlo=(N[i][1]-lo)*0.758;const d=dla*dla+dlo*dlo;if(d<bd){bd=d;best=i;}}return best;}
-// ---------- route planner: uncovered street RUNS, hard distance budget ----------
+// ---------- street runs: the unit Walkabout thinks in ----------
 // A "run" is a stretch of uncovered blocks on one street that can be walked end to end without
-// turning. The planner picks the run with the best new-ground-per-detour and walks all of it, so
-// routes come out as long straight legs with few turns. Slivers under STUB_M are not chased on a
-// planned walk (they still count if the approach path crosses them); Clear-neighborhood mode does
-// chase them, last. The budget is hard: a route lands within TOL of the target instead of being
-// stretched to hit a coverage ratio (it lands a little under the target rather than over).
-const STUB_M=96, TURN_M=90, TOL=0.09;
+// turning. Walkabout always heads for the best run from wherever you are (see nextLeg below).
+const STUB_M=96, TURN_M=90;
 // Never route onto these, even as a connector: highways, tunnels, bridges that leave the island,
 // and off-island paths that leaked into the park data (NJ waterfront, Roosevelt Island, Queens).
 const NOROUTE_RE=/\b(FDR Drive|Harlem River Drive|Henry Hudson Parkway|West Side Highway|Expressway|Tunnel)\b|Hoboken|Newport|Roosevelt Island|Queens Plaza|Randalls|Wards Island|Pulaski|^(Manhattan|Brooklyn|Williamsburg|Washington|Madison Avenue|Willis Avenue|Third Avenue|145th Street|Macombs Dam|University Heights|(Ed Koch )?Queensboro|Triborough|RFK|Robert F\.? Kennedy|George Washington|Alexander Hamilton|High|Broadway) Bridge\b/i;
@@ -64,56 +52,27 @@ function buildRuns(allow,skip){const seen=new Uint8Array(E.length);const runs=[]
 function mkRun(es,ns){const RO=routeOK();const cum=[0];for(const e of es)cum.push(cum[cum.length-1]+elen[e]);const len=cum[cum.length-1];
   const deg=n=>{let d=0;for(const a of adj[n])if(RO[a[2]])d++;return d;};
   return {es,ns,cum,len,done:false,stub:len<STUB_M&&(deg(ns[0])<=1||deg(ns[ns.length-1])<=1)};}
-// planRoute(s, ends, B, opts) -> finalize() result (+ endIdx, leftMi in hood mode).
-//   ends: node(s) the walk may finish at (one destination, or every subway stop of a hood)
-//   B: budget in meters, hard: lands in [B-TOL*B, B], final leg may run TOL/3 over for new ground
-//   opts.allow / opts.inHood / opts.pen: neighborhood mode   opts.skip: edges walked already
-//   opts.stubs: chase slivers too (Clear mode)
-// The first run chosen decides most of the walk, so try the best three openings and keep the one
-// that yields the most new ground (ties: fewer turns).
-async function planRoute(s,ends,B,opts){opts=opts||{};const tried=[];let best=null;
-  for(let k=0;k<3;k++){const r=await planCore(s,ends,B,opts,tried);if(!r)break;if(r.first>=0)tried.push(r.first);
-    if(best===null||r.newMi>best.newMi+1e-6||(Math.abs(r.newMi-best.newMi)<=1e-6&&r.legs.length<best.legs.length))best=r;if(r.first<0)break;}
-  return best;}
-async function planCore(s,ends,B,opts,exclFirst){ends=Array.isArray(ends)?ends:[ends];
-  const allow=opts.allow||null,hood=opts.inHood?{inHood:opts.inHood,pen:opts.pen||8}:null,tol=TOL*B;
-  const D=dijkstraMulti(ends,null).dist;            // real meters from any node to the nearest finish
-  const runs=buildRuns(allow,opts.skip);const used=new Set(opts.skip||[]);
-  let routeN=[s],total=0,cur=s,first=-1;
-  for(let it=0;it<90;it++){
-    const {dist,prevN,prevE}=dijkstraMulti([cur],hood);
-    let best=null;
-    // enter each run at its node nearest to us and walk to either end (so a run we are standing
-    // in the middle of is walked from here, not from its far end); the unwalked remainder becomes its own run
-    for(let ri=0;ri<runs.length;ri++){const r=runs[ri];if(r.done||(!opts.stubs&&r.stub)||(it===0&&exclFirst.indexOf(r.es[0])>=0))continue;
-      let j=-1,dn=Infinity;for(let m=0;m<r.ns.length;m++){const d=dist[r.ns[m]];if(d<dn){dn=d;j=m;}}
-      if(!isFinite(dn))continue;const last=r.ns.length-1;
-      for(let k=0;k<2;k++){const fwd=k===0,len=fwd?r.len-r.cum[j]:r.cum[j];if(len<=0)continue;const ext=fwd?r.ns[last]:r.ns[0];
-        if(total+dn+len+D[ext]>B)continue;
-        const sc=(dn+TURN_M)/len;if(best===null||sc<best.sc)best={sc,r,j,fwd,len,ext,ent:r.ns[j]};}}
-    if(!best)break;
-    const seg=pathTo(prevN,prevE,cur,best.ent);
-    if(seg){total+=pathLen(seg.es);for(const ei of seg.es)used.add(ei);routeN=routeN.concat(seg.ns.slice(1));}
-    const r=best.r,j=best.j;let ns,es,rest=null;
-    if(best.fwd){ns=r.ns.slice(j);es=r.es.slice(j);if(j>0)rest=mkRun(r.es.slice(0,j),r.ns.slice(0,j+1));}
-    else{ns=r.ns.slice(0,j+1).reverse();es=r.es.slice(0,j);if(j<r.ns.length-1)rest=mkRun(r.es.slice(j),r.ns.slice(j));}
-    if(first<0)first=r.es[0];
-    routeN=routeN.concat(ns.slice(1));total+=best.len;r.done=true;for(const ei of es)used.add(ei);cur=best.ext;
-    if(rest){rest.stub=false;runs.push(rest);}
-    for(const o of runs){if(!o.done&&o.es.every(e=>used.has(e)))o.done=true;}
-    if(total+D[cur]>=B-tol)break;
-    if(it%9===8)await new Promise(res=>setTimeout(res));}
-  // final leg: nearest finish, preferring uncovered streets when that still fits the budget
-  let endIdx=-1,fin=null;
-  for(const w of [true,false]){const {dist,prevN,prevE}=dijkstraMulti([cur],Object.assign({w},hood||{}));let bi=-1,bd=Infinity;
-    for(let k=0;k<ends.length;k++){if(dist[ends[k]]<bd){bd=dist[ends[k]];bi=k;}}
-    if(bi<0)break;const p=pathTo(prevN,prevE,cur,ends[bi]);if(!p)break;
-    if(!w||total+pathLen(p.es)<=B+tol/3){fin=p;endIdx=bi;break;}}
-  if(fin)routeN=routeN.concat(fin.ns.slice(1));
-  const res=finalize(routeN);res.endIdx=endIdx;res.first=first;
-  if(allow){const RO=routeOK();let left=0;for(let i=0;i<E.length;i++){if(allow[i]&&RO[i]&&E[i][3]===0&&!used.has(i))left+=elen[i];}res.leftMi=left/MI;}
-  return res;}
-function routeEdges(ns){const es=[];for(let i=0;i+1<ns.length;i++){const e=edgeBetween(ns[i],ns[i+1]);if(e>=0)es.push(e);}return es;}
+// ---------- walkabout brain: the next stretch of fresh ground from here ----------
+// Sweeps the neighborhood the walk is in: among that hood's runs of unwalked street, scores each by
+// (distance to reach it + a turn's worth) / its length (length capped at RUN_CAP so a giant avenue
+// can't outrank fresh ground next door; dead-end slivers count triple), enters the winner at its
+// nearest point and walks toward the longer end. When the hood has nothing left, the nearest run
+// anywhere wins and its hood becomes the new one. ~10 ms on a phone.
+const RUN_CAP=900;let WALK_HOOD=null;
+function hoodAllow(name){const hd=hoodByName(name);if(!hd)return null;const allow=new Uint8Array(E.length);let any=false;
+  for(let i=0;i<E.length;i++){if(E[i][3]!==0)continue;const a=N[E[i][0]],b=N[E[i][1]];if(ptInHood((a[0]+b[0])/2,(a[1]+b[1])/2,hd)){allow[i]=1;any=true;}}return any?allow:null;}
+function pickRun(dist,runs){let best=null;for(const r of runs){let j=-1,dn=Infinity;for(let m=0;m<r.ns.length;m++){const d=dist[r.ns[m]];if(d<dn){dn=d;j=m;}}
+    if(!isFinite(dn))continue;const fl=r.len-r.cum[j],bl=r.cum[j];const fwd=fl>=bl,len=fwd?fl:bl;if(len<=0)continue;
+    const sc=(dn+TURN_M)/Math.min(len,RUN_CAP)*(r.stub?3:1);if(best===null||sc<best.sc)best={sc,r,j,fwd,dn};}return best;}
+function nextLeg(node){const {dist,prevN,prevE}=dijkstraMulti([node],null);
+  if(!WALK_HOOD)WALK_HOOD=hoodOfPt(N[node][0],N[node][1]);
+  const allow=WALK_HOOD?hoodAllow(WALK_HOOD):null;let best=allow?pickRun(dist,buildRuns(allow,null)):null;
+  if(!best){best=pickRun(dist,buildRuns(null,null));if(best){const en=best.r.ns[best.j];WALK_HOOD=hoodOfPt(N[en][0],N[en][1]);}}
+  if(!best)return null;
+  const seg=pathTo(prevN,prevE,node,best.r.ns[best.j]);let ns=seg?seg.ns:[node];
+  const rn=best.fwd?best.r.ns.slice(best.j):best.r.ns.slice(0,best.j+1).reverse();ns=ns.concat(rn.slice(1));
+  if(ns.length<2)return null;
+  const res=finalize(ns);res.freshName=NM[E[best.r.es[0]][2]]||'fresh ground';res.approachMi=best.dn/MI;res.hood=WALK_HOOD;return res;}
 function edgeBetween(a,b){const au=adj[a];for(let k=0;k<au.length;k++)if(au[k][0]===b)return au[k][2];return -1;}
 function finalize(ns){const legs=[];let total=0;const newSet=new Set();
   for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);if(ei<0)continue;const L=elen[ei];total+=L;const nm=NM[E[ei][2]]||'(unnamed)';const nw=E[ei][3]===0;if(nw)newSet.add(ei);
@@ -239,18 +198,15 @@ function routeNewSegments(ns){const segs=[];for(let i=0;i+1<ns.length;i++){const
 const edgeLines=new Array(E.length);
 E.forEach((e,i)=>{const a=N[e[0]],b=N[e[1]];edgeLines[i]=L.polyline([[a[0],a[1]],[b[0],b[1]]],edgeStyle(e[3])).addTo(map);});
 L.circleMarker([N[HOME][0],N[HOME][1]],{radius:6,color:'#fff',fillColor:'#ffd23f',fillOpacity:1,weight:2}).addTo(map).bindTooltip('82 Beaver St');
-let routeLayer=null,routeNewLayer=null,destMarker=null,startMarker=null,meMarker=null,meCircle=null;
+let routeLayer=null,routeNewLayer=null,meMarker=null,meCircle=null;
 let START=HOME, startLL=[N[HOME][0],N[HOME][1]];
 function showScreen(s){document.body.className='s-'+s;setTimeout(()=>{try{map.invalidateSize()}catch(e){}},80);}
 function liveIslandPct(){let t=0,c=0;for(let i=0;i<E.length;i++){t+=elen[i];if(E[i][3]===1)c+=elen[i];}return 100*c/t;}
 
-async function geocode(q){const url='https://nominatim.openstreetmap.org/search?format=json&limit=1&bounded=1&viewbox=-74.03,40.88,-73.90,40.69&q='+encodeURIComponent(q+', Manhattan, New York');const r=await fetch(url,{headers:{'Accept':'application/json'}});const j=await r.json();if(!j.length)throw new Error('Address not found in Manhattan');return {lat:parseFloat(j[0].lat),lon:parseFloat(j[0].lon),name:j[0].display_name};}
-
 let _headingOn=false;
-let lastHeading=0,_lastRot=0,headingUp=true,voiceOn=true,wakeLock=null,walkedLayer=null,smLL=null,_annF=new Set(),_annN=new Set(),_recenterT=null;
+let lastHeading=0,_lastRot=0,headingUp=true,wakeLock=null,walkedLayer=null,smLL=null,_annF=new Set(),_annN=new Set(),_recenterT=null;
 function setHeading(h){lastHeading=h;if(meMarker){const el=meMarker.getElement();if(el){const m=el.querySelector('.me');if(m)m.style.transform='rotate('+h+'deg)';}}
   if(headingUp&&document.body.classList.contains('s-nav')&&Math.abs(((h-_lastRot+540)%360)-180)>3){_lastRot=h;$('map').style.transform='rotate('+(-h)+'deg) scale(1.42)';}}
-function speak(t){if(!voiceOn||!window.speechSynthesis)return;try{window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.rate=1.05;window.speechSynthesis.speak(u);}catch(e){}}
 function maneuverGlyph(t){if(/U-turn/.test(t))return'⟲';if(/left/.test(t))return'↰';if(/right/.test(t))return'↱';return'↑';}
 async function acquireWake(){try{if('wakeLock'in navigator)wakeLock=await navigator.wakeLock.request('screen');}catch(e){}}
 function releaseWake(){try{if(wakeLock){wakeLock.release();wakeLock=null;}}catch(e){}}
@@ -260,77 +216,13 @@ function startHeading(){if(_headingOn)return;function handle(e){let h=null;if(ty
   else{window.addEventListener('deviceorientationabsolute',handle);window.addEventListener('deviceorientation',handle);_headingOn=true;}}
 function meIcon(){return L.divIcon({className:'',html:'<div class="me"><span class="arr"></span><span class="dot"></span></div>',iconSize:[30,30],iconAnchor:[15,15]});}
 
-async function resolveStart(force){const sm=force||(document.querySelector('input[name=start]:checked')||{}).value||'home';
-  if(sm==='loc'){setStatus('Getting your location…');try{const pos=await new Promise((rs,rj)=>navigator.geolocation.getCurrentPosition(rs,rj,{enableHighAccuracy:true,timeout:12000,maximumAge:30000}));const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){START=HOME;startLL=[N[HOME][0],N[HOME][1]];setStatus('⚠ Off-grid — using 82 Beaver.');}else{START=sn;startLL=[pos.coords.latitude,pos.coords.longitude];}}catch(e){START=HOME;startLL=[N[HOME][0],N[HOME][1]];setStatus('⚠ Location unavailable — using 82 Beaver.');}}
-  else{START=HOME;startLL=[N[HOME][0],N[HOME][1]];}}
 
 // ---------- preview ----------
 let CUR=null;
 // MTA line bullets (official colors) for the start/end subway stops
 const LINECOLOR={1:'#EE352E',2:'#EE352E',3:'#EE352E',4:'#00933C',5:'#00933C',6:'#00933C',7:'#B933AD',A:'#0039A6',C:'#0039A6',E:'#0039A6',B:'#FF6319',D:'#FF6319',F:'#FF6319',M:'#FF6319',G:'#6CBE45',J:'#996633',Z:'#996633',L:'#A7A9AC',N:'#FCCC0A',Q:'#FCCC0A',R:'#FCCC0A',W:'#FCCC0A',S:'#808183'};
 function lineBadges(routes){if(!routes)return '';return String(routes).split(/[^A-Za-z0-9]+/).filter(Boolean).map(rt=>{const u=rt.toUpperCase(),c=LINECOLOR[u]||'#555',dark='NQRW'.indexOf(u)>=0;return '<span class="mtab" style="background:'+c+';color:'+(dark?'#000':'#fff')+'">'+u+'</span>';}).join('');}
-function transitHTML(tr){const row=(lbl,s)=>s?'<div class="trow"><span class="tlbl">'+lbl+'</span><span class="tsta">'+s[2]+'</span>'+lineBadges(s[3])+'</div>':'';return '<div class="ptransit">'+row('🚇 START',tr.start)+row('🏁 END',tr.end)+'</div>';}
-function showPreview(res,dest,pace){CUR={res,dest,pace};
-  if(routeLayer)map.removeLayer(routeLayer);if(routeNewLayer)map.removeLayer(routeNewLayer);if(destMarker)map.removeLayer(destMarker);if(startMarker)map.removeLayer(startMarker);
-  routeNewLayer=L.polyline(routeNewSegments(res.ns),{color:'#27e04a',weight:9,opacity:.6,interactive:false}).addTo(map);
-  routeLayer=L.polyline(res.ns.map(i=>[N[i][0],N[i][1]]),{color:'#ffd60a',weight:5,opacity:0.97,interactive:false}).addTo(map);
-  destMarker=L.circleMarker([dest.lat,dest.lon],{radius:6,color:'#fff',fillColor:'#ff5d5d',fillOpacity:1,weight:2}).addTo(map);
-  startMarker=L.circleMarker(startLL,{radius:6,color:'#fff',fillColor:'#34d058',fillOpacity:1,weight:2}).addTo(map);
-  const mins=res.totalMi*pace,newPct=res.totalMi>0?Math.round(100*res.newMi/res.totalMi):0;
-  $('s_dist').textContent=res.totalMi.toFixed(2);$('s_pct').textContent=newPct+'%';$('s_time').textContent=fmtTime(mins);$('s_turns').textContent=Math.max(0,res.legs.length-1);
-  $('s_pct').style.color=newPct>=33?'#34d058':'#e8a33b';
-  $('pv_title').textContent=(dest.name||'Your route').split(',').slice(0,1)[0];
-  $('pv_transit').innerHTML=dest.transit?transitHTML(dest.transit):'';
-  const sLat=startLL[0].toFixed(5),sLng=startLL[1].toFixed(5),dLat=dest.lat.toFixed(5),dLng=dest.lon.toFixed(5);
-  const wstr=waypointsFor(res.ns).map(p=>p[0].toFixed(5)+','+p[1].toFixed(5)).join('|');
-  $('navG').href='https://www.google.com/maps/dir/?api=1&travelmode=walking&origin='+sLat+','+sLng+'&destination='+dLat+','+dLng+(wstr?'&waypoints='+encodeURIComponent(wstr):'');
-  $('navA').href='https://maps.apple.com/?dirflg=w&saddr='+sLat+','+sLng+'&daddr='+dLat+','+dLng;
-  let html='<ol>';let cum=0;res.legs.forEach((lg,i)=>{let turn;if(i===0)turn='Head '+compass(bearing(lg.a,lg.b));else{const pb=bearing(res.legs[i-1].a,res.legs[i-1].b),cb=bearing(lg.a,lg.b);turn=turnWord(((cb-pb+540)%360)-180);}cum+=lg.len/MI;html+=`<li>${turn} on <b>${lg.name}</b>${lg.nw?'<span class="pill">new</span>':''}<br><span class="d">${(lg.len/MI).toFixed(2)} mi · ${cum.toFixed(2)} total</span></li>`;});
-  html+=`<li>🏁 Arrive — <b>${(dest.name||'destination').split(',').slice(0,2).join(',')}</b></li></ol>`;$('dirs').innerHTML=html;
-  showScreen('preview');setTimeout(()=>{try{map.invalidateSize();map.fitBounds(routeLayer.getBounds().pad(0.18));}catch(e){}},160);}
 
-async function run(){const dmode=(document.querySelector('input[name=dest]:checked')||{}).value||'home';
-  const target=parseFloat($('dist').value)||3.33,pace=PACE,loop=$('loop').checked;
-  $('go').textContent='Planning…';await resolveStart();
-  let dest;
-  if(dmode==='home'){dest={lat:N[HOME][0],lon:N[HOME][1],name:'Home'};}
-  else{const addr=$('addr').value.trim();if(!addr){setStatus('Enter a destination.');$('go').textContent='Plan route';return;}try{dest=await geocode(addr);}catch(e){setStatus('⚠ '+e.message);$('go').textContent='Plan route';return;}}
-  const dnode=nearestNode(dest.lat,dest.lon);
-  if(havLL(dest.lat,dest.lon,N[dnode][0],N[dnode][1])>500){setStatus('⚠ Destination outside the Manhattan grid.');$('go').textContent='Plan route';return;}
-  await new Promise(r=>setTimeout(r,20));
-  // round trip from A back to A is one loop with the whole budget; A->B->A is two halves
-  async function buildRoute(B){if(loop&&START!==dnode){const t1=await planRoute(START,dnode,Math.max(dijkstra(dnode).dist[START],B*0.5));const t2=await planRoute(dnode,START,Math.max(0.1*MI,B-t1.totalMi*MI),{skip:new Set(routeEdges(t1.ns))});return finalize(t1.ns.concat(t2.ns.slice(1)));}return planRoute(START,loop?START:dnode,B);}
-  const res=await buildRoute(target*MI);   // hard budget: no silent stretching to chase a coverage ratio
-  $('go').textContent='Plan route';setStatus('');showPreview(res,dest,pace);}
-
-function nearestNew(){if(!navigator.geolocation){setStatus('Geolocation needed.');return;}setStatus('Finding your location…');
-  navigator.geolocation.getCurrentPosition(function(pos){const sn=nearestNode(pos.coords.latitude,pos.coords.longitude);if(havLL(pos.coords.latitude,pos.coords.longitude,N[sn][0],N[sn][1])>800){setStatus('⚠ Off the Manhattan grid.');return;}START=sn;startLL=[pos.coords.latitude,pos.coords.longitude];setStatus('Finding nearest unexplored ground…');const {dist}=dijkstra(sn);let best=-1,bd=Infinity,bt=-1;for(let i=0;i<E.length;i++){if(E[i][3]!==0||!routeOK()[i])continue;const a=E[i][0],b=E[i][1];let dn=Math.min(dist[a],dist[b]);if(!isFinite(dn)){const mla=(N[a][0]+N[b][0])/2,mlo=(N[a][1]+N[b][1])/2;dn=havLL(startLL[0],startLL[1],mla,mlo)*1.3;}if(dn<bd){bd=dn;best=i;bt=(dist[a]<=dist[b])?a:b;}}if(best<0){setStatus('No unexplored ground found.');return;}const pace=PACE;const tgt=nearestReachable(bt,dist);const res=directRoute(sn,tgt);setStatus('');showPreview(res,{lat:N[bt][0],lon:N[bt][1],name:(NM[E[best][2]]||'nearest unexplored path')},pace);},function(e){setStatus('⚠ Location needed: '+(e.message||e.code));},{enableHighAccuracy:true,timeout:12000});}
-
-// ---------- neighborhood clear walk ----------
-function inBox(la,lo,b){return b[1]<=la&&la<=b[3]&&b[2]<=lo&&lo<=b[4];}
-async function neighborhoodRoute(name){
-  const hd=hoodByName(name);if(!hd)return;
-  // isolate to edges INSIDE this neighborhood; sweep starts/ends at MTA subway stops (begin near the work, end at nearest stop to the finish)
-  const allowEdge=new Uint8Array(E.length);const remaining=new Set();
-  for(let i=0;i<E.length;i++){const mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;if(!ptInHood(mla,mlo,hd))continue;allowEdge[i]=1;if(E[i][3]===0)remaining.add(i);}
-  if(remaining.size===0){toast('✅ '+name+' is already fully redlined!');return;}
-  setStatus('Mapping the most efficient '+name+' sweep…');await new Promise(r=>setTimeout(r,30));
-  const st=(hd.st&&hd.st.length)?hd.st:(hd.s?[hd.s]:[]);
-  let uLat=0,uLon=0,uc=0;remaining.forEach(i=>{uLat+=(N[E[i][0]][0]+N[E[i][1]][0])/2;uLon+=(N[E[i][0]][1]+N[E[i][1]][1])/2;uc++;});uLat/=uc;uLon/=uc;
-  let startS=null,bd=Infinity;for(const s of st){const d=(s[0]-uLat)**2+(s[1]-uLon)**2;if(d<bd){bd=d;startS=s;}}
-  const startNode=startS?nearestNode(startS[0],startS[1]):nearestNode(uLat,uLon);
-  const endNodes=st.map(s=>nearestNode(s[0],s[1]));
-  const pace=PACE;
-  const B=(parseFloat($('dist').value)||3.33)*MI;   // Clear a walk-length chunk, not the whole neighborhood
-  const {dist:d0}=dijkstraMulti([startNode],null);let unreach=0;remaining.forEach(i=>{if(!isFinite(d0[E[i][0]])&&!isFinite(d0[E[i][1]]))unreach+=elen[i]/MI;});
-  const res=await planRoute(startNode,endNodes.length?endNodes:[startNode],B,{allow:allowEdge,inHood:allowEdge,pen:8,stubs:true});
-  if(res.newMi<0.05){setStatus('');toast('🧩 Nothing routable left in '+name+(unreach>0.05?' — the remaining '+unreach.toFixed(1)+' mi is on park/plaza paths the router can\'t reach yet.':'.'));return;}
-  startLL=[N[startNode][0],N[startNode][1]];
-  const endSt=(res.endIdx>=0&&st[res.endIdx])?st[res.endIdx]:startS;
-  setStatus('');
-  showPreview(res,{lat:endSt?endSt[0]:N[startNode][0],lon:endSt?endSt[1]:N[startNode][1],name:'Clear '+name,transit:{start:startS,end:endSt}},pace);
-  if(res.leftMi>0.4)setTimeout(()=>toast('🧩 ~'+res.leftMi.toFixed(1)+' mi of '+name+' still to go after this walk — Clear again to continue.'+(unreach>0.3?' ('+unreach.toFixed(1)+' mi of it is on park/plaza paths the router can\'t reach yet.)':'')),500);
-}
 // focused neighborhood map: streets lit red/green + cyan boundary, then Clear
 let hmap=null,hmapLayer=null,hoodViewName=null;
 function openHoodView(name){const hd=hoodByName(name);if(!hd)return;hoodViewName=name;
@@ -338,8 +230,10 @@ function openHoodView(name){const hd=hoodByName(name);if(!hd)return;hoodViewName
   $('hv_title').textContent=emojiFor(name)+' '+(med?med+' ':'')+name;
   let sub;
   if(tr===3){sub='🥇 Gold — 100% redlined! ✅';}
-  else{const nm=['🥉 Bronze','🥈 Silver','🥇 Gold'][tr];sub=hoodDisp(pct)+'% · '+(HTHRESH[tr]-pct).toFixed(1)+'% to '+nm+' — tap Clear to sweep it';}
+  else{const nm=['🥉 Bronze','🥈 Silver','🥇 Gold'][tr];sub=hoodDisp(pct)+'% · '+(HTHRESH[tr]-pct).toFixed(1)+'% to '+nm;}
   $('hv_sub').textContent=sub;
+  // subway stops in the neighborhood — the answer to "how do I get there" now that the walk itself is Walkabout
+  const st=(hd.st&&hd.st.length)?hd.st:(hd.s?[hd.s]:[]);$('hv_transit').innerHTML=st.length?'🚇 '+st.map(x=>'<span class="tsta">'+x[2]+'</span>'+lineBadges(x[3])).join(' · '):'';
   $('hoodview').classList.add('show');
   setTimeout(()=>{try{
     if(!hmap){hmap=L.map('hmap',{preferCanvas:true,zoomControl:true,attributionControl:false});L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:16,maxZoom:20}).addTo(hmap);hmapLayer=L.layerGroup().addTo(hmap);}
@@ -351,30 +245,9 @@ function openHoodView(name){const hd=hoodByName(name);if(!hd)return;hoodViewName
   }catch(err){}},90);
 }
 
-// ---------- uncovered streets picker (list + map) ----------
-let umap=null;
-function showUcTab(t){const o=$('uncov');if(t==='map'){o.classList.add('mapview');$('uc_tmap').classList.add('on');$('uc_tlist').classList.remove('on');buildUmap();}else{o.classList.remove('mapview');$('uc_tlist').classList.add('on');$('uc_tmap').classList.remove('on');}}
-function nearestReachable(node,dist){if(isFinite(dist[node]))return node;let bd=Infinity,bn=node;for(let i=0;i<N.length;i++){if(!isFinite(dist[i]))continue;const d=havLL(N[node][0],N[node][1],N[i][0],N[i][1]);if(d<bd){bd=d;bn=i;}}return bn;}
-function routeToUncov(node,nm){$('uncov').classList.remove('show');const pace=PACE;const {dist}=dijkstra(START);const tgt=nearestReachable(node,dist);const res=directRoute(START,tgt);showPreview(res,{lat:N[node][0],lon:N[node][1],name:nm||'Unexplored path'},pace);}
-async function openUncov(){setStatus('');$('uc_sub').textContent='Locating…';$('uncov').classList.add('show');showUcTab('list');await resolveStart('loc');
-  const {dist}=dijkstra(START);const byName={};
-  for(let i=0;i<E.length;i++){if(E[i][3]!==0||!routeOK()[i])continue;const a=E[i][0],b=E[i][1];let dn=Math.min(dist[a],dist[b]);
-    if(!isFinite(dn)){const mla=(N[a][0]+N[b][0])/2,mlo=(N[a][1]+N[b][1])/2;dn=havLL(startLL[0],startLL[1],mla,mlo)*1.3;} // park/plaza island → crow-flies estimate
-    const node=(dist[a]<=dist[b])?a:b;const nm=NM[E[i][2]]||'(unnamed path)';if(!byName[nm]||dn<byName[nm].dn)byName[nm]={dn,node,nm};}
-  const arr=Object.values(byName).sort((x,y)=>x.dn-y.dn).slice(0,80);
-  $('uc_sub').textContent=arr.length+' nearest unexplored streets & paths · tap to plan a route';
-  $('uc_list').innerHTML=arr.map(o=>`<div class="ucrow" data-node="${o.node}" data-name="${o.nm.replace(/"/g,'&quot;')}"><span>${o.nm}</span><b>${(o.dn/MI).toFixed(2)} mi</b></div>`).join('')||'<div class="ucsub">🎉 Nothing left — fully redlined!</div>';}
-function buildUmap(){if(umap){setTimeout(()=>{try{umap.invalidateSize();umap.setView(startLL,14);}catch(e){}},120);return;}
-  umap=L.map('umap',{preferCanvas:true,zoomControl:true,attributionControl:false}).setView(startLL,14);
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:16,maxZoom:20}).addTo(umap);
-  const segs=[];for(let i=0;i<E.length;i++){if(E[i][3]===0){const a=N[E[i][0]],b=N[E[i][1]];segs.push([[a[0],a[1]],[b[0],b[1]]]);}}
-  L.polyline(segs,{color:'#27e04a',weight:2,opacity:.92,interactive:false}).addTo(umap);
-  L.circleMarker(startLL,{radius:6,color:'#fff',fillColor:'#ffd23f',fillOpacity:1,weight:2}).addTo(umap);
-  umap.on('click',ev=>{const la=ev.latlng.lat,lo=ev.latlng.lng;let best=-1,bd=Infinity,bn=-1;for(let i=0;i<E.length;i++){if(E[i][3]!==0||!routeOK()[i])continue;const a=E[i][0],b=E[i][1],d=segDistM(la,lo,N[a][0],N[a][1],N[b][0],N[b][1]);if(d<bd){bd=d;best=i;bn=havLL(la,lo,N[a][0],N[a][1])<havLL(la,lo,N[b][0],N[b][1])?a:b;}}if(best>=0)routeToUncov(bn,NM[E[best][2]]||'Uncovered street');});
-  setTimeout(()=>{try{umap.invalidateSize();umap.setView(startLL,14);}catch(e){}},150);}
 
-// ---------- guided navigation + juice ----------
-let navWatch=null, NAV=null, newSegs=new Set(), newMi=0, navStartPct=0, _offBuzz=0;
+// ---------- guided navigation + juice (visual + haptic only, never audio) ----------
+let navWatch=null, NAV=null, newSegs=new Set(), newMi=0, navStartPct=0, _offBuzz=0, CHAIN=false, walkMi=0, legsDone=0, _offN=0, _doneT=0;
 function buildNavSteps(res){const ns=res.ns;const names=[];for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);names.push(ei>=0?(NM[E[ei][2]]||'street'):'street');}
   const cum=[0];for(let i=0;i+1<ns.length;i++)cum.push(cum[i]+havNN(ns[i],ns[i+1]));
   const steps=[];for(let i=1;i+1<ns.length;i++){if(names[i]!==names[i-1]){const pb=bearing(ns[i-1],ns[i]),cb=bearing(ns[i],ns[i+1]);steps.push({idx:i,text:turnWord(((cb-pb+540)%360)-180)+' onto '+names[i]});}}
@@ -382,51 +255,57 @@ function buildNavSteps(res){const ns=res.ns;const names=[];for(let i=0;i+1<ns.le
 function nearestRouteIdx(la,lo){const ns=NAV.ns;let bi=0,bd=Infinity;for(let i=0;i<ns.length;i++){const d=havLL(la,lo,N[ns[i]][0],N[ns[i]][1]);if(d<bd){bd=d;bi=i;}}return bi;}
 function checkNewCover(la,lo){let any=false,lastNm='';for(let i=0;i<E.length;i++){if(E[i][3]===1)continue;const a=E[i][0],b=E[i][1];if(segDistM(la,lo,N[a][0],N[a][1],N[b][0],N[b][1])<18){E[i][3]=1;edgeLines[i].setStyle(edgeStyle(1));newSegs.add(i);newMi+=elen[i]/MI;any=true;lastNm=NM[E[i][2]]||'a street';}}
   if(any){toast('🟢 New street! '+lastNm,3300);buzz(70);$('nav_new').textContent='+'+newMi.toFixed(2)+' new mi · '+newSegs.size+' blocks unlocked';}}
-function startNav(){if(!CUR)return;if(!navigator.geolocation){alert('Location not available on this device.');return;}
-  NAV=buildNavSteps(CUR.res);newSegs=new Set();newMi=0;navStartPct=liveIslandPct();_annF=new Set();_annN=new Set();smLL=null;
+function drawRoute(res){if(routeLayer)map.removeLayer(routeLayer);if(routeNewLayer)map.removeLayer(routeNewLayer);
+  routeNewLayer=L.polyline(routeNewSegments(res.ns),{color:'#27e04a',weight:9,opacity:.6,interactive:false}).addTo(map);
+  routeLayer=L.polyline(res.ns.map(i=>[N[i][0],N[i][1]]),{color:'#ffd60a',weight:5,opacity:0.97,interactive:false}).addTo(map);}
+function legLine(res){return res.freshName+' · '+res.newMi.toFixed(2)+' mi fresh'+(res.approachMi>0.05?' · '+res.approachMi.toFixed(2)+' mi away':'');}
+function setLeg(res){NAV=buildNavSteps(res);_annN=new Set();_offN=0;drawRoute(res);if(walkedLayer)walkedLayer.setLatLngs([]);
+  $('navtop').classList.remove('off');$('nav_arrow').textContent='↑';$('nav_inst').textContent=NAV.first;$('nav_dist').textContent='';}
+// Pick the next stretch from where you are standing. completed=true when the previous one was walked to its end.
+function advanceLeg(la,lo,completed){const leg=nextLeg(nearestNode(la,lo));if(completed)legsDone++;
+  if(!leg){NAV.done=true;_doneT=Date.now();$('navtop').classList.remove('off');$('nav_arrow').textContent='🏁';$('nav_inst').textContent='Nothing unwalked in reach';$('nav_dist').textContent='wander, or End';return;}
+  NAV.done=false;CUR.res=leg;setLeg(leg);toast((completed?'✅ Stretch done · next: ':'↪ From here: ')+legLine(leg),4000);buzz(completed?[60,40,60]:40);}
+function startNav(chain){if(!CUR)return;if(!navigator.geolocation){setStatus('Location needed.');return;}
+  CHAIN=!!chain;walkMi=0;legsDone=0;newSegs=new Set();newMi=0;navStartPct=liveIslandPct();smLL=null;
   showScreen('nav');startHeading();acquireWake();headingUp=true;$('rotBtn').classList.add('on');$('rotBtn').textContent='🧭';
   if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}walkedLayer=L.polyline([],{color:'#ff2e2e',weight:6,opacity:.95}).addTo(map);
-  $('nav_arrow').textContent='↑';$('nav_inst').textContent=NAV.first;$('nav_dist').textContent='';$('nav_new').textContent='';$('nav_prog').textContent='0.00 / '+(NAV.total/MI).toFixed(2)+' mi';
-  speak(NAV.first);let first=true;
+  setLeg(CUR.res);$('nav_new').textContent='';$('nav_prog').textContent=legLine(CUR.res);let first=true;
   navWatch=navigator.geolocation.watchPosition(function(p){
     let la=p.coords.latitude,lo=p.coords.longitude;const acc=p.coords.accuracy||20;
+    if(smLL){const dm=havLL(smLL[0],smLL[1],la,lo);if(dm>=4&&dm<120)walkMi+=dm/MI;}
     if(smLL&&acc<35){la=0.4*la+0.6*smLL[0];lo=0.4*lo+0.6*smLL[1];}smLL=[la,lo];const ll=[la,lo];
     if(!meMarker){meMarker=L.marker(ll,{icon:meIcon(),zIndexOffset:1000}).addTo(map);}else meMarker.setLatLng(ll);
     if(!meCircle){meCircle=L.circle(ll,{radius:acc,color:'#3b82f6',weight:1,opacity:.4,fillOpacity:.08}).addTo(map);}else{meCircle.setLatLng(ll);meCircle.setRadius(acc);}
     if(typeof p.coords.heading==='number'&&!isNaN(p.coords.heading)&&p.coords.speed>0.3)setHeading(p.coords.heading);
     if(first){map.setView(ll,17);first=false;}else if(NAV.follow!==false)map.panTo(ll,{animate:true});
     checkNewCover(la,lo);
+    const prog=walkMi.toFixed(2)+' mi walked'+(legsDone?' · '+legsDone+' stretch'+(legsDone>1?'es':'')+' done':'');
+    if(NAV.done){if(Date.now()-_doneT>60000)advanceLeg(la,lo,false);$('nav_prog').textContent=prog;return;}
     const ni=nearestRouteIdx(la,lo),off=havLL(la,lo,N[NAV.ns[ni]][0],N[NAV.ns[ni]][1]);
     if(walkedLayer)walkedLayer.setLatLngs(NAV.ns.slice(0,ni+1).map(i=>[N[i][0],N[i][1]]));
     if(routeLayer)routeLayer.setLatLngs(NAV.ns.slice(ni).map(i=>[N[i][0],N[i][1]]));
     if(routeNewLayer)routeNewLayer.setLatLngs(routeNewSegments(NAV.ns.slice(ni)));
-    if(off>45){$('navtop').classList.add('off');$('nav_arrow').textContent='↩';$('nav_inst').textContent='Off route — back to the blue line';$('nav_dist').textContent=fmtDist(off)+' off';const n=Date.now();if(n-_offBuzz>6000){buzz([60,60,60]);_offBuzz=n;}}
-    else{$('navtop').classList.remove('off');const up=NAV.steps.find(s=>s.idx>ni);const dDest=havLL(la,lo,N[NAV.ns[NAV.ns.length-1]][0],N[NAV.ns[NAV.ns.length-1]][1]);
+    if(off>45){_offN++;
+      if(CHAIN&&_offN>=3&&off>60){advanceLeg(la,lo,false);}   // you went your own way: plan from here, don't nag
+      else{$('navtop').classList.add('off');$('nav_arrow').textContent='↩';$('nav_inst').textContent='Off the line — rejoin, or keep going and it re-plans';$('nav_dist').textContent=fmtDist(off)+' off';const n=Date.now();if(n-_offBuzz>6000){buzz([60,60,60]);_offBuzz=n;}}}
+    else{_offN=0;$('navtop').classList.remove('off');const up=NAV.steps.find(s=>s.idx>ni);const dDest=havLL(la,lo,N[NAV.ns[NAV.ns.length-1]][0],N[NAV.ns[NAV.ns.length-1]][1]);
       if(up){const dT=havLL(la,lo,N[NAV.ns[up.idx]][0],N[NAV.ns[up.idx]][1]);$('nav_arrow').textContent=maneuverGlyph(up.text);$('nav_inst').textContent=up.text;$('nav_dist').textContent='in '+fmtDist(dT);
-        if(dT<90&&!_annF.has(up.idx)){_annF.add(up.idx);speak('In '+fmtDist(dT)+', '+up.text);}
-        if(dT<25&&!_annN.has(up.idx)){_annN.add(up.idx);speak(up.text);buzz(80);}}
-      else if(dDest<30){$('nav_arrow').textContent='🏁';$('nav_inst').textContent='Arrived — nice work!';$('nav_dist').textContent='';if(!_annN.has(-1)){_annN.add(-1);speak('You have arrived. Nice work!');buzz([100,60,100]);}}
-      else{$('nav_arrow').textContent='↑';$('nav_inst').textContent='Continue to destination';$('nav_dist').textContent=fmtDist(dDest)+' to go';}}
-    const walked=NAV.cum[ni]||0,remMi=(NAV.total-walked)/MI,pace=CUR.pace||22.37;
-    $('nav_prog').textContent=(walked/MI).toFixed(2)+' / '+(NAV.total/MI).toFixed(2)+' mi · ~'+Math.max(0,Math.round(remMi*pace))+' min left';
+        if(dT<25&&!_annN.has(up.idx)){_annN.add(up.idx);buzz(80);}}
+      else if(dDest<30){if(CHAIN)advanceLeg(la,lo,true);else{$('nav_arrow').textContent='🏁';$('nav_inst').textContent='Arrived — nice work!';$('nav_dist').textContent='';if(!_annN.has(-1)){_annN.add(-1);buzz([100,60,100]);}}}
+      else{$('nav_arrow').textContent='↑';$('nav_inst').textContent='Continue on '+NAV.names[NAV.names.length-1];$('nav_dist').textContent=fmtDist(dDest)+' to the end';}}
+    $('nav_prog').textContent=prog+' · '+legLine(CUR.res);
   },function(e){$('nav_inst').textContent='⚠ Location error';$('nav_dist').textContent=(e.message||e.code)+' — grant permission';},{enableHighAccuracy:true,maximumAge:1000,timeout:20000});}
-function endNav(){if(navWatch!=null){navigator.geolocation.clearWatch(navWatch);navWatch=null;}releaseWake();if(window.speechSynthesis)window.speechSynthesis.cancel();$('map').style.transform='';if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}if(routeNewLayer){map.removeLayer(routeNewLayer);routeNewLayer=null;}showRecap();}
-function walkabout(){if(!navigator.geolocation){alert('Location not available on this device.');return;}
-  NAV=null;newSegs=new Set();newMi=0;navStartPct=liveIslandPct();smLL=null;
-  if(routeLayer){map.removeLayer(routeLayer);routeLayer=null;}if(routeNewLayer){map.removeLayer(routeNewLayer);routeNewLayer=null;}if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}
-  showScreen('nav');startHeading();acquireWake();headingUp=true;$('rotBtn').classList.add('on');$('rotBtn').textContent='🧭';
-  $('nav_arrow').textContent='🚶';$('nav_inst').textContent='Walkabout — wander freely';$('nav_dist').textContent='new streets light up as you walk';$('nav_new').textContent='';$('nav_prog').textContent='';
-  speak('Walkabout. New streets light up as you walk.');let first=true;
-  navWatch=navigator.geolocation.watchPosition(function(p){
-    let la=p.coords.latitude,lo=p.coords.longitude;const acc=p.coords.accuracy||20;
-    if(smLL&&acc<35){la=0.4*la+0.6*smLL[0];lo=0.4*lo+0.6*smLL[1];}smLL=[la,lo];const ll=[la,lo];
-    if(!meMarker){meMarker=L.marker(ll,{icon:meIcon(),zIndexOffset:1000}).addTo(map);}else meMarker.setLatLng(ll);
-    if(!meCircle){meCircle=L.circle(ll,{radius:acc,color:'#3b82f6',weight:1,opacity:.4,fillOpacity:.08}).addTo(map);}else{meCircle.setLatLng(ll);meCircle.setRadius(acc);}
-    if(typeof p.coords.heading==='number'&&!isNaN(p.coords.heading)&&p.coords.speed>0.3)setHeading(p.coords.heading);
-    if(first){map.setView(ll,17);first=false;}else map.panTo(ll,{animate:true});
-    checkNewCover(la,lo);
-    $('nav_prog').textContent='+'+newMi.toFixed(2)+' new mi · '+newSegs.size+' blocks · island '+liveIslandPct().toFixed(1)+'%';
-  },function(e){$('nav_inst').textContent='⚠ Location error';$('nav_dist').textContent=(e.message||e.code)+' — grant permission';},{enableHighAccuracy:true,maximumAge:1000,timeout:20000});}
+function endNav(){if(navWatch!=null){navigator.geolocation.clearWatch(navWatch);navWatch=null;}releaseWake();$('map').style.transform='';if(walkedLayer){map.removeLayer(walkedLayer);walkedLayer=null;}if(routeNewLayer){map.removeLayer(routeNewLayer);routeNewLayer=null;}CHAIN=false;showRecap();}
+// ---------- walkabout: the only mode. One stretch of fresh ground at a time, until you stop ----------
+function walkabout(){if(!navigator.geolocation){setStatus('Location needed.');return;}
+  setStatus('Finding your location…');$('walk').disabled=true;
+  navigator.geolocation.getCurrentPosition(function(pos){$('walk').disabled=false;
+    const la=pos.coords.latitude,lo=pos.coords.longitude;const sn=nearestNode(la,lo);
+    if(havLL(la,lo,N[sn][0],N[sn][1])>800){setStatus('⚠ Off the Manhattan grid.');return;}
+    START=sn;startLL=[la,lo];WALK_HOOD=null;const leg=nextLeg(sn);
+    if(!leg){setStatus('🏁 No unwalked street reachable from here.');return;}
+    setStatus('');CUR={res:leg,pace:PACE};startNav(true);
+  },function(e){$('walk').disabled=false;setStatus('⚠ Location needed: '+(e.message||e.code));},{enableHighAccuracy:true,timeout:12000,maximumAge:30000});}
 function showRecap(){const now=liveIslandPct(),walked=(NAV&&NAV.cum&&NAV.lastIdx)?0:0;
   $('rc_sub').textContent=newSegs.size>0?'You revealed new territory':'No new streets this time — still counts!';
   const rows=[['New streets cleared',newSegs.size+' blocks',true],['New miles redlined',newMi.toFixed(2)+' mi',true],['Island redlined',navStartPct.toFixed(1)+'% → '+now.toFixed(1)+'%',now>navStartPct],['XP earned','+'+Math.round(newMi*10)+' XP',newMi>0],['Streak',STATS.streak+' days 🔥',true]];
@@ -440,10 +319,7 @@ const SYNC_URL='https://joegrimaldi--f51eddc8772111f1ac241607ee4eb77e.web.val.ru
 {const sb=$('syncBtn');if(sb)sb.onclick=async()=>{if(sb.disabled)return;sb.disabled=true;const o=sb.textContent;sb.textContent='⏳ Syncing…';toast('⏳ Pulling your latest Strava walks…');try{const r=await fetch(SYNC_URL,{method:'POST'});const tx=(await r.text()).trim();if(r.ok&&/sync started/i.test(tx)){toast("✅ Sync started — new walks will appear in ~1 min. Tap ⟳ Update then.");}else{toast('⚠️ Sync error: '+tx.slice(0,60));}}catch(e){toast('⚠️ Could not reach sync — check connection.');}setTimeout(()=>{sb.disabled=false;sb.textContent=o;},4000);};}
 
 // ---------- wiring ----------
-$('go').onclick=run;$('nearnew').onclick=nearestNew;$('walk').onclick=walkabout;$('pvback').onclick=()=>showScreen('home');$('startnav').onclick=startNav;$('nav_end').onclick=endNav;
-document.querySelectorAll('input[name=dest]').forEach(r=>r.addEventListener('change',()=>{const c=(document.querySelector('input[name=dest]:checked')||{}).value==='custom';$('addrwrap').style.display=c?'block':'none';if(c)setTimeout(()=>$('addr').focus(),50);}));
-$('uncovBtn').onclick=openUncov;$('uc_close').onclick=()=>$('uncov').classList.remove('show');$('uc_tlist').onclick=()=>showUcTab('list');$('uc_tmap').onclick=()=>showUcTab('map');
-$('uc_list').addEventListener('click',e=>{const r=e.target.closest('.ucrow');if(r&&r.dataset.node)routeToUncov(parseInt(r.dataset.node),r.dataset.name);});
+$('walk').onclick=walkabout;$('nav_end').onclick=endNav;
 function openBadge(i){const b=BADGES[i];if(!b)return;$('bp_emoji').textContent=b[2]?b[0]:'🔒';$('bp_emoji').className='bemoji'+(b[2]?'':' lk');$('bp_name').textContent=b[1];const s=$('bp_stat');if(b[2]){s.textContent='✓ UNLOCKED';s.className='bstat on';}else{s.textContent='🔒 LOCKED';s.className='bstat off';}$('bp_desc').textContent=(b[2]?'':'To unlock: ')+b[3];$('bpop').classList.add('show');buzz(30);}
 $('badges').addEventListener('click',e=>{const el=e.target.closest('.bdg');if(el&&el.dataset.i!=null)openBadge(+el.dataset.i);});
 $('bpop').onclick=()=>$('bpop').classList.remove('show');
@@ -575,11 +451,9 @@ function setHoodSort(v,btnId){HOODSORT=v;Object.keys(HSBTN).forEach(id=>{const b
   }else fillHoods();}
 Object.keys(HSBTN).forEach(id=>{if($(id))$(id).onclick=()=>setHoodSort(HSBTN[id],id);});
 $('hv_close').onclick=()=>$('hoodview').classList.remove('show');
-$('hv_clear').onclick=()=>{$('hoodview').classList.remove('show');if(hoodViewName)neighborhoodRoute(hoodViewName);};
 $('rc_done').onclick=()=>{$('recap').classList.remove('show');showScreen('home');};
 $('recenter').onclick=()=>{if(NAV)NAV.follow=true;if(meMarker)map.panTo(meMarker.getLatLng(),{animate:true});};
 $('rotBtn').onclick=()=>{headingUp=!headingUp;$('rotBtn').textContent=headingUp?'🧭':'⬆';$('rotBtn').classList.toggle('on',headingUp);if(!headingUp)$('map').style.transform='';else{_lastRot=999;setHeading(lastHeading);}setTimeout(()=>{try{map.invalidateSize()}catch(e){}},60);};
-$('muteBtn').onclick=()=>{voiceOn=!voiceOn;$('muteBtn').textContent=voiceOn?'🔊':'🔇';$('muteBtn').classList.toggle('on',voiceOn);if(!voiceOn&&window.speechSynthesis)window.speechSynthesis.cancel();};
 map.on('dragstart',()=>{if(NAV){NAV.follow=false;clearTimeout(_recenterT);_recenterT=setTimeout(()=>{if(NAV){NAV.follow=true;if(meMarker)map.panTo(meMarker.getLatLng(),{animate:true});}},8000);}});
 // ---------- pedestrian layer: parks + plazas loaded at runtime ----------
 const _nameIdx=new Map();NM.forEach((n,i)=>_nameIdx.set(n,i));
@@ -705,12 +579,10 @@ function drawLights(){
 })();
 
 
-/* ---- Live coach: efficiency readout + backtrack cue (visual + haptic only, never audio) ---- */
+/* ---- Live coach: efficiency readout (visual + haptic only, never audio) ---- */
 (function(){
  var c={active:false,watchId:null,total:0,last:null,startUncov:null,lastNewMi:0,lastNewTime:0};
  function hav(a,b,x,y){var tR=Math.PI/180,dA=(x-a)*tR,dO=(y-b)*tR,s=Math.sin(dA/2)*Math.sin(dA/2)+Math.cos(a*tR)*Math.cos(x*tR)*Math.sin(dO/2)*Math.sin(dO/2);return 6371000*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s));}
- function bearing(a,b,x,y){var tR=Math.PI/180;var dO=(y-b)*tR;var yy=Math.sin(dO)*Math.cos(x*tR);var xx=Math.cos(a*tR)*Math.sin(x*tR)-Math.sin(a*tR)*Math.cos(x*tR)*Math.cos(dO);return (Math.atan2(yy,xx)*180/Math.PI+360)%360;}
- function arw(deg){return ['↑','↗','→','↘','↓','↙','←','↖'][Math.round(deg/45)%8];}
  function css(){ if(document.getElementById('coachCss'))return; var s=document.createElement('style');s.id='coachCss';
   s.textContent='.coachhud{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 92px);transform:translateX(-50%);z-index:1500;background:rgba(10,20,14,.94);border:2px solid #000;border-radius:5px;padding:8px 13px;box-shadow:0 4px 0 #000;font-family:var(--term);color:#eafff2;text-align:center;pointer-events:none;min-width:190px;display:none}'
    +'.coacheff{font-family:var(--pix);font-size:12px}.coacheff b{font-size:16px}'
@@ -719,9 +591,7 @@ function drawLights(){
   document.head.appendChild(s); }
  function hud(){ var d=document.getElementById('coachHud'); if(!d){d=document.createElement('div');d.id='coachHud';d.className='coachhud';document.body.appendChild(d);} return d; }
  function newMi(){ var m=0; if(c.startUncov)for(var k=0;k<c.startUncov.length;k++){var i=c.startUncov[k];if(E[i][3]===1)m+=elen[i];} return m/1609.344; }
- function nearestUncov(la,lo){var bd=1e18,bm=null;for(var i=0;i<E.length;i++){if(E[i][3]!==0||!routeOK()[i])continue;var mla=(N[E[i][0]][0]+N[E[i][1]][0])/2,mlo=(N[E[i][0]][1]+N[E[i][1]][1])/2;var dy=mla-la,dx=(mlo-lo)*0.75,dd=dy*dy+dx*dx;if(dd<bd){bd=dd;bm=[mla,mlo];}}if(!bm)return null;return {b:bearing(la,lo,bm[0],bm[1]),mi:hav(la,lo,bm[0],bm[1])/1609.344};}
  function render(){ var d=hud(); var nm=newMi(),tm=c.total/1609.344; var eff=tm>0.02?Math.min(100,Math.round(100*nm/tm)):100; var col=eff>=70?'var(--grn)':eff>=40?'var(--yel)':'var(--red)';
-  var back=''; if((Date.now()-c.lastNewTime)>25000 && tm>0.06 && c.last){var nu=nearestUncov(c.last[0],c.last[1]); if(nu)back='<div class="coachback">'+arw(nu.b)+' NEW GROUND '+(nu.mi<0.1?Math.round(nu.mi*5280)+' FT':nu.mi.toFixed(1)+' MI')+' '+arw(nu.b)+'</div>';}
   d.innerHTML='<div class="coacheff" style="color:'+col+'"><b>'+eff+'%</b> new ground</div><div class="coachsub">'+nm.toFixed(2)+' new mi / '+tm.toFixed(2)+' mi walked</div>'+back;
  }
  function onPos(la,lo){ if(c.last){var d=hav(c.last[0],c.last[1],la,lo); if(d>=4&&d<120)c.total+=d;} c.last=[la,lo]; var nm=newMi(); if(nm>c.lastNewMi+0.004){c.lastNewMi=nm;c.lastNewTime=Date.now(); if(navigator.vibrate){try{navigator.vibrate(26);}catch(e){}}} render(); }
