@@ -255,7 +255,7 @@
  <div id="cmap"></div>
  <div class="hsort" id="hsort" style="display:none"><button id="hs_pct" class="hsb on">% done</button><button id="hs_left" class="hsb">Mi to go</button><button id="hs_close" class="hsb">Almost done</button><button id="hs_near" class="hsb">Nearest</button></div>
  <div class="hoods" id="hoods"></div>
- <div class="ver" id="ver">REDLINE v861</div>
+ <div class="ver" id="ver">REDLINE v862</div>
 </div>
 
 <div id="map"></div>
@@ -541,7 +541,8 @@ function openHoodView(name){const hd=hoodByName(name);if(!hd)return;hoodViewName
 
 // ---------- guided navigation + juice (visual + haptic only, never audio) ----------
 let navWatch=null, NAV=null, newSegs=new Set(), newMi=0, navStartPct=0, _offBuzz=0, CHAIN=false, walkMi=0, legsDone=0, _offT=0, _doneT=0;
-function buildNavSteps(res){const ns=res.ns;const names=[];for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);names.push(ei>=0?(NM[E[ei][2]]||'street'):'street');}
+function navName(nm){return (!nm||nm==='(path)'||nm==='(unnamed)')?'the path':nm;}
+function buildNavSteps(res){const ns=res.ns;const names=[];for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);names.push(ei>=0?navName(NM[E[ei][2]]):'the path');}
   const cum=[0];for(let i=0;i+1<ns.length;i++)cum.push(cum[i]+havNN(ns[i],ns[i+1]));
   const steps=[];for(let i=1;i+1<ns.length;i++){if(names[i]!==names[i-1]){const pb=bearing(ns[i-1],ns[i]),cb=bearing(ns[i],ns[i+1]);steps.push({idx:i,text:turnWord(((cb-pb+540)%360)-180)+' onto '+names[i]});}}
   return {ns,names,cum,steps,total:cum[cum.length-1],first:'Head '+compass(bearing(ns[0],ns[1]))+' on '+names[0]};}
@@ -559,7 +560,7 @@ function checkNewCover(la,lo){let any=false,lastNm='';for(let i=0;i<E.length;i++
 function drawRoute(res){if(routeLayer)map.removeLayer(routeLayer);if(routeNewLayer)map.removeLayer(routeNewLayer);
   routeNewLayer=L.polyline(routeNewSegments(res.ns),{color:'#27e04a',weight:9,opacity:.6,interactive:false}).addTo(map);
   routeLayer=L.polyline(res.ns.map(i=>[N[i][0],N[i][1]]),{color:'#ffd60a',weight:5,opacity:0.97,interactive:false}).addTo(map);}
-function legLine(res){return res.freshName+' · '+res.newMi.toFixed(2)+' mi fresh'+(res.approachMi>0.05?' · '+res.approachMi.toFixed(2)+' mi away':'');}
+function legLine(res){return navName(res.freshName)+' · '+res.newMi.toFixed(2)+' mi fresh'+(res.approachMi>0.05?' · '+res.approachMi.toFixed(2)+' mi away':'');}
 function setLeg(res){NAV=buildNavSteps(res);_annN=new Set();_offT=0;drawRoute(res);if(walkedLayer)walkedLayer.setLatLngs([]);
   $('navtop').classList.remove('off');$('nav_arrow').textContent='↑';$('nav_inst').textContent=NAV.first;$('nav_dist').textContent='';}
 // Pick the next stretch from where you are standing. completed=true when the previous one was walked to its end.
@@ -771,6 +772,19 @@ async function loadPedestrianPaths(){
         if(prev>=0&&prev!==id){const ei=E.length;E.push([prev,id,nmi,covered]);const len=havNN(prev,id);elen[ei]=len;adj[prev].push([id,len,ei]);adj[id].push([prev,len,ei]);newIdx.push(ei);added++;}
         prev=id;}}}
   if(!added)return;
+  // Stitch the paths into the grid. A path end only joined a street where its coordinate matched a street
+  // node exactly, which left ~2/3 of park miles unreachable by the router. Re-point every dangling path end
+  // at the nearest existing node within SNAP_M (a park entrance, or the other side of a simplification gap).
+  // Edge lengths are kept, so totals do not move; only topology does. ~85 ms.
+  {const SNAP_M=18;const deg=new Int32Array(N.length);for(const ei of newIdx){deg[E[ei][0]]++;deg[E[ei][1]]++;}
+   const onStreet=new Uint8Array(N.length);for(let i=0;i<PARKSTART;i++){onStreet[E[i][0]]=1;onStreet[E[i][1]]=1;}
+   const cell=0.0004,G=new Map();const key=(la,lo)=>Math.floor(la/cell)+','+Math.floor(lo/cell);
+   for(let i=0;i<N.length;i++){const k=key(N[i][0],N[i][1]);let a=G.get(k);if(!a){a=[];G.set(k,a);}a.push(i);}
+   for(const ei of newIdx){for(let side=0;side<2;side++){const n=E[ei][side],o=E[ei][1-side];if(deg[n]!==1||onStreet[n])continue;
+     const la=N[n][0],lo=N[n][1],ca=Math.floor(la/cell),co=Math.floor(lo/cell);let best=-1,bd=SNAP_M;
+     for(let da=-1;da<=1;da++)for(let dO=-1;dO<=1;dO++){const arr=G.get((ca+da)+','+(co+dO));if(!arr)continue;for(const j of arr){if(j===n||j===o)continue;const d=havLL(la,lo,N[j][0],N[j][1]);if(d<bd){bd=d;best=j;}}}
+     if(best<0)continue;const j=best,len=elen[ei];
+     adj[n]=adj[n].filter(x=>x[2]!==ei);for(const x of adj[o])if(x[2]===ei)x[0]=j;adj[j].push([o,len,ei]);E[ei][side]=j;deg[n]--;deg[j]++;}}}
   for(const ei of newIdx){const e=E[ei],a=N[e[0]],b=N[e[1]];edgeLines[ei]=L.polyline([[a[0],a[1]],[b[0],b[1]]],edgeStyle(e[3])).addTo(map);}
   try{renderDash();}catch(e){}
   try{if(cmap){cmap.remove();cmap=null;}buildConquestMap();}catch(e){}
