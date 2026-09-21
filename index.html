@@ -255,7 +255,7 @@
    <div style="font-family:var(--term);font-size:13px;color:var(--dim);line-height:1.45">Streets light up as you walk. It keeps pointing you at the nearest fresh ground — end whenever you like.</div>
    <div id="status"></div>
  </div>
- <div class="ver" id="ver">REDLINE v858</div>
+ <div class="ver" id="ver">REDLINE v859</div>
 </div>
 
 <div id="map"></div>
@@ -546,8 +546,12 @@ function buildNavSteps(res){const ns=res.ns;const names=[];for(let i=0;i+1<ns.le
   const steps=[];for(let i=1;i+1<ns.length;i++){if(names[i]!==names[i-1]){const pb=bearing(ns[i-1],ns[i]),cb=bearing(ns[i],ns[i+1]);steps.push({idx:i,text:turnWord(((cb-pb+540)%360)-180)+' onto '+names[i]});}}
   return {ns,names,cum,steps,total:cum[cum.length-1],first:'Head '+compass(bearing(ns[0],ns[1]))+' on '+names[0]};}
 function nearestRouteIdx(la,lo){const ns=NAV.ns;let bi=0,bd=Infinity;for(let i=0;i<ns.length;i++){const d=havLL(la,lo,N[ns[i]][0],N[ns[i]][1]);if(d<bd){bd=d;bi=i;}}return bi;}
-function checkNewCover(la,lo){let any=false,lastNm='';for(let i=0;i<E.length;i++){if(E[i][3]===1)continue;const a=E[i][0],b=E[i][1];if(segDistM(la,lo,N[a][0],N[a][1],N[b][0],N[b][1])<18){E[i][3]=1;edgeLines[i].setStyle(edgeStyle(1));newSegs.add(i);newMi+=elen[i]/MI;any=true;lastNm=NM[E[i][2]]||'a street';}}
-  if(any){toast('🟢 New street! '+lastNm,3300);buzz(70);$('nav_new').textContent='+'+newMi.toFixed(2)+' new mi · '+newSegs.size+' blocks unlocked';}}
+// A block counts as walked when you are within 18 m of it AND alongside it (projection inside the middle of
+// the segment): standing at a corner no longer credits the cross street's two blocks.
+function segT(la,lo,la1,lo1,la2,lo2){const k=Math.cos(la*toR);const x=lo*k,y=la,x1=lo1*k,y1=la1,x2=lo2*k,y2=la2;const dx=x2-x1,dy=y2-y1,L2=dx*dx+dy*dy;return L2?((x-x1)*dx+(y-y1)*dy)/L2:0;}
+function checkNewCover(la,lo){let any=false,lastNm='';for(let i=0;i<E.length;i++){if(E[i][3]===1)continue;const a=E[i][0],b=E[i][1];const t=segT(la,lo,N[a][0],N[a][1],N[b][0],N[b][1]);if(t<0.09||t>0.91)continue;if(segDistM(la,lo,N[a][0],N[a][1],N[b][0],N[b][1])<18){E[i][3]=1;edgeLines[i].setStyle(edgeStyle(1));newSegs.add(i);newMi+=elen[i]/MI;any=true;lastNm=NM[E[i][2]]||'a street';}}
+  if(any){toast('🟢 New street! '+lastNm,3300);buzz(70);}
+  const eff=walkMi>0.05?Math.min(100,Math.round(100*newMi/walkMi)):null;$('nav_new').textContent='+'+newMi.toFixed(2)+' new mi · '+newSegs.size+' blocks'+(eff!==null?' · '+eff+'% new ground':'');}
 function drawRoute(res){if(routeLayer)map.removeLayer(routeLayer);if(routeNewLayer)map.removeLayer(routeNewLayer);
   routeNewLayer=L.polyline(routeNewSegments(res.ns),{color:'#27e04a',weight:9,opacity:.6,interactive:false}).addTo(map);
   routeLayer=L.polyline(res.ns.map(i=>[N[i][0],N[i][1]]),{color:'#ffd60a',weight:5,opacity:0.97,interactive:false}).addTo(map);}
@@ -872,28 +876,5 @@ function drawLights(){
 })();
 
 
-/* ---- Live coach: efficiency readout (visual + haptic only, never audio) ---- */
-(function(){
- var c={active:false,watchId:null,total:0,last:null,startUncov:null,lastNewMi:0,lastNewTime:0};
- function hav(a,b,x,y){var tR=Math.PI/180,dA=(x-a)*tR,dO=(y-b)*tR,s=Math.sin(dA/2)*Math.sin(dA/2)+Math.cos(a*tR)*Math.cos(x*tR)*Math.sin(dO/2)*Math.sin(dO/2);return 6371000*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s));}
- function css(){ if(document.getElementById('coachCss'))return; var s=document.createElement('style');s.id='coachCss';
-  s.textContent='.coachhud{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 92px);transform:translateX(-50%);z-index:1500;background:rgba(10,20,14,.94);border:2px solid #000;border-radius:5px;padding:8px 13px;box-shadow:0 4px 0 #000;font-family:var(--term);color:#eafff2;text-align:center;pointer-events:none;min-width:190px;display:none}'
-   +'.coacheff{font-family:var(--pix);font-size:12px}.coacheff b{font-size:16px}'
-   +'.coachsub{font-size:13px;color:#9fb0c8;margin-top:3px}'
-   +'.coachback{margin-top:6px;font-family:var(--pix);font-size:8px;color:var(--yel);border-top:2px solid #241a44;padding-top:6px;line-height:1.5}';
-  document.head.appendChild(s); }
- function hud(){ var d=document.getElementById('coachHud'); if(!d){d=document.createElement('div');d.id='coachHud';d.className='coachhud';document.body.appendChild(d);} return d; }
- function newMi(){ var m=0; if(c.startUncov)for(var k=0;k<c.startUncov.length;k++){var i=c.startUncov[k];if(E[i][3]===1)m+=elen[i];} return m/1609.344; }
- function render(){ var d=hud(); var nm=newMi(),tm=c.total/1609.344; var eff=tm>0.02?Math.min(100,Math.round(100*nm/tm)):100; var col=eff>=70?'var(--grn)':eff>=40?'var(--yel)':'var(--red)';
-  d.innerHTML='<div class="coacheff" style="color:'+col+'"><b>'+eff+'%</b> new ground</div><div class="coachsub">'+nm.toFixed(2)+' new mi / '+tm.toFixed(2)+' mi walked</div>'+back;
- }
- function onPos(la,lo){ if(c.last){var d=hav(c.last[0],c.last[1],la,lo); if(d>=4&&d<120)c.total+=d;} c.last=[la,lo]; var nm=newMi(); if(nm>c.lastNewMi+0.004){c.lastNewMi=nm;c.lastNewTime=Date.now(); if(navigator.vibrate){try{navigator.vibrate(26);}catch(e){}}} render(); }
- function start(){ if(c.active)return; try{ css(); c.active=true;c.total=0;c.last=null;c.lastNewMi=0;c.lastNewTime=Date.now();c.startUncov=[];for(var i=0;i<E.length;i++)if(E[i][3]===0)c.startUncov.push(i); hud().style.display='block'; render(); if(navigator.geolocation)c.watchId=navigator.geolocation.watchPosition(function(p){onPos(p.coords.latitude,p.coords.longitude);},function(){},{enableHighAccuracy:true,maximumAge:2000,timeout:15000}); }catch(e){c.active=false;} }
- function stop(){ try{ c.active=false; if(c.watchId!=null&&navigator.geolocation)navigator.geolocation.clearWatch(c.watchId); c.watchId=null; var d=document.getElementById('coachHud'); if(d)d.style.display='none'; }catch(e){} }
- try{ var was=document.body.classList.contains('s-nav'); new MutationObserver(function(){ var nav=document.body.classList.contains('s-nav'); if(nav&&!was){was=true;start();} else if(!nav&&was){was=false;stop();} }).observe(document.body,{attributes:true,attributeFilter:['class']}); if(was)start(); }catch(e){}
- try{ if(typeof startNav==='function'&&!startNav.__coach){var _sn=startNav;startNav=function(){var r=_sn.apply(this,arguments);start();return r;};startNav.__coach=1;} }catch(e){}
- try{ if(typeof walkabout==='function'&&!walkabout.__coach){var _wa=walkabout;walkabout=function(){var r=_wa.apply(this,arguments);start();return r;};walkabout.__coach=1;} }catch(e){}
- try{ if(typeof endNav==='function'&&!endNav.__coach){var _en=endNav;endNav=function(){stop();return _en.apply(this,arguments);};endNav.__coach=1;} }catch(e){}
-})();
 
 </script></body></html>
