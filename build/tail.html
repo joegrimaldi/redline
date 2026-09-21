@@ -253,6 +253,10 @@ function buildNavSteps(res){const ns=res.ns;const names=[];for(let i=0;i+1<ns.le
   const steps=[];for(let i=1;i+1<ns.length;i++){if(names[i]!==names[i-1]){const pb=bearing(ns[i-1],ns[i]),cb=bearing(ns[i],ns[i+1]);steps.push({idx:i,text:turnWord(((cb-pb+540)%360)-180)+' onto '+names[i]});}}
   return {ns,names,cum,steps,total:cum[cum.length-1],first:'Head '+compass(bearing(ns[0],ns[1]))+' on '+names[0]};}
 function nearestRouteIdx(la,lo){const ns=NAV.ns;let bi=0,bd=Infinity;for(let i=0;i<ns.length;i++){const d=havLL(la,lo,N[ns[i]][0],N[ns[i]][1]);if(d<bd){bd=d;bi=i;}}return bi;}
+// distance to the route LINE, not its nodes - mid-block on a long crosstown block is not "off route"
+function routeDist(la,lo){const ns=NAV.ns;let bd=Infinity;for(let i=0;i+1<ns.length;i++){const d=segDistM(la,lo,N[ns[i]][0],N[ns[i]][1],N[ns[i+1]][0],N[ns[i+1]][1]);if(d<bd)bd=d;}return ns.length>1?bd:havLL(la,lo,N[ns[0]][0],N[ns[0]][1]);}
+// nearest node that has at least one walkable edge (the nearest node can be a bridge ramp or a stranded park path)
+function nearestWalkNode(la,lo){const RO=routeOK();let best=-1,bd=Infinity;for(let i=0;i<N.length;i++){const dla=(N[i][0]-la),dlo=(N[i][1]-lo)*0.758;const d=dla*dla+dlo*dlo;if(d>=bd)continue;const au=adj[i];let ok=false;for(let k=0;k<au.length;k++)if(RO[au[k][2]]){ok=true;break;}if(ok){bd=d;best=i;}}return best;}
 // A block counts as walked when you are within 18 m of it AND alongside it (projection inside the middle of
 // the segment): standing at a corner no longer credits the cross street's two blocks.
 function segT(la,lo,la1,lo1,la2,lo2){const k=Math.cos(la*toR);const x=lo*k,y=la,x1=lo1*k,y1=la1,x2=lo2*k,y2=la2;const dx=x2-x1,dy=y2-y1,L2=dx*dx+dy*dy;return L2?((x-x1)*dx+(y-y1)*dy)/L2:0;}
@@ -266,7 +270,7 @@ function legLine(res){return res.freshName+' · '+res.newMi.toFixed(2)+' mi fres
 function setLeg(res){NAV=buildNavSteps(res);_annN=new Set();_offN=0;drawRoute(res);if(walkedLayer)walkedLayer.setLatLngs([]);
   $('navtop').classList.remove('off');$('nav_arrow').textContent='↑';$('nav_inst').textContent=NAV.first;$('nav_dist').textContent='';}
 // Pick the next stretch from where you are standing. completed=true when the previous one was walked to its end.
-function advanceLeg(la,lo,completed){const leg=nextLeg(nearestNode(la,lo));if(completed)legsDone++;
+function advanceLeg(la,lo,completed){const sn=nearestWalkNode(la,lo);const leg=sn>=0?nextLeg(sn):null;if(completed)legsDone++;
   if(!leg){NAV.done=true;_doneT=Date.now();$('navtop').classList.remove('off');$('nav_arrow').textContent='🏁';$('nav_inst').textContent='Nothing unwalked in reach';$('nav_dist').textContent='wander, or End';return;}
   NAV.done=false;CUR.res=leg;setLeg(leg);toast((completed?'✅ Stretch done · next: ':'↪ From here: ')+legLine(leg),4000);buzz(completed?[60,40,60]:40);}
 function startNav(chain){if(!CUR)return;if(!navigator.geolocation){setStatus('Location needed.');return;}
@@ -285,7 +289,7 @@ function startNav(chain){if(!CUR)return;if(!navigator.geolocation){setStatus('Lo
     checkNewCover(la,lo);
     const prog=walkMi.toFixed(2)+' mi walked'+(legsDone?' · '+legsDone+' stretch'+(legsDone>1?'es':'')+' done':'');
     if(NAV.done){if(Date.now()-_doneT>60000)advanceLeg(la,lo,false);$('nav_prog').textContent=prog;return;}
-    const ni=nearestRouteIdx(la,lo),off=havLL(la,lo,N[NAV.ns[ni]][0],N[NAV.ns[ni]][1]);
+    const ni=nearestRouteIdx(la,lo),off=routeDist(la,lo);
     if(walkedLayer)walkedLayer.setLatLngs(NAV.ns.slice(0,ni+1).map(i=>[N[i][0],N[i][1]]));
     if(routeLayer)routeLayer.setLatLngs(NAV.ns.slice(ni).map(i=>[N[i][0],N[i][1]]));
     if(routeNewLayer)routeNewLayer.setLatLngs(routeNewSegments(NAV.ns.slice(ni)));
@@ -304,8 +308,8 @@ function endNav(){if(navWatch!=null){navigator.geolocation.clearWatch(navWatch);
 function walkabout(){if(!navigator.geolocation){setStatus('Location needed.');return;}
   setStatus('Finding your location…');$('walk').disabled=true;
   navigator.geolocation.getCurrentPosition(function(pos){$('walk').disabled=false;
-    const la=pos.coords.latitude,lo=pos.coords.longitude;const sn=nearestNode(la,lo);
-    if(havLL(la,lo,N[sn][0],N[sn][1])>800){setStatus('⚠ Off the Manhattan grid.');return;}
+    const la=pos.coords.latitude,lo=pos.coords.longitude;const sn=nearestWalkNode(la,lo);
+    if(sn<0||havLL(la,lo,N[sn][0],N[sn][1])>800){setStatus('⚠ Off the Manhattan grid.');return;}
     START=sn;startLL=[la,lo];WALK_HOOD=null;const leg=nextLeg(sn);
     if(!leg){setStatus('🏁 No unwalked street reachable from here.');return;}
     setStatus('');CUR={res:leg,pace:PACE};startNav(true);
