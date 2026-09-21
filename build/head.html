@@ -249,21 +249,10 @@
  <div id="cmap"></div>
  <div class="hsort" id="hsort" style="display:none"><button id="hs_pct" class="hsb on">% done</button><button id="hs_left" class="hsb">Mi to go</button><button id="hs_close" class="hsb">Almost done</button><button id="hs_near" class="hsb">Nearest</button></div>
  <div class="hoods" id="hoods"></div>
- <div class="section">Plan</div>
+ <div class="section">Walk</div>
  <div class="panel">
-   <label style="display:block;margin-bottom:5px">Start from</label>
-   <div class="seg"><label><input type="radio" name="start" value="loc" checked><span>📍 Me</span></label><label><input type="radio" name="start" value="home"><span>🏠 Home</span></label></div>
-   <label style="display:block;margin:11px 0 5px">Destination</label>
-   <div class="seg" id="destseg"><label><input type="radio" name="dest" value="home" checked><span>🏠 Home</span></label><label><input type="radio" name="dest" value="custom"><span>🔎 Address</span></label></div>
-   <div class="field" id="addrwrap" style="display:none;margin-top:9px"><input type="text" id="addr" placeholder="Address or place" autocomplete="off"></div>
-   <div class="field"><label>Walk length (miles)</label><input type="number" id="dist" inputmode="decimal" step="0.1" value="3.33"></div>
-   <label class="opt"><input type="checkbox" id="loop"> ⟲ Round trip</label>
-   <button id="go" class="btn primary">▶ Plan route</button>
-   <div class="acts">
-     <button id="nearnew" class="btn ghost act"><span class="ai">🧭</span>Nearest</button>
-     <button id="walk" class="btn ghost act"><span class="ai">🚶</span>Roam</button>
-     <button id="uncovBtn" class="btn ghost act"><span class="ai">📋</span>Explore</button>
-   </div>
+   <button id="walk" class="btn primary">🚶 Walkabout</button>
+   <div style="font-family:var(--term);font-size:13px;color:var(--dim);line-height:1.45">Streets light up as you walk. It keeps pointing you at the nearest fresh ground — end whenever you like.</div>
    <div id="status"></div>
  </div>
  <div class="ver" id="ver">REDLINE __VER__</div>
@@ -271,36 +260,20 @@
 
 <div id="map"></div>
 
-<div id="preview">
- <div class="pvhead"><div class="t" id="pv_title">Your route</div><button class="btn ghost" id="pvback" style="width:auto;padding:8px 14px">← Back</button></div>
- <div class="pvstats"><div class="s"><b id="s_dist">–</b><span>Mi</span></div><div class="s"><b id="s_pct">–</b><span>New</span></div><div class="s"><b id="s_time">–</b><span>Time</span></div><div class="s"><b id="s_turns">–</b><span>Turns</span></div></div>
- <div id="pv_transit"></div>
- <button id="startnav" class="btn go">▶ Start walk</button>
- <div class="handoff" style="margin-top:9px"><a id="navG" target="_blank" rel="noopener">🗺️ Google</a><a id="navA" target="_blank" rel="noopener">🍎 Apple</a></div>
- <div class="section">Route</div><div class="dirs" id="dirs"></div>
-</div>
-
 <div id="navtop"><div style="display:flex;align-items:center;gap:12px"><div id="nav_arrow">↑</div><div style="flex:1"><div id="nav_inst">Head out</div><div id="nav_dist"></div></div></div></div>
-<div id="navctl"><button id="rotBtn" class="on" title="Heading-up / North-up">🧭</button><button id="muteBtn" class="on" title="Voice on/off">🔊</button><button id="recenter" title="Recenter">◎</button></div>
+<div id="navctl"><button id="rotBtn" class="on" title="Heading-up / North-up">🧭</button><button id="recenter" title="Recenter">◎</button></div>
 <div id="navbot"><div id="nav_new"></div><div id="nav_prog"></div><button id="nav_end">✕ End</button></div>
 
 <div id="toast"></div>
 <div id="recap"><div class="rcard"><h2 id="rc_title">Walk complete 🎉</h2><div class="rsub" id="rc_sub"></div><div id="rc_body"></div><button id="rc_done" class="rdone">Nice work →</button></div></div>
 
-<div id="uncov">
- <div class="uchead"><b>📋 Unexplored land</b><button id="uc_close" class="btn ghost" style="width:auto;padding:6px 13px">✕ Close</button></div>
- <div class="uctabs"><button id="uc_tlist" class="uct on">List</button><button id="uc_tmap" class="uct">Map</button></div>
- <div class="ucsub" id="uc_sub"></div>
- <div class="uclist" id="uc_list"></div>
- <div id="umap"></div>
-</div>
 
 <div id="hoodview">
  <div class="uchead"><b id="hv_title">Neighborhood</b><button id="hv_close" class="btn ghost" style="width:auto;padding:6px 13px">✕ Close</button></div>
  <div class="ucsub" id="hv_sub"></div>
+ <div class="ucsub" id="hv_transit"></div>
  <div class="hvleg"><i class="r">■ walked</i><i class="g">■ to-do</i><i class="b">▢ neighborhood</i></div>
  <div id="hmap"></div>
- <button id="hv_clear" class="btn go">⚑ Clear neighborhood — plan the sweep</button>
 </div>
 
 <div id="bpop"><div class="bcard"><div class="bemoji" id="bp_emoji">🏅</div><div class="bname" id="bp_name"></div><div class="bstat" id="bp_stat"></div><div class="bdesc" id="bp_desc"></div><div class="btap">tap to close</div></div></div>
