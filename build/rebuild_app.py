@@ -196,11 +196,9 @@ except Exception: pass
 # compute the next sw cache version first, so we can stamp it into the page
 sw=open(P('sw.js')).read()
 m=re.search(r"redline-v(\d+)",sw); cur=int(m.group(1)) if m else 7; v=cur+1
-# assemble public index.html (address-stripped, version-stamped)
+# assemble public index.html (version-stamped)
 head=open(P('head.html')).read(); tail=open(P('tail.html')).read()
 idx=head+'const G='+json.dumps({'nodes':nodes,'names':names,'edges':edges,'home':home},separators=(',',':'))+';\nconst STATS='+json.dumps(STATS)+';\nconst HOODBOX='+json.dumps([[h[0],h[1],h[2],h[3],h[4]] for h in HOODS])+';\nconst WALKLOG='+json.dumps(WALKLOG)+';\nconst WALKMI='+json.dumps(WALKMI)+';\n'+tail
-for a,b in [('Bowling Green','Start (home)'),('ð  Bowling Green','ð  Home'),('using Bowling Green','using home base')]:
-    idx=idx.replace(a,b)
 # Only bump the version when the page actually changed. A rebuild with no new
 # coverage keeps the old stamp, so sync.yml sees an empty diff and skips the
 # commit + Pages redeploy (a relay hit with nothing new used to commit anyway).

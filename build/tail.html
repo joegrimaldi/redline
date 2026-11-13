@@ -198,7 +198,7 @@ function edgeStyle(c){return c?{color:'#ff2e2e',weight:1.5,opacity:.78,interacti
 function routeNewSegments(ns){const segs=[];for(let i=0;i+1<ns.length;i++){const ei=edgeBetween(ns[i],ns[i+1]);if(ei>=0&&E[ei][3]===0)segs.push([[N[ns[i]][0],N[ns[i]][1]],[N[ns[i+1]][0],N[ns[i+1]][1]]]);}return segs;}
 const edgeLines=new Array(E.length);
 E.forEach((e,i)=>{const a=N[e[0]],b=N[e[1]];edgeLines[i]=L.polyline([[a[0],a[1]],[b[0],b[1]]],edgeStyle(e[3])).addTo(map);});
-L.circleMarker([N[HOME][0],N[HOME][1]],{radius:6,color:'#fff',fillColor:'#ffd23f',fillOpacity:1,weight:2}).addTo(map).bindTooltip('Bowling Green');
+L.circleMarker([N[HOME][0],N[HOME][1]],{radius:6,color:'#fff',fillColor:'#ffd23f',fillOpacity:1,weight:2}).addTo(map).bindTooltip('Start');
 let routeLayer=null,routeNewLayer=null,meMarker=null,meCircle=null;
 let START=HOME, startLL=[N[HOME][0],N[HOME][1]];
 function showScreen(s){document.body.className='s-'+s;setTimeout(()=>{try{map.invalidateSize()}catch(e){}},80);}
@@ -456,7 +456,7 @@ function setHoodSort(v,btnId){HOODSORT=v;Object.keys(HSBTN).forEach(id=>{const b
   if(v==='near'){
     if(navigator.geolocation){toast('📍 Locating you to sort by nearest…',2600);
       navigator.geolocation.getCurrentPosition(p=>{MYSORTPOS=[p.coords.latitude,p.coords.longitude];fillHoods();dismissToast();},
-        ()=>{MYSORTPOS=null;fillHoods();toast('Sorted from home base — live location unavailable.',3600);},{enableHighAccuracy:true,timeout:8000,maximumAge:60000});
+        ()=>{MYSORTPOS=null;fillHoods();toast('Sorted from the start point — live location unavailable.',3600);},{enableHighAccuracy:true,timeout:8000,maximumAge:60000});
     }else{MYSORTPOS=null;fillHoods();}
   }else fillHoods();}
 Object.keys(HSBTN).forEach(id=>{if($(id))$(id).onclick=()=>setHoodSort(HSBTN[id],id);});
