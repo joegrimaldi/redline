@@ -2,7 +2,7 @@
 
 The 🔄 Sync button in the app POSTs to a tiny HTTP relay; the relay calls GitHub's `workflow_dispatch` on `.github/workflows/sync.yml` with an Actions-only token. The app's one pointer to the relay is the **`SYNC_URL`** constant in `build/tail.html`. The source in this folder holds no secret — only env-var and secret *names*.
 
-**Live since 2026-11-13 (app v867, commit `fe5236d`): the Cloudflare Worker** `https://redline-sync.jgrimaldi.workers.dev`. The Val Town val it replaced, and that val's token, were deleted the same day (§5, §6).
+**Live since 2026-11-13 (app v867, commit `c18184e`): the Cloudflare Worker** `https://redline-sync.jgrimaldi.workers.dev`. The Val Town val it replaced, and that val's token, were deleted the same day (§5, §6).
 
 | File | What it is | SHA-256 |
 |---|---|---|
@@ -43,7 +43,7 @@ The relay ran as the Val Town val `joegrimaldi/redline-sync` from 2026-09-20 to 
 
 ## 6. Cutover record
 
-All on 2026-11-13: Worker deployed and tested by hand with the new token → `fe5236d` switched `SYNC_URL`, added the key prompt and removed the dead handler → v867 live, Worker answers the app's origin correctly (a keyless POST from the page gets a readable 401) → phone sync through the Worker verified at 01:49 UTC → token `redline-sync-relay` deleted on GitHub → val `redline-sync` deleted on Val Town. There is no relay to roll back to; if the Worker is down, §3 is the fallback and §1 recreates it.
+All on 2026-11-13: Worker deployed and tested by hand with the new token → `c18184e` switched `SYNC_URL`, added the key prompt and removed the dead handler → v867 live, Worker answers the app's origin correctly (a keyless POST from the page gets a readable 401) → phone sync through the Worker verified at 01:49 UTC → token `redline-sync-relay` deleted on GitHub → val `redline-sync` deleted on Val Town. There is no relay to roll back to; if the Worker is down, §3 is the fallback and §1 recreates it.
 
 ## 7. Verify the mirrors
 
